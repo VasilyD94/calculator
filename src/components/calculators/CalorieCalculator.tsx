@@ -11,6 +11,7 @@ import {
   ACTIVITY_LEVELS,
   type ActivityLevel,
 } from '@/components/inputs/ActivitySelector'
+import { Label } from '@/components/ui/label'
 import { ResultCard } from '@/components/results/ResultCard'
 import { MacroBreakdown } from '@/components/results/MacroBreakdown'
 import { FormulaComparison } from '@/components/results/FormulaComparison'
@@ -221,19 +222,19 @@ export function CalorieCalculator() {
                 />
               ) : (
                 <div className="space-y-3">
-                  {/* Заголовок + текущий вес */}
+                  {/* Строка 1 — как Label row в ValueSlider */}
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium flex items-center gap-2">
+                    <Label className="flex items-center gap-2">
                       <Weight className="h-4 w-4" />
                       Ваш вес
-                    </span>
-                    <div>
+                    </Label>
+                    <div className="text-right">
                       <span className="text-2xl font-bold text-primary">{weight}</span>
                       <span className="text-muted-foreground ml-1">кг</span>
                     </div>
                   </div>
 
-                  {/* Мини-шкала веса */}
+                  {/* Строка 2 — шкала с py-2 как у Slider */}
                   {(() => {
                     const scaleMin = Math.max(30, idealMin - 20)
                     const scaleMax = idealMax + 20
@@ -243,9 +244,8 @@ export function CalorieCalculator() {
                     const markerPos = Math.min(Math.max(((weight - scaleMin) / scaleRange) * 100, 2), 98)
 
                     return (
-                      <div className="space-y-2">
+                      <div className="py-2">
                         <div className="relative h-1.5 rounded-full bg-border">
-                          {/* Зона нормы */}
                           <div
                             className="absolute inset-y-0 bg-primary/40 rounded-full"
                             style={{
@@ -253,20 +253,21 @@ export function CalorieCalculator() {
                               width: `${normWidth}%`,
                             }}
                           />
-                          {/* Маркер — поверх полосы, как thumb у shadcn Slider */}
                           <div
                             className="absolute top-1/2 -translate-y-1/2 size-4 rounded-full border border-primary bg-background shadow-sm"
                             style={{ left: `${markerPos}%`, marginLeft: '-8px' }}
                           />
                         </div>
-                        <div className="flex justify-between text-[11px] text-muted-foreground">
-                          <span>Дефицит</span>
-                          <span className="font-medium text-foreground">Норма ({idealMin}–{idealMax} кг)</span>
-                          <span>Избыток</span>
-                        </div>
                       </div>
                     )
                   })()}
+
+                  {/* Строка 3 — подписи как min/max row в ValueSlider */}
+                  <div className="flex justify-between text-xs text-muted-foreground">
+                    <span>Дефицит</span>
+                    <span className="font-medium text-foreground">Норма ({idealMin}–{idealMax} кг)</span>
+                    <span>Избыток</span>
+                  </div>
                 </div>
               )}
             </div>
