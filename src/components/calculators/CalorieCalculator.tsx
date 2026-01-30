@@ -249,26 +249,18 @@ export function CalorieCalculator() {
 
                     return (
                       <div className="space-y-2">
-                        <div className="relative h-1.5 rounded-full bg-border overflow-hidden">
-                          {/* Зона нормы — с размытыми краями */}
-                          <div
-                            className="absolute inset-y-0 bg-primary/50 rounded-full"
-                            style={{
-                              left: `${normStart}%`,
-                              width: `${normWidth}%`,
-                              filter: 'blur(4px)',
-                            }}
-                          />
+                        <div className="relative h-1.5 rounded-full bg-border">
+                          {/* Зона нормы */}
                           <div
                             className="absolute inset-y-0 bg-primary/40 rounded-full"
                             style={{
-                              left: `${normStart + 2}%`,
-                              width: `${Math.max(0, normWidth - 4)}%`,
+                              left: `${normStart}%`,
+                              width: `${normWidth}%`,
                             }}
                           />
-                          {/* Маркер — как thumb у shadcn Slider */}
+                          {/* Маркер — поверх полосы, как thumb у shadcn Slider */}
                           <div
-                            className="absolute top-1/2 -translate-y-1/2 size-4 rounded-full border border-primary bg-background shadow-sm z-10"
+                            className="absolute top-1/2 -translate-y-1/2 size-4 rounded-full border border-primary bg-background shadow-sm"
                             style={{ left: `${markerPos}%`, marginLeft: '-8px' }}
                           />
                         </div>
