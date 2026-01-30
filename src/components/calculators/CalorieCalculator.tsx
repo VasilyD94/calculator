@@ -249,23 +249,16 @@ export function CalorieCalculator() {
 
                     return (
                       <div className="space-y-2">
-                        <div className="relative h-2 rounded-full overflow-hidden flex bg-muted">
-                          {/* Левая зона — дефицит */}
+                        <div
+                          className="relative h-1.5 rounded-full"
+                          style={{
+                            background: `linear-gradient(to right, hsl(var(--muted)) 0%, hsl(var(--muted)) ${normStart - 5}%, hsl(var(--primary) / 0.3) ${normStart + 5}%, hsl(var(--primary) / 0.3) ${normStart + normWidth - 5}%, hsl(var(--muted)) ${normStart + normWidth + 5}%, hsl(var(--muted)) 100%)`,
+                          }}
+                        >
+                          {/* Маркер — как thumb у shadcn Slider */}
                           <div
-                            className="h-full bg-muted"
-                            style={{ width: `${normStart}%` }}
-                          />
-                          {/* Зона нормы */}
-                          <div
-                            className="h-full bg-primary/30"
-                            style={{ width: `${normWidth}%` }}
-                          />
-                          {/* Правая зона — избыток */}
-                          <div className="h-full bg-muted flex-1" />
-                          {/* Маркер */}
-                          <div
-                            className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-primary ring-2 ring-background shadow-sm z-10"
-                            style={{ left: `${markerPos}%`, marginLeft: '-6px' }}
+                            className="absolute top-1/2 -translate-y-1/2 size-4 rounded-full border border-primary bg-white shadow-sm z-10"
+                            style={{ left: `${markerPos}%`, marginLeft: '-8px' }}
                           />
                         </div>
                         <div className="flex justify-between text-[11px] text-muted-foreground">
