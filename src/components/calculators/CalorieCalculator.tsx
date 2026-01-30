@@ -181,7 +181,7 @@ export function CalorieCalculator() {
           <CardHeader>
             <CardTitle>Ваша цель</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="space-y-4">
             <Tabs
               value={goal}
               onValueChange={(v) => {
@@ -205,23 +205,29 @@ export function CalorieCalculator() {
                   Набор массы
                 </TabsTrigger>
               </TabsList>
+            </Tabs>
 
-              {/* Похудение */}
-              <TabsContent value="lose" className="mt-4 space-y-4">
+            {/* Слайдер целевого веса — вне табов, чтобы не прыгала высота */}
+            {goal !== 'maintain' && (
+              <div className="space-y-4">
                 <ValueSlider
                   label="Целевой вес"
                   value={targetWeight}
                   onChange={setTargetWeight}
-                  min={loseMin}
-                  max={loseMax}
+                  min={goal === 'lose' ? loseMin : gainMin}
+                  max={goal === 'lose' ? loseMax : gainMax}
                   unit="кг"
                   icon={<Target className="h-4 w-4" />}
                 />
-                {/* Подсказка с идеальным весом */}
                 <p className="text-xs text-muted-foreground text-center">
                   Идеальный вес для вашего роста: {idealMin}–{idealMax} кг (ИМТ 18.5–24.9)
                 </p>
+              </div>
+            )}
 
+            {/* Результат */}
+            {goal === 'lose' && (
+              <div className="space-y-4">
                 <ResultCard
                   title="Для похудения"
                   value={deficitCalories}
@@ -229,7 +235,6 @@ export function CalorieCalculator() {
                   description={`−${weightDiff} кг за ~${weeksNeeded} нед. (к ${targetDateStr})`}
                   status="warning"
                 />
-
                 {showDeficitWarning && (
                   <Alert variant="destructive">
                     <AlertTriangle className="h-4 w-4" />
@@ -238,50 +243,28 @@ export function CalorieCalculator() {
                     </AlertDescription>
                   </Alert>
                 )}
-              </TabsContent>
+              </div>
+            )}
 
-              {/* Поддержание */}
-              <TabsContent value="maintain" className="mt-4 space-y-4">
-                <div className="rounded-lg border bg-muted/30 p-4 space-y-2">
-                  <p className="text-sm font-medium">Ваш текущий вес: {weight} кг</p>
-                  <p className="text-xs text-muted-foreground">
-                    Идеальный вес для вашего роста: {idealMin}–{idealMax} кг (ИМТ 18.5–24.9)
-                  </p>
-                </div>
+            {goal === 'maintain' && (
+              <ResultCard
+                title="Для поддержания веса"
+                value={result.tdee}
+                unit="ккал/день"
+                description="Ваш текущий баланс энергии"
+                status="success"
+              />
+            )}
 
-                <ResultCard
-                  title="Для поддержания веса"
-                  value={result.tdee}
-                  unit="ккал/день"
-                  description="Ваш текущий баланс энергии"
-                  status="success"
-                />
-              </TabsContent>
-
-              {/* Набор массы */}
-              <TabsContent value="gain" className="mt-4 space-y-4">
-                <ValueSlider
-                  label="Целевой вес"
-                  value={targetWeight}
-                  onChange={setTargetWeight}
-                  min={gainMin}
-                  max={gainMax}
-                  unit="кг"
-                  icon={<Target className="h-4 w-4" />}
-                />
-                <p className="text-xs text-muted-foreground text-center">
-                  Идеальный вес для вашего роста: {idealMin}–{idealMax} кг (ИМТ 18.5–24.9)
-                </p>
-
-                <ResultCard
-                  title="Для набора массы"
-                  value={surplusCalories}
-                  unit="ккал/день"
-                  description={`+${weightDiff} кг за ~${weeksNeeded} нед. (к ${targetDateStr})`}
-                  status="info"
-                />
-              </TabsContent>
-            </Tabs>
+            {goal === 'gain' && (
+              <ResultCard
+                title="Для набора массы"
+                value={surplusCalories}
+                unit="ккал/день"
+                description={`+${weightDiff} кг за ~${weeksNeeded} нед. (к ${targetDateStr})`}
+                status="info"
+              />
+            )}
           </CardContent>
         </Card>
 
