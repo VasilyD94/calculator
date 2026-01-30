@@ -207,51 +207,39 @@ export function CalorieCalculator() {
               </TabsList>
             </Tabs>
 
-            {/* Слайдер целевого веса или инфо-блок — всегда занимает место */}
-            {goal !== 'maintain' ? (
-              <div className="space-y-4">
-                <ValueSlider
-                  label="Целевой вес"
-                  value={targetWeight}
-                  onChange={setTargetWeight}
-                  min={goal === 'lose' ? loseMin : gainMin}
-                  max={goal === 'lose' ? loseMax : gainMax}
-                  unit="кг"
-                  icon={<Target className="h-4 w-4" />}
-                />
-                <p className="text-xs text-muted-foreground text-center">
-                  Идеальный вес для вашего роста: {idealMin}–{idealMax} кг (ИМТ 18.5–24.9)
-                </p>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {/* Повторяем структуру ValueSlider: space-y-3 + label + slider + minmax */}
+            {/* Область слайдера/заглушки — фиксированная высота для всех режимов */}
+            <div className="h-[136px]">
+              {goal !== 'maintain' ? (
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium flex items-center gap-2">
-                      <Weight className="h-4 w-4" />
-                      Текущий вес
-                    </span>
-                    <div className="text-right">
-                      <span className="text-2xl font-bold text-primary">{weight}</span>
-                      <span className="text-muted-foreground ml-1">кг</span>
-                    </div>
-                  </div>
-                  <div className="py-2">
-                    <div className="h-5 rounded-full bg-green-100 flex items-center justify-center">
-                      <span className="text-xs font-medium text-green-700">Цель — сохранить текущий вес</span>
-                    </div>
-                  </div>
-                  <div className="flex justify-between text-xs text-muted-foreground">
-                    <span>{idealMin} кг</span>
-                    <span>{idealMax} кг</span>
-                  </div>
+                  <ValueSlider
+                    label="Целевой вес"
+                    value={targetWeight}
+                    onChange={setTargetWeight}
+                    min={goal === 'lose' ? loseMin : gainMin}
+                    max={goal === 'lose' ? loseMax : gainMax}
+                    unit="кг"
+                    icon={<Target className="h-4 w-4" />}
+                  />
+                  <p className="text-xs text-muted-foreground text-center">
+                    Идеальный вес для вашего роста: {idealMin}–{idealMax} кг (ИМТ 18.5–24.9)
+                  </p>
                 </div>
-                <p className="text-xs text-muted-foreground text-center">
-                  Идеальный вес для вашего роста: {idealMin}–{idealMax} кг (ИМТ 18.5–24.9)
-                </p>
-              </div>
-            )}
+              ) : (
+                <div className="flex flex-col items-center justify-center h-full space-y-3">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Weight className="h-4 w-4" />
+                    Текущий вес
+                  </div>
+                  <div>
+                    <span className="text-3xl font-bold text-primary">{weight}</span>
+                    <span className="text-muted-foreground ml-1">кг</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground text-center">
+                    Идеальный вес для вашего роста: {idealMin}–{idealMax} кг (ИМТ 18.5–24.9)
+                  </p>
+                </div>
+              )}
+            </div>
 
             {/* Результат */}
             {goal === 'lose' && (
