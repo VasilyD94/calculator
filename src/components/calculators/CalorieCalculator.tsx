@@ -241,7 +241,14 @@ export function CalorieCalculator() {
               </TabsContent>
 
               {/* Поддержание */}
-              <TabsContent value="maintain" className="mt-4">
+              <TabsContent value="maintain" className="mt-4 space-y-4">
+                <div className="rounded-lg border bg-muted/30 p-4 space-y-2">
+                  <p className="text-sm font-medium">Ваш текущий вес: {weight} кг</p>
+                  <p className="text-xs text-muted-foreground">
+                    Идеальный вес для вашего роста: {idealMin}–{idealMax} кг (ИМТ 18.5–24.9)
+                  </p>
+                </div>
+
                 <ResultCard
                   title="Для поддержания веса"
                   value={result.tdee}
