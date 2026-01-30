@@ -2,16 +2,15 @@
 
 import { useMemo, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { GenderToggle } from '@/components/inputs/GenderToggle'
 import { ValueSlider } from '@/components/inputs/ValueSlider'
+import { Slider } from '@/components/ui/slider'
 import {
   ActivitySelector,
   ACTIVITY_LEVELS,
   type ActivityLevel,
 } from '@/components/inputs/ActivitySelector'
-import { Label } from '@/components/ui/label'
 import { ResultCard } from '@/components/results/ResultCard'
 import { MacroBreakdown } from '@/components/results/MacroBreakdown'
 import { FormulaComparison } from '@/components/results/FormulaComparison'
@@ -21,9 +20,6 @@ import {
   calculateMacros,
 } from '@/lib/calculations/calories'
 import {
-  TrendingDown,
-  TrendingUp,
-  Minus,
   Ruler,
   Weight,
   Calendar,
@@ -39,8 +35,7 @@ export function CalorieCalculator() {
   const [weight, setWeight] = useState(75)
   const [height, setHeight] = useState(175)
   const [activity, setActivity] = useState<ActivityLevel>('moderate')
-  const [goal, setGoal] = useState<Goal>('maintain')
-  const [targetWeight, setTargetWeight] = useState(70)
+  const [targetWeight, setTargetWeight] = useState(75)
 
   const activityFactor =
     ACTIVITY_LEVELS.find((l) => l.id === activity)?.factor ?? 1.55
@@ -55,6 +50,10 @@ export function CalorieCalculator() {
     [gender, age, weight, height, activityFactor]
   )
 
+  // Автоопределение цели
+  const goal: Goal =
+    targetWeight < weight ? 'lose' : targetWeight > weight ? 'gain' : 'maintain'
+
   // Расчёт дефицита/профицита на основе целевого веса
   const weightDiff = Math.abs(weight - targetWeight)
   const caloriesPerKg = 7700 // ккал в 1 кг
@@ -62,10 +61,9 @@ export function CalorieCalculator() {
   const safeWeeklyRate = goal === 'lose' ? 0.5 : 0.4
   const dailyDelta = Math.round((safeWeeklyRate * caloriesPerKg) / 7)
 
-  const deficitCalories = Math.max(
-    gender === 'female' ? 1200 : 1500,
-    result.tdee - dailyDelta
-  )
+  const minSafe = gender === 'female' ? 1200 : 1500
+
+  const deficitCalories = Math.max(minSafe, result.tdee - dailyDelta)
   const surplusCalories = result.tdee + dailyDelta
 
   const targetCalories =
@@ -76,7 +74,8 @@ export function CalorieCalculator() {
         : result.tdee
 
   // Прогноз срока
-  const weeksNeeded = weightDiff > 0 ? Math.ceil(weightDiff / safeWeeklyRate) : 0
+  const weeksNeeded =
+    weightDiff > 0 ? Math.ceil(weightDiff / safeWeeklyRate) : 0
   const targetDate = new Date()
   targetDate.setDate(targetDate.getDate() + weeksNeeded * 7)
   const targetDateStr = targetDate.toLocaleDateString('ru-RU', {
@@ -90,19 +89,41 @@ export function CalorieCalculator() {
     [targetCalories, goal]
   )
 
-  const minSafe = gender === 'female' ? 1200 : 1500
-  const showDeficitWarning = goal === 'lose' && (result.tdee - dailyDelta) < minSafe
-
-  // Диапазон слайдера целевого веса
-  const loseMin = Math.max(30, weight - 40)
-  const loseMax = weight - 1
-  const gainMin = weight + 1
-  const gainMax = Math.min(200, weight + 30)
+  const showDeficitWarning =
+    goal === 'lose' && result.tdee - dailyDelta < minSafe
 
   // Идеальный вес (ИМТ 18.5–24.9)
   const heightM = height / 100
   const idealMin = Math.round(18.5 * heightM * heightM)
   const idealMax = Math.round(24.9 * heightM * heightM)
+
+  // Диапазон слайдера желаемого веса
+  const sliderMin = Math.max(30, weight - 40)
+  const sliderMax = Math.min(200, weight + 30)
+
+  // Зона нормы на слайдере
+  const sliderRange = sliderMax - sliderMin
+  const normStart = Math.max(0, ((idealMin - sliderMin) / sliderRange) * 100)
+  const normEnd = Math.min(100, ((idealMax - sliderMin) / sliderRange) * 100)
+  const normWidth = normEnd - normStart
+
+  // Результат — текст и статус
+  const resultTitle =
+    goal === 'lose'
+      ? 'Для похудения'
+      : goal === 'gain'
+        ? 'Для набора массы'
+        : 'Для поддержания веса'
+
+  const resultDescription =
+    goal === 'maintain'
+      ? 'Ваш текущий баланс энергии'
+      : goal === 'lose'
+        ? `−${weightDiff} кг за ~${weeksNeeded} нед. (к ${targetDateStr})`
+        : `+${weightDiff} кг за ~${weeksNeeded} нед. (к ${targetDateStr})`
+
+  const resultStatus =
+    goal === 'lose' ? 'warning' : goal === 'gain' ? 'info' : 'success'
 
   return (
     <div className="space-y-8">
@@ -138,14 +159,13 @@ export function CalorieCalculator() {
             label="Вес"
             value={weight}
             onChange={(v) => {
+              const diff = v - weight
               setWeight(v)
-              // Автоматически корректируем целевой вес при изменении текущего
-              if (goal === 'lose' && targetWeight >= v) {
-                setTargetWeight(Math.max(loseMin, v - 5))
-              }
-              if (goal === 'gain' && targetWeight <= v) {
-                setTargetWeight(Math.min(gainMax, v + 5))
-              }
+              // Сдвигаем целевой вес вместе с текущим
+              setTargetWeight((prev) => {
+                const next = prev + diff
+                return Math.max(sliderMin, Math.min(sliderMax, next))
+              })
             }}
             min={30}
             max={200}
@@ -177,140 +197,93 @@ export function CalorieCalculator() {
           />
         </div>
 
-        {/* Выбор цели */}
+        {/* Желаемый вес — единый слайдер */}
         <Card>
           <CardHeader>
             <CardTitle>Ваша цель</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <Tabs
-              value={goal}
-              onValueChange={(v) => {
-                const g = v as Goal
-                setGoal(g)
-                if (g === 'lose') setTargetWeight(Math.max(loseMin, weight - 5))
-                if (g === 'gain') setTargetWeight(Math.min(gainMax, weight + 5))
-              }}
-            >
-              <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="lose" className="gap-1.5">
-                  <TrendingDown className="h-4 w-4" />
-                  Похудение
-                </TabsTrigger>
-                <TabsTrigger value="maintain" className="gap-1.5">
-                  <Minus className="h-4 w-4" />
-                  Поддержание
-                </TabsTrigger>
-                <TabsTrigger value="gain" className="gap-1.5">
-                  <TrendingUp className="h-4 w-4" />
-                  Набор массы
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
-
-            {/* Область слайдера/заглушки — фиксированная высота для всех режимов */}
-            <div className="h-[136px] flex flex-col justify-center">
-              {goal !== 'maintain' ? (
-                <ValueSlider
-                  label="Желаемый вес"
-                  value={targetWeight}
-                  onChange={setTargetWeight}
-                  min={goal === 'lose' ? loseMin : gainMin}
-                  max={goal === 'lose' ? loseMax : gainMax}
-                  unit="кг"
-                  icon={<Target className="h-4 w-4" />}
-                />
-              ) : (
-                <div className="space-y-3">
-                  {/* Строка 1 — как Label row в ValueSlider */}
-                  <div className="flex justify-between items-center">
-                    <Label className="flex items-center gap-2">
-                      <Weight className="h-4 w-4" />
-                      Ваш вес
-                    </Label>
-                    <div className="text-right">
-                      <span className="text-2xl font-bold text-primary">{weight}</span>
-                      <span className="text-muted-foreground ml-1">кг</span>
-                    </div>
-                  </div>
-
-                  {/* Строка 2 — шкала с py-2 как у Slider */}
-                  {(() => {
-                    const scaleMin = Math.max(30, idealMin - 20)
-                    const scaleMax = idealMax + 20
-                    const scaleRange = scaleMax - scaleMin
-                    const normStart = ((idealMin - scaleMin) / scaleRange) * 100
-                    const normWidth = ((idealMax - idealMin) / scaleRange) * 100
-                    const markerPos = Math.min(Math.max(((weight - scaleMin) / scaleRange) * 100, 2), 98)
-
-                    return (
-                      <div className="py-2">
-                        <div className="relative h-1.5 rounded-full bg-border">
-                          <div
-                            className="absolute inset-y-0 bg-primary/40 rounded-full"
-                            style={{
-                              left: `${normStart}%`,
-                              width: `${normWidth}%`,
-                            }}
-                          />
-                          <div
-                            className="absolute top-1/2 -translate-y-1/2 size-4 rounded-full border border-primary bg-background shadow-sm"
-                            style={{ left: `${markerPos}%`, marginLeft: '-8px' }}
-                          />
-                        </div>
-                      </div>
-                    )
-                  })()}
-
-                  {/* Строка 3 — подписи как min/max row в ValueSlider */}
-                  <div className="flex justify-between text-xs text-muted-foreground">
-                    <span>Дефицит</span>
-                    <span className="font-medium text-foreground">Норма ({idealMin}–{idealMax} кг)</span>
-                    <span>Избыток</span>
+            <div className="space-y-3">
+              {/* Текущий вес слева — Желаемый вес справа */}
+              <div className="flex justify-between items-end">
+                <div>
+                  <span className="text-xs text-muted-foreground">Текущий вес</span>
+                  <div>
+                    <span className="text-lg font-semibold">{weight}</span>
+                    <span className="text-muted-foreground ml-1 text-sm">кг</span>
                   </div>
                 </div>
-              )}
+                <div className="text-right">
+                  <span className="text-xs text-muted-foreground">Желаемый вес</span>
+                  <div>
+                    <span className="text-2xl font-bold text-primary">
+                      {targetWeight}
+                    </span>
+                    <span className="text-muted-foreground ml-1 text-sm">кг</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Слайдер с метками нормы */}
+              <div className="relative">
+                {/* Зона нормы — подсветка на треке */}
+                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1.5 pointer-events-none z-0">
+                  <div
+                    className="absolute inset-y-0 bg-green-500/25 rounded-full"
+                    style={{
+                      left: `${normStart}%`,
+                      width: `${normWidth}%`,
+                    }}
+                  />
+                </div>
+                <Slider
+                  value={[targetWeight]}
+                  onValueChange={([v]) => setTargetWeight(v)}
+                  min={sliderMin}
+                  max={sliderMax}
+                  step={1}
+                  className="py-2"
+                />
+                {/* Метки границ нормы */}
+                {normStart > 5 && normEnd < 95 && (
+                  <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none">
+                    <div
+                      className="absolute w-px h-3 bg-green-500/50"
+                      style={{ left: `${normStart}%` }}
+                    />
+                    <div
+                      className="absolute w-px h-3 bg-green-500/50"
+                      style={{ left: `${normEnd}%` }}
+                    />
+                  </div>
+                )}
+              </div>
+
+              {/* Мин/макс + подпись нормы */}
+              <div className="flex justify-between text-xs text-muted-foreground">
+                <span>{sliderMin} кг</span>
+                <span>Норма: {idealMin}–{idealMax} кг</span>
+                <span>{sliderMax} кг</span>
+              </div>
             </div>
 
             {/* Результат */}
-            {goal === 'lose' && (
-              <div className="space-y-4">
-                <ResultCard
-                  title="Для похудения"
-                  value={deficitCalories}
-                  unit="ккал/день"
-                  description={`−${weightDiff} кг за ~${weeksNeeded} нед. (к ${targetDateStr})`}
-                  status="warning"
-                />
-                {showDeficitWarning && (
-                  <Alert variant="destructive">
-                    <AlertTriangle className="h-4 w-4" />
-                    <AlertDescription>
-                      Калорийность ограничена до {minSafe} ккал — минимум для безопасного похудения.
-                    </AlertDescription>
-                  </Alert>
-                )}
-              </div>
-            )}
+            <ResultCard
+              title={resultTitle}
+              value={targetCalories}
+              unit="ккал/день"
+              description={resultDescription}
+              status={resultStatus as 'success' | 'warning' | 'info'}
+            />
 
-            {goal === 'maintain' && (
-              <ResultCard
-                title="Для поддержания веса"
-                value={result.tdee}
-                unit="ккал/день"
-                description="Ваш текущий баланс энергии"
-                status="success"
-              />
-            )}
-
-            {goal === 'gain' && (
-              <ResultCard
-                title="Для набора массы"
-                value={surplusCalories}
-                unit="ккал/день"
-                description={`+${weightDiff} кг за ~${weeksNeeded} нед. (к ${targetDateStr})`}
-                status="info"
-              />
+            {showDeficitWarning && (
+              <Alert variant="destructive">
+                <AlertTriangle className="h-4 w-4" />
+                <AlertDescription>
+                  Калорийность ограничена до {minSafe} ккал — минимум для
+                  безопасного похудения.
+                </AlertDescription>
+              </Alert>
             )}
           </CardContent>
         </Card>
@@ -341,11 +314,12 @@ export function CalorieCalculator() {
         {/* Сравнение формул */}
         <FormulaComparison
           results={allFormulas.map((f) => {
-            const base = goal === 'lose'
-              ? Math.max(minSafe, f.tdee - dailyDelta)
-              : goal === 'gain'
-                ? f.tdee + dailyDelta
-                : f.tdee
+            const base =
+              goal === 'lose'
+                ? Math.max(minSafe, f.tdee - dailyDelta)
+                : goal === 'gain'
+                  ? f.tdee + dailyDelta
+                  : f.tdee
             return {
               name: f.name,
               value: base,
