@@ -63,42 +63,41 @@ export function FormulaComparison({ results, unit }: FormulaComparisonProps) {
             return (
               <motion.div
                 key={result.name}
-                className="flex items-center gap-3"
+                className="space-y-1.5"
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
               >
-                <div className="w-44 text-sm flex items-center gap-1 flex-shrink-0">
-                  {result.recommended && (
-                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  )}
-                  <span
-                    className={cn(
-                      'truncate',
-                      result.recommended && 'font-medium'
+                {/* Название формулы + значение */}
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-1.5 text-sm">
+                    {result.recommended && (
+                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                     )}
-                  >
-                    {result.name}
+                    <span className={cn(result.recommended && 'font-medium')}>
+                      {result.name}
+                    </span>
+                    {result.recommended && (
+                      <Badge variant="default" className="text-[10px]">
+                        Рекомендация
+                      </Badge>
+                    )}
+                  </div>
+                  <span className="text-sm font-semibold flex-shrink-0">
+                    {result.value.toLocaleString('ru-RU')} {unit}
                   </span>
-                  {result.recommended && (
-                    <Badge variant="default" className="text-[10px] ml-1 flex-shrink-0">
-                      Рек.
-                    </Badge>
-                  )}
                 </div>
-                <div className="flex-1 h-7 bg-muted rounded-lg relative overflow-hidden">
+                {/* Полоска */}
+                <div className="h-2 bg-muted rounded-full overflow-hidden">
                   <motion.div
                     className={cn(
-                      'h-full rounded-lg',
+                      'h-full rounded-full',
                       result.recommended ? 'bg-primary' : 'bg-muted-foreground/30'
                     )}
                     initial={{ width: 0 }}
                     animate={{ width: `${barWidth}%` }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
                   />
-                  <span className="absolute right-2 top-1/2 -translate-y-1/2 text-sm font-medium">
-                    {result.value.toLocaleString('ru-RU')} {unit}
-                  </span>
                 </div>
               </motion.div>
             )
