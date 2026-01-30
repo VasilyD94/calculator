@@ -248,22 +248,29 @@ export function CalorieCalculator() {
                     const markerPos = Math.min(Math.max(((weight - scaleMin) / scaleRange) * 100, 2), 98)
 
                     return (
-                      <div className="space-y-1.5">
-                        <div className="relative h-3 rounded-full bg-red-200 overflow-hidden">
+                      <div className="space-y-2">
+                        <div className="relative h-2 rounded-full overflow-hidden flex bg-muted">
+                          {/* Левая зона — дефицит */}
+                          <div
+                            className="h-full bg-muted"
+                            style={{ width: `${normStart}%` }}
+                          />
                           {/* Зона нормы */}
                           <div
-                            className="absolute top-0 bottom-0 bg-green-400 rounded-full"
-                            style={{ left: `${normStart}%`, width: `${normWidth}%` }}
+                            className="h-full bg-primary/30"
+                            style={{ width: `${normWidth}%` }}
                           />
+                          {/* Правая зона — избыток */}
+                          <div className="h-full bg-muted flex-1" />
                           {/* Маркер */}
                           <div
-                            className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-background border-[3px] border-foreground rounded-full shadow-md z-10"
-                            style={{ left: `${markerPos}%`, marginLeft: '-8px' }}
+                            className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-primary ring-2 ring-background shadow-sm z-10"
+                            style={{ left: `${markerPos}%`, marginLeft: '-6px' }}
                           />
                         </div>
-                        <div className="flex justify-between text-xs text-muted-foreground">
+                        <div className="flex justify-between text-[11px] text-muted-foreground">
                           <span>Дефицит</span>
-                          <span className="text-green-600 font-medium">Норма ({idealMin}–{idealMax} кг)</span>
+                          <span className="font-medium text-primary">Норма ({idealMin}–{idealMax} кг)</span>
                           <span>Избыток</span>
                         </div>
                       </div>
