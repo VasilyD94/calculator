@@ -1,5 +1,3 @@
-import type { ScaleRange } from '@/components/results/ResultScale'
-
 // === Типы ===
 
 export interface BMIInput {
@@ -8,14 +6,24 @@ export interface BMIInput {
   height: number // см
 }
 
+export type BMICategoryColor = 'green' | 'yellow' | 'red' | 'blue'
+
+export interface BMICategoryInfo {
+  min: number
+  max: number
+  label: string
+  color: BMICategoryColor
+  active: boolean
+}
+
 export interface BMIResult {
   bmi: number
   category: string
   status: 'success' | 'warning' | 'danger'
-  color: ScaleRange['color']
+  color: BMICategoryColor
   idealWeight: { min: number; max: number }
   weightDiff: number // >0 = набрать, <0 = сбросить, 0 = норма
-  ranges: ScaleRange[]
+  categories: BMICategoryInfo[]
 }
 
 // === Категории ВОЗ ===
@@ -24,7 +32,7 @@ interface BMICategory {
   min: number
   max: number
   label: string
-  color: ScaleRange['color']
+  color: BMICategoryColor
   status: 'success' | 'warning' | 'danger'
 }
 
@@ -45,7 +53,7 @@ export function calculateBMI(input: BMIInput): BMIResult {
   const heightM = height / 100
   const bmi = Math.round((weight / (heightM * heightM)) * 10) / 10
 
-  const category =
+  const activeCategory =
     BMI_CATEGORIES.find((c) => bmi >= c.min && bmi < c.max) ||
     BMI_CATEGORIES[BMI_CATEGORIES.length - 1]
 
@@ -56,25 +64,26 @@ export function calculateBMI(input: BMIInput): BMIResult {
 
   let weightDiff = 0
   if (bmi < 18.5) {
-    weightDiff = idealWeight.min - weight // положительное = набрать
+    weightDiff = idealWeight.min - weight
   } else if (bmi >= 25) {
-    weightDiff = idealWeight.max - weight // отрицательное = сбросить
+    weightDiff = idealWeight.max - weight
   }
 
-  const ranges: ScaleRange[] = BMI_CATEGORIES.map((c) => ({
+  const categories: BMICategoryInfo[] = BMI_CATEGORIES.map((c) => ({
     min: c.min,
     max: c.max,
     label: c.label,
     color: c.color,
+    active: c === activeCategory,
   }))
 
   return {
     bmi,
-    category: category.label,
-    status: category.status,
-    color: category.color,
+    category: activeCategory.label,
+    status: activeCategory.status,
+    color: activeCategory.color,
     idealWeight,
     weightDiff: Math.round(weightDiff),
-    ranges,
+    categories,
   }
 }
