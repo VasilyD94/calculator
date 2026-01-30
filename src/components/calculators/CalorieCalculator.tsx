@@ -303,7 +303,7 @@ function IntensityPicker({ presets, value, onChange }: IntensityPickerProps) {
           >
             {key === 'moderate' && (
               <Badge variant="default" className="absolute -top-2.5 right-2 text-[10px] px-1.5 py-0">
-                Рек.
+                Рекомендация
               </Badge>
             )}
             <span className="text-lg leading-none">{preset.emoji}</span>
