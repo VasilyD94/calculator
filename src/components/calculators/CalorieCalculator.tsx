@@ -295,29 +295,29 @@ function IntensityPicker({ presets, value, onChange }: IntensityPickerProps) {
             type="button"
             onClick={() => onChange(key)}
             className={cn(
-              'flex flex-col items-center gap-1 rounded-xl border-2 p-3 transition-all duration-200 text-center',
+              'relative flex flex-col items-center justify-center gap-0.5 rounded-xl border-2 px-2 py-2 transition-all duration-200 text-center',
               active
                 ? 'border-primary bg-primary/5 shadow-sm'
                 : 'border-border hover:border-muted-foreground/30 hover:bg-accent'
             )}
           >
-            <span className="text-xl">{preset.emoji}</span>
+            {key === 'moderate' && (
+              <Badge variant="default" className="absolute -top-2.5 right-2 text-[10px] px-1.5 py-0">
+                Рек.
+              </Badge>
+            )}
+            <span className="text-lg leading-none">{preset.emoji}</span>
             <span
               className={cn(
-                'text-sm font-medium',
+                'text-sm font-medium leading-tight',
                 active ? 'text-primary' : 'text-foreground'
               )}
             >
               {preset.label}
             </span>
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs text-muted-foreground leading-tight">
               {preset.weekly}
             </span>
-            {key === 'moderate' && (
-              <Badge variant="secondary" className="text-[10px] mt-1">
-                Рекомендуем
-              </Badge>
-            )}
           </button>
         )
       })}
