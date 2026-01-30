@@ -170,7 +170,7 @@ export function CalorieCalculator() {
                   title="Для набора массы"
                   value={result.surplus}
                   unit="ккал/день"
-                  description="Профицит для набора мышечной массы"
+                  description="Оптимальный профицит для набора ~0.5 кг в неделю"
                   status="info"
                 />
               </TabsContent>
