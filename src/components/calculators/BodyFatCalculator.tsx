@@ -152,7 +152,7 @@ export function BodyFatCalculator() {
           <CardContent>
             <BodyFatScaleBars
               categories={result.categories}
-              value={result.navy}
+              value={result.bodyFat}
             />
           </CardContent>
         </Card>
@@ -172,7 +172,7 @@ export function BodyFatCalculator() {
                 <p className="text-2xl font-bold text-amber-700">
                   {result.fatMass} <span className="text-sm font-normal">кг</span>
                 </p>
-                <p className="text-xs text-amber-600 mt-1">{result.navy}%</p>
+                <p className="text-xs text-amber-600 mt-1">{result.bodyFat}%</p>
               </div>
               <div className="rounded-lg bg-blue-50 p-4">
                 <p className="text-sm text-blue-700 mb-1">Сухая масса</p>
@@ -180,7 +180,7 @@ export function BodyFatCalculator() {
                   {result.leanMass} <span className="text-sm font-normal">кг</span>
                 </p>
                 <p className="text-xs text-blue-600 mt-1">
-                  {Math.round((100 - result.navy) * 10) / 10}%
+                  {Math.round((100 - result.bodyFat) * 10) / 10}%
                 </p>
               </div>
             </div>

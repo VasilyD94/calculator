@@ -28,7 +28,8 @@ export interface FormulaResult {
 
 export interface BodyFatResult {
   formulas: FormulaResult[]
-  navy: number
+  /** Среднее по всем формулам — основной показатель */
+  bodyFat: number
   category: string
   color: BodyFatCategoryColor
   status: 'success' | 'warning' | 'danger'
@@ -116,10 +117,13 @@ export function calculateBodyFat(input: BodyFatInput): BodyFatResult {
     { name: 'Gallagher (2000)', value: gallagherRaw, recommended: false },
   ]
 
+  // Среднее по всем формулам — основной показатель
+  const avg = Math.round(((navyRaw + deurenbergRaw + gallagherRaw) / 3) * 10) / 10
+
   const cats = input.gender === 'male' ? MALE_CATEGORIES : FEMALE_CATEGORIES
 
   const activeCat =
-    cats.find((c) => navyRaw >= c.min && navyRaw < c.max) ||
+    cats.find((c) => avg >= c.min && avg < c.max) ||
     cats[cats.length - 1]
 
   const categories: BodyFatCategoryInfo[] = cats.map((c) => ({
@@ -130,12 +134,12 @@ export function calculateBodyFat(input: BodyFatInput): BodyFatResult {
     active: c === activeCat,
   }))
 
-  const fatMass = Math.round((input.weight * navyRaw) / 100 * 10) / 10
+  const fatMass = Math.round((input.weight * avg) / 100 * 10) / 10
   const leanMass = Math.round((input.weight - fatMass) * 10) / 10
 
   return {
     formulas,
-    navy: navyRaw,
+    bodyFat: avg,
     category: activeCat.label,
     color: activeCat.color,
     status: activeCat.status,
