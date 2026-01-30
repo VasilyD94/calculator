@@ -340,11 +340,18 @@ export function CalorieCalculator() {
 
         {/* Сравнение формул */}
         <FormulaComparison
-          results={allFormulas.map((f) => ({
-            name: f.name,
-            value: f.tdee,
-            recommended: f.recommended,
-          }))}
+          results={allFormulas.map((f) => {
+            const base = goal === 'lose'
+              ? Math.max(minSafe, f.tdee - dailyDelta)
+              : goal === 'gain'
+                ? f.tdee + dailyDelta
+                : f.tdee
+            return {
+              name: f.name,
+              value: base,
+              recommended: f.recommended,
+            }
+          })}
           unit="ккал"
         />
       </div>
