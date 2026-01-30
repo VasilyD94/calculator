@@ -249,21 +249,32 @@ export function CalorieCalculator() {
 
                     return (
                       <div className="space-y-2">
-                        <div
-                          className="relative h-1.5 rounded-full"
-                          style={{
-                            background: `linear-gradient(to right, hsl(var(--muted)) 0%, hsl(var(--muted)) ${normStart - 5}%, hsl(var(--primary) / 0.3) ${normStart + 5}%, hsl(var(--primary) / 0.3) ${normStart + normWidth - 5}%, hsl(var(--muted)) ${normStart + normWidth + 5}%, hsl(var(--muted)) 100%)`,
-                          }}
-                        >
+                        <div className="relative h-1.5 rounded-full bg-border overflow-hidden">
+                          {/* Зона нормы — с размытыми краями */}
+                          <div
+                            className="absolute inset-y-0 bg-primary/50 rounded-full"
+                            style={{
+                              left: `${normStart}%`,
+                              width: `${normWidth}%`,
+                              filter: 'blur(4px)',
+                            }}
+                          />
+                          <div
+                            className="absolute inset-y-0 bg-primary/40 rounded-full"
+                            style={{
+                              left: `${normStart + 2}%`,
+                              width: `${Math.max(0, normWidth - 4)}%`,
+                            }}
+                          />
                           {/* Маркер — как thumb у shadcn Slider */}
                           <div
-                            className="absolute top-1/2 -translate-y-1/2 size-4 rounded-full border border-primary bg-white shadow-sm z-10"
+                            className="absolute top-1/2 -translate-y-1/2 size-4 rounded-full border border-primary bg-background shadow-sm z-10"
                             style={{ left: `${markerPos}%`, marginLeft: '-8px' }}
                           />
                         </div>
                         <div className="flex justify-between text-[11px] text-muted-foreground">
                           <span>Дефицит</span>
-                          <span className="font-medium text-primary">Норма ({idealMin}–{idealMax} кг)</span>
+                          <span className="font-medium text-foreground">Норма ({idealMin}–{idealMax} кг)</span>
                           <span>Избыток</span>
                         </div>
                       </div>
