@@ -70,15 +70,15 @@ export function FormulaComparison({ results, unit }: FormulaComparisonProps) {
               >
                 {/* Название формулы + значение */}
                 <div className="flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-1.5 text-sm">
+                  <div className="flex items-center gap-1.5 text-sm min-w-0">
                     {result.recommended && (
                       <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                     )}
-                    <span className={cn(result.recommended && 'font-medium')}>
+                    <span className={cn('truncate', result.recommended && 'font-medium')}>
                       {result.name}
                     </span>
                     {result.recommended && (
-                      <Badge variant="default" className="text-[10px]">
+                      <Badge variant="default" className="text-[10px] flex-shrink-0 hidden sm:inline-flex">
                         Рекомендация
                       </Badge>
                     )}

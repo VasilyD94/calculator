@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { GenderToggle } from '@/components/inputs/GenderToggle'
@@ -9,8 +9,8 @@ import { Slider } from '@/components/ui/slider'
 import {
   ActivitySelector,
   ACTIVITY_LEVELS,
-  type ActivityLevel,
 } from '@/components/inputs/ActivitySelector'
+import { useUserParams } from '@/hooks/useUserParams'
 import { ResultCard } from '@/components/results/ResultCard'
 import { MacroBreakdown } from '@/components/results/MacroBreakdown'
 import { FormulaComparison } from '@/components/results/FormulaComparison'
@@ -30,12 +30,17 @@ import {
 type Goal = 'lose' | 'maintain' | 'gain'
 
 export function CalorieCalculator() {
-  const [gender, setGender] = useState<'male' | 'female'>('male')
-  const [age, setAge] = useState(30)
-  const [weight, setWeight] = useState(75)
-  const [height, setHeight] = useState(175)
-  const [activity, setActivity] = useState<ActivityLevel>('moderate')
-  const [targetWeight, setTargetWeight] = useState(75)
+  const { gender, age, weight, height, activity, setParam, loaded } = useUserParams()
+  const [targetWeight, setTargetWeight] = useState(weight)
+  const initialSynced = useRef(false)
+
+  // Синхронизируем targetWeight при первой загрузке из localStorage
+  useEffect(() => {
+    if (loaded && !initialSynced.current) {
+      setTargetWeight(weight)
+      initialSynced.current = true
+    }
+  }, [loaded, weight])
 
   const activityFactor =
     ACTIVITY_LEVELS.find((l) => l.id === activity)?.factor ?? 1.55
@@ -103,9 +108,14 @@ export function CalorieCalculator() {
 
   // Зона нормы на слайдере
   const sliderRange = sliderMax - sliderMin
-  const normStart = Math.max(0, ((idealMin - sliderMin) / sliderRange) * 100)
-  const normEnd = Math.min(100, ((idealMax - sliderMin) / sliderRange) * 100)
-  const normWidth = normEnd - normStart
+  const normStartRaw = ((idealMin - sliderMin) / sliderRange) * 100
+  const normEndRaw = ((idealMax - sliderMin) / sliderRange) * 100
+  const normStart = Math.max(0, normStartRaw)
+  const normEnd = Math.min(100, normEndRaw)
+  const normWidth = Math.max(0, normEnd - normStart)
+  // Метки видны только если граница реально внутри слайдера
+  const showLeftTick = normStartRaw >= 2 && normStartRaw <= 98
+  const showRightTick = normEndRaw >= 2 && normEndRaw <= 98
 
   // Результат — текст и статус
   const resultTitle =
@@ -125,6 +135,31 @@ export function CalorieCalculator() {
   const resultStatus =
     goal === 'lose' ? 'warning' : goal === 'gain' ? 'info' : 'success'
 
+  if (!loaded) {
+    return (
+      <div className="space-y-8">
+        <Card>
+          <CardHeader>
+            <CardTitle>Ваши параметры</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <div key={i} className="space-y-3">
+                <div className="h-4 w-24 rounded bg-muted animate-pulse" />
+                <div className="h-8 rounded bg-muted animate-pulse" />
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+        <div className="grid gap-4 md:grid-cols-2">
+          {[1, 2].map((i) => (
+            <div key={i} className="h-32 rounded-xl border bg-muted/50 animate-pulse" />
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="space-y-8">
       {/* Ввод данных */}
@@ -133,12 +168,12 @@ export function CalorieCalculator() {
           <CardTitle>Ваши параметры</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          <GenderToggle value={gender} onChange={setGender} />
+          <GenderToggle value={gender} onChange={(v) => setParam('gender', v)} />
 
           <ValueSlider
             label="Возраст"
             value={age}
-            onChange={setAge}
+            onChange={(v) => setParam('age', v)}
             min={15}
             max={80}
             unit="лет"
@@ -148,7 +183,7 @@ export function CalorieCalculator() {
           <ValueSlider
             label="Рост"
             value={height}
-            onChange={setHeight}
+            onChange={(v) => setParam('height', v)}
             min={140}
             max={220}
             unit="см"
@@ -160,7 +195,7 @@ export function CalorieCalculator() {
             value={weight}
             onChange={(v) => {
               const diff = v - weight
-              setWeight(v)
+              setParam('weight', v)
               // Сдвигаем целевой вес вместе с текущим
               setTargetWeight((prev) => {
                 const next = prev + diff
@@ -173,7 +208,7 @@ export function CalorieCalculator() {
             icon={<Weight className="h-4 w-4" />}
           />
 
-          <ActivitySelector value={activity} onChange={setActivity} />
+          <ActivitySelector value={activity} onChange={(v) => setParam('activity', v)} />
         </CardContent>
       </Card>
 
@@ -209,7 +244,7 @@ export function CalorieCalculator() {
                 <div>
                   <span className="text-xs text-muted-foreground">Текущий вес</span>
                   <div>
-                    <span className="text-lg font-semibold">{weight}</span>
+                    <span className="text-2xl font-bold">{weight}</span>
                     <span className="text-muted-foreground ml-1 text-sm">кг</span>
                   </div>
                 </div>
@@ -224,17 +259,20 @@ export function CalorieCalculator() {
                 </div>
               </div>
 
-              {/* Слайдер с метками нормы */}
+              {/* Слайдер с цветной разметкой нормы на треке */}
               <div className="relative">
-                {/* Зона нормы — подсветка на треке */}
-                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1.5 pointer-events-none z-0">
-                  <div
-                    className="absolute inset-y-0 bg-green-500/25 rounded-full"
-                    style={{
-                      left: `${normStart}%`,
-                      width: `${normWidth}%`,
-                    }}
-                  />
+                {/* Цветной трек — подложка под слайдер */}
+                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1.5 rounded-full pointer-events-none z-0 bg-muted-foreground/15">
+                  {/* Зона нормы */}
+                  {normWidth > 0 && (
+                    <div
+                      className="absolute inset-y-0 bg-emerald-400/40 rounded-full"
+                      style={{
+                        left: `${normStart}%`,
+                        width: `${normWidth}%`,
+                      }}
+                    />
+                  )}
                 </div>
                 <Slider
                   value={[targetWeight]}
@@ -242,29 +280,14 @@ export function CalorieCalculator() {
                   min={sliderMin}
                   max={sliderMax}
                   step={1}
-                  className="py-2"
+                  className="py-2 [&_[data-slot=slider-track]]:bg-transparent"
                 />
-                {/* Метки границ нормы */}
-                {normStart > 5 && normEnd < 95 && (
-                  <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <div
-                      className="absolute w-px h-3 bg-green-500/50"
-                      style={{ left: `${normStart}%` }}
-                    />
-                    <div
-                      className="absolute w-px h-3 bg-green-500/50"
-                      style={{ left: `${normEnd}%` }}
-                    />
-                  </div>
-                )}
               </div>
 
-              {/* Мин/макс + подпись нормы */}
-              <div className="flex justify-between text-xs text-muted-foreground">
-                <span>{sliderMin} кг</span>
-                <span>Норма: {idealMin}–{idealMax} кг</span>
-                <span>{sliderMax} кг</span>
-              </div>
+              {/* Подпись нормы */}
+              <p className="text-xs text-muted-foreground text-center">
+                Норма: {idealMin}–{idealMax} кг
+              </p>
             </div>
 
             {/* Результат */}

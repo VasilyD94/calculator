@@ -926,23 +926,63 @@ export function RelatedCalculators({ items }: RelatedCalculatorsProps) {
 
 ---
 
-## ✅ Чек-лист SEO для каждой страницы
+## ✅ Чек-лист SEO для каждой страницы калькулятора
 
 ```
-□ Title: 50-60 символов, ключ в начале
-□ Description: 150-160 символов, призыв к действию
-□ H1: один, с главным ключом
-□ H2: 5-7 штук
+METADATA:
+□ Title: 50-60 символов, ключ в начале (export const metadata)
+□ Description: 150-160 символов, с ✓ преимуществами
+□ Keywords: 5-8 ключевых слов
+□ OpenGraph: title, description, type, url
+□ Canonical URL (alternates.canonical)
+
+КОНТЕНТ:
+□ H1: один, с главным ключом (text-3xl md:text-4xl font-bold)
+□ Подзаголовок под H1 (text-lg text-muted-foreground)
+□ H2: 5-7 штук (text-2xl font-bold text-foreground)
 □ Текст: 1500-2500 слов
 □ Ключевые слова: плотность 1-2%
-□ Внутренние ссылки: 3-5 штук
-□ FAQ: 5 вопросов с JSON-LD
-□ Таблицы: 1-2 штуки с данными
-□ JSON-LD: WebApplication + FAQPage + BreadcrumbList
-□ Open Graph теги
+□ Списки с marker:text-primary
+□ Информационные карточки (grid gap-4 md:grid-cols-2 или 3)
+□ Таблицы: 1-2 штуки (если применимо)
+□ FAQ: 3-5 вопросов (h3 + p)
+□ Связанные калькуляторы: 3-4 ссылки (grid gap-3 sm:grid-cols-2)
+
+ТИПОГРАФИКА (единая на всех страницах!):
+□ SEO-секция: space-y-10 text-base leading-7 text-muted-foreground
+□ Блоки внутри: space-y-4
+□ Разделители: <hr className="border-border" />
+□ strong в тексте: className="text-foreground"
+□ Предупреждения: bg-destructive/10 text-destructive p-3
+□ Инфо-блоки: bg-primary/5 text-foreground p-3
+
+JSON-LD РАЗМЕТКА:
+□ WebApplication (name, description, applicationCategory, offers price=0)
+□ FAQPage (mainEntity → вопросы и ответы)
+□ HowTo (пошаговая инструкция из 3 шагов)
+□ BreadcrumbList (Главная → Раздел → Калькулятор)
+
+НАВИГАЦИЯ:
+□ Хлебные крошки (компонент Breadcrumbs)
+□ Калькулятор добавлен в navigation.ts (автоматически в хедер/футер/главную)
+□ Страница добавлена в sitemap.ts
+```
+
+## ✅ Чек-лист SEO для главной страницы
+
+```
+□ Metadata в layout.tsx (title, description, keywords, OG, Twitter, geo)
+□ lang="ru" в <html>
+□ Кириллический subset шрифтов (Geist + Geist_Mono)
+□ JSON-LD: WebSite + ItemList (все калькуляторы из navigation.ts)
+□ H1: text-4xl md:text-5xl font-bold tracking-tight
+□ SEO-текст: 3 блока с h2, списками и карточками
+□ Типографика идентична страницам калькуляторов
+□ robots.ts: Yandex allow + Host directive
+□ sitemap.ts: все страницы с приоритетами
 □ Canonical URL
 ```
 
 ---
 
-*Версия 2.0 | Январь 2025 | С учётом конкурентного анализа*
+*Версия 2.1 | Январь 2025 | Обновлено: SEO-реализация и единый стиль*

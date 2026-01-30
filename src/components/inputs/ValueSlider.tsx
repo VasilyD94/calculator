@@ -46,14 +46,6 @@ export function ValueSlider({
         className="py-2"
       />
 
-      <div className="flex justify-between text-xs text-muted-foreground">
-        <span>
-          {min} {unit}
-        </span>
-        <span>
-          {max} {unit}
-        </span>
-      </div>
     </div>
   )
 }

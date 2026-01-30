@@ -1,18 +1,20 @@
 'use client'
 
 import Link from 'next/link'
-import { Calculator, Menu, X } from 'lucide-react'
+import { Calculator, Flame, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
-
-const NAV_SECTIONS = [
-  { label: 'Питание', href: '/zdorovye/pitanie' },
-  { label: 'Тело', href: '/zdorovye/telo' },
-  { label: 'Беременность', href: '/zdorovye/beremennost' },
-  { label: 'Дети', href: '/zdorovye/deti' },
-  { label: 'Спорт', href: '/zdorovye/sport' },
-]
+import { NAV_SECTIONS } from '@/lib/constants/navigation'
+import { Badge } from '@/components/ui/badge'
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from '@/components/ui/navigation-menu'
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -26,18 +28,41 @@ export function Header() {
           <span>CalcBox</span>
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
-          {NAV_SECTIONS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="px-3 py-2 text-sm font-medium text-muted-foreground rounded-md transition-colors hover:text-foreground hover:bg-accent"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        {/* Desktop nav with dropdowns */}
+        <NavigationMenu viewport={false} className="hidden md:flex">
+          <NavigationMenuList>
+            {NAV_SECTIONS.map((section) => (
+              <NavigationMenuItem key={section.href}>
+                <NavigationMenuTrigger className="bg-transparent">
+                  <section.icon className="h-4 w-4 mr-1.5" />
+                  {section.title}
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid gap-0.5 p-1">
+                    {section.items.map((item) => (
+                      <li key={item.href}>
+                        <NavigationMenuLink asChild className="flex-row items-center justify-between gap-4">
+                          <Link
+                            href={item.href}
+                            className="whitespace-nowrap"
+                          >
+                            <span>{item.label}</span>
+                            {item.hot && (
+                              <Badge variant="default" className="text-xs">
+                                <Flame className="h-3 w-3 mr-1 text-white" />
+                                Хит
+                              </Badge>
+                            )}
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
 
         {/* Mobile toggle */}
         <Button
@@ -55,19 +80,30 @@ export function Header() {
       <div
         className={cn(
           'md:hidden overflow-hidden transition-all duration-200 border-t',
-          mobileOpen ? 'max-h-64' : 'max-h-0 border-t-0'
+          mobileOpen ? 'max-h-[80vh] overflow-y-auto' : 'max-h-0 border-t-0'
         )}
       >
-        <nav className="flex flex-col px-4 py-2">
-          {NAV_SECTIONS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setMobileOpen(false)}
-              className="py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {item.label}
-            </Link>
+        <nav className="px-4 py-3 space-y-4">
+          {NAV_SECTIONS.map((section) => (
+            <div key={section.href}>
+              <p className="flex items-center gap-1.5 text-sm font-semibold text-foreground mb-1">
+                <section.icon className="h-4 w-4 text-primary" />
+                {section.title}
+              </p>
+              <ul className="ml-5.5 space-y-0.5">
+                {section.items.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </nav>
       </div>

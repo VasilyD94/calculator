@@ -3638,6 +3638,189 @@ const AdBlock = dynamic(() => import('@/components/layout/AdBlock'), {
 
 ---
 
+## 🔍 SEO-реализация и единый стиль текста (ОБЯЗАТЕЛЬНО)
+
+### Шрифты
+
+```tsx
+// layout.tsx — обязательно cyrillic subset для русского контента
+const geistSans = Geist({
+  variable: '--font-geist-sans',
+  subsets: ['latin', 'cyrillic'],
+})
+```
+
+### Единая типографика SEO-текста (на всех страницах!)
+
+```
+ВАЖНО: SEO-текст на ВСЕХ страницах оформляется одинаково.
+Эталон — калькулятор калорий. Новые страницы — только так же.
+```
+
+```tsx
+// Обёртка SEO-текста
+<section className="space-y-10 text-base leading-7 text-muted-foreground">
+
+  // Каждый блок
+  <div className="space-y-4">
+    <h2 className="text-2xl font-bold text-foreground">Заголовок</h2>
+    <p>Текст параграфа...</p>
+  </div>
+
+  // Разделитель между блоками
+  <hr className="border-border" />
+
+  // Списки
+  <ul className="space-y-3 pl-5 list-disc marker:text-primary">
+    <li>
+      <strong className="text-foreground">Термин</strong> — описание.
+    </li>
+  </ul>
+
+  // Информационные карточки (2 или 3 колонки)
+  <div className="grid gap-4 md:grid-cols-3">
+    <div className="rounded-lg border p-4 space-y-2">
+      <h3 className="font-semibold text-foreground">Заголовок</h3>
+      <p className="text-sm">Описание...</p>
+    </div>
+  </div>
+
+  // Нумерованные шаги
+  <div className="flex gap-3">
+    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-sm font-bold">
+      1
+    </span>
+    <p>Описание шага.</p>
+  </div>
+
+  // Предупреждения
+  <p className="text-sm rounded-md bg-destructive/10 text-destructive p-3">
+    Важное предупреждение.
+  </p>
+
+  // Информационные блоки
+  <p className="text-sm rounded-md bg-primary/5 text-foreground p-3">
+    Информация.
+  </p>
+
+  // FAQ
+  <div className="space-y-6">
+    <h2 className="text-2xl font-bold text-foreground">Часто задаваемые вопросы</h2>
+    <div className="space-y-4">
+      <div className="space-y-2">
+        <h3 className="font-semibold text-foreground">Вопрос?</h3>
+        <p>Ответ.</p>
+      </div>
+    </div>
+  </div>
+
+  // Связанные калькуляторы
+  <nav className="space-y-4" aria-label="Связанные калькуляторы">
+    <h2 className="text-2xl font-bold text-foreground">Связанные калькуляторы</h2>
+    <div className="grid gap-3 sm:grid-cols-2">
+      <Link href="..." className="rounded-lg border p-4 transition-colors hover:bg-accent group">
+        <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+          Название
+        </h3>
+        <p className="text-sm mt-1">Описание.</p>
+      </Link>
+    </div>
+  </nav>
+</section>
+```
+
+### Таблица размеров шрифтов
+
+```
+РАЗМЕРЫ (строго соблюдать на всех страницах):
+
+Элемент                     │ Классы
+────────────────────────────┼──────────────────────────────────
+H1 (главная)                │ text-4xl md:text-5xl font-bold tracking-tight
+H1 (калькулятор)            │ text-3xl md:text-4xl font-bold
+H2 (SEO-блоки)              │ text-2xl font-bold text-foreground
+H3 (внутри блоков)          │ font-semibold text-foreground
+Основной текст              │ text-base leading-7 text-muted-foreground
+Текст в карточках            │ text-sm
+Подзаголовок под H1          │ text-lg text-muted-foreground
+Хлебные крошки              │ text-sm text-muted-foreground
+```
+
+### Контейнеры страниц
+
+```
+Главная:       <div className="mx-auto max-w-6xl px-4 py-10">
+Калькулятор:   <article className="mx-auto max-w-4xl px-4 py-8">
+```
+
+### JSON-LD разметка по типам страниц
+
+```
+ГЛАВНАЯ СТРАНИЦА:
+├── WebSite (name, url, description, inLanguage)
+└── ItemList (все калькуляторы с позициями)
+
+СТРАНИЦА КАЛЬКУЛЯТОРА:
+├── WebApplication (name, description, applicationCategory, offers)
+├── FAQPage (mainEntity → Question + Answer)
+├── HowTo (пошаговая инструкция)
+└── BreadcrumbList (навигация)
+```
+
+### Metadata на страницах калькуляторов
+
+```tsx
+// Каждая страница калькулятора ОБЯЗАТЕЛЬНО содержит:
+export const metadata: Metadata = {
+  title: 'Заголовок — действие бесплатно',        // 50-60 символов
+  description: 'Описание с ✓ преимуществами',      // 150-160 символов
+  keywords: ['ключ 1', 'ключ 2', ...],            // 5-8 ключевых слов
+  openGraph: {
+    title: '...',
+    description: '...',
+    type: 'website',
+    url: '/путь/к/калькулятору',
+  },
+  alternates: {
+    canonical: '/путь/к/калькулятору',
+  },
+}
+```
+
+### SEO-инфраструктура (уже реализовано)
+
+```
+✅ lang="ru" в <html>
+✅ Кириллический subset шрифтов (Geist + Geist_Mono)
+✅ metadataBase: 'https://calcbox.ru'
+✅ Title template: '%s | CalcBox'
+✅ Geo-теги: geo.region=RU, geo.placename=Russia, content-language=ru
+✅ Open Graph: locale=ru_RU, siteName=CalcBox
+✅ Twitter Cards: summary_large_image
+✅ robots.ts: Yandex allow + Host directive
+✅ sitemap.ts: все существующие страницы
+✅ Canonical URLs на каждой странице
+✅ Хлебные крошки (визуально + JSON-LD BreadcrumbList)
+✅ Компонент JsonLd для структурированных данных
+```
+
+### Навигация (единый источник данных)
+
+```
+ВАЖНО: Все навигационные данные берутся из ОДНОГО файла:
+src/lib/constants/navigation.ts → NAV_SECTIONS
+
+Используется в:
+├── Header.tsx (десктоп дропдауны + мобильное меню)
+├── Footer.tsx (ссылки по разделам)
+└── page.tsx (главная — сетка калькуляторов + ItemList JSON-LD)
+
+При добавлении нового калькулятора — добавить в navigation.ts,
+и он автоматически появится на главной, в хедере и в футере.
+```
+
+---
+
 ## 🚫 НЕ делать (антипаттерны)
 
 ```tsx

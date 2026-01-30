@@ -14,7 +14,7 @@ export function GenderToggle({ value, onChange }: GenderToggleProps) {
         type="button"
         onClick={() => onChange('male')}
         className={cn(
-          'flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg transition-all duration-200 text-sm',
+          'flex-1 flex items-center justify-center gap-1.5 py-3 px-2 sm:px-4 rounded-lg transition-all duration-200 text-sm',
           value === 'male'
             ? 'bg-background shadow-md text-blue-600 font-medium'
             : 'text-muted-foreground hover:text-foreground'
@@ -27,7 +27,7 @@ export function GenderToggle({ value, onChange }: GenderToggleProps) {
         type="button"
         onClick={() => onChange('female')}
         className={cn(
-          'flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg transition-all duration-200 text-sm',
+          'flex-1 flex items-center justify-center gap-1.5 py-3 px-2 sm:px-4 rounded-lg transition-all duration-200 text-sm',
           value === 'female'
             ? 'bg-background shadow-md text-pink-600 font-medium'
             : 'text-muted-foreground hover:text-foreground'
