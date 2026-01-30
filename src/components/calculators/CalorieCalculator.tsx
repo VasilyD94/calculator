@@ -3,6 +3,8 @@
 import { useMemo, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Badge } from '@/components/ui/badge'
+import { Alert, AlertDescription } from '@/components/ui/alert'
 import { GenderToggle } from '@/components/inputs/GenderToggle'
 import { ValueSlider } from '@/components/inputs/ValueSlider'
 import {
@@ -18,9 +20,31 @@ import {
   calculateAllFormulas,
   calculateMacros,
 } from '@/lib/calculations/calories'
-import { Flame, TrendingDown, TrendingUp, Minus, Ruler, Weight, Calendar } from 'lucide-react'
+import {
+  TrendingDown,
+  TrendingUp,
+  Minus,
+  Ruler,
+  Weight,
+  Calendar,
+  AlertTriangle,
+} from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 type Goal = 'lose' | 'maintain' | 'gain'
+type Intensity = 'light' | 'moderate' | 'aggressive'
+
+const DEFICIT_PRESETS: Record<Intensity, { label: string; emoji: string; percent: number; description: string; weekly: string }> = {
+  light:      { label: 'Лёгкий',      emoji: '🌱', percent: 10, description: 'Комфортно, без голода',          weekly: '~0.25 кг/нед' },
+  moderate:   { label: 'Умеренный',    emoji: '⚡', percent: 20, description: 'Оптимальный баланс',             weekly: '~0.5 кг/нед' },
+  aggressive: { label: 'Агрессивный',  emoji: '🔥', percent: 30, description: 'Быстрый результат, но сложнее', weekly: '~0.75 кг/нед' },
+}
+
+const SURPLUS_PRESETS: Record<Intensity, { label: string; emoji: string; percent: number; description: string; weekly: string }> = {
+  light:      { label: 'Лёгкий',      emoji: '🌱', percent: 10, description: 'Чистый набор, минимум жира',   weekly: '~0.25 кг/нед' },
+  moderate:   { label: 'Умеренный',    emoji: '⚡', percent: 15, description: 'Оптимальный баланс',            weekly: '~0.4 кг/нед' },
+  aggressive: { label: 'Агрессивный',  emoji: '🔥', percent: 25, description: 'Быстрый набор, больше жира',   weekly: '~0.6 кг/нед' },
+}
 
 export function CalorieCalculator() {
   const [gender, setGender] = useState<'male' | 'female'>('male')
@@ -29,34 +53,43 @@ export function CalorieCalculator() {
   const [height, setHeight] = useState(175)
   const [activity, setActivity] = useState<ActivityLevel>('moderate')
   const [goal, setGoal] = useState<Goal>('maintain')
+  const [loseIntensity, setLoseIntensity] = useState<Intensity>('moderate')
+  const [gainIntensity, setGainIntensity] = useState<Intensity>('moderate')
 
   const activityFactor =
     ACTIVITY_LEVELS.find((l) => l.id === activity)?.factor ?? 1.55
 
-  // Реалтайм расчёт
   const result = useMemo(
-    () =>
-      mifflinStJeor({ gender, age, weight, height, activityFactor }),
+    () => mifflinStJeor({ gender, age, weight, height, activityFactor }),
     [gender, age, weight, height, activityFactor]
   )
 
   const allFormulas = useMemo(
-    () =>
-      calculateAllFormulas({ gender, age, weight, height, activityFactor }),
+    () => calculateAllFormulas({ gender, age, weight, height, activityFactor }),
     [gender, age, weight, height, activityFactor]
   )
 
+  // Калории с учётом интенсивности
+  const deficitPercent = DEFICIT_PRESETS[loseIntensity].percent
+  const surplusPercent = SURPLUS_PRESETS[gainIntensity].percent
+  const deficitCalories = Math.round(result.tdee * (1 - deficitPercent / 100))
+  const surplusCalories = Math.round(result.tdee * (1 + surplusPercent / 100))
+
   const targetCalories =
     goal === 'lose'
-      ? result.deficit
+      ? deficitCalories
       : goal === 'gain'
-        ? result.surplus
+        ? surplusCalories
         : result.tdee
 
   const macros = useMemo(
     () => calculateMacros(targetCalories, goal),
     [targetCalories, goal]
   )
+
+  // Предупреждения
+  const minSafe = gender === 'female' ? 1200 : 1500
+  const showDeficitWarning = goal === 'lose' && deficitCalories < minSafe
 
   return (
     <div className="space-y-8">
@@ -104,7 +137,7 @@ export function CalorieCalculator() {
 
       {/* Результаты */}
       <div className="space-y-6">
-        {/* Основные числа */}
+        {/* BMR + TDEE */}
         <div className="grid gap-4 md:grid-cols-2">
           <ResultCard
             title="Базовый метаболизм (BMR)"
@@ -147,15 +180,32 @@ export function CalorieCalculator() {
                 </TabsTrigger>
               </TabsList>
 
-              <TabsContent value="lose" className="mt-4">
+              {/* Похудение */}
+              <TabsContent value="lose" className="mt-4 space-y-4">
+                <IntensityPicker
+                  presets={DEFICIT_PRESETS}
+                  value={loseIntensity}
+                  onChange={setLoseIntensity}
+                />
                 <ResultCard
                   title="Для похудения"
-                  value={result.deficit}
+                  value={deficitCalories}
                   unit="ккал/день"
-                  description="Безопасный дефицит для потери 0.5 кг в неделю"
-                  status="warning"
+                  description={`Дефицит ${deficitPercent}% — ${DEFICIT_PRESETS[loseIntensity].weekly}`}
+                  status={loseIntensity === 'aggressive' ? 'danger' : 'warning'}
                 />
+                {showDeficitWarning && (
+                  <Alert variant="destructive">
+                    <AlertTriangle className="h-4 w-4" />
+                    <AlertDescription>
+                      Калорийность ниже {minSafe} ккал не рекомендуется без наблюдения врача.
+                      Попробуйте менее интенсивный режим.
+                    </AlertDescription>
+                  </Alert>
+                )}
               </TabsContent>
+
+              {/* Поддержание */}
               <TabsContent value="maintain" className="mt-4">
                 <ResultCard
                   title="Для поддержания веса"
@@ -165,12 +215,19 @@ export function CalorieCalculator() {
                   status="success"
                 />
               </TabsContent>
-              <TabsContent value="gain" className="mt-4">
+
+              {/* Набор массы */}
+              <TabsContent value="gain" className="mt-4 space-y-4">
+                <IntensityPicker
+                  presets={SURPLUS_PRESETS}
+                  value={gainIntensity}
+                  onChange={setGainIntensity}
+                />
                 <ResultCard
                   title="Для набора массы"
-                  value={result.surplus}
+                  value={surplusCalories}
                   unit="ккал/день"
-                  description="Оптимальный профицит для набора ~0.5 кг в неделю"
+                  description={`Профицит ${surplusPercent}% — ${SURPLUS_PRESETS[gainIntensity].weekly}`}
                   status="info"
                 />
               </TabsContent>
@@ -211,6 +268,59 @@ export function CalorieCalculator() {
           unit="ккал"
         />
       </div>
+    </div>
+  )
+}
+
+// --- Подкомпонент: выбор интенсивности ---
+
+interface IntensityPickerProps {
+  presets: Record<Intensity, { label: string; emoji: string; percent: number; description: string; weekly: string }>
+  value: Intensity
+  onChange: (v: Intensity) => void
+}
+
+function IntensityPicker({ presets, value, onChange }: IntensityPickerProps) {
+  const keys: Intensity[] = ['light', 'moderate', 'aggressive']
+
+  return (
+    <div className="grid grid-cols-3 gap-2">
+      {keys.map((key) => {
+        const preset = presets[key]
+        const active = value === key
+
+        return (
+          <button
+            key={key}
+            type="button"
+            onClick={() => onChange(key)}
+            className={cn(
+              'flex flex-col items-center gap-1 rounded-xl border-2 p-3 transition-all duration-200 text-center',
+              active
+                ? 'border-primary bg-primary/5 shadow-sm'
+                : 'border-border hover:border-muted-foreground/30 hover:bg-accent'
+            )}
+          >
+            <span className="text-xl">{preset.emoji}</span>
+            <span
+              className={cn(
+                'text-sm font-medium',
+                active ? 'text-primary' : 'text-foreground'
+              )}
+            >
+              {preset.label}
+            </span>
+            <span className="text-xs text-muted-foreground">
+              {preset.weekly}
+            </span>
+            {key === 'moderate' && (
+              <Badge variant="secondary" className="text-[10px] mt-1">
+                Рекомендуем
+              </Badge>
+            )}
+          </button>
+        )
+      })}
     </div>
   )
 }
