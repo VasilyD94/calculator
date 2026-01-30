@@ -182,16 +182,9 @@ export function WaterCalculator() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex flex-wrap gap-2 justify-center">
+            <div className="flex flex-wrap gap-3 justify-center">
               {Array.from({ length: result.glasses }).map((_, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col items-center gap-1"
-                >
-                  <div className="relative h-10 w-7 rounded-b-md border-2 border-primary/60 bg-primary/10 overflow-hidden">
-                    <div className="absolute inset-x-0 bottom-0 bg-primary/30 h-full" />
-                  </div>
-                </div>
+                <WaterGlass key={i} />
               ))}
             </div>
             <p className="text-center text-sm text-muted-foreground mt-4">
@@ -254,13 +247,13 @@ export function WaterCalculator() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Clock className="h-5 w-5" />
-              Как распределить воду в течение дня
+              Расписание на день
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {result.schedule.map((item, i) => (
-                <div key={item.period} className="flex gap-4">
+                <div key={item.period} className="flex gap-3">
                   {/* Таймлайн */}
                   <div className="flex flex-col items-center">
                     <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-sm">
@@ -271,18 +264,16 @@ export function WaterCalculator() {
                     )}
                   </div>
                   {/* Контент */}
-                  <div className="flex-1 pb-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <span className="font-medium text-sm">{item.period}</span>
-                        <span className="text-xs text-muted-foreground ml-2">{item.time}</span>
-                      </div>
-                      <div className="text-right">
-                        <span className="font-bold text-sm">{item.amount} мл</span>
-                        <span className="text-xs text-muted-foreground ml-1">
-                          ({item.glasses} ст.)
-                        </span>
-                      </div>
+                  <div className="flex-1 min-w-0 pb-4">
+                    <div className="text-sm">
+                      <span className="font-medium">{item.period}</span>
+                      <span className="text-xs text-muted-foreground ml-1">{item.time}</span>
+                    </div>
+                    <div className="text-sm mt-0.5">
+                      <span className="font-bold">{item.amount} мл</span>
+                      <span className="text-xs text-muted-foreground ml-1">
+                        ({item.glasses} ст.)
+                      </span>
                     </div>
                     <p className="text-xs text-muted-foreground mt-1">{item.tip}</p>
                   </div>
@@ -334,6 +325,41 @@ export function WaterCalculator() {
 
 // --- Вспомогательные компоненты ---
 
+function WaterGlass() {
+  return (
+    <svg
+      width="28"
+      height="36"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="text-primary"
+    >
+      {/* Вода внутри стакана */}
+      <path
+        d="M6.5 13 L5.8 20a1 1 0 0 0 1 1.1h10.4a1 1 0 0 0 1-1.1L17.5 13Z"
+        fill="currentColor"
+        fillOpacity="0.15"
+      />
+      {/* Контур стакана — стиль lucide (stroke-based) */}
+      <path
+        d="M5.1 4h13.8l-1.7 17a1 1 0 0 1-1 .9H7.8a1 1 0 0 1-1-.9L5.1 4Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Уровень воды */}
+      <path
+        d="M6.5 13h11"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  )
+}
+
 function BreakdownRow({
   label,
   sublabel,
@@ -348,12 +374,12 @@ function BreakdownRow({
   const percent = Math.round((value / total) * 100)
   return (
     <div className="space-y-1.5">
-      <div className="flex items-center justify-between text-sm">
-        <div>
+      <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5 text-sm">
+        <div className="min-w-0">
           <span className="font-medium">{label}</span>
-          <span className="text-muted-foreground ml-2 text-xs">{sublabel}</span>
+          <span className="text-muted-foreground ml-1 text-xs">{sublabel}</span>
         </div>
-        <span className="font-medium">{value} мл</span>
+        <span className="font-medium whitespace-nowrap">{value} мл</span>
       </div>
       <div className="h-2 rounded-full bg-muted overflow-hidden">
         <div
