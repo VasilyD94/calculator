@@ -210,20 +210,15 @@ export function CalorieCalculator() {
             {/* Область слайдера/заглушки — фиксированная высота для всех режимов */}
             <div className="h-[136px]">
               {goal !== 'maintain' ? (
-                <div className="space-y-3">
-                  <ValueSlider
-                    label="Целевой вес"
-                    value={targetWeight}
-                    onChange={setTargetWeight}
-                    min={goal === 'lose' ? loseMin : gainMin}
-                    max={goal === 'lose' ? loseMax : gainMax}
-                    unit="кг"
-                    icon={<Target className="h-4 w-4" />}
-                  />
-                  <p className="text-xs text-muted-foreground text-center">
-                    Идеальный вес для вашего роста: {idealMin}–{idealMax} кг (ИМТ 18.5–24.9)
-                  </p>
-                </div>
+                <ValueSlider
+                  label="Желаемый вес"
+                  value={targetWeight}
+                  onChange={setTargetWeight}
+                  min={goal === 'lose' ? loseMin : gainMin}
+                  max={goal === 'lose' ? loseMax : gainMax}
+                  unit="кг"
+                  icon={<Target className="h-4 w-4" />}
+                />
               ) : (
                 <div className="flex flex-col justify-center h-full space-y-3">
                   {/* Заголовок + текущий вес */}
