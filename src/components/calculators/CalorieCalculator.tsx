@@ -149,7 +149,7 @@ export function CalorieCalculator() {
 
               <TabsContent value="lose" className="mt-4">
                 <ResultCard
-                  title="Для похудения (−15%)"
+                  title="Для похудения"
                   value={result.deficit}
                   unit="ккал/день"
                   description="Безопасный дефицит для потери 0.5 кг в неделю"
@@ -167,7 +167,7 @@ export function CalorieCalculator() {
               </TabsContent>
               <TabsContent value="gain" className="mt-4">
                 <ResultCard
-                  title="Для набора массы (+15%)"
+                  title="Для набора массы"
                   value={result.surplus}
                   unit="ккал/день"
                   description="Профицит для набора мышечной массы"
