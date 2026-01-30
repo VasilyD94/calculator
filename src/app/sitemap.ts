@@ -58,6 +58,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.9,
     },
+    {
+      url: `${BASE_URL}/zdorovye/telo/bazovyj-metabolizm`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
     // Будущие страницы — добавлять сюда по мере создания:
   ]
 }

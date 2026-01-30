@@ -1,0 +1,216 @@
+'use client'
+
+import { useMemo } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { GenderToggle } from '@/components/inputs/GenderToggle'
+import { ValueSlider } from '@/components/inputs/ValueSlider'
+import { FormulaComparison } from '@/components/results/FormulaComparison'
+import { useUserParams } from '@/hooks/useUserParams'
+import { calculateBMR } from '@/lib/calculations/bmr'
+import {
+  Weight,
+  Ruler,
+  Flame,
+  Clock,
+  Info,
+  Lightbulb,
+  CalendarDays,
+} from 'lucide-react'
+
+export function BMRCalculator() {
+  const { gender, age, weight, height, setParam, loaded } = useUserParams()
+
+  const result = useMemo(
+    () => calculateBMR({ gender, age, weight, height }),
+    [gender, age, weight, height]
+  )
+
+  if (!loaded) {
+    return (
+      <div className="space-y-8">
+        <Card>
+          <CardHeader>
+            <CardTitle>Ваши параметры</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} className="space-y-3">
+                <div className="h-4 w-24 rounded bg-muted animate-pulse" />
+                <div className="h-8 rounded bg-muted animate-pulse" />
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+        <div className="h-32 rounded-xl border bg-muted/50 animate-pulse" />
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-8">
+      {/* Ввод данных */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Ваши параметры</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <GenderToggle value={gender} onChange={(v) => setParam('gender', v)} />
+
+          <ValueSlider
+            label="Возраст"
+            value={age}
+            onChange={(v) => setParam('age', v)}
+            min={15}
+            max={80}
+            unit="лет"
+            icon={<CalendarDays className="h-4 w-4" />}
+          />
+
+          <ValueSlider
+            label="Рост"
+            value={height}
+            onChange={(v) => setParam('height', v)}
+            min={140}
+            max={220}
+            unit="см"
+            icon={<Ruler className="h-4 w-4" />}
+          />
+
+          <ValueSlider
+            label="Вес"
+            value={weight}
+            onChange={(v) => setParam('weight', v)}
+            min={30}
+            max={200}
+            unit="кг"
+            icon={<Weight className="h-4 w-4" />}
+          />
+        </CardContent>
+      </Card>
+
+      {/* Результаты */}
+      <div className="space-y-6">
+        {/* Основной результат */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Flame className="h-5 w-5" />
+              Ваш базовый метаболизм
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="text-center">
+              <p className="text-sm text-muted-foreground mb-1">
+                По формуле Миффлина-Сан Жеора
+              </p>
+              <p className="text-4xl font-bold">
+                {result.recommended}
+                <span className="text-lg font-normal text-muted-foreground ml-2">
+                  ккал/день
+                </span>
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 text-center">
+              <div className="rounded-lg bg-orange-50 p-4">
+                <Clock className="h-5 w-5 mx-auto mb-1 text-orange-600" />
+                <p className="text-sm text-orange-700 mb-1">В час</p>
+                <p className="text-2xl font-bold text-orange-700">
+                  {result.hourly}
+                  <span className="text-sm font-normal ml-1">ккал</span>
+                </p>
+              </div>
+              <div className="rounded-lg bg-blue-50 p-4">
+                <Flame className="h-5 w-5 mx-auto mb-1 text-blue-600" />
+                <p className="text-sm text-blue-700 mb-1">Диапазон формул</p>
+                <p className="text-2xl font-bold text-blue-700">
+                  {result.min}–{result.max}
+                  <span className="text-sm font-normal ml-1">ккал</span>
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Что это значит */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Что это значит
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm text-muted-foreground">
+            <p>
+              <span className="font-medium text-foreground">{result.recommended} ккал</span> — это
+              минимум энергии, который ваш организм тратит в сутки на поддержание
+              жизненных функций в полном покое: дыхание, кровообращение, работу мозга,
+              обновление клеток.
+            </p>
+            <p>
+              Реальный суточный расход (TDEE) выше — он зависит от вашей физической
+              активности и может составлять от{' '}
+              <span className="font-medium text-foreground">
+                {Math.round(result.recommended * 1.2)}
+              </span>{' '}
+              до{' '}
+              <span className="font-medium text-foreground">
+                {Math.round(result.recommended * 1.9)}
+              </span>{' '}
+              ккал/день.
+            </p>
+            <p>
+              При похудении не рекомендуется опускать калорийность рациона ниже вашего
+              BMR ({result.recommended} ккал) — это может замедлить метаболизм и навредить
+              здоровью.
+            </p>
+          </CardContent>
+        </Card>
+
+        {/* Сравнение формул */}
+        <FormulaComparison results={result.formulas} unit="ккал" />
+
+        {/* Важно знать */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
+              Важно знать
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <Alert>
+              <Info className="h-4 w-4" />
+              <AlertTitle>BMR и TDEE — в чём разница</AlertTitle>
+              <AlertDescription>
+                BMR (базовый метаболизм) — расход в полном покое. TDEE (суточный
+                расход) = BMR × коэффициент активности. Для расчёта TDEE используйте
+                наш калькулятор калорий.
+              </AlertDescription>
+            </Alert>
+            <Alert>
+              <Info className="h-4 w-4" />
+              <AlertTitle>Формула Кетча-МакАрдла</AlertTitle>
+              <AlertDescription>
+                Эта формула использует сухую массу тела и точнее для спортсменов.
+                Здесь она рассчитана по среднему проценту жира (20% для мужчин, 28%
+                для женщин). Для точного результата используйте калькулятор процента
+                жира.
+              </AlertDescription>
+            </Alert>
+            <Alert>
+              <Info className="h-4 w-4" />
+              <AlertTitle>С возрастом BMR снижается</AlertTitle>
+              <AlertDescription>
+                После 30 лет базовый метаболизм замедляется на 3–5% каждое
+                десятилетие из-за потери мышечной массы. Силовые тренировки помогают
+                поддерживать высокий BMR.
+              </AlertDescription>
+            </Alert>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  )
+}
