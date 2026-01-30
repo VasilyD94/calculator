@@ -208,7 +208,7 @@ export function CalorieCalculator() {
             </Tabs>
 
             {/* Область слайдера/заглушки — фиксированная высота для всех режимов */}
-            <div className="h-[136px]">
+            <div className="h-[136px] flex flex-col justify-center">
               {goal !== 'maintain' ? (
                 <ValueSlider
                   label="Желаемый вес"
@@ -220,7 +220,7 @@ export function CalorieCalculator() {
                   icon={<Target className="h-4 w-4" />}
                 />
               ) : (
-                <div className="flex flex-col justify-center h-full space-y-3">
+                <div className="space-y-3">
                   {/* Заголовок + текущий вес */}
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-medium flex items-center gap-2">
