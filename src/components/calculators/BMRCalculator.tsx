@@ -112,22 +112,20 @@ export function BMRCalculator() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 text-center">
-              <div className="rounded-lg bg-orange-50 p-4">
-                <Clock className="h-5 w-5 mx-auto mb-1 text-orange-600" />
-                <p className="text-sm text-orange-700 mb-1">В час</p>
-                <p className="text-2xl font-bold text-orange-700">
-                  {result.hourly}
-                  <span className="text-sm font-normal ml-1">ккал</span>
-                </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+              <div className="flex items-center gap-2 rounded-lg bg-orange-50 px-3 py-2">
+                <Clock className="h-4 w-4 text-orange-600 shrink-0" />
+                <span className="text-orange-700">В час</span>
+                <span className="ml-auto font-semibold text-orange-700 whitespace-nowrap">
+                  {result.hourly} ккал
+                </span>
               </div>
-              <div className="rounded-lg bg-blue-50 p-4">
-                <Flame className="h-5 w-5 mx-auto mb-1 text-blue-600" />
-                <p className="text-sm text-blue-700 mb-1">Диапазон формул</p>
-                <p className="text-2xl font-bold text-blue-700">
-                  {result.min}–{result.max}
-                  <span className="text-sm font-normal ml-1">ккал</span>
-                </p>
+              <div className="flex items-center gap-2 rounded-lg bg-blue-50 px-3 py-2">
+                <Flame className="h-4 w-4 text-blue-600 shrink-0" />
+                <span className="text-blue-700">Диапазон</span>
+                <span className="ml-auto font-semibold text-blue-700 whitespace-nowrap">
+                  {result.min}–{result.max} ккал
+                </span>
               </div>
             </div>
           </CardContent>
