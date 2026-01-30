@@ -225,18 +225,50 @@ export function CalorieCalculator() {
                   </p>
                 </div>
               ) : (
-                <div className="flex flex-col items-center justify-center h-full space-y-3">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Weight className="h-4 w-4" />
-                    Текущий вес
+                <div className="flex flex-col justify-center h-full space-y-3">
+                  {/* Заголовок + текущий вес */}
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium flex items-center gap-2">
+                      <Weight className="h-4 w-4" />
+                      Ваш вес
+                    </span>
+                    <div>
+                      <span className="text-2xl font-bold text-primary">{weight}</span>
+                      <span className="text-muted-foreground ml-1">кг</span>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-3xl font-bold text-primary">{weight}</span>
-                    <span className="text-muted-foreground ml-1">кг</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground text-center">
-                    Идеальный вес для вашего роста: {idealMin}–{idealMax} кг (ИМТ 18.5–24.9)
-                  </p>
+
+                  {/* Мини-шкала веса */}
+                  {(() => {
+                    const scaleMin = Math.max(30, idealMin - 20)
+                    const scaleMax = idealMax + 20
+                    const scaleRange = scaleMax - scaleMin
+                    const normStart = ((idealMin - scaleMin) / scaleRange) * 100
+                    const normWidth = ((idealMax - idealMin) / scaleRange) * 100
+                    const markerPos = Math.min(Math.max(((weight - scaleMin) / scaleRange) * 100, 2), 98)
+
+                    return (
+                      <div className="space-y-1.5">
+                        <div className="relative h-3 rounded-full bg-red-200 overflow-hidden">
+                          {/* Зона нормы */}
+                          <div
+                            className="absolute top-0 bottom-0 bg-green-400 rounded-full"
+                            style={{ left: `${normStart}%`, width: `${normWidth}%` }}
+                          />
+                          {/* Маркер */}
+                          <div
+                            className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-background border-[3px] border-foreground rounded-full shadow-md z-10"
+                            style={{ left: `${markerPos}%`, marginLeft: '-8px' }}
+                          />
+                        </div>
+                        <div className="flex justify-between text-xs text-muted-foreground">
+                          <span>Дефицит</span>
+                          <span className="text-green-600 font-medium">Норма ({idealMin}–{idealMax} кг)</span>
+                          <span>Избыток</span>
+                        </div>
+                      </div>
+                    )
+                  })()}
                 </div>
               )}
             </div>
