@@ -119,7 +119,6 @@ export function CalorieCalculator() {
             unit="ккал"
             description="С учётом активности"
             status="success"
-            icon={<Flame className="h-6 w-6" />}
           />
         </div>
 
