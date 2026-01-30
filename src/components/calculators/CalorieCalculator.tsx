@@ -207,8 +207,8 @@ export function CalorieCalculator() {
               </TabsList>
             </Tabs>
 
-            {/* Слайдер целевого веса — вне табов, чтобы не прыгала высота */}
-            {goal !== 'maintain' && (
+            {/* Слайдер целевого веса или инфо-блок — всегда занимает место */}
+            {goal !== 'maintain' ? (
               <div className="space-y-4">
                 <ValueSlider
                   label="Целевой вес"
@@ -219,6 +219,34 @@ export function CalorieCalculator() {
                   unit="кг"
                   icon={<Target className="h-4 w-4" />}
                 />
+                <p className="text-xs text-muted-foreground text-center">
+                  Идеальный вес для вашего роста: {idealMin}–{idealMax} кг (ИМТ 18.5–24.9)
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {/* Повторяем структуру ValueSlider: space-y-3 + label + slider + minmax */}
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium flex items-center gap-2">
+                      <Weight className="h-4 w-4" />
+                      Текущий вес
+                    </span>
+                    <div className="text-right">
+                      <span className="text-2xl font-bold text-primary">{weight}</span>
+                      <span className="text-muted-foreground ml-1">кг</span>
+                    </div>
+                  </div>
+                  <div className="py-2">
+                    <div className="h-5 rounded-full bg-green-100 flex items-center justify-center">
+                      <span className="text-xs font-medium text-green-700">Цель — сохранить текущий вес</span>
+                    </div>
+                  </div>
+                  <div className="flex justify-between text-xs text-muted-foreground">
+                    <span>{idealMin} кг</span>
+                    <span>{idealMax} кг</span>
+                  </div>
+                </div>
                 <p className="text-xs text-muted-foreground text-center">
                   Идеальный вес для вашего роста: {idealMin}–{idealMax} кг (ИМТ 18.5–24.9)
                 </p>
