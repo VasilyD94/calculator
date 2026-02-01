@@ -348,95 +348,59 @@ export default function BMRPage() {
 
             <div className="space-y-3">
               <div className="rounded-lg border p-3 space-y-1.5">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2">
-                  <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                    <Award className="h-5 w-5 text-green-500" />
-                    Миффлина-Сан Жеора (1990)
-                  </h3>
-                  <span className="self-start sm:self-auto text-xs rounded-full bg-muted text-muted-foreground px-2.5 py-1 font-medium shrink-0 whitespace-nowrap">Рекомендуемая</span>
-                </div>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Award className="h-5 w-5 text-green-500" />
+                  Миффлина-Сан Жеора (1990)
+                </h3>
                 <p>
                   Самая точная формула для большинства людей по данным
                   Американской диетической ассоциации (ADA). Учитывает пол,
                   возраст, рост и вес.
                 </p>
-                <div className="rounded-lg bg-muted/50 border p-3 text-sm">
-                  <p>
-                    <strong className="text-foreground">Мужчины:</strong> 10
-                    &times; вес(кг) + 6,25 &times; рост(см) &minus; 5 &times;
-                    возраст + 5
-                  </p>
-                  <p className="mt-1">
-                    <strong className="text-foreground">Женщины:</strong> 10
-                    &times; вес(кг) + 6,25 &times; рост(см) &minus; 5 &times;
-                    возраст &minus; 161
-                  </p>
-                </div>
+                <p>
+                  <span className="block"><strong className="text-foreground">Мужчины:</strong> 10 &times; вес(кг) + 6,25 &times; рост(см) &minus; 5 &times; возраст + 5.</span>
+                  <span className="block"><strong className="text-foreground">Женщины:</strong> 10 &times; вес(кг) + 6,25 &times; рост(см) &minus; 5 &times; возраст &minus; 161.</span>
+                </p>
               </div>
 
               <div className="rounded-lg border p-3 space-y-1.5">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2">
-                  <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                    <ScrollText className="h-5 w-5 text-amber-500" />
-                    Харриса-Бенедикта (1919)
-                  </h3>
-                  <span className="self-start sm:self-auto text-xs rounded-full bg-muted text-muted-foreground px-2.5 py-1 font-medium shrink-0 whitespace-nowrap">Классическая</span>
-                </div>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <ScrollText className="h-5 w-5 text-amber-500" />
+                  Харриса-Бенедикта (1919)
+                </h3>
                 <p>
                   Одна из первых научных формул расчёта BMR, разработанная
                   Джеймсом Харрисом и Фрэнсисом Бенедиктом. Широко
                   использовалась в клинической практике более 70 лет, но
                   переоценивает BMR на 5–10% для современных людей.
                 </p>
-                <div className="rounded-lg bg-muted/50 border p-3 text-sm">
-                  <p>
-                    <strong className="text-foreground">Мужчины:</strong> 66,5 +
-                    13,75 &times; вес + 5,003 &times; рост &minus; 6,755 &times;
-                    возраст
-                  </p>
-                  <p className="mt-1">
-                    <strong className="text-foreground">Женщины:</strong> 655,1 +
-                    9,563 &times; вес + 1,85 &times; рост &minus; 4,676 &times;
-                    возраст
-                  </p>
-                </div>
+                <p>
+                  <span className="block"><strong className="text-foreground">Мужчины:</strong> 66,5 + 13,75 &times; вес + 5,003 &times; рост &minus; 6,755 &times; возраст.</span>
+                  <span className="block"><strong className="text-foreground">Женщины:</strong> 655,1 + 9,563 &times; вес + 1,85 &times; рост &minus; 4,676 &times; возраст.</span>
+                </p>
               </div>
 
               <div className="rounded-lg border p-3 space-y-1.5">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2">
-                  <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                    <RefreshCw className="h-5 w-5 text-blue-500" />
-                    Харриса-Бенедикта (1984)
-                  </h3>
-                  <span className="self-start sm:self-auto text-xs rounded-full bg-muted text-muted-foreground px-2.5 py-1 font-medium shrink-0 whitespace-nowrap">Пересмотренная</span>
-                </div>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <RefreshCw className="h-5 w-5 text-blue-500" />
+                  Харриса-Бенедикта (1984)
+                </h3>
                 <p>
                   Обновлённая версия оригинальной формулы, скорректированная
                   Розой и Шизгалом. Более точна, чем версия 1919 года, но
                   уступает формуле Миффлина-Сан Жеора.
                 </p>
-                <div className="rounded-lg bg-muted/50 border p-3 text-sm">
-                  <p>
-                    <strong className="text-foreground">Мужчины:</strong> 88,362
-                    + 13,397 &times; вес + 4,799 &times; рост &minus; 5,677
-                    &times; возраст
-                  </p>
-                  <p className="mt-1">
-                    <strong className="text-foreground">Женщины:</strong> 447,593
-                    + 9,247 &times; вес + 3,098 &times; рост &minus; 4,33
-                    &times; возраст
-                  </p>
-                </div>
+                <p>
+                  <span className="block"><strong className="text-foreground">Мужчины:</strong> 88,362 + 13,397 &times; вес + 4,799 &times; рост &minus; 5,677 &times; возраст.</span>
+                  <span className="block"><strong className="text-foreground">Женщины:</strong> 447,593 + 9,247 &times; вес + 3,098 &times; рост &minus; 4,33 &times; возраст.</span>
+                </p>
               </div>
 
               <div className="rounded-lg border p-3 space-y-1.5">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2">
-                  <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                    <Dumbbell className="h-5 w-5 text-violet-500" />
-                    Кетча-МакАрдла
-                  </h3>
-                  <span className="self-start sm:self-auto text-xs rounded-full bg-muted text-muted-foreground px-2.5 py-1 font-medium shrink-0 whitespace-nowrap">Для спортсменов</span>
-                </div>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Dumbbell className="h-5 w-5 text-violet-500" />
+                  Кетча-МакАрдла
+                </h3>
                 <p>
                   Единственная формула, использующая сухую массу тела (без жира).
                   Наиболее точна для спортсменов и людей с известным{' '}
@@ -445,44 +409,27 @@ export default function BMRPage() {
                   </Link>. В нашем калькуляторе используется средний процент жира
                   (20% для мужчин, 28% для женщин).
                 </p>
-                <div className="rounded-lg bg-muted/50 border p-3 text-sm">
-                  <p>
-                    BMR = 370 + 21,6 &times; сухая масса тела (кг)
-                  </p>
-                </div>
+                <p>
+                  <span className="block"><strong className="text-foreground">Формула:</strong> BMR = 370 + 21,6 &times; сухая масса тела (кг).</span>
+                </p>
               </div>
 
               <div className="rounded-lg border p-3 space-y-1.5">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2">
-                  <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                    <Globe className="h-5 w-5 text-sky-500" />
-                    Формула ВОЗ
-                  </h3>
-                  <span className="self-start sm:self-auto text-xs rounded-full bg-muted text-muted-foreground px-2.5 py-1 font-medium shrink-0 whitespace-nowrap">Международная</span>
-                </div>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Globe className="h-5 w-5 text-sky-500" />
+                  Формула ВОЗ
+                </h3>
                 <p>
                   Разработана на основе данных из разных стран мира. Использует
                   только пол, возраст и вес. Разделена на возрастные группы:
                   до 30, 30–60 и старше 60 лет.
                 </p>
-                <div className="rounded-lg bg-muted/50 border p-3 text-sm">
-                  <p>
-                    <strong className="text-foreground">Мужчины 18–29:</strong>{' '}
-                    15,3 &times; вес + 679
-                  </p>
-                  <p className="mt-1">
-                    <strong className="text-foreground">Мужчины 30–59:</strong>{' '}
-                    11,6 &times; вес + 879
-                  </p>
-                  <p className="mt-1">
-                    <strong className="text-foreground">Женщины 18–29:</strong>{' '}
-                    14,7 &times; вес + 496
-                  </p>
-                  <p className="mt-1">
-                    <strong className="text-foreground">Женщины 30–59:</strong>{' '}
-                    8,7 &times; вес + 829
-                  </p>
-                </div>
+                <p>
+                  <span className="block"><strong className="text-foreground">Мужчины 18–29:</strong> 15,3 &times; вес + 679.</span>
+                  <span className="block"><strong className="text-foreground">Мужчины 30–59:</strong> 11,6 &times; вес + 879.</span>
+                  <span className="block"><strong className="text-foreground">Женщины 18–29:</strong> 14,7 &times; вес + 496.</span>
+                  <span className="block"><strong className="text-foreground">Женщины 30–59:</strong> 8,7 &times; вес + 829.</span>
+                </p>
               </div>
             </div>
           </div>
