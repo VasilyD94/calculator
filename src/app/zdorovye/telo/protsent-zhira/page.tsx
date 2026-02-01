@@ -3,11 +3,36 @@ import Link from 'next/link'
 import { BodyFatCalculator } from '@/components/calculators/BodyFatCalculator'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { JsonLd } from '@/components/seo/JsonLd'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
+import {
+  BookOpen,
+  Compass,
+  CircleHelp,
+  ArrowUpRight,
+  AlertTriangle,
+  Lightbulb,
+  Calculator,
+  Info,
+  Scale,
+  Target,
+  ClipboardList,
+  Ruler,
+  Flame,
+  Dumbbell,
+  Droplets,
+  Scan,
+  TrendingDown,
+} from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Калькулятор процента жира — расчёт по 3 формулам',
   description:
-    'Бесплатный калькулятор процента жира в организме: метод ВМС США, формулы Deurenberg и Gallagher. Сравнение формул, категории ACE, состав тела и рекомендации.',
+    'Бесплатный онлайн калькулятор процента жира в организме ✓ Метод ВМС США ✓ Формулы Deurenberg и Gallagher ✓ Категории ACE ✓ Состав тела и сравнение 3 формул.',
   keywords: [
     'процент жира',
     'калькулятор процента жира',
@@ -48,6 +73,7 @@ export default function BodyFatPage() {
           description:
             'Онлайн калькулятор процента жира в организме по 3 научным формулам с визуальной шкалой категорий',
           applicationCategory: 'HealthApplication',
+          url: 'https://calcbox.ru/zdorovye/telo/protsent-zhira',
           operatingSystem: 'All',
           offers: {
             '@type': 'Offer',
@@ -95,6 +121,30 @@ export default function BodyFatPage() {
                 text: 'Избыток жировой ткани повышает риск сердечно-сосудистых заболеваний, диабета 2 типа, гипертонии, некоторых видов рака, заболеваний суставов и апноэ сна. Особенно опасен висцеральный жир вокруг внутренних органов.',
               },
             },
+            {
+              '@type': 'Question',
+              name: 'Чем процент жира лучше ИМТ?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'ИМТ не различает жировую и мышечную массу. Спортсмен с развитой мускулатурой может иметь ИМТ выше 25 (избыточный вес) при низком проценте жира. Процент жира даёт более точную картину состава тела и реальных рисков для здоровья.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Как быстро можно снизить процент жира?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Безопасная скорость — 0,5–1% жира в месяц при дефиците калорий 300–500 ккал и регулярных тренировках. Более быстрое снижение чревато потерей мышечной массы и замедлением метаболизма.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Влияет ли возраст на нормальный процент жира?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Да. С возрастом процент жира естественно увеличивается — после 40 лет тело теряет мышечную массу и накапливает жир. Формула Gallagher учитывает возраст, а категории ACE дают общие ориентиры для взрослых всех возрастов.',
+              },
+            },
           ],
         }}
       />
@@ -118,7 +168,7 @@ export default function BodyFatPage() {
               '@type': 'HowToStep',
               position: 2,
               name: 'Введите обхваты',
-              text: 'Измерьте и укажите обхват талии, шеи, и бёдер (для женщин). Используйте мягкую сантиметровую ленту.',
+              text: 'Измерьте и укажите обхват талии, шеи и бёдер (для женщин) с помощью мягкой сантиметровой ленты.',
             },
             {
               '@type': 'HowToStep',
@@ -172,15 +222,95 @@ export default function BodyFatPage() {
           </p>
         </header>
 
-        <section className="mb-12">
+        {/* Как пользоваться */}
+        <section className="mb-8 space-y-3 text-sm text-muted-foreground">
+          <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+            <BookOpen className="h-5 w-5" />
+            Как пользоваться калькулятором
+          </h2>
+          <div className="space-y-2">
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                1
+              </span>
+              <p>Выберите пол, укажите возраст, рост и вес с помощью удобных слайдеров.</p>
+            </div>
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                2
+              </span>
+              <p>Измерьте и укажите обхват талии, шеи и бёдер (для женщин) с помощью мягкой сантиметровой ленты.{' '}
+                <a href="#measurements" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">Как правильно измерять&nbsp;&darr;</a>
+              </p>
+            </div>
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                3
+              </span>
+              <p>Калькулятор покажет процент жира, категорию ACE, состав тела и сравнение 3 формул.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Калькулятор */}
+        <section className="mb-12" aria-labelledby="calculator-heading">
+          <h2 id="calculator-heading" className="sr-only">Расчёт процента жира в организме</h2>
           <BodyFatCalculator />
         </section>
 
+        {/* Вам также будет полезно */}
+        <div className="mb-10 space-y-3">
+          <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+            <Compass className="h-5 w-5" />
+            Вам также будет полезно
+          </h2>
+          <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
+            <Link
+              href="/zdorovye/telo/kalkulyator-imt"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Калькулятор ИМТ
+              </span>
+            </Link>
+            <Link
+              href="/zdorovye/telo/idealnyj-ves"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Ruler className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Идеальный вес
+              </span>
+            </Link>
+            <Link
+              href="/zdorovye/telo/bazovyj-metabolizm"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Базовый метаболизм
+              </span>
+            </Link>
+            <Link
+              href="/zdorovye/pitanie/kalkulyator-kalorij"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Target className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Калькулятор калорий
+              </span>
+            </Link>
+          </div>
+        </div>
+
         {/* SEO-контент */}
-        <section className="space-y-10 text-base leading-7 text-muted-foreground">
-          {/* Блок 1 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+        <section className="space-y-8 text-sm text-muted-foreground">
+
+          {/* Блок 1: Что такое процент жира */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Info className="h-5 w-5" />
               Что такое процент жира в организме
             </h2>
             <p>
@@ -194,46 +324,53 @@ export default function BodyFatPage() {
               Однако избыток жировой ткани повышает риск сердечно-сосудистых
               заболеваний, диабета 2 типа, гипертонии и других проблем
               со здоровьем. Процент жира считается более информативным
-              показателем, чем ИМТ, поскольку учитывает соотношение жировой
-              и мышечной массы.
+              показателем, чем{' '}
+              <Link href="/zdorovye/telo/kalkulyator-imt" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                индекс массы тела
+              </Link>, поскольку учитывает соотношение жировой
+              и мышечной массы. Зная свой процент жира, можно более точно оценить
+              здоровье и определить{' '}
+              <Link href="/zdorovye/telo/idealnyj-ves" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                идеальный вес
+              </Link>.
             </p>
           </div>
 
           <hr className="border-border" />
 
-          {/* Блок 2 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+          {/* Блок 2: Формулы расчёта */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Calculator className="h-5 w-5" />
               Формулы расчёта процента жира
             </h2>
+            <p>
+              Калькулятор использует <strong className="text-foreground">3 формулы</strong>, каждая из которых
+              оценивает процент жира по-разному — на основе обхватов тела
+              или индекса массы тела.
+            </p>
 
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
-                  Метод ВМС США (US Navy) — рекомендуемый
+            <div className="space-y-3">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Target className="h-5 w-5 text-green-500" />
+                  Метод ВМС США (US Navy)
                 </h3>
                 <p>
                   Разработан Военно-морскими силами США для оценки физической
                   формы военнослужащих. Использует обхваты тела (талия, шея,
-                  бёдра для женщин) и рост. Точность метода — 3–4%
+                  бёдра для женщин) и рост. Точность метода — <strong className="text-foreground">3–4%</strong>{' '}
                   по сравнению с DEXA-сканированием.
                 </p>
-                <div className="rounded-lg border p-4 text-sm">
-                  <p>
-                    <strong className="text-foreground">Мужчины:</strong>{' '}
-                    86,010 &times; log10(талия &minus; шея) &minus; 70,041
-                    &times; log10(рост) + 36,76
-                  </p>
-                  <p className="mt-1">
-                    <strong className="text-foreground">Женщины:</strong>{' '}
-                    163,205 &times; log10(талия + бёдра &minus; шея) &minus;
-                    97,684 &times; log10(рост) &minus; 78,387
-                  </p>
-                </div>
+                <p>
+                  <span className="block"><strong className="text-foreground">Мужчины:</strong> 86,010 &times; log10(талия &minus; шея) &minus; 70,041 &times; log10(рост) + 36,76.</span>
+                  <span className="block"><strong className="text-foreground">Женщины:</strong> 163,205 &times; log10(талия + бёдра &minus; шея) &minus; 97,684 &times; log10(рост) &minus; 78,387.</span>
+                </p>
               </div>
 
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Ruler className="h-5 w-5 text-blue-500" />
                   Формула Deurenberg (1991)
                 </h3>
                 <p>
@@ -242,108 +379,94 @@ export default function BodyFatPage() {
                   но менее точна для спортсменов и людей с нестандартным
                   телосложением.
                 </p>
-                <div className="rounded-lg border p-4 text-sm">
-                  <p>
-                    BF% = 1,20 &times; ИМТ + 0,23 &times; возраст &minus; 10,8
-                    &times; пол &minus; 5,4
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    (пол: мужчины = 1, женщины = 0)
-                  </p>
-                </div>
+                <p>
+                  <span className="block"><strong className="text-foreground">Формула:</strong> BF% = 1,20 &times; ИМТ + 0,23 &times; возраст &minus; 10,8 &times; пол &minus; 5,4.</span>
+                  <span className="block text-xs text-muted-foreground">(пол: мужчины = 1, женщины = 0)</span>
+                </p>
               </div>
 
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Scan className="h-5 w-5 text-violet-500" />
                   Формула Gallagher (2000)
                 </h3>
                 <p>
                   Более современная формула на основе ИМТ, разработанная
                   с использованием данных DEXA-сканирования. Учитывает возраст,
-                  пол и этническую принадлежность (в нашем калькуляторе
-                  используется универсальный вариант).
+                  пол и этническую принадлежность (в калькуляторе используется
+                  универсальный вариант).
                 </p>
-                <div className="rounded-lg border p-4 text-sm">
-                  <p>
-                    BF% = 63,7 &minus; 864 &times; (1/ИМТ) &minus; 12,1
-                    &times; пол + 0,12 &times; возраст
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    (пол: мужчины = 1, женщины = 0)
-                  </p>
-                </div>
+                <p>
+                  <span className="block"><strong className="text-foreground">Формула:</strong> BF% = 63,7 &minus; 864 &times; (1/ИМТ) &minus; 12,1 &times; пол + 0,12 &times; возраст.</span>
+                  <span className="block text-xs text-muted-foreground">(пол: мужчины = 1, женщины = 0)</span>
+                </p>
               </div>
             </div>
           </div>
 
           <hr className="border-border" />
 
-          {/* Блок 3 — таблица */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+          {/* Блок 3: Категории ACE — таблица */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Scale className="h-5 w-5" />
               Категории процента жира (ACE)
             </h2>
             <p>
               Американский совет по физическим упражнениям (ACE) выделяет
               следующие категории процента жира для взрослых:
             </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm border-collapse">
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="w-full text-left border-collapse text-sm">
                 <thead>
                   <tr className="border-b">
-                    <th className="text-left py-3 pr-4 font-semibold text-foreground">
-                      Категория
-                    </th>
-                    <th className="text-left py-3 pr-4 font-semibold text-foreground">
-                      Мужчины
-                    </th>
-                    <th className="text-left py-3 font-semibold text-foreground">
-                      Женщины
-                    </th>
+                    <th className="py-2 pr-2 font-semibold text-foreground">Категория</th>
+                    <th className="py-2 px-2 font-semibold text-foreground whitespace-nowrap">Мужчины</th>
+                    <th className="py-2 pl-2 font-semibold text-foreground whitespace-nowrap">Женщины</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b">
-                    <td className="py-2.5 pr-4">Незаменимый жир</td>
-                    <td className="py-2.5 pr-4">2–5%</td>
-                    <td className="py-2.5">10–13%</td>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">Незаменимый жир</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">2–5%</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">10–13%</strong></td>
                   </tr>
-                  <tr className="border-b">
-                    <td className="py-2.5 pr-4">Атлеты</td>
-                    <td className="py-2.5 pr-4">6–13%</td>
-                    <td className="py-2.5">14–20%</td>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">Атлеты</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">6–13%</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">14–20%</strong></td>
                   </tr>
-                  <tr className="border-b bg-green-50/50">
-                    <td className="py-2.5 pr-4 font-medium text-foreground">
-                      Фитнес
-                    </td>
-                    <td className="py-2.5 pr-4 font-medium text-foreground">
-                      14–17%
-                    </td>
-                    <td className="py-2.5 font-medium text-foreground">
-                      21–24%
-                    </td>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">Фитнес</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">14–17%</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">21–24%</strong></td>
                   </tr>
-                  <tr className="border-b">
-                    <td className="py-2.5 pr-4">Средний</td>
-                    <td className="py-2.5 pr-4">18–24%</td>
-                    <td className="py-2.5">25–31%</td>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">Средний</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">18–24%</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">25–31%</strong></td>
                   </tr>
                   <tr>
-                    <td className="py-2.5 pr-4">Выше нормы</td>
-                    <td className="py-2.5 pr-4">25%+</td>
-                    <td className="py-2.5">32%+</td>
+                    <td className="py-2 pr-2">Выше нормы</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">25%+</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">32%+</strong></td>
                   </tr>
                 </tbody>
               </table>
             </div>
+            <p className="text-sm">
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                Рассчитать свой процент жира&nbsp;&rarr;
+              </a>
+            </p>
           </div>
 
           <hr className="border-border" />
 
-          {/* Блок 4 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+          {/* Блок 4: Как правильно измерять обхваты */}
+          <div id="measurements" className="space-y-3 scroll-mt-4">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Ruler className="h-5 w-5" />
               Как правильно измерять обхваты
             </h2>
             <p>
@@ -351,27 +474,36 @@ export default function BodyFatPage() {
               Следуйте этим рекомендациям:
             </p>
             <div className="grid gap-3 md:grid-cols-3">
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground">Обхват талии</h3>
-                <ul className="space-y-1 pl-4 list-disc text-sm">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Ruler className="h-5 w-5 text-amber-500" />
+                  Обхват талии
+                </h3>
+                <ul className="space-y-1 pl-5 list-disc marker:text-primary">
                   <li>Измеряйте на уровне пупка</li>
                   <li>Не втягивайте живот</li>
                   <li>Лента параллельна полу</li>
                   <li>Измеряйте утром натощак</li>
                 </ul>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground">Обхват шеи</h3>
-                <ul className="space-y-1 pl-4 list-disc text-sm">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Scan className="h-5 w-5 text-blue-500" />
+                  Обхват шеи
+                </h3>
+                <ul className="space-y-1 pl-5 list-disc marker:text-primary">
                   <li>Измеряйте под кадыком</li>
                   <li>Смотрите прямо перед собой</li>
                   <li>Лента плотно, но не сдавливает</li>
                   <li>Не напрягайте мышцы шеи</li>
                 </ul>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground">Обхват бёдер</h3>
-                <ul className="space-y-1 pl-4 list-disc text-sm">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Dumbbell className="h-5 w-5 text-pink-500" />
+                  Обхват бёдер
+                </h3>
+                <ul className="space-y-1 pl-5 list-disc marker:text-primary">
                   <li>Самое широкое место ягодиц</li>
                   <li>Стойте ровно, ноги вместе</li>
                   <li>Лента параллельна полу</li>
@@ -379,143 +511,373 @@ export default function BodyFatPage() {
                 </ul>
               </div>
             </div>
+            <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+              Перейти к калькулятору&nbsp;&uarr;
+            </a>
           </div>
 
           <hr className="border-border" />
 
-          {/* Блок 5 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+          {/* Блок 5: Как снизить процент жира */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Target className="h-5 w-5" />
               Как снизить процент жира
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground">Питание</h3>
-                <ul className="space-y-1 pl-4 list-disc text-sm">
-                  <li>Создайте умеренный дефицит калорий (300–500 ккал)</li>
-                  <li>Увеличьте потребление белка (1,6–2 г на кг веса)</li>
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Droplets className="h-5 w-5 text-green-500" />
+                  Питание
+                </h3>
+                <ul className="space-y-1 pl-5 list-disc marker:text-primary">
+                  <li>Создайте умеренный дефицит калорий (<strong className="text-foreground">300–500</strong> ккал)</li>
+                  <li>Увеличьте потребление белка (<strong className="text-foreground">1,6–2 г</strong> на кг веса)</li>
                   <li>Сократите простые углеводы и переработанные продукты</li>
                   <li>Ешьте больше овощей, клетчатки и здоровых жиров</li>
                 </ul>
+                <p>
+                  Рассчитайте свою{' '}
+                  <Link href="/zdorovye/pitanie/kalkulyator-kalorij" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                    суточную норму калорий
+                  </Link>{' '}
+                  и спланируйте{' '}
+                  <Link href="/zdorovye/pitanie/defitsit-kalorij" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                    дефицит калорий
+                  </Link>{' '}
+                  для безопасного снижения веса.
+                </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground">Тренировки</h3>
-                <ul className="space-y-1 pl-4 list-disc text-sm">
-                  <li>Силовые тренировки 3–4 раза в неделю</li>
-                  <li>Кардио 2–3 раза в неделю (30–45 минут)</li>
-                  <li>10 000 шагов в день для базовой активности</li>
-                  <li>Достаточный сон (7–9 часов) для восстановления</li>
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Dumbbell className="h-5 w-5 text-blue-500" />
+                  Тренировки
+                </h3>
+                <ul className="space-y-1 pl-5 list-disc marker:text-primary">
+                  <li>Силовые тренировки <strong className="text-foreground">3–4</strong> раза в неделю</li>
+                  <li>Кардио <strong className="text-foreground">2–3</strong> раза в неделю (30–45 минут)</li>
+                  <li><strong className="text-foreground">10000</strong> шагов в день для базовой активности</li>
+                  <li>Достаточный сон (<strong className="text-foreground">7–9</strong> часов) для восстановления</li>
                 </ul>
               </div>
             </div>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 6: Примеры расчёта */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <ClipboardList className="h-5 w-5" />
+              Примеры расчёта
+            </h2>
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground">Мужчина, 30 лет, 178 см, 82 кг</h3>
+                <p>Талия <strong className="text-foreground">85 см</strong>, шея <strong className="text-foreground">38 см</strong></p>
+                <ul className="space-y-1 pl-5 list-disc marker:text-primary">
+                  <li>ВМС США: <strong className="text-foreground">18,1%</strong></li>
+                  <li>Deurenberg: <strong className="text-foreground">24,8%</strong></li>
+                  <li>Gallagher: <strong className="text-foreground">22,4%</strong></li>
+                </ul>
+                <p>Категория ACE: <strong className="text-foreground">средний</strong>. Жировая масса: <strong className="text-foreground">14,8 кг</strong>, сухая масса: <strong className="text-foreground">67,2 кг</strong>.</p>
+              </div>
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground">Женщина, 25 лет, 165 см, 60 кг</h3>
+                <p>Талия <strong className="text-foreground">70 см</strong>, шея <strong className="text-foreground">32 см</strong>, бёдра <strong className="text-foreground">95 см</strong></p>
+                <ul className="space-y-1 pl-5 list-disc marker:text-primary">
+                  <li>ВМС США: <strong className="text-foreground">27,0%</strong></li>
+                  <li>Deurenberg: <strong className="text-foreground">27,9%</strong></li>
+                  <li>Gallagher: <strong className="text-foreground">29,5%</strong></li>
+                </ul>
+                <p>Категория ACE: <strong className="text-foreground">средний</strong>. Жировая масса: <strong className="text-foreground">16,2 кг</strong>, сухая масса: <strong className="text-foreground">43,8 кг</strong>.</p>
+              </div>
+            </div>
+            <p className="text-sm">
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                Рассчитать свой процент жира&nbsp;&rarr;
+              </a>
+            </p>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 7: Сравнение методов измерения */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
+              Сравнение методов измерения процента жира
+            </h2>
+            <p>
+              Помимо формул по обхватам и ИМТ, существуют и другие методы
+              измерения процента жира. Каждый имеет свои преимущества
+              и ограничения.
+            </p>
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="w-full text-left border-collapse text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-2 pr-2 font-semibold text-foreground">Метод</th>
+                    <th className="py-2 px-2 font-semibold text-foreground whitespace-nowrap">Точность</th>
+                    <th className="py-2 pl-2 font-semibold text-foreground">Доступность</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">DEXA-скан</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">±1%</strong></td>
+                    <td className="py-2 pl-2">Клиника, дорого</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">Гидростатика</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">±1,5%</strong></td>
+                    <td className="py-2 pl-2">Спецлаборатория</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">BIA (весы)</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">±3–5%</strong></td>
+                    <td className="py-2 pl-2">Дома / фитнес-клуб</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">Калипер</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">±3%</strong></td>
+                    <td className="py-2 pl-2">Нужен опыт</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">ВМС США</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">±3–4%</strong></td>
+                    <td className="py-2 pl-2">Бесплатно, дома</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 pr-2">По ИМТ</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">±5–8%</strong></td>
+                    <td className="py-2 pl-2">Бесплатно, дома</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
+              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <p>
+                BIA-весы чувствительны к уровню гидратации — результат может
+                меняться на <strong className="text-foreground">2–3%</strong> в течение дня. Измеряйте
+                в одно и то же время для корректного сравнения.
+              </p>
+            </div>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 8: Практические советы */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
+              Практические советы
+            </h2>
+            <div className="space-y-2">
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  1
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Измеряйте регулярно</p>
+                  <p>Отслеживайте процент жира раз в 2–4 недели. Более частые измерения не покажут значимых изменений и могут демотивировать.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  2
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Измеряйте в одинаковых условиях</p>
+                  <p>Утром, натощак, до тренировки. Результат зависит от уровня гидратации, приёма пищи и физической активности.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  3
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Не гонитесь за минимумом</p>
+                  <p>Слишком низкий процент жира (<strong className="text-foreground">&lt;5%</strong> для мужчин, <strong className="text-foreground">&lt;12%</strong> для женщин) опасен для здоровья: гормональные нарушения, ослабление иммунитета, потеря костной массы.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  4
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Сохраняйте мышечную массу</p>
+                  <p>При снижении процента жира ключевую роль играют силовые тренировки и достаточное потребление белка. Без них организм сжигает мышцы вместе с жиром.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  5
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Учитывайте{' '}
+                    <Link href="/zdorovye/telo/bazovyj-metabolizm" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                      базовый метаболизм
+                    </Link>
+                  </p>
+                  <p>Зная свой базовый расход калорий, проще планировать дефицит и контролировать процесс снижения жировой массы без вреда для здоровья.</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
+              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <p>
+                Результаты калькулятора — ориентир, а не медицинский диагноз.
+                При серьёзных отклонениях от нормы проконсультируйтесь с врачом.
+              </p>
+            </div>
+            <p className="text-sm">
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                Рассчитать свой процент жира&nbsp;&rarr;
+              </a>
+            </p>
           </div>
 
           <hr className="border-border" />
 
           {/* FAQ */}
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-foreground">
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <CircleHelp className="h-5 w-5" />
               Часто задаваемые вопросы
             </h2>
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+            <Accordion type="multiple" className="w-full">
+              <AccordionItem value="faq-1">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Какой процент жира считается нормальным?
-                </h3>
-                <p>
-                  Для мужчин нормальный процент жира — 14–24%, для женщин —
-                  21–31%. Атлетический уровень: 6–13% для мужчин и 14–20%
-                  для женщин. Минимум для здоровья (незаменимый жир): 2–5%
-                  у мужчин и 10–13% у женщин.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Для мужчин нормальный процент жира — <strong className="text-foreground">14–24%</strong>, для женщин —{' '}
+                  <strong className="text-foreground">21–31%</strong>. Атлетический уровень: <strong className="text-foreground">6–13%</strong>{' '}
+                  для мужчин и <strong className="text-foreground">14–20%</strong> для женщин. Минимум для здоровья
+                  (незаменимый жир): <strong className="text-foreground">2–5%</strong> у мужчин
+                  и <strong className="text-foreground">10–13%</strong> у женщин.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-2">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Как точно измерить процент жира?
-                </h3>
-                <p>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
                   Самый доступный метод — расчёт по обхватам тела (метод ВМС
-                  США), точность 3–4%. Более точные методы: калиперометрия,
+                  США), точность <strong className="text-foreground">3–4%</strong>. Более точные методы: калиперометрия,
                   биоимпедансный анализ (BIA) и DEXA-сканирование (золотой
-                  стандарт, точность до 1%).
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+                  стандарт, точность до <strong className="text-foreground">1%</strong>).
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-3">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Как правильно измерить обхват талии?
-                </h3>
-                <p>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
                   Измеряйте обхват талии на уровне пупка, не втягивая живот.
                   Используйте мягкую сантиметровую ленту утром натощак. Лента
                   должна плотно прилегать к коже, но не сдавливать.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-4">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Чем опасен высокий процент жира?
-                </h3>
-                <p>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
                   Избыток жировой ткани повышает риск сердечно-сосудистых
                   заболеваний, диабета 2 типа, гипертонии, некоторых видов рака,
                   заболеваний суставов и апноэ сна. Особенно опасен висцеральный
                   жир вокруг внутренних органов.
-                </p>
-              </div>
-            </div>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-5">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Чем процент жира лучше ИМТ?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  ИМТ не различает жировую и мышечную массу. Спортсмен с развитой
+                  мускулатурой может иметь ИМТ выше <strong className="text-foreground">25</strong> (избыточный вес)
+                  при низком проценте жира. Процент жира даёт более точную картину
+                  состава тела и реальных рисков для здоровья.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-6">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Как быстро можно снизить процент жира?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Безопасная скорость — <strong className="text-foreground">0,5–1%</strong> жира в месяц при дефиците
+                  калорий <strong className="text-foreground">300–500</strong> ккал и регулярных тренировках. Более
+                  быстрое снижение чревато потерей мышечной массы и замедлением
+                  метаболизма.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-7">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Влияет ли возраст на нормальный процент жира?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Да. С возрастом процент жира естественно увеличивается — после{' '}
+                  <strong className="text-foreground">40 лет</strong> тело теряет мышечную массу и накапливает жир.
+                  Формула Gallagher учитывает возраст, а категории ACE дают общие
+                  ориентиры для взрослых всех возрастов.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
 
           <hr className="border-border" />
 
           {/* Связанные калькуляторы */}
-          <nav className="space-y-4" aria-label="Связанные калькуляторы">
-            <h2 className="text-2xl font-bold text-foreground">
+          <nav className="space-y-3" aria-label="Связанные калькуляторы">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <ArrowUpRight className="h-5 w-5" />
               Связанные калькуляторы
             </h2>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="flex flex-wrap gap-2">
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                  Калькулятор ИМТ
-                </h3>
-                <p className="text-sm mt-1">
-                  Индекс массы тела с визуальной шкалой категорий ВОЗ.
-                </p>
+                <Scale className="h-4 w-4 text-muted-foreground" />
+                Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/telo/idealnyj-ves"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                  Идеальный вес
-                </h3>
-                <p className="text-sm mt-1">
-                  Расчёт идеального веса по 5 научным формулам.
-                </p>
+                <Target className="h-4 w-4 text-muted-foreground" />
+                Идеальный вес
+              </Link>
+              <Link
+                href="/zdorovye/telo/bazovyj-metabolizm"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
+              >
+                <Flame className="h-4 w-4 text-muted-foreground" />
+                Базовый метаболизм
               </Link>
               <Link
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                  Калькулятор калорий
-                </h3>
-                <p className="text-sm mt-1">
-                  Расчёт суточной нормы калорий по 5 научным формулам.
-                </p>
+                <Calculator className="h-4 w-4 text-muted-foreground" />
+                Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/pitanie/defitsit-kalorij"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                  Дефицит калорий
-                </h3>
-                <p className="text-sm mt-1">
-                  Спланируйте похудение с графиком прогресса и оценкой
-                  безопасности.
-                </p>
+                <TrendingDown className="h-4 w-4 text-muted-foreground" />
+                Дефицит калорий
+              </Link>
+              <Link
+                href="/zdorovye/pitanie/norma-vody"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
+              >
+                <Droplets className="h-4 w-4 text-muted-foreground" />
+                Норма воды
               </Link>
             </div>
           </nav>

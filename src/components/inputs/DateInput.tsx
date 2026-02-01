@@ -1,7 +1,18 @@
 'use client'
 
-import { useCallback, useMemo } from 'react'
+import { useMemo } from 'react'
+import { format } from 'date-fns'
+import { ru } from 'date-fns/locale'
+import { Calendar as CalendarIcon } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
 import { Label } from '@/components/ui/label'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
+import { cn } from '@/lib/utils'
 
 interface DateInputProps {
   label: string
@@ -12,26 +23,21 @@ interface DateInputProps {
   max?: string // 'YYYY-MM-DD'
 }
 
-export function DateInput({ label, value, onChange, icon, min, max }: DateInputProps) {
-  const isoValue = useMemo(() => {
-    const y = value.getFullYear()
-    const m = String(value.getMonth() + 1).padStart(2, '0')
-    const d = String(value.getDate()).padStart(2, '0')
-    return `${y}-${m}-${d}`
-  }, [value])
+function parseIsoDate(iso: string): Date {
+  const [y, m, d] = iso.split('-').map(Number)
+  return new Date(y, m - 1, d)
+}
 
-  const handleChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const raw = e.target.value
-      if (!raw) return
-      const [y, m, d] = raw.split('-').map(Number)
-      const next = new Date(y, m - 1, d)
-      if (!isNaN(next.getTime())) {
-        onChange(next)
-      }
-    },
-    [onChange]
-  )
+export function DateInput({ label, value, onChange, icon, min, max }: DateInputProps) {
+  const minDate = useMemo(() => (min ? parseIsoDate(min) : undefined), [min])
+  const maxDate = useMemo(() => (max ? parseIsoDate(max) : undefined), [max])
+
+  const disabledMatcher = useMemo(() => {
+    const matchers: Array<{ before: Date } | { after: Date }> = []
+    if (minDate) matchers.push({ before: minDate })
+    if (maxDate) matchers.push({ after: maxDate })
+    return matchers.length > 0 ? matchers : undefined
+  }, [minDate, maxDate])
 
   return (
     <div className="space-y-2">
@@ -39,14 +45,37 @@ export function DateInput({ label, value, onChange, icon, min, max }: DateInputP
         {icon}
         {label}
       </Label>
-      <input
-        type="date"
-        value={isoValue}
-        onChange={handleChange}
-        min={min}
-        max={max}
-        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-      />
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            className={cn(
+              'w-full justify-start text-left font-normal h-10',
+              !value && 'text-muted-foreground'
+            )}
+          >
+            <CalendarIcon className="mr-2 h-4 w-4" />
+            {value ? (
+              format(value, 'd MMMM yyyy', { locale: ru })
+            ) : (
+              <span>Выберите дату</span>
+            )}
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0" align="start">
+          <Calendar
+            mode="single"
+            selected={value}
+            onSelect={(date) => {
+              if (date) onChange(date)
+            }}
+            defaultMonth={value}
+            disabled={disabledMatcher}
+            locale={ru}
+            weekStartsOn={1}
+          />
+        </PopoverContent>
+      </Popover>
     </div>
   )
 }

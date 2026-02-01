@@ -7,26 +7,38 @@ import { GenderToggle } from '@/components/inputs/GenderToggle'
 import { ValueSlider } from '@/components/inputs/ValueSlider'
 import { ActivitySelector } from '@/components/inputs/ActivitySelector'
 import { useUserParams } from '@/hooks/useUserParams'
-import { ResultCard } from '@/components/results/ResultCard'
 import { calculateWater } from '@/lib/calculations/water'
 import {
   Weight,
   Droplets,
   Sun,
   Baby,
+  Heart,
+  Milk,
   Clock,
   Lightbulb,
-  GlassWater,
   AlertTriangle,
   ThermometerSun,
+  CloudSun,
+  Flame,
+  SlidersHorizontal,
+  Sunrise,
+  Moon,
+  type LucideIcon,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+
+const SCHEDULE_ICONS: Record<string, { icon: LucideIcon; color: string }> = {
+  'Утро': { icon: Sunrise, color: 'text-amber-400' },
+  'До обеда': { icon: Sun, color: 'text-yellow-400' },
+  'После обеда': { icon: CloudSun, color: 'text-sky-400' },
+  'Вечер': { icon: Moon, color: 'text-indigo-400' },
+}
 
 export function WaterCalculator() {
   const { gender, weight, activity, setParam, loaded } = useUserParams()
   const [hotClimate, setHotClimate] = useState(false)
-  const [pregnant, setPregnant] = useState(false)
-  const [breastfeeding, setBreastfeeding] = useState(false)
+  const [special, setSpecial] = useState<'none' | 'pregnant' | 'breastfeeding'>('none')
 
   const result = useMemo(
     () =>
@@ -35,20 +47,23 @@ export function WaterCalculator() {
         weight,
         activity,
         hotClimate,
-        pregnant,
-        breastfeeding,
+        pregnant: special === 'pregnant',
+        breastfeeding: special === 'breastfeeding',
       }),
-    [gender, weight, activity, hotClimate, pregnant, breastfeeding]
+    [gender, weight, activity, hotClimate, special]
   )
 
   if (!loaded) {
     return (
-      <div className="space-y-8">
-        <Card>
-          <CardHeader>
-            <CardTitle>Ваши параметры</CardTitle>
+      <div className="space-y-4">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
+              <SlidersHorizontal className="h-5 w-5" />
+              Ваши параметры
+            </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-4">
             {Array.from({ length: 4 }).map((_, i) => (
               <div key={i} className="space-y-3">
                 <div className="h-4 w-24 rounded bg-muted animate-pulse" />
@@ -57,19 +72,22 @@ export function WaterCalculator() {
             ))}
           </CardContent>
         </Card>
-        <div className="h-32 rounded-xl border bg-muted/50 animate-pulse" />
+        <div className="h-16 rounded-xl border bg-muted/50 animate-pulse" />
       </div>
     )
   }
 
   return (
-    <div className="space-y-8">
+    <div id="calculator" className="space-y-4">
       {/* Ввод данных */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Ваши параметры</CardTitle>
+      <Card className="gap-3 py-4">
+        <CardHeader className="pb-0">
+          <CardTitle className="text-base flex items-center gap-2">
+            <SlidersHorizontal className="h-5 w-5" />
+            Ваши параметры
+          </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-3">
           <GenderToggle value={gender} onChange={(v) => setParam('gender', v)} />
 
           <ValueSlider
@@ -79,15 +97,15 @@ export function WaterCalculator() {
             min={30}
             max={200}
             unit="кг"
-            icon={<Weight className="h-4 w-4" />}
+            icon={<Weight className="h-5 w-5" />}
           />
 
           <ActivitySelector value={activity} onChange={(v) => setParam('activity', v)} />
 
           {/* Климат */}
-          <div className="space-y-3">
-            <span className="text-sm font-medium flex items-center gap-2">
-              <ThermometerSun className="h-4 w-4" />
+          <div className="space-y-1">
+            <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+              <ThermometerSun className="h-5 w-5" />
               Климат
             </span>
             <div className="flex gap-1 p-1 bg-muted rounded-xl">
@@ -95,67 +113,64 @@ export function WaterCalculator() {
                 type="button"
                 onClick={() => setHotClimate(false)}
                 className={cn(
-                  'flex-1 flex items-center justify-center gap-1.5 py-3 px-3 rounded-lg transition-all duration-200 text-sm',
+                  'flex-1 flex items-center justify-center gap-1.5 py-3 px-1 sm:px-3 rounded-lg transition-all duration-200 text-xs sm:text-sm',
                   !hotClimate
                     ? 'bg-background shadow-md font-medium text-foreground'
                     : 'text-muted-foreground hover:text-foreground'
                 )}
               >
-                <span>🌤️</span> Обычный
+                <CloudSun className="h-4 w-4 text-sky-400" />
+                Обычный
               </button>
               <button
                 type="button"
                 onClick={() => setHotClimate(true)}
                 className={cn(
-                  'flex-1 flex items-center justify-center gap-1.5 py-3 px-3 rounded-lg transition-all duration-200 text-sm',
+                  'flex-1 flex items-center justify-center gap-1.5 py-3 px-1 sm:px-3 rounded-lg transition-all duration-200 text-xs sm:text-sm',
                   hotClimate
                     ? 'bg-background shadow-md font-medium text-foreground'
                     : 'text-muted-foreground hover:text-foreground'
                 )}
               >
-                <span>🔥</span> Жаркий (&gt;30°C)
+                <Flame className="h-4 w-4 text-orange-400" />
+                <span className="sm:hidden">Жаркий</span>
+                <span className="hidden sm:inline">Жаркий (&gt;30°C)</span>
               </button>
             </div>
           </div>
 
           {/* Особенности — только для женщин */}
           {gender === 'female' && (
-            <div className="space-y-3">
-              <span className="text-sm font-medium flex items-center gap-2">
-                <Baby className="h-4 w-4" />
+            <div className="space-y-1">
+              <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                <Baby className="h-5 w-5" />
                 Особенности
               </span>
-              <div className="flex flex-col gap-2">
-                <label className="flex items-center gap-3 rounded-lg border p-3 cursor-pointer transition-colors hover:bg-muted/50">
-                  <input
-                    type="checkbox"
-                    checked={pregnant}
-                    onChange={(e) => {
-                      setPregnant(e.target.checked)
-                      if (e.target.checked) setBreastfeeding(false)
-                    }}
-                    className="h-4 w-4 rounded border-input accent-primary"
-                  />
-                  <div>
-                    <div className="text-sm font-medium">Беременность</div>
-                    <div className="text-xs text-muted-foreground">+300 мл к норме</div>
-                  </div>
-                </label>
-                <label className="flex items-center gap-3 rounded-lg border p-3 cursor-pointer transition-colors hover:bg-muted/50">
-                  <input
-                    type="checkbox"
-                    checked={breastfeeding}
-                    onChange={(e) => {
-                      setBreastfeeding(e.target.checked)
-                      if (e.target.checked) setPregnant(false)
-                    }}
-                    className="h-4 w-4 rounded border-input accent-primary"
-                  />
-                  <div>
-                    <div className="text-sm font-medium">Кормление грудью</div>
-                    <div className="text-xs text-muted-foreground">+700 мл к норме</div>
-                  </div>
-                </label>
+              <div className="flex gap-1 p-1 bg-muted rounded-xl">
+                {([
+                  { id: 'none' as const, label: 'Нет', shortLabel: 'Нет', icon: null, color: '' },
+                  { id: 'pregnant' as const, label: 'Беременность', shortLabel: 'Берем.', icon: Heart, color: 'text-pink-400' },
+                  { id: 'breastfeeding' as const, label: 'Кормление', shortLabel: 'Корм.', icon: Milk, color: 'text-blue-400' },
+                ] as const).map((opt) => {
+                  const Icon = opt.icon
+                  return (
+                    <button
+                      key={opt.id}
+                      type="button"
+                      onClick={() => setSpecial(opt.id)}
+                      className={cn(
+                        'flex-1 flex items-center justify-center gap-1.5 py-3 px-1 sm:px-3 rounded-lg transition-all duration-200 text-xs sm:text-sm',
+                        special === opt.id
+                          ? 'bg-background shadow-md font-medium text-foreground'
+                          : 'text-muted-foreground hover:text-foreground'
+                      )}
+                    >
+                      {Icon && <Icon className={cn('h-4 w-4', opt.color)} />}
+                      <span className="sm:hidden">{opt.shortLabel}</span>
+                      <span className="hidden sm:inline">{opt.label}</span>
+                    </button>
+                  )
+                })}
               </div>
             </div>
           )}
@@ -163,137 +178,108 @@ export function WaterCalculator() {
       </Card>
 
       {/* Результаты */}
-      <div className="space-y-6">
-        {/* Основной результат */}
-        <ResultCard
-          title="Ваша норма воды"
-          value={result.totalMl}
-          unit="мл/день"
-          description={`${result.totalLiters} л — ${result.glasses} стаканов по 250 мл`}
-          status="info"
-        />
-
-        {/* Визуализация стаканами */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <GlassWater className="h-5 w-5" />
-              Ваша норма в стаканах
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-wrap gap-3 justify-center">
-              {Array.from({ length: result.glasses }).map((_, i) => (
-                <WaterGlass key={i} />
-              ))}
+      <div className="space-y-4">
+        {/* Основной результат + разбивка */}
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <div className="text-center">
+              <p className="text-sm text-muted-foreground mb-1">Ваша норма воды</p>
+              <p className="text-4xl font-bold text-primary">
+                {result.totalMl.toLocaleString('ru-RU')}
+                <span className="text-lg font-normal text-muted-foreground ml-1">мл/день</span>
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">
+                {result.totalLiters} л — {result.glasses} стаканов по 250 мл
+              </p>
             </div>
-            <p className="text-center text-sm text-muted-foreground mt-4">
-              {result.glasses} стаканов по 250 мл = {result.totalLiters} л
-            </p>
-          </CardContent>
-        </Card>
-
-        {/* Разбивка по факторам */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Droplets className="h-5 w-5" />
-              Из чего складывается норма
-            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <BreakdownRow
-                label="Базовая потребность"
-                sublabel={`${gender === 'male' ? '35' : '31'} мл × ${weight} кг`}
-                value={result.breakdown.base}
-                total={result.totalMl}
-              />
-              {result.breakdown.activity > 0 && (
                 <BreakdownRow
-                  label="Физическая активность"
-                  sublabel="дополнительная нагрузка"
-                  value={result.breakdown.activity}
+                  label="Базовая потребность"
+                  sublabel={`${gender === 'male' ? '35' : '31'} мл × ${weight} кг`}
+                  value={result.breakdown.base}
                   total={result.totalMl}
                 />
-              )}
-              {result.breakdown.climate > 0 && (
-                <BreakdownRow
-                  label="Жаркий климат"
-                  sublabel="компенсация потоотделения"
-                  value={result.breakdown.climate}
-                  total={result.totalMl}
-                />
-              )}
-              {result.breakdown.special > 0 && (
-                <BreakdownRow
-                  label={pregnant ? 'Беременность' : 'Кормление грудью'}
-                  sublabel="повышенная потребность"
-                  value={result.breakdown.special}
-                  total={result.totalMl}
-                />
-              )}
-              {/* Итого */}
-              <div className="flex items-center justify-between pt-3 border-t">
-                <span className="font-medium">Итого</span>
-                <span className="text-lg font-bold text-primary">{result.totalMl} мл</span>
-              </div>
+                {result.breakdown.activity > 0 && (
+                  <BreakdownRow
+                    label="Физическая активность"
+                    sublabel="дополнительная нагрузка"
+                    value={result.breakdown.activity}
+                    total={result.totalMl}
+                  />
+                )}
+                {result.breakdown.climate > 0 && (
+                  <BreakdownRow
+                    label="Жаркий климат"
+                    sublabel="компенсация потоотделения"
+                    value={result.breakdown.climate}
+                    total={result.totalMl}
+                  />
+                )}
+                {result.breakdown.special > 0 && (
+                  <BreakdownRow
+                    label={special === 'pregnant' ? 'Беременность' : 'Кормление грудью'}
+                    sublabel="повышенная потребность"
+                    value={result.breakdown.special}
+                    total={result.totalMl}
+                  />
+                )}
+                {/* Итого */}
+                <div className="flex items-center justify-between pt-3 border-t">
+                  <span className="font-medium">Итого</span>
+                  <span className="text-lg font-bold text-primary">{result.totalMl} мл</span>
+                </div>
             </div>
           </CardContent>
         </Card>
 
         {/* Расписание на день */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <Clock className="h-5 w-5" />
               Расписание на день
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              {result.schedule.map((item, i) => (
-                <div key={item.period} className="flex gap-3">
-                  {/* Таймлайн */}
-                  <div className="flex flex-col items-center">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-sm">
-                      {item.emoji}
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {result.schedule.map((item) => {
+                const meta = SCHEDULE_ICONS[item.period] ?? { icon: Clock, color: 'text-primary' }
+                const Icon = meta.icon
+                return (
+                  <div key={item.period} className="rounded-lg border p-3 space-y-2">
+                    <div className="flex items-center gap-2">
+                      <Icon className={cn('h-5 w-5', meta.color)} />
+                      <div className="min-w-0">
+                        <span className="text-sm font-medium">{item.period}</span>
+                        <span className="block text-xs text-muted-foreground">{item.time}</span>
+                      </div>
                     </div>
-                    {i < result.schedule.length - 1 && (
-                      <div className="w-0.5 flex-1 bg-border mt-1" />
-                    )}
-                  </div>
-                  {/* Контент */}
-                  <div className="flex-1 min-w-0 pb-4">
                     <div className="text-sm">
-                      <span className="font-medium">{item.period}</span>
-                      <span className="text-xs text-muted-foreground ml-1">{item.time}</span>
+                      <span className="text-lg font-bold">{item.amount}</span>
+                      <span className="text-muted-foreground ml-1">мл</span>
+                      <span className="text-xs text-muted-foreground ml-1">({item.glasses} ст.)</span>
                     </div>
-                    <div className="text-sm mt-0.5">
-                      <span className="font-bold">{item.amount} мл</span>
-                      <span className="text-xs text-muted-foreground ml-1">
-                        ({item.glasses} ст.)
-                      </span>
-                    </div>
-                    <p className="text-xs text-muted-foreground mt-1">{item.tip}</p>
+                    <p className="text-xs text-muted-foreground">{item.tip}</p>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </CardContent>
         </Card>
 
         {/* Советы */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <Lightbulb className="h-5 w-5" />
               Полезные советы
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <AlertTriangle className="h-4 w-4" />
+              <AlertTriangle className="h-5 w-5 text-amber-400" />
               <AlertTitle>Признаки обезвоживания</AlertTitle>
               <AlertDescription>
                 Тёмная моча, сухость во рту, головная боль, усталость, головокружение. Если заметили
@@ -301,7 +287,7 @@ export function WaterCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Sun className="h-4 w-4" />
+              <Sun className="h-5 w-5 text-yellow-400" />
               <AlertTitle>Когда нужно пить больше</AlertTitle>
               <AlertDescription>
                 В жаркую погоду, при интенсивных тренировках, при болезни с температурой, после
@@ -309,7 +295,7 @@ export function WaterCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Droplets className="h-4 w-4" />
+              <Droplets className="h-5 w-5 text-sky-400" />
               <AlertTitle>Что считается</AlertTitle>
               <AlertDescription>
                 В норму входит не только чистая вода, но и чай, морс, суп, сочные фрукты и овощи.
@@ -324,41 +310,6 @@ export function WaterCalculator() {
 }
 
 // --- Вспомогательные компоненты ---
-
-function WaterGlass() {
-  return (
-    <svg
-      width="28"
-      height="36"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="text-primary"
-    >
-      {/* Вода внутри стакана */}
-      <path
-        d="M6.5 13 L5.8 20a1 1 0 0 0 1 1.1h10.4a1 1 0 0 0 1-1.1L17.5 13Z"
-        fill="currentColor"
-        fillOpacity="0.15"
-      />
-      {/* Контур стакана — стиль lucide (stroke-based) */}
-      <path
-        d="M5.1 4h13.8l-1.7 17a1 1 0 0 1-1 .9H7.8a1 1 0 0 1-1-.9L5.1 4Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      {/* Уровень воды */}
-      <path
-        d="M6.5 13h11"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  )
-}
 
 function BreakdownRow({
   label,
@@ -377,7 +328,7 @@ function BreakdownRow({
       <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5 text-sm">
         <div className="min-w-0">
           <span className="font-medium">{label}</span>
-          <span className="text-muted-foreground ml-1 text-xs">{sublabel}</span>
+          <span className="block sm:inline sm:ml-1 text-muted-foreground text-xs">{sublabel}</span>
         </div>
         <span className="font-medium whitespace-nowrap">{value} мл</span>
       </div>

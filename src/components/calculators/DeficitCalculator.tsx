@@ -9,7 +9,6 @@ import { ValueSlider } from '@/components/inputs/ValueSlider'
 import { Slider } from '@/components/ui/slider'
 import { ActivitySelector, ACTIVITY_LEVELS } from '@/components/inputs/ActivitySelector'
 import { useUserParams } from '@/hooks/useUserParams'
-import { ResultCard } from '@/components/results/ResultCard'
 import { MacroBreakdown } from '@/components/results/MacroBreakdown'
 import {
   calculateDeficit,
@@ -25,8 +24,11 @@ import {
   TrendingDown,
   AlertTriangle,
   ShieldCheck,
+  CircleAlert,
+  CircleCheck,
   Clock,
   Percent,
+  SlidersHorizontal,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -82,23 +84,25 @@ export function DeficitCalculator() {
 
   const targetDateStr = result.targetDate.toLocaleDateString('ru-RU', {
     day: 'numeric',
-    month: 'long',
+    month: 'short',
     year: 'numeric',
   })
 
-  // Слайдер дефицита — цветные зоны
   const sliderMin = Math.max(30, weight - 40)
   const sliderMax = weight - 1
 
   // Скелетон
   if (!loaded) {
     return (
-      <div className="space-y-8">
+      <div className="space-y-6">
         <Card>
           <CardHeader>
-            <CardTitle>Ваши параметры</CardTitle>
+            <CardTitle className="text-base flex items-center gap-2">
+              <SlidersHorizontal className="h-5 w-5" />
+              Ваши параметры
+            </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-4">
             {Array.from({ length: 5 }).map((_, i) => (
               <div key={i} className="space-y-3">
                 <div className="h-4 w-24 rounded bg-muted animate-pulse" />
@@ -113,13 +117,16 @@ export function DeficitCalculator() {
   }
 
   return (
-    <div className="space-y-8">
+    <div id="calculator" className="space-y-4">
       {/* Ввод данных */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Ваши параметры</CardTitle>
+      <Card className="gap-3 py-4">
+        <CardHeader className="pb-0">
+          <CardTitle className="text-base flex items-center gap-2">
+            <SlidersHorizontal className="h-5 w-5" />
+            Ваши параметры
+          </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-3">
           <GenderToggle value={gender} onChange={(v) => setParam('gender', v)} />
 
           <ValueSlider
@@ -129,7 +136,7 @@ export function DeficitCalculator() {
             min={15}
             max={80}
             unit="лет"
-            icon={<Calendar className="h-4 w-4" />}
+            icon={<Calendar className="h-5 w-5" />}
           />
 
           <ValueSlider
@@ -139,7 +146,7 @@ export function DeficitCalculator() {
             min={140}
             max={220}
             unit="см"
-            icon={<Ruler className="h-4 w-4" />}
+            icon={<Ruler className="h-5 w-5" />}
           />
 
           <ValueSlider
@@ -152,44 +159,21 @@ export function DeficitCalculator() {
             min={30}
             max={200}
             unit="кг"
-            icon={<Weight className="h-4 w-4" />}
+            icon={<Weight className="h-5 w-5" />}
           />
 
           <ActivitySelector value={activity} onChange={(v) => setParam('activity', v)} />
-        </CardContent>
-      </Card>
 
-      {/* Цель и дефицит */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Target className="h-5 w-5" />
-            Параметры похудения
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
           {/* Целевой вес */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-end">
-              <div>
-                <span className="text-xs text-muted-foreground">Текущий</span>
-                <div>
-                  <span className="text-xl font-bold">{weight}</span>
-                  <span className="text-muted-foreground ml-1 text-sm">кг</span>
-                </div>
-              </div>
-              <div className="text-center">
-                <span className="text-xs text-muted-foreground">Сбросить</span>
-                <div className="text-lg font-bold text-primary">
-                  −{weightToLose.toFixed(1)} кг
-                </div>
-              </div>
-              <div className="text-right">
-                <span className="text-xs text-muted-foreground">Цель</span>
-                <div>
-                  <span className="text-xl font-bold text-primary">{targetWeight}</span>
-                  <span className="text-muted-foreground ml-1 text-sm">кг</span>
-                </div>
+          <div className="space-y-1">
+            <div className="flex justify-between items-center">
+              <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                <Target className="h-5 w-5" />
+                Целевой вес
+              </span>
+              <div className="text-right text-sm">
+                <span className="font-semibold">{targetWeight}</span>
+                <span className="font-normal text-muted-foreground ml-0.5">кг</span>
               </div>
             </div>
             <Slider
@@ -198,77 +182,81 @@ export function DeficitCalculator() {
               min={sliderMin}
               max={sliderMax}
               step={0.5}
+              className="py-1.5"
             />
+            <p className="text-xs text-muted-foreground">
+              Сбросить: <span className="font-medium text-foreground tabular-nums">{weightToLose.toFixed(1)}</span> кг (текущий {weight} кг)
+            </p>
           </div>
 
-          {/* Размер дефицита */}
-          <div className="space-y-3">
+          {/* Дефицит калорий */}
+          <div className="space-y-1">
             <div className="flex justify-between items-center">
-              <span className="text-sm font-medium">Дефицит калорий</span>
-              <div>
-                <span className="text-2xl font-bold text-primary">{dailyDeficit}</span>
-                <span className="text-muted-foreground ml-1 text-sm">ккал/день</span>
+              <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                <TrendingDown className="h-5 w-5" />
+                Дефицит калорий
+              </span>
+              <div className="text-right text-sm">
+                <span className="font-semibold">{dailyDeficit}</span>
+                <span className="font-normal text-muted-foreground ml-0.5">ккал/день</span>
               </div>
             </div>
-
-            {/* Слайдер с цветными зонами */}
-            <div className="relative">
-              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1.5 rounded-full pointer-events-none z-0 overflow-hidden flex">
-                <div className="h-full bg-emerald-400/40" style={{ width: '25%' }} />
-                <div className="h-full bg-amber-400/40" style={{ width: '37.5%' }} />
-                <div className="h-full bg-red-400/40" style={{ width: '37.5%' }} />
-              </div>
-              <Slider
-                value={[dailyDeficit]}
-                onValueChange={([v]) => setDailyDeficit(v)}
-                min={200}
-                max={1000}
-                step={50}
-                className="py-2 [&_[data-slot=slider-track]]:bg-transparent"
-              />
-            </div>
-
-            <div className="flex justify-between text-xs text-muted-foreground">
-              <span className="text-emerald-600">Безопасный</span>
-              <span className="text-amber-600">Умеренный</span>
-              <span className="text-red-600">Агрессивный</span>
-            </div>
+            <Slider
+              value={[dailyDeficit]}
+              onValueChange={([v]) => setDailyDeficit(v)}
+              min={200}
+              max={1000}
+              step={50}
+              className="py-1.5"
+            />
           </div>
         </CardContent>
       </Card>
 
       {/* Результаты */}
       <div className="space-y-6">
-        {/* Основные метрики */}
-        <div className="grid gap-4 grid-cols-2">
-          <ResultCard
-            title="Калорий в день"
-            value={result.dailyCalories}
-            unit="ккал"
-            description={`TDEE: ${result.tdee.toLocaleString('ru-RU')} ккал`}
-            status="warning"
-          />
-          <ResultCard
-            title="Дефицит"
-            value={result.dailyDeficit}
-            unit="ккал"
-            description={`${result.deficitPercent}% от нормы`}
-            status={result.deficitPercent > 25 ? 'warning' : 'info'}
-          />
-          <ResultCard
-            title="Потеря в неделю"
-            value={result.weeklyLoss}
-            unit="кг"
-            description={result.weeklyLoss > 1 ? 'Быстрый темп' : 'Безопасный темп'}
-            status={result.weeklyLoss > 1 ? 'warning' : 'success'}
-          />
-          <ResultCard
-            title="Срок"
-            value={result.weeksNeeded}
-            unit="нед."
-            description={weightToLose > 0 ? `к ${targetDateStr}` : '—'}
-            status="info"
-          />
+        {/* Главный результат */}
+        <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
+          <p className="text-sm text-muted-foreground mb-1">Калорий в день</p>
+          <p className="text-4xl font-bold text-primary">
+            {result.dailyCalories.toLocaleString('ru-RU')}
+            <span className="text-lg font-normal text-muted-foreground ml-1">ккал</span>
+          </p>
+          <p className="text-xs text-muted-foreground mt-1">
+            TDEE: {result.tdee.toLocaleString('ru-RU')} ккал · Дефицит: {result.dailyDeficit} ккал ({result.deficitPercent}%)
+          </p>
+        </div>
+
+        {/* Метрики */}
+        <div className="grid grid-cols-3 gap-2">
+          <div className="rounded-lg bg-muted/50 p-3 text-center">
+            <p className="text-xs text-muted-foreground mb-1">Дефицит</p>
+            <p className="text-xl font-bold">
+              {result.dailyDeficit}
+              <span className="text-xs font-normal text-muted-foreground ml-1">ккал</span>
+            </p>
+            <p className="text-[10px] text-muted-foreground mt-0.5">{result.deficitPercent}% от нормы</p>
+          </div>
+          <div className="rounded-lg bg-muted/50 p-3 text-center">
+            <p className="text-xs text-muted-foreground mb-1">В неделю</p>
+            <p className="text-xl font-bold">
+              {result.weeklyLoss}
+              <span className="text-xs font-normal text-muted-foreground ml-1">кг</span>
+            </p>
+            <p className="text-[10px] text-muted-foreground mt-0.5">
+              {result.weeklyLoss > 1 ? 'Быстрый темп' : 'Безопасный темп'}
+            </p>
+          </div>
+          <div className="rounded-lg bg-muted/50 p-3 text-center">
+            <p className="text-xs text-muted-foreground mb-1">Срок</p>
+            <p className="text-xl font-bold">
+              {result.weeksNeeded}
+              <span className="text-xs font-normal text-muted-foreground ml-1">нед.</span>
+            </p>
+            <p className="text-[10px] text-muted-foreground mt-0.5">
+              {weightToLose > 0 ? `к ${targetDateStr}` : '—'}
+            </p>
+          </div>
         </div>
 
         {/* Предупреждения */}
@@ -285,9 +273,9 @@ export function DeficitCalculator() {
 
         {/* График прогресса */}
         {timeline.length > 1 && (
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+          <Card className="gap-3 py-4">
+            <CardHeader className="pb-0">
+              <CardTitle className="text-base flex items-center gap-2">
                 <TrendingDown className="h-5 w-5" />
                 Прогноз снижения веса
               </CardTitle>
@@ -299,79 +287,79 @@ export function DeficitCalculator() {
         )}
 
         {/* Сравнение сценариев */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <Clock className="h-5 w-5" />
               Сравнение сценариев
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-3">
-              {scenarios.map((s) => (
-                <button
-                  key={s.label}
-                  type="button"
-                  onClick={() => setDailyDeficit(s.deficit)}
-                  className={cn(
-                    'w-full p-4 rounded-lg border transition-all text-left',
-                    s.deficit === result.dailyDeficit
-                      ? 'bg-primary/5 border-primary'
-                      : 'bg-muted/50 border-transparent hover:border-border'
-                  )}
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                    <div className="flex items-center gap-2">
-                      <span className="text-lg">{s.emoji}</span>
-                      <div>
-                        <span className="font-medium text-sm">{s.label}</span>
-                        <span className="text-xs text-muted-foreground ml-2">
-                          −{s.deficit} ккал
-                        </span>
-                      </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              {scenarios.map((s) => {
+                const active = s.deficit === result.dailyDeficit
+                const ScenarioIcon =
+                  s.risk === 'low' ? CircleCheck : s.risk === 'moderate' ? AlertTriangle : CircleAlert
+                const iconColor =
+                  s.risk === 'low'
+                    ? 'text-emerald-600'
+                    : s.risk === 'moderate'
+                      ? 'text-amber-500'
+                      : 'text-red-500'
+
+                return (
+                  <button
+                    key={s.label}
+                    type="button"
+                    onClick={() => setDailyDeficit(s.deficit)}
+                    className={cn(
+                      'rounded-lg border-2 px-3 py-2.5 text-center transition-colors duration-200',
+                      active
+                        ? 'bg-primary/5 border-primary/30'
+                        : 'border-transparent hover:border-border'
+                    )}
+                  >
+                    <div className="flex items-center justify-center gap-1.5 mb-1">
+                      <ScenarioIcon className={cn('h-4 w-4 shrink-0', iconColor)} />
+                      <span className={cn(
+                        'text-sm',
+                        active ? 'font-medium text-foreground' : 'text-muted-foreground'
+                      )}>
+                        {s.label}
+                      </span>
                     </div>
-                    <div className="flex gap-4 text-xs text-muted-foreground pl-8 sm:pl-0">
-                      <span>
-                        <strong className="text-foreground">{s.dailyCalories}</strong> ккал
-                      </span>
-                      <span>
-                        <strong className="text-foreground">{s.weeklyLoss}</strong> кг/нед
-                      </span>
-                      <span>
-                        <strong className="text-foreground">{s.weeksNeeded}</strong> нед
-                      </span>
-                    </div>
-                  </div>
-                </button>
-              ))}
+                    <p className="text-xs text-muted-foreground tabular-nums">
+                      <strong className="text-foreground">{s.dailyCalories}</strong> ккал · <strong className="text-foreground">{s.weeklyLoss}</strong> кг/н · <strong className="text-foreground">{s.weeksNeeded}</strong> нед
+                    </p>
+                    <p className="text-[10px] text-muted-foreground mt-0.5">−{s.deficit} ккал/день</p>
+                  </button>
+                )
+              })}
             </div>
           </CardContent>
         </Card>
 
-        {/* Оценка рисков */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        {/* Оценка безопасности */}
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <ShieldCheck className="h-5 w-5" />
               Оценка безопасности
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-lg border p-4 space-y-2">
-                <div className="text-sm text-muted-foreground">Устойчивость</div>
+            <div className="grid gap-2 sm:grid-cols-2">
+              <div className="rounded-lg bg-muted/50 p-3 space-y-1.5">
+                <p className="text-xs text-muted-foreground">Устойчивость</p>
                 <div className="flex items-center gap-2">
-                  <div
-                    className={cn(
-                      'h-3 w-3 rounded-full',
-                      risk.sustainability === 'easy'
-                        ? 'bg-emerald-500'
-                        : risk.sustainability === 'moderate'
-                          ? 'bg-amber-500'
-                          : 'bg-red-500'
-                    )}
-                  />
-                  <span className="font-medium">
+                  {risk.sustainability === 'easy' ? (
+                    <CircleCheck className="h-4 w-4 shrink-0 text-emerald-600" />
+                  ) : risk.sustainability === 'moderate' ? (
+                    <AlertTriangle className="h-4 w-4 shrink-0 text-amber-500" />
+                  ) : (
+                    <CircleAlert className="h-4 w-4 shrink-0 text-red-500" />
+                  )}
+                  <span className="text-sm font-medium">
                     {risk.sustainability === 'easy'
                       ? 'Легко придерживаться'
                       : risk.sustainability === 'moderate'
@@ -387,20 +375,17 @@ export function DeficitCalculator() {
                       : 'Дефицит более 25% — высокий риск срывов'}
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <div className="text-sm text-muted-foreground">Риск потери мышц</div>
+              <div className="rounded-lg bg-muted/50 p-3 space-y-1.5">
+                <p className="text-xs text-muted-foreground">Риск потери мышц</p>
                 <div className="flex items-center gap-2">
-                  <div
-                    className={cn(
-                      'h-3 w-3 rounded-full',
-                      risk.muscleLossRisk === 'low'
-                        ? 'bg-emerald-500'
-                        : risk.muscleLossRisk === 'moderate'
-                          ? 'bg-amber-500'
-                          : 'bg-red-500'
-                    )}
-                  />
-                  <span className="font-medium">
+                  {risk.muscleLossRisk === 'low' ? (
+                    <CircleCheck className="h-4 w-4 shrink-0 text-emerald-600" />
+                  ) : risk.muscleLossRisk === 'moderate' ? (
+                    <AlertTriangle className="h-4 w-4 shrink-0 text-amber-500" />
+                  ) : (
+                    <CircleAlert className="h-4 w-4 shrink-0 text-red-500" />
+                  )}
+                  <span className="text-sm font-medium">
                     {risk.muscleLossRisk === 'low'
                       ? 'Низкий'
                       : risk.muscleLossRisk === 'moderate'
@@ -421,9 +406,9 @@ export function DeficitCalculator() {
         </Card>
 
         {/* БЖУ при дефиците */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <Percent className="h-5 w-5" />
               БЖУ при дефиците
             </CardTitle>

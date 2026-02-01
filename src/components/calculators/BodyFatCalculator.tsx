@@ -18,9 +18,15 @@ import {
   Target,
   Info,
   Lightbulb,
-  CircleGauge,
   Scan,
   CalendarDays,
+  SlidersHorizontal,
+  Shield,
+  Dumbbell,
+  CircleCheck,
+  TrendingUp,
+  AlertTriangle,
+  type LucideIcon,
 } from 'lucide-react'
 
 export function BodyFatCalculator() {
@@ -38,12 +44,15 @@ export function BodyFatCalculator() {
 
   if (!loaded) {
     return (
-      <div className="space-y-8">
-        <Card>
-          <CardHeader>
-            <CardTitle>Ваши параметры</CardTitle>
+      <div className="space-y-4">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
+              <SlidersHorizontal className="h-5 w-5" />
+              Ваши параметры
+            </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-4">
             {Array.from({ length: 5 }).map((_, i) => (
               <div key={i} className="space-y-3">
                 <div className="h-4 w-24 rounded bg-muted animate-pulse" />
@@ -58,13 +67,16 @@ export function BodyFatCalculator() {
   }
 
   return (
-    <div className="space-y-8">
+    <div id="calculator" className="space-y-4">
       {/* Ввод данных */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Ваши параметры</CardTitle>
+      <Card className="gap-3 py-4">
+        <CardHeader className="pb-0">
+          <CardTitle className="text-base flex items-center gap-2">
+            <SlidersHorizontal className="h-5 w-5" />
+            Ваши параметры
+          </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-3">
           <GenderToggle value={gender} onChange={(v) => setParam('gender', v)} />
 
           <ValueSlider
@@ -74,7 +86,7 @@ export function BodyFatCalculator() {
             min={15}
             max={80}
             unit="лет"
-            icon={<CalendarDays className="h-4 w-4" />}
+            icon={<CalendarDays className="h-5 w-5" />}
           />
 
           <ValueSlider
@@ -84,7 +96,7 @@ export function BodyFatCalculator() {
             min={140}
             max={220}
             unit="см"
-            icon={<Ruler className="h-4 w-4" />}
+            icon={<Ruler className="h-5 w-5" />}
           />
 
           <ValueSlider
@@ -94,20 +106,9 @@ export function BodyFatCalculator() {
             min={30}
             max={200}
             unit="кг"
-            icon={<Weight className="h-4 w-4" />}
+            icon={<Weight className="h-5 w-5" />}
           />
-        </CardContent>
-      </Card>
 
-      {/* Обхваты */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Scan className="h-5 w-5" />
-            Обхваты тела
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
           <ValueSlider
             label="Обхват талии"
             value={waist}
@@ -115,6 +116,7 @@ export function BodyFatCalculator() {
             min={50}
             max={150}
             unit="см"
+            icon={<Scan className="h-5 w-5" />}
           />
 
           <ValueSlider
@@ -124,6 +126,7 @@ export function BodyFatCalculator() {
             min={25}
             max={55}
             unit="см"
+            icon={<Ruler className="h-5 w-5" />}
           />
 
           {gender === 'female' && (
@@ -134,54 +137,46 @@ export function BodyFatCalculator() {
               min={60}
               max={150}
               unit="см"
+              icon={<Scan className="h-5 w-5" />}
             />
           )}
         </CardContent>
       </Card>
 
       {/* Результаты */}
-      <div className="space-y-6">
-        {/* Классификация */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+      <div className="space-y-4">
+        {/* Процент жира + Состав тела */}
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <Target className="h-5 w-5" />
               Процент жира в организме
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="space-y-3">
             <BodyFatScaleBars
               categories={result.categories}
               value={result.bodyFat}
             />
-          </CardContent>
-        </Card>
 
-        {/* Состав тела */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <CircleGauge className="h-5 w-5" />
-              Состав тела
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 gap-4 text-center">
-              <div className="rounded-lg bg-amber-50 p-4">
-                <p className="text-sm text-amber-700 mb-1">Жировая масса</p>
-                <p className="text-2xl font-bold text-amber-700">
-                  {result.fatMass} <span className="text-sm font-normal">кг</span>
-                </p>
-                <p className="text-xs text-amber-600 mt-1">{result.bodyFat}%</p>
-              </div>
-              <div className="rounded-lg bg-blue-50 p-4">
-                <p className="text-sm text-blue-700 mb-1">Сухая масса</p>
-                <p className="text-2xl font-bold text-blue-700">
-                  {result.leanMass} <span className="text-sm font-normal">кг</span>
-                </p>
-                <p className="text-xs text-blue-600 mt-1">
-                  {Math.round((100 - result.bodyFat) * 10) / 10}%
-                </p>
+            <div className="border-t pt-3 space-y-2">
+              <div className="grid grid-cols-2 gap-2 text-center">
+                <div className="rounded-lg bg-amber-50 p-3">
+                  <p className="text-xs sm:text-sm text-amber-700 mb-0.5 whitespace-nowrap">Жировая масса</p>
+                  <p className="text-2xl font-bold text-amber-700">
+                    {result.fatMass} <span className="text-sm font-normal">кг</span>
+                  </p>
+                  <p className="text-xs text-amber-600 mt-1">{result.bodyFat}%</p>
+                </div>
+                <div className="rounded-lg bg-blue-50 p-3">
+                  <p className="text-xs sm:text-sm text-blue-700 mb-0.5 whitespace-nowrap">Сухая масса</p>
+                  <p className="text-2xl font-bold text-blue-700">
+                    {result.leanMass} <span className="text-sm font-normal">кг</span>
+                  </p>
+                  <p className="text-xs text-blue-600 mt-1">
+                    {Math.round((100 - result.bodyFat) * 10) / 10}%
+                  </p>
+                </div>
               </div>
             </div>
           </CardContent>
@@ -191,16 +186,16 @@ export function BodyFatCalculator() {
         <FormulaComparison results={result.formulas} unit="%" />
 
         {/* Важно знать */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <Lightbulb className="h-5 w-5" />
               Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <Info className="h-4 w-4" />
+              <Ruler className="h-5 w-5 text-amber-400" />
               <AlertTitle>Как измерять обхваты</AlertTitle>
               <AlertDescription>
                 Используйте мягкую сантиметровую ленту. Измеряйте утром натощак.
@@ -209,7 +204,7 @@ export function BodyFatCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Info className="h-4 w-4" />
+              <Target className="h-5 w-5 text-blue-400" />
               <AlertTitle>Точность метода</AlertTitle>
               <AlertDescription>
                 Метод ВМС США имеет погрешность 3–4%. Для более точного
@@ -218,7 +213,7 @@ export function BodyFatCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Info className="h-4 w-4" />
+              <Info className="h-5 w-5 text-violet-400" />
               <AlertTitle>Формулы на основе ИМТ</AlertTitle>
               <AlertDescription>
                 Формулы Deurenberg и Gallagher оценивают процент жира по ИМТ,
@@ -233,14 +228,15 @@ export function BodyFatCalculator() {
   )
 }
 
-// --- Компонент шкалы % жира (аналог BMIScaleBars) ---
+// --- Компонент шкалы % жира (стиль как BMIScaleBars) ---
 
-const barColorMap = {
-  blue: 'bg-blue-500',
-  green: 'bg-green-500',
-  yellow: 'bg-yellow-500',
-  red: 'bg-red-500',
-} as const
+const CATEGORY_ICONS: Record<string, { icon: LucideIcon; color: string }> = {
+  'Незаменимый жир': { icon: Shield, color: 'text-blue-400' },
+  'Атлеты': { icon: Dumbbell, color: 'text-green-400' },
+  'Фитнес': { icon: CircleCheck, color: 'text-green-400' },
+  'Средний': { icon: TrendingUp, color: 'text-yellow-400' },
+  'Выше нормы': { icon: AlertTriangle, color: 'text-red-400' },
+}
 
 const activeBgMap = {
   blue: 'bg-blue-50 border-blue-200',
@@ -257,7 +253,7 @@ function BodyFatScaleBars({
   value: number
 }) {
   return (
-    <div className="space-y-1">
+    <div className="-space-y-px">
       {categories.map((cat) => {
         const rangeLabel =
           cat.min === 0
@@ -266,47 +262,52 @@ function BodyFatScaleBars({
               ? `${cat.min}%+`
               : `${cat.min}–${cat.max}%`
 
+        const iconMeta = CATEGORY_ICONS[cat.label] ?? { icon: Info, color: 'text-muted-foreground' }
+        const Icon = iconMeta.icon
+
         return (
           <div
             key={cat.label}
             className={cn(
-              'grid grid-cols-[0.75rem_1fr_auto_3rem] items-center gap-2 rounded-lg border-2 px-3 py-2.5 transition-colors duration-200',
+              'grid grid-cols-[1rem_1fr_auto] items-center gap-1.5 rounded-md border-2 px-2 py-1.5 transition-colors duration-200',
               cat.active
                 ? activeBgMap[cat.color]
                 : 'border-transparent bg-transparent'
             )}
           >
-            <div className={cn('h-3 w-3 rounded-full', barColorMap[cat.color])} />
+            <Icon className={cn('h-4 w-4', iconMeta.color)} />
 
             <span
               className={cn(
-                'text-sm truncate transition-colors duration-200',
+                'text-xs sm:text-sm whitespace-nowrap transition-colors duration-200',
                 cat.active ? 'text-foreground font-medium' : 'text-muted-foreground'
               )}
             >
               {cat.label}
             </span>
 
-            <span
-              className={cn(
-                'text-sm tabular-nums whitespace-nowrap transition-colors duration-200',
-                cat.active ? 'text-foreground font-medium' : 'text-muted-foreground'
+            <span className="flex items-center gap-1.5">
+              <span
+                className={cn(
+                  'text-xs sm:text-sm tabular-nums whitespace-nowrap transition-colors duration-200',
+                  cat.active ? 'text-foreground font-medium' : 'text-muted-foreground'
+                )}
+              >
+                {rangeLabel}
+              </span>
+              {cat.active && (
+                <span
+                  className={cn(
+                    'text-xs font-bold px-1.5 py-0.5 rounded tabular-nums whitespace-nowrap',
+                    cat.color === 'blue' && 'bg-blue-100 text-blue-700',
+                    cat.color === 'green' && 'bg-green-100 text-green-700',
+                    cat.color === 'yellow' && 'bg-yellow-100 text-yellow-700',
+                    cat.color === 'red' && 'bg-red-100 text-red-700'
+                  )}
+                >
+                  {value}%
+                </span>
               )}
-            >
-              {rangeLabel}
-            </span>
-
-            <span
-              className={cn(
-                'text-sm font-bold py-0.5 rounded-md text-center transition-opacity duration-200',
-                cat.active ? 'opacity-100' : 'opacity-0',
-                cat.color === 'blue' && 'bg-blue-100 text-blue-700',
-                cat.color === 'green' && 'bg-green-100 text-green-700',
-                cat.color === 'yellow' && 'bg-yellow-100 text-yellow-700',
-                cat.color === 'red' && 'bg-red-100 text-red-700'
-              )}
-            >
-              {value}%
             </span>
           </div>
         )

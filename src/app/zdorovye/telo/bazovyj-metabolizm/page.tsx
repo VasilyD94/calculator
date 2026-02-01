@@ -3,11 +3,43 @@ import Link from 'next/link'
 import { BMRCalculator } from '@/components/calculators/BMRCalculator'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { JsonLd } from '@/components/seo/JsonLd'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
+import {
+  BookOpen,
+  Compass,
+  CircleHelp,
+  ArrowUpRight,
+  Info,
+  Calculator,
+  Puzzle,
+  Target,
+  Lightbulb,
+  ClipboardList,
+  AlertTriangle,
+  Scale,
+  Flame,
+  Ruler,
+  TrendingDown,
+  Droplets,
+  Dumbbell,
+  Weight,
+  TrendingUp,
+  Award,
+  ScrollText,
+  RefreshCw,
+  Globe,
+  Zap,
+} from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Калькулятор базового метаболизма — BMR по 5 формулам',
   description:
-    'Бесплатный калькулятор базового метаболизма (BMR): формулы Миффлина-Сан Жеора, Харриса-Бенедикта, Кетча-МакАрдла и ВОЗ. Сравнение 5 формул, расход в покое и рекомендации.',
+    'Бесплатный калькулятор базового метаболизма ✓ 5 формул BMR ✓ Миффлина-Сан Жеора ✓ Харриса-Бенедикта ✓ Сравнение результатов и рекомендации.',
   keywords: [
     'базовый метаболизм',
     'калькулятор BMR',
@@ -48,6 +80,7 @@ export default function BMRPage() {
           description:
             'Онлайн калькулятор базового метаболизма по 5 научным формулам с мгновенным сравнением результатов',
           applicationCategory: 'HealthApplication',
+          url: 'https://calcbox.ru/zdorovye/telo/bazovyj-metabolizm',
           operatingSystem: 'All',
           offers: {
             '@type': 'Offer',
@@ -93,6 +126,30 @@ export default function BMRPage() {
               acceptedAnswer: {
                 '@type': 'Answer',
                 text: 'Не рекомендуется. Потребление калорий ниже BMR может замедлить метаболизм, привести к потере мышечной массы, дефициту питательных веществ и гормональным нарушениям. Безопасный дефицит — 300–500 ккал от TDEE, но не ниже BMR.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Как часто нужно пересчитывать BMR?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Рекомендуется пересчитывать BMR при изменении веса на 5 и более килограммов, а также каждые 5–10 лет, так как с возрастом метаболизм замедляется на 3–5% каждое десятилетие.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Влияют ли силовые тренировки на базовый метаболизм?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Да. Мышечная ткань потребляет больше энергии в покое, чем жировая. Каждый килограмм мышц сжигает около 13 ккал в сутки в состоянии покоя. Регулярные силовые тренировки увеличивают мышечную массу и повышают BMR.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Почему у мужчин BMR выше, чем у женщин?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'У мужчин в среднем больше мышечной массы и меньше жировой ткани, что требует больше энергии на поддержание. Кроме того, гормон тестостерон способствует более высокому метаболизму. Разница составляет 5–10%.',
               },
             },
           ],
@@ -171,15 +228,93 @@ export default function BMRPage() {
           </p>
         </header>
 
-        <section className="mb-12">
+        {/* Как пользоваться */}
+        <section className="mb-8 space-y-3 text-sm text-muted-foreground">
+          <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+            <BookOpen className="h-5 w-5" />
+            Как пользоваться калькулятором
+          </h2>
+          <div className="space-y-2">
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                1
+              </span>
+              <p>Укажите параметры: выберите пол, укажите возраст, рост и вес с помощью удобных слайдеров.</p>
+            </div>
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                2
+              </span>
+              <p>Получите результат: калькулятор мгновенно покажет ваш BMR по рекомендуемой формуле Миффлина-Сан Жеора.</p>
+            </div>
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                3
+              </span>
+              <p>Сравните формулы: оцените результаты по 5 научным формулам и узнайте диапазон значений.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Калькулятор */}
+        <section className="mb-12" aria-labelledby="calculator-heading">
+          <h2 id="calculator-heading" className="sr-only">Расчёт базового метаболизма</h2>
           <BMRCalculator />
         </section>
 
+        {/* Вам также будет полезно */}
+        <div className="mb-10 space-y-3">
+          <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+            <Compass className="h-5 w-5" />
+            Вам также будет полезно
+          </h2>
+          <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
+            <Link
+              href="/zdorovye/pitanie/kalkulyator-kalorij"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Калькулятор калорий
+              </span>
+            </Link>
+            <Link
+              href="/zdorovye/telo/kalkulyator-imt"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Калькулятор ИМТ
+              </span>
+            </Link>
+            <Link
+              href="/zdorovye/telo/protsent-zhira"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Target className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Процент жира
+              </span>
+            </Link>
+            <Link
+              href="/zdorovye/pitanie/defitsit-kalorij"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <TrendingDown className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Дефицит калорий
+              </span>
+            </Link>
+          </div>
+        </div>
+
         {/* SEO-контент */}
-        <section className="space-y-10 text-base leading-7 text-muted-foreground">
-          {/* Блок 1 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+        <section className="space-y-8 text-sm text-muted-foreground">
+
+          {/* Блок 1 — Что такое BMR */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Info className="h-5 w-5" />
               Что такое базовый метаболизм
             </h2>
             <p>
@@ -190,33 +325,42 @@ export default function BMRPage() {
               клеток и другие процессы, происходящие без участия сознания.
             </p>
             <p>
-              BMR составляет 60–75% от общего суточного расхода энергии (TDEE).
+              BMR составляет <strong className="text-foreground">60–75%</strong> от общего суточного расхода энергии (TDEE).
               Это означает, что большую часть калорий организм тратит не на
               физическую активность, а на базовые биологические процессы. Знание
               своего BMR помогает правильно планировать питание — как для
-              похудения, так и для набора массы.
+              похудения, так и для набора массы. Рассчитать полный суточный расход
+              можно с помощью{' '}
+              <Link href="/zdorovye/pitanie/kalkulyator-kalorij" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                калькулятора калорий
+              </Link>.
             </p>
           </div>
 
           <hr className="border-border" />
 
-          {/* Блок 2 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+          {/* Блок 2 — Формулы */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Calculator className="h-5 w-5" />
               Формулы расчёта BMR
             </h2>
 
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
-                  Миффлина-Сан Жеора (1990) — рекомендуемая
-                </h3>
+            <div className="space-y-3">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2">
+                  <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                    <Award className="h-5 w-5 text-green-500" />
+                    Миффлина-Сан Жеора (1990)
+                  </h3>
+                  <span className="self-start sm:self-auto text-xs rounded-full bg-muted text-muted-foreground px-2.5 py-1 font-medium shrink-0 whitespace-nowrap">Рекомендуемая</span>
+                </div>
                 <p>
                   Самая точная формула для большинства людей по данным
                   Американской диетической ассоциации (ADA). Учитывает пол,
                   возраст, рост и вес.
                 </p>
-                <div className="rounded-lg border p-4 text-sm">
+                <div className="rounded-lg bg-muted/50 border p-3 text-sm">
                   <p>
                     <strong className="text-foreground">Мужчины:</strong> 10
                     &times; вес(кг) + 6,25 &times; рост(см) &minus; 5 &times;
@@ -230,17 +374,21 @@ export default function BMRPage() {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
-                  Харриса-Бенедикта (1919)
-                </h3>
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2">
+                  <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                    <ScrollText className="h-5 w-5 text-amber-500" />
+                    Харриса-Бенедикта (1919)
+                  </h3>
+                  <span className="self-start sm:self-auto text-xs rounded-full bg-muted text-muted-foreground px-2.5 py-1 font-medium shrink-0 whitespace-nowrap">Классическая</span>
+                </div>
                 <p>
                   Одна из первых научных формул расчёта BMR, разработанная
                   Джеймсом Харрисом и Фрэнсисом Бенедиктом. Широко
                   использовалась в клинической практике более 70 лет, но
                   переоценивает BMR на 5–10% для современных людей.
                 </p>
-                <div className="rounded-lg border p-4 text-sm">
+                <div className="rounded-lg bg-muted/50 border p-3 text-sm">
                   <p>
                     <strong className="text-foreground">Мужчины:</strong> 66,5 +
                     13,75 &times; вес + 5,003 &times; рост &minus; 6,755 &times;
@@ -254,16 +402,20 @@ export default function BMRPage() {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
-                  Харриса-Бенедикта (1984, пересмотренная)
-                </h3>
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2">
+                  <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                    <RefreshCw className="h-5 w-5 text-blue-500" />
+                    Харриса-Бенедикта (1984)
+                  </h3>
+                  <span className="self-start sm:self-auto text-xs rounded-full bg-muted text-muted-foreground px-2.5 py-1 font-medium shrink-0 whitespace-nowrap">Пересмотренная</span>
+                </div>
                 <p>
                   Обновлённая версия оригинальной формулы, скорректированная
                   Розой и Шизгалом. Более точна, чем версия 1919 года, но
                   уступает формуле Миффлина-Сан Жеора.
                 </p>
-                <div className="rounded-lg border p-4 text-sm">
+                <div className="rounded-lg bg-muted/50 border p-3 text-sm">
                   <p>
                     <strong className="text-foreground">Мужчины:</strong> 88,362
                     + 13,397 &times; вес + 4,799 &times; рост &minus; 5,677
@@ -277,33 +429,43 @@ export default function BMRPage() {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
-                  Кетча-МакАрдла
-                </h3>
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2">
+                  <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                    <Dumbbell className="h-5 w-5 text-violet-500" />
+                    Кетча-МакАрдла
+                  </h3>
+                  <span className="self-start sm:self-auto text-xs rounded-full bg-muted text-muted-foreground px-2.5 py-1 font-medium shrink-0 whitespace-nowrap">Для спортсменов</span>
+                </div>
                 <p>
                   Единственная формула, использующая сухую массу тела (без жира).
-                  Наиболее точна для спортсменов и людей с известным процентом
-                  жира. В нашем калькуляторе используется средний процент жира
+                  Наиболее точна для спортсменов и людей с известным{' '}
+                  <Link href="/zdorovye/telo/protsent-zhira" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                    процентом жира
+                  </Link>. В нашем калькуляторе используется средний процент жира
                   (20% для мужчин, 28% для женщин).
                 </p>
-                <div className="rounded-lg border p-4 text-sm">
+                <div className="rounded-lg bg-muted/50 border p-3 text-sm">
                   <p>
                     BMR = 370 + 21,6 &times; сухая масса тела (кг)
                   </p>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
-                  Формула ВОЗ (Всемирная организация здравоохранения)
-                </h3>
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2">
+                  <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                    <Globe className="h-5 w-5 text-sky-500" />
+                    Формула ВОЗ
+                  </h3>
+                  <span className="self-start sm:self-auto text-xs rounded-full bg-muted text-muted-foreground px-2.5 py-1 font-medium shrink-0 whitespace-nowrap">Международная</span>
+                </div>
                 <p>
                   Разработана на основе данных из разных стран мира. Использует
                   только пол, возраст и вес. Разделена на возрастные группы:
                   до 30, 30–60 и старше 60 лет.
                 </p>
-                <div className="rounded-lg border p-4 text-sm">
+                <div className="rounded-lg bg-muted/50 border p-3 text-sm">
                   <p>
                     <strong className="text-foreground">Мужчины 18–29:</strong>{' '}
                     15,3 &times; вес + 679
@@ -327,9 +489,10 @@ export default function BMRPage() {
 
           <hr className="border-border" />
 
-          {/* Блок 3 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+          {/* Блок 3 — BMR vs TDEE */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Puzzle className="h-5 w-5" />
               BMR и TDEE — в чём разница
             </h2>
             <p>
@@ -338,63 +501,79 @@ export default function BMRPage() {
               в полном покое, а TDEE (Total Daily Energy Expenditure) — полный
               суточный расход с учётом всей физической активности.
             </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm border-collapse">
-                <thead>
-                  <tr className="border-b">
-                    <th className="text-left py-3 pr-4 font-semibold text-foreground">
-                      Показатель
-                    </th>
-                    <th className="text-left py-3 pr-4 font-semibold text-foreground">
-                      BMR
-                    </th>
-                    <th className="text-left py-3 font-semibold text-foreground">
-                      TDEE
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b">
-                    <td className="py-2.5 pr-4">Что измеряет</td>
-                    <td className="py-2.5 pr-4">Расход в полном покое</td>
-                    <td className="py-2.5">Полный суточный расход</td>
-                  </tr>
-                  <tr className="border-b">
-                    <td className="py-2.5 pr-4">Учитывает активность</td>
-                    <td className="py-2.5 pr-4">Нет</td>
-                    <td className="py-2.5">Да</td>
-                  </tr>
-                  <tr className="border-b">
-                    <td className="py-2.5 pr-4">Формула</td>
-                    <td className="py-2.5 pr-4">5 формул</td>
-                    <td className="py-2.5">BMR &times; коэффициент</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2.5 pr-4">Для чего нужен</td>
-                    <td className="py-2.5 pr-4">Минимум калорий</td>
-                    <td className="py-2.5">Планирование питания</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg border p-3 space-y-3">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Flame className="h-5 w-5 text-amber-500" />
+                  BMR
+                </h3>
+                <ul className="space-y-1.5 text-sm">
+                  <li className="flex justify-between gap-2">
+                    <span>Что измеряет</span>
+                    <span className="font-medium text-foreground text-right">Расход в покое</span>
+                  </li>
+                  <li className="flex justify-between gap-2">
+                    <span>Активность</span>
+                    <span className="font-medium text-foreground">Нет</span>
+                  </li>
+                  <li className="flex justify-between gap-2">
+                    <span>Формула</span>
+                    <span className="font-medium text-foreground">5 формул</span>
+                  </li>
+                  <li className="flex justify-between gap-2">
+                    <span>Для чего</span>
+                    <span className="font-medium text-foreground text-right">Минимум калорий</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="rounded-lg border p-3 space-y-3">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Zap className="h-5 w-5 text-blue-500" />
+                  TDEE
+                </h3>
+                <ul className="space-y-1.5 text-sm">
+                  <li className="flex justify-between gap-2">
+                    <span>Что измеряет</span>
+                    <span className="font-medium text-foreground text-right">Полный суточный расход</span>
+                  </li>
+                  <li className="flex justify-between gap-2">
+                    <span>Активность</span>
+                    <span className="font-medium text-foreground">Да</span>
+                  </li>
+                  <li className="flex justify-between gap-2">
+                    <span>Формула</span>
+                    <span className="font-medium text-foreground text-right">BMR &times; коэффициент</span>
+                  </li>
+                  <li className="flex justify-between gap-2">
+                    <span>Для чего</span>
+                    <span className="font-medium text-foreground text-right">Планирование питания</span>
+                  </li>
+                </ul>
+              </div>
             </div>
             <p>
               Для расчёта TDEE используйте коэффициент активности: сидячий образ
-              жизни (×1,2), лёгкая активность (×1,375), средняя (×1,55),
-              высокая (×1,725), очень высокая (×1,9). Рассчитать TDEE можно
-              в нашем калькуляторе калорий.
+              жизни (&times;1,2), лёгкая активность (&times;1,375), средняя (&times;1,55),
+              высокая (&times;1,725), очень высокая (&times;1,9). Рассчитать TDEE можно
+              в нашем{' '}
+              <Link href="/zdorovye/pitanie/kalkulyator-kalorij" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                калькуляторе калорий
+              </Link>.
             </p>
           </div>
 
           <hr className="border-border" />
 
-          {/* Блок 4 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+          {/* Блок 4 — Факторы */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Puzzle className="h-5 w-5" />
               Факторы, влияющие на базовый метаболизм
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground">
+              <div className="rounded-lg border p-3 space-y-2">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <TrendingUp className="h-5 w-5 text-green-500" />
                   Повышают BMR
                 </h3>
                 <ul className="space-y-1 pl-4 list-disc text-sm">
@@ -405,8 +584,9 @@ export default function BMRPage() {
                   <li>Генетические особенности</li>
                 </ul>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground">
+              <div className="rounded-lg border p-3 space-y-2">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <TrendingDown className="h-5 w-5 text-amber-500" />
                   Снижают BMR
                 </h3>
                 <ul className="space-y-1 pl-4 list-disc text-sm">
@@ -422,33 +602,38 @@ export default function BMRPage() {
 
           <hr className="border-border" />
 
-          {/* Блок 5 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+          {/* Блок 5 — Как ускорить */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Target className="h-5 w-5" />
               Как ускорить метаболизм
             </h2>
             <p>
               Хотя базовый метаболизм во многом определяется генетикой, полом
               и возрастом, есть научно обоснованные способы его поддержания
-              и даже ускорения:
+              и ускорения:
             </p>
             <div className="grid gap-3 md:grid-cols-2">
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground">Тренировки</h3>
+              <div className="rounded-lg border p-3 space-y-2">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Dumbbell className="h-5 w-5 text-blue-500" />
+                  Тренировки
+                </h3>
                 <ul className="space-y-1 pl-4 list-disc text-sm">
                   <li>
-                    Силовые тренировки 2–4 раза в неделю для набора мышечной
-                    массы — каждый кг мышц сжигает 13 ккал/день в покое
+                    Силовые тренировки 2–4 раза в неделю — каждый кг мышц
+                    сжигает <strong className="text-foreground">13</strong> ккал/день в покое
                   </li>
                   <li>
                     HIIT-тренировки повышают метаболизм на несколько часов после
                     занятия (эффект EPOC)
                   </li>
-                  <li>Ежедневная ходьба 8 000–10 000 шагов</li>
+                  <li>Ежедневная ходьба 8000–10000 шагов</li>
                 </ul>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground">
+              <div className="rounded-lg border p-3 space-y-2">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Weight className="h-5 w-5 text-green-500" />
                   Питание и образ жизни
                 </h3>
                 <ul className="space-y-1 pl-4 list-disc text-sm">
@@ -462,115 +647,322 @@ export default function BMRPage() {
                 </ul>
               </div>
             </div>
+            <p>
+              Для контроля{' '}
+              <Link href="/zdorovye/pitanie/defitsit-kalorij" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                дефицита калорий
+              </Link>{' '}
+              при похудении важно знать свой BMR — это нижняя граница, ниже
+              которой опускать калорийность не рекомендуется.
+            </p>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 6 — Таблица BMR */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <ClipboardList className="h-5 w-5" />
+              Средний BMR по возрасту и полу
+            </h2>
+            <p>
+              Таблица показывает примерные значения базового метаболизма для
+              мужчин (<strong className="text-foreground">70 кг, 175 см</strong>) и женщин (<strong className="text-foreground">60 кг, 165 см</strong>) по
+              формуле Миффлина-Сан Жеора.
+            </p>
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="w-full text-left border-collapse text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-2 pr-2 font-semibold text-foreground">Возраст</th>
+                    <th className="py-2 px-2 font-semibold text-foreground whitespace-nowrap">Мужчины, ккал</th>
+                    <th className="py-2 pl-2 font-semibold text-foreground whitespace-nowrap">Женщины, ккал</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">20 лет</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">1694</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">1371</strong></td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">30 лет</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">1644</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">1321</strong></td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">40 лет</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">1594</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">1271</strong></td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">50 лет</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">1544</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">1221</strong></td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 pr-2">60 лет</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">1494</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">1171</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm">
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                Рассчитать свой BMR&nbsp;&rarr;
+              </a>
+            </p>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 7 — Примеры расчёта */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <ClipboardList className="h-5 w-5" />
+              Примеры расчёта
+            </h2>
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg border p-4 space-y-2">
+                <h3 className="font-semibold text-foreground">Мужчина, 30 лет</h3>
+                <p>Рост <strong className="text-foreground">180</strong> см, вес <strong className="text-foreground">80</strong> кг.</p>
+                <p>По формуле Миффлина-Сан Жеора:</p>
+                <p className="text-foreground font-medium">
+                  10 &times; 80 + 6,25 &times; 180 &minus; 5 &times; 30 + 5 = <strong className="text-foreground">1780</strong> ккал/день
+                </p>
+                <p>
+                  TDEE при средней активности (&times;1,55): <strong className="text-foreground">2759</strong> ккал/день.
+                  Для похудения (&minus;15%): <strong className="text-foreground">2345</strong> ккал/день.
+                </p>
+              </div>
+              <div className="rounded-lg border p-4 space-y-2">
+                <h3 className="font-semibold text-foreground">Женщина, 25 лет</h3>
+                <p>Рост <strong className="text-foreground">165</strong> см, вес <strong className="text-foreground">60</strong> кг.</p>
+                <p>По формуле Миффлина-Сан Жеора:</p>
+                <p className="text-foreground font-medium">
+                  10 &times; 60 + 6,25 &times; 165 &minus; 5 &times; 25 &minus; 161 = <strong className="text-foreground">1346</strong> ккал/день
+                </p>
+                <p>
+                  TDEE при лёгкой активности (&times;1,375): <strong className="text-foreground">1851</strong> ккал/день.
+                  Для похудения (&minus;15%): <strong className="text-foreground">1573</strong> ккал/день.
+                </p>
+              </div>
+            </div>
+            <p className="text-sm">
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                Рассчитать свой BMR&nbsp;&rarr;
+              </a>
+            </p>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 8 — Практические советы */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
+              Практические советы
+            </h2>
+            <div className="space-y-2">
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  1
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Не опускайте калорийность ниже BMR</p>
+                  <p>Потребление калорий ниже базового метаболизма замедляет обмен веществ и приводит к потере мышц.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  2
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Силовые тренировки 2–3 раза в неделю</p>
+                  <p>Увеличение мышечной массы — самый эффективный способ повысить BMR на долгий срок.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  3
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Достаточно белка (1,2–1,6 г/кг)</p>
+                  <p>Белок имеет высокий термический эффект — на его переваривание тратится 20–30% калорий.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  4
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Сон 7–9 часов</p>
+                  <p>Хронический недосып снижает базовый метаболизм на 2–5% и провоцирует набор веса.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  5
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Пересчитывайте BMR при изменении веса</p>
+                  <p>При изменении веса на 5 и более кг BMR меняется. Также пересчитывайте каждые 5–10 лет.</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
+              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <p>
+                Результаты калькулятора носят ориентировочный характер. При наличии
+                заболеваний или для точного определения{' '}
+                <Link href="/zdorovye/telo/kalkulyator-imt" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                  индекса массы тела
+                </Link>{' '}
+                и метаболизма проконсультируйтесь с врачом.
+              </p>
+            </div>
+            <p className="text-sm">
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                Рассчитать свой BMR&nbsp;&rarr;
+              </a>
+            </p>
           </div>
 
           <hr className="border-border" />
 
           {/* FAQ */}
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-foreground">
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <CircleHelp className="h-5 w-5" />
               Часто задаваемые вопросы
             </h2>
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+            <Accordion type="multiple" className="w-full">
+              <AccordionItem value="faq-1">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Что такое базовый метаболизм (BMR)?
-                </h3>
-                <p>
-                  Базовый метаболизм (BMR) — это количество калорий, которое
-                  организм тратит в полном покое для поддержания жизненных
-                  функций: дыхания, кровообращения, работы мозга и обновления
-                  клеток. Это минимальная энергия, необходимая для жизни.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Базовый метаболизм (BMR, Basal Metabolic Rate) — это количество калорий, которое
+                  организм тратит в полном покое для поддержания жизненных функций: дыхания,
+                  кровообращения, работы мозга и обновления клеток. Это минимальная энергия,
+                  необходимая для жизни.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-2">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Чем BMR отличается от TDEE?
-                </h3>
-                <p>
-                  BMR — расход энергии в полном покое. TDEE — полный суточный
-                  расход с учётом физической активности. TDEE = BMR &times;
-                  коэффициент активности (от 1,2 для сидячего образа жизни
-                  до 1,9 для профессиональных спортсменов).
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  BMR — расход энергии в полном покое. TDEE (Total Daily Energy Expenditure) —
+                  полный суточный расход с учётом физической активности. TDEE = BMR &times;
+                  коэффициент активности (от <strong className="text-foreground">1,2</strong> для сидячего образа жизни
+                  до <strong className="text-foreground">1,9</strong> для профессиональных спортсменов).
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-3">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Какая формула расчёта BMR самая точная?
-                </h3>
-                <p>
-                  Формула Миффлина-Сан Жеора (1990) считается наиболее точной
-                  для большинства людей по данным Американской диетической
-                  ассоциации (ADA). Для спортсменов с известным процентом жира
-                  точнее формула Кетча-МакАрдла.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Формула Миффлина-Сан Жеора (1990) считается наиболее точной для большинства людей
+                  по данным Американской диетической ассоциации (ADA). Для спортсменов с известным
+                  процентом жира точнее формула Кетча-МакАрдла.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-4">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Можно ли есть меньше BMR при похудении?
-                </h3>
-                <p>
-                  Не рекомендуется. Потребление калорий ниже BMR может замедлить
-                  метаболизм, привести к потере мышечной массы, дефициту
-                  питательных веществ и гормональным нарушениям. Безопасный
-                  дефицит — 300–500 ккал от TDEE, но не ниже BMR.
-                </p>
-              </div>
-            </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Не рекомендуется. Потребление калорий ниже BMR может замедлить метаболизм,
+                  привести к потере мышечной массы, дефициту питательных веществ и гормональным
+                  нарушениям. Безопасный дефицит — <strong className="text-foreground">300–500</strong> ккал от TDEE, но не ниже BMR.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-5">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Как часто нужно пересчитывать BMR?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Рекомендуется пересчитывать BMR при изменении веса на <strong className="text-foreground">5</strong> и более
+                  килограммов, а также каждые <strong className="text-foreground">5–10</strong> лет, так как с возрастом метаболизм
+                  замедляется на 3–5% каждое десятилетие.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-6">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Влияют ли силовые тренировки на базовый метаболизм?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Да. Мышечная ткань потребляет больше энергии в покое, чем жировая. Каждый
+                  килограмм мышц сжигает около <strong className="text-foreground">13</strong> ккал в сутки в состоянии покоя.
+                  Регулярные силовые тренировки увеличивают мышечную массу и повышают BMR.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-7">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Почему у мужчин BMR выше, чем у женщин?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  У мужчин в среднем больше мышечной массы и меньше жировой ткани, что требует
+                  больше энергии на поддержание. Кроме того, гормон тестостерон способствует более
+                  высокому метаболизму. Разница составляет <strong className="text-foreground">5–10%</strong>.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
 
           <hr className="border-border" />
 
           {/* Связанные калькуляторы */}
-          <nav className="space-y-4" aria-label="Связанные калькуляторы">
-            <h2 className="text-2xl font-bold text-foreground">
+          <nav className="space-y-3" aria-label="Связанные калькуляторы">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <ArrowUpRight className="h-5 w-5" />
               Связанные калькуляторы
             </h2>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="flex flex-wrap gap-2">
               <Link
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                  Калькулятор калорий
-                </h3>
-                <p className="text-sm mt-1">
-                  Расчёт суточной нормы калорий (TDEE) с учётом активности.
-                </p>
+                <Flame className="h-4 w-4 text-muted-foreground" />
+                Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                  Калькулятор ИМТ
-                </h3>
-                <p className="text-sm mt-1">
-                  Индекс массы тела с визуальной шкалой категорий ВОЗ.
-                </p>
+                <Scale className="h-4 w-4 text-muted-foreground" />
+                Калькулятор ИМТ
+              </Link>
+              <Link
+                href="/zdorovye/telo/idealnyj-ves"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
+              >
+                <Ruler className="h-4 w-4 text-muted-foreground" />
+                Идеальный вес
               </Link>
               <Link
                 href="/zdorovye/telo/protsent-zhira"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                  Процент жира
-                </h3>
-                <p className="text-sm mt-1">
-                  Расчёт процента жира для точной формулы Кетча-МакАрдла.
-                </p>
+                <Target className="h-4 w-4 text-muted-foreground" />
+                Процент жира
               </Link>
               <Link
                 href="/zdorovye/pitanie/defitsit-kalorij"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                  Дефицит калорий
-                </h3>
-                <p className="text-sm mt-1">
-                  Спланируйте похудение с графиком прогресса и оценкой
-                  безопасности.
-                </p>
+                <TrendingDown className="h-4 w-4 text-muted-foreground" />
+                Дефицит калорий
+              </Link>
+              <Link
+                href="/zdorovye/pitanie/norma-vody"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
+              >
+                <Droplets className="h-4 w-4 text-muted-foreground" />
+                Норма воды
               </Link>
             </div>
           </nav>

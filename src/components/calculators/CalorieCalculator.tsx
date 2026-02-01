@@ -11,7 +11,6 @@ import {
   ACTIVITY_LEVELS,
 } from '@/components/inputs/ActivitySelector'
 import { useUserParams } from '@/hooks/useUserParams'
-import { ResultCard } from '@/components/results/ResultCard'
 import { MacroBreakdown } from '@/components/results/MacroBreakdown'
 import { FormulaComparison } from '@/components/results/FormulaComparison'
 import {
@@ -24,7 +23,8 @@ import {
   Weight,
   Calendar,
   AlertTriangle,
-  Target,
+  SlidersHorizontal,
+  ChartPie,
 } from 'lucide-react'
 
 type Goal = 'lose' | 'maintain' | 'gain'
@@ -81,13 +81,6 @@ export function CalorieCalculator() {
   // Прогноз срока
   const weeksNeeded =
     weightDiff > 0 ? Math.ceil(weightDiff / safeWeeklyRate) : 0
-  const targetDate = new Date()
-  targetDate.setDate(targetDate.getDate() + weeksNeeded * 7)
-  const targetDateStr = targetDate.toLocaleDateString('ru-RU', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
 
   const macros = useMemo(
     () => calculateMacros(targetCalories, goal),
@@ -106,43 +99,25 @@ export function CalorieCalculator() {
   const sliderMin = Math.max(30, weight - 40)
   const sliderMax = Math.min(200, weight + 30)
 
-  // Зона нормы на слайдере
-  const sliderRange = sliderMax - sliderMin
-  const normStartRaw = ((idealMin - sliderMin) / sliderRange) * 100
-  const normEndRaw = ((idealMax - sliderMin) / sliderRange) * 100
-  const normStart = Math.max(0, normStartRaw)
-  const normEnd = Math.min(100, normEndRaw)
-  const normWidth = Math.max(0, normEnd - normStart)
-  // Метки видны только если граница реально внутри слайдера
-  const showLeftTick = normStartRaw >= 2 && normStartRaw <= 98
-  const showRightTick = normEndRaw >= 2 && normEndRaw <= 98
-
   // Результат — текст и статус
   const resultTitle =
     goal === 'lose'
-      ? 'Для похудения'
+      ? 'Похудение'
       : goal === 'gain'
-        ? 'Для набора массы'
-        : 'Для поддержания веса'
-
-  const resultDescription =
-    goal === 'maintain'
-      ? 'Ваш текущий баланс энергии'
-      : goal === 'lose'
-        ? `−${weightDiff} кг за ~${weeksNeeded} нед. (к ${targetDateStr})`
-        : `+${weightDiff} кг за ~${weeksNeeded} нед. (к ${targetDateStr})`
-
-  const resultStatus =
-    goal === 'lose' ? 'warning' : goal === 'gain' ? 'info' : 'success'
+        ? 'Набор веса'
+        : 'Поддержание'
 
   if (!loaded) {
     return (
-      <div className="space-y-8">
+      <div className="space-y-6">
         <Card>
           <CardHeader>
-            <CardTitle>Ваши параметры</CardTitle>
+            <CardTitle className="text-base flex items-center gap-2">
+              <SlidersHorizontal className="h-5 w-5" />
+              Ваши параметры
+            </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-4">
             {Array.from({ length: 5 }).map((_, i) => (
               <div key={i} className="space-y-3">
                 <div className="h-4 w-24 rounded bg-muted animate-pulse" />
@@ -151,23 +126,22 @@ export function CalorieCalculator() {
             ))}
           </CardContent>
         </Card>
-        <div className="grid gap-4 md:grid-cols-2">
-          {[1, 2].map((i) => (
-            <div key={i} className="h-32 rounded-xl border bg-muted/50 animate-pulse" />
-          ))}
-        </div>
+        <div className="h-16 rounded-xl border bg-muted/50 animate-pulse" />
       </div>
     )
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4" id="calculator">
       {/* Ввод данных */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Ваши параметры</CardTitle>
+      <Card className="gap-3 py-4">
+        <CardHeader className="pb-0">
+          <CardTitle className="text-base flex items-center gap-2">
+            <SlidersHorizontal className="h-5 w-5" />
+            Ваши параметры
+          </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-3">
           <GenderToggle value={gender} onChange={(v) => setParam('gender', v)} />
 
           <ValueSlider
@@ -177,7 +151,7 @@ export function CalorieCalculator() {
             min={15}
             max={80}
             unit="лет"
-            icon={<Calendar className="h-4 w-4" />}
+            icon={<Calendar className="h-5 w-5" />}
           />
 
           <ValueSlider
@@ -187,7 +161,7 @@ export function CalorieCalculator() {
             min={140}
             max={220}
             unit="см"
-            icon={<Ruler className="h-4 w-4" />}
+            icon={<Ruler className="h-5 w-5" />}
           />
 
           <ValueSlider
@@ -196,7 +170,6 @@ export function CalorieCalculator() {
             onChange={(v) => {
               const diff = v - weight
               setParam('weight', v)
-              // Сдвигаем целевой вес вместе с текущим
               setTargetWeight((prev) => {
                 const next = prev + diff
                 return Math.max(sliderMin, Math.min(sliderMax, next))
@@ -205,126 +178,88 @@ export function CalorieCalculator() {
             min={30}
             max={200}
             unit="кг"
-            icon={<Weight className="h-4 w-4" />}
+            icon={<Weight className="h-5 w-5" />}
           />
 
           <ActivitySelector value={activity} onChange={(v) => setParam('activity', v)} />
-        </CardContent>
-      </Card>
 
-      {/* Результаты */}
-      <div className="space-y-6">
-        {/* BMR + TDEE */}
-        <div className="grid gap-4 md:grid-cols-2">
-          <ResultCard
-            title="Базовый метаболизм (BMR)"
-            value={result.bmr}
-            unit="ккал"
-            description="Расход энергии в покое"
-            status="info"
-          />
-          <ResultCard
-            title="Суточная норма (TDEE)"
-            value={result.tdee}
-            unit="ккал"
-            description="С учётом активности"
-            status="success"
-          />
-        </div>
-
-        {/* Желаемый вес — единый слайдер */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Ваша цель</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-3">
-              {/* Текущий вес слева — Желаемый вес справа */}
-              <div className="flex justify-between items-end">
+            {/* Желаемый вес */}
+            <div className="space-y-1.5 border-t pt-3">
+              <div className="flex justify-between items-center text-center text-sm">
                 <div>
-                  <span className="text-xs text-muted-foreground">Текущий вес</span>
-                  <div>
-                    <span className="text-2xl font-bold">{weight}</span>
-                    <span className="text-muted-foreground ml-1 text-sm">кг</span>
-                  </div>
+                  <p className="text-muted-foreground">Текущий вес</p>
+                  <p className="font-semibold">
+                    {weight}
+                    <span className="font-normal text-muted-foreground ml-0.5">кг</span>
+                  </p>
                 </div>
-                <div className="text-right">
-                  <span className="text-xs text-muted-foreground">Желаемый вес</span>
-                  <div>
-                    <span className="text-2xl font-bold text-primary">
-                      {targetWeight}
-                    </span>
-                    <span className="text-muted-foreground ml-1 text-sm">кг</span>
-                  </div>
+                <div>
+                  <p className="text-muted-foreground">Желаемый вес</p>
+                  <p className="font-semibold text-primary">
+                    {targetWeight}
+                    <span className="font-normal text-muted-foreground ml-0.5">кг</span>
+                  </p>
                 </div>
               </div>
 
-              {/* Слайдер с цветной разметкой нормы на треке */}
-              <div className="relative">
-                {/* Цветной трек — подложка под слайдер */}
-                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1.5 rounded-full pointer-events-none z-0 bg-muted-foreground/15">
-                  {/* Зона нормы */}
-                  {normWidth > 0 && (
-                    <div
-                      className="absolute inset-y-0 bg-emerald-400/40 rounded-full"
-                      style={{
-                        left: `${normStart}%`,
-                        width: `${normWidth}%`,
-                      }}
-                    />
-                  )}
-                </div>
-                <Slider
-                  value={[targetWeight]}
-                  onValueChange={([v]) => setTargetWeight(v)}
-                  min={sliderMin}
-                  max={sliderMax}
-                  step={1}
-                  className="py-2 [&_[data-slot=slider-track]]:bg-transparent"
-                />
-              </div>
+              <Slider
+                value={[targetWeight]}
+                onValueChange={([v]) => setTargetWeight(v)}
+                min={sliderMin}
+                max={sliderMax}
+                step={1}
+                className="py-2"
+              />
 
-              {/* Подпись нормы */}
-              <p className="text-xs text-muted-foreground text-center">
-                Норма: {idealMin}–{idealMax} кг
+              <p className={`text-center text-sm ${goal === 'maintain' ? 'invisible' : ''}`}>
+                <span className="text-primary font-medium">{resultTitle}</span>
+                <span className="text-muted-foreground"> · <span className="font-semibold text-foreground">{goal === 'lose' ? '−' : '+'}{weightDiff}</span> кг за <span className="font-semibold text-foreground">~{weeksNeeded}</span> нед.</span>
+              </p>
+
+              <p className="text-center text-xs text-muted-foreground">
+                Идеальный вес для вашего роста: <span className="font-semibold text-foreground">{idealMin}–{idealMax}</span> кг
               </p>
             </div>
 
-            {/* Результат */}
-            <ResultCard
-              title={resultTitle}
-              value={targetCalories}
-              unit="ккал/день"
-              description={resultDescription}
-              status={resultStatus as 'success' | 'warning' | 'info'}
-            />
-
             {showDeficitWarning && (
               <Alert variant="destructive">
-                <AlertTriangle className="h-4 w-4" />
+                <AlertTriangle className="h-5 w-5" />
                 <AlertDescription>
                   Калорийность ограничена до {minSafe} ккал — минимум для
                   безопасного похудения.
                 </AlertDescription>
               </Alert>
             )}
-          </CardContent>
-        </Card>
+        </CardContent>
+      </Card>
+
+      {/* Главный результат */}
+      <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
+        <p className="text-sm text-muted-foreground mb-1">
+          {goal === 'lose' ? 'Для похудения' : goal === 'gain' ? 'Для набора массы' : 'Ваша норма'}
+        </p>
+        <p className="text-4xl font-bold text-primary">
+          {targetCalories.toLocaleString('ru-RU')}
+          <span className="text-lg font-normal text-muted-foreground ml-1">ккал/день</span>
+        </p>
+        <p className="text-xs text-muted-foreground mt-1">
+          Базовый метаболизм: {result.bmr.toLocaleString('ru-RU')} ккал · TDEE: {result.tdee.toLocaleString('ru-RU')} ккал
+        </p>
+      </div>
+
+      <div className="space-y-4">
 
         {/* БЖУ */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Рекомендуемое БЖУ</CardTitle>
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
+              <ChartPie className="h-5 w-5" />
+              Рекомендуемое БЖУ
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground mb-4">
-              При {targetCalories.toLocaleString('ru-RU')} ккал/день (
-              {goal === 'lose'
-                ? 'похудение'
-                : goal === 'gain'
-                  ? 'набор массы'
-                  : 'поддержание'}
-              )
+            <p className="text-sm text-muted-foreground mb-3">
+              При <span className="font-semibold text-foreground">{targetCalories.toLocaleString('ru-RU')}</span> ккал/день{goal !== 'maintain' && ` (${goal === 'lose' ? 'похудение' : 'набор веса'})`}
             </p>
             <MacroBreakdown
               protein={macros.protein}

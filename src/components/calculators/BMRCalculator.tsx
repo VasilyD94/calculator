@@ -16,6 +16,8 @@ import {
   Info,
   Lightbulb,
   CalendarDays,
+  SlidersHorizontal,
+  Dumbbell,
 } from 'lucide-react'
 
 export function BMRCalculator() {
@@ -28,12 +30,15 @@ export function BMRCalculator() {
 
   if (!loaded) {
     return (
-      <div className="space-y-8">
-        <Card>
-          <CardHeader>
-            <CardTitle>Ваши параметры</CardTitle>
+      <div className="space-y-4">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
+              <SlidersHorizontal className="h-5 w-5" />
+              Ваши параметры
+            </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-4">
             {Array.from({ length: 4 }).map((_, i) => (
               <div key={i} className="space-y-3">
                 <div className="h-4 w-24 rounded bg-muted animate-pulse" />
@@ -48,13 +53,16 @@ export function BMRCalculator() {
   }
 
   return (
-    <div className="space-y-8">
+    <div id="calculator" className="space-y-4">
       {/* Ввод данных */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Ваши параметры</CardTitle>
+      <Card className="gap-3 py-4">
+        <CardHeader className="pb-0">
+          <CardTitle className="text-base flex items-center gap-2">
+            <SlidersHorizontal className="h-5 w-5" />
+            Ваши параметры
+          </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-3">
           <GenderToggle value={gender} onChange={(v) => setParam('gender', v)} />
 
           <ValueSlider
@@ -64,7 +72,7 @@ export function BMRCalculator() {
             min={15}
             max={80}
             unit="лет"
-            icon={<CalendarDays className="h-4 w-4" />}
+            icon={<CalendarDays className="h-5 w-5" />}
           />
 
           <ValueSlider
@@ -74,7 +82,7 @@ export function BMRCalculator() {
             min={140}
             max={220}
             unit="см"
-            icon={<Ruler className="h-4 w-4" />}
+            icon={<Ruler className="h-5 w-5" />}
           />
 
           <ValueSlider
@@ -84,17 +92,17 @@ export function BMRCalculator() {
             min={30}
             max={200}
             unit="кг"
-            icon={<Weight className="h-4 w-4" />}
+            icon={<Weight className="h-5 w-5" />}
           />
         </CardContent>
       </Card>
 
       {/* Результаты */}
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Основной результат */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <Flame className="h-5 w-5" />
               Ваш базовый метаболизм
             </CardTitle>
@@ -132,9 +140,9 @@ export function BMRCalculator() {
         </Card>
 
         {/* Что это значит */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <Info className="h-5 w-5" />
               Что это значит
             </CardTitle>
@@ -170,16 +178,16 @@ export function BMRCalculator() {
         <FormulaComparison results={result.formulas} unit="ккал" />
 
         {/* Важно знать */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <Lightbulb className="h-5 w-5" />
               Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <Info className="h-4 w-4" />
+              <Flame className="h-5 w-5 text-amber-400" />
               <AlertTitle>BMR и TDEE — в чём разница</AlertTitle>
               <AlertDescription>
                 BMR (базовый метаболизм) — расход в полном покое. TDEE (суточный
@@ -188,7 +196,7 @@ export function BMRCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Info className="h-4 w-4" />
+              <Dumbbell className="h-5 w-5 text-blue-400" />
               <AlertTitle>Формула Кетча-МакАрдла</AlertTitle>
               <AlertDescription>
                 Эта формула использует сухую массу тела и точнее для спортсменов.
@@ -198,7 +206,7 @@ export function BMRCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Info className="h-4 w-4" />
+              <CalendarDays className="h-5 w-5 text-violet-400" />
               <AlertTitle>С возрастом BMR снижается</AlertTitle>
               <AlertDescription>
                 После 30 лет базовый метаболизм замедляется на 3–5% каждое

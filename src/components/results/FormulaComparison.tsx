@@ -1,16 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Calculator, CheckCircle, Info } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip'
-import { cn } from '@/lib/utils'
+import { BarChart3 } from 'lucide-react'
 
 export interface FormulaResult {
   name: string
@@ -32,24 +24,11 @@ export function FormulaComparison({ results, unit }: FormulaComparisonProps) {
   const range = max - min
 
   return (
-    <Card>
-      <CardHeader className="pb-3">
-        <CardTitle className="flex items-center gap-2 text-lg">
-          <Calculator className="w-5 h-5 text-primary" />
+    <Card className="gap-3 py-4">
+      <CardHeader className="pb-0">
+        <CardTitle className="text-base flex items-center gap-2">
+          <BarChart3 className="h-5 w-5" />
           Сравнение формул
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <Info className="w-4 h-4 text-muted-foreground" />
-              </TooltipTrigger>
-              <TooltipContent className="max-w-[300px]">
-                <p>
-                  Разные формулы дают разные результаты. Рекомендуемая формула
-                  отмечена галочкой.
-                </p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -69,31 +48,19 @@ export function FormulaComparison({ results, unit }: FormulaComparisonProps) {
                 transition={{ delay: index * 0.05 }}
               >
                 {/* Название формулы + значение */}
-                <div className="flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-1.5 text-sm min-w-0">
-                    {result.recommended && (
-                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                    )}
-                    <span className={cn('truncate', result.recommended && 'font-medium')}>
-                      {result.name}
-                    </span>
-                    {result.recommended && (
-                      <Badge variant="default" className="text-[10px] flex-shrink-0 hidden sm:inline-flex">
-                        Рекомендация
-                      </Badge>
-                    )}
-                  </div>
-                  <span className="text-sm font-semibold flex-shrink-0">
-                    {result.value.toLocaleString('ru-RU')} {unit}
+                <div className="flex items-center justify-between gap-2 text-sm">
+                  <span className={`truncate ${result.recommended ? 'text-foreground' : 'text-muted-foreground'}`}>
+                    {result.name}
+                  </span>
+                  <span className="flex-shrink-0">
+                    <span className={`font-semibold ${result.recommended ? '' : 'text-muted-foreground'}`}>{result.value.toLocaleString('ru-RU')}</span>
+                    <span className="font-normal text-muted-foreground ml-0.5">{unit}</span>
                   </span>
                 </div>
                 {/* Полоска */}
                 <div className="h-2 bg-muted rounded-full overflow-hidden">
                   <motion.div
-                    className={cn(
-                      'h-full rounded-full',
-                      result.recommended ? 'bg-primary' : 'bg-muted-foreground/30'
-                    )}
+                    className={`h-full rounded-full ${result.recommended ? 'bg-primary' : 'bg-muted-foreground/30'}`}
                     initial={{ width: 0 }}
                     animate={{ width: `${barWidth}%` }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -105,25 +72,20 @@ export function FormulaComparison({ results, unit }: FormulaComparisonProps) {
         </div>
 
         {/* Summary */}
-        <div className="mt-4 pt-4 border-t grid grid-cols-3 gap-4 text-center text-sm">
+        <div className="mt-4 pt-3 border-t grid grid-cols-3 gap-2 text-center text-sm">
           <div>
-            <p className="text-muted-foreground">Минимум</p>
-            <p className="font-semibold">
-              {min.toLocaleString('ru-RU')} {unit}
-            </p>
+            <p className="text-xs text-muted-foreground">Минимум</p>
+            <p className="font-semibold">{min.toLocaleString('ru-RU')}</p>
           </div>
           <div className="border-x">
-            <p className="text-muted-foreground">Среднее</p>
-            <p className="font-semibold text-primary">
-              {Math.round(avg).toLocaleString('ru-RU')} {unit}
-            </p>
+            <p className="text-xs text-muted-foreground">Среднее</p>
+            <p className="font-semibold">{Math.round(avg).toLocaleString('ru-RU')}</p>
           </div>
           <div>
-            <p className="text-muted-foreground">Максимум</p>
-            <p className="font-semibold">
-              {max.toLocaleString('ru-RU')} {unit}
-            </p>
+            <p className="text-xs text-muted-foreground">Максимум</p>
+            <p className="font-semibold">{max.toLocaleString('ru-RU')}</p>
           </div>
+          <p className="col-span-3 text-xs text-muted-foreground -mt-1">{unit}</p>
         </div>
       </CardContent>
     </Card>

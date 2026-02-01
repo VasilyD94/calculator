@@ -1,46 +1,53 @@
 'use client'
 
-import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
+import {
+  Armchair,
+  Footprints,
+  Bike,
+  Flame,
+  Dumbbell,
+  Activity,
+} from 'lucide-react'
 
 export const ACTIVITY_LEVELS = [
   {
     id: 'sedentary',
     label: 'Мин.',
     labelFull: 'Минимальная',
-    emoji: '🪑',
+    icon: Armchair,
     description: 'Сидячая работа',
     factor: 1.2,
   },
   {
     id: 'light',
-    label: 'Лёгкая',
+    label: 'Лёгк.',
     labelFull: 'Лёгкая',
-    emoji: '🚶',
+    icon: Footprints,
     description: '1–2 тренировки в неделю',
     factor: 1.375,
   },
   {
     id: 'moderate',
-    label: 'Средняя',
+    label: 'Сред.',
     labelFull: 'Средняя',
-    emoji: '🏃',
+    icon: Bike,
     description: '3–5 тренировок в неделю',
     factor: 1.55,
   },
   {
     id: 'active',
-    label: 'Высокая',
+    label: 'Выс.',
     labelFull: 'Высокая',
-    emoji: '💪',
+    icon: Flame,
     description: '6–7 тренировок в неделю',
     factor: 1.725,
   },
   {
     id: 'extreme',
-    label: 'Экстра',
+    label: 'Экст.',
     labelFull: 'Экстра',
-    emoji: '🏋️',
+    icon: Dumbbell,
     description: 'Проф. спорт / физ. работа',
     factor: 1.9,
   },
@@ -56,44 +63,43 @@ interface ActivitySelectorProps {
 export function ActivitySelector({ value, onChange }: ActivitySelectorProps) {
   return (
     <div className="space-y-3">
-      <Label>Уровень физической активности</Label>
-      <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
-        {ACTIVITY_LEVELS.map((level) => (
-          <button
-            key={level.id}
-            type="button"
-            onClick={() => onChange(level.id)}
-            className={cn(
-              'flex flex-col items-center p-2 sm:p-3 rounded-xl border-2 transition-all duration-200',
-              value === level.id
-                ? 'border-primary bg-primary/5 shadow-md'
-                : 'border-border hover:border-muted-foreground/30 hover:bg-accent'
-            )}
-          >
-            <span className="text-xl sm:text-2xl mb-1">{level.emoji}</span>
-            <span
+      <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+        <Activity className="h-5 w-5" />
+        Активность
+      </span>
+      <div className="grid grid-cols-5 gap-1.5">
+        {ACTIVITY_LEVELS.map((level) => {
+          const Icon = level.icon
+          return (
+            <button
+              key={level.id}
+              type="button"
+              onClick={() => onChange(level.id)}
               className={cn(
-                'text-[10px] sm:text-xs text-center leading-tight font-medium',
+                'flex flex-col items-center py-1.5 px-1 rounded-lg border transition-all duration-200',
                 value === level.id
-                  ? 'text-primary'
-                  : 'text-foreground'
+                  ? 'border-primary bg-primary/5 shadow-sm'
+                  : 'border-border hover:border-muted-foreground/30 hover:bg-accent'
               )}
             >
-              <span className="sm:hidden">{level.label}</span>
-              <span className="hidden sm:inline">{level.labelFull}</span>
-            </span>
-            <span
-              className={cn(
-                'text-[10px] text-center leading-tight mt-1 hidden sm:block',
-                value === level.id
-                  ? 'text-primary/70'
-                  : 'text-muted-foreground'
-              )}
-            >
-              {level.description}
-            </span>
-          </button>
-        ))}
+              <Icon className={cn(
+                'h-5 w-5 mb-0.5',
+                value === level.id ? 'text-primary' : 'text-muted-foreground'
+              )} />
+              <span
+                className={cn(
+                  'text-[9px] sm:text-xs text-center leading-tight',
+                  value === level.id
+                    ? 'text-primary'
+                    : 'text-foreground'
+                )}
+              >
+                <span className="sm:hidden">{level.label}</span>
+                <span className="hidden sm:inline">{level.labelFull}</span>
+              </span>
+            </button>
+          )
+        })}
       </div>
     </div>
   )

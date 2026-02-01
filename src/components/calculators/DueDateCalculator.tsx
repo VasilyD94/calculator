@@ -135,6 +135,7 @@ export function DueDateCalculator() {
                 min={0}
                 max={6}
                 unit="дн."
+                icon={<Stethoscope className="h-4 w-4" />}
               />
             </div>
           )}

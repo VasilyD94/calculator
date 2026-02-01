@@ -28,7 +28,6 @@ export interface DeficitResult {
 
 export interface DeficitScenario {
   label: string
-  emoji: string
   deficit: number
   dailyCalories: number
   weeklyLoss: number
@@ -142,10 +141,10 @@ export function calculateScenarios(
 ): DeficitScenario[] {
   const minSafe = gender === 'female' ? 1200 : 1500
 
-  const scenarios: { label: string; emoji: string; deficit: number }[] = [
-    { label: 'Лёгкий', emoji: '🐢', deficit: 300 },
-    { label: 'Умеренный', emoji: '🚶', deficit: 500 },
-    { label: 'Агрессивный', emoji: '🏃', deficit: 750 },
+  const scenarios: { label: string; deficit: number }[] = [
+    { label: 'Лёгкий', deficit: 300 },
+    { label: 'Умеренный', deficit: 500 },
+    { label: 'Агрессивный', deficit: 750 },
   ]
 
   return scenarios.map((s) => {

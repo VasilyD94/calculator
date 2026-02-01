@@ -1,6 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
+import { Mars, Venus } from 'lucide-react'
 
 interface GenderToggleProps {
   value: 'male' | 'female'
@@ -9,31 +10,31 @@ interface GenderToggleProps {
 
 export function GenderToggle({ value, onChange }: GenderToggleProps) {
   return (
-    <div className="flex gap-2 p-1 bg-muted rounded-xl">
+    <div className="flex gap-1.5 p-1 bg-muted rounded-lg">
       <button
         type="button"
         onClick={() => onChange('male')}
         className={cn(
-          'flex-1 flex items-center justify-center gap-1.5 py-3 px-2 sm:px-4 rounded-lg transition-all duration-200 text-sm',
+          'flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-md transition-all duration-200 text-sm',
           value === 'male'
-            ? 'bg-background shadow-md text-blue-600 font-medium'
+            ? 'bg-background shadow-sm text-blue-600'
             : 'text-muted-foreground hover:text-foreground'
         )}
       >
-        <span className="text-xl">👨</span>
+        <Mars className="h-5 w-5" />
         Мужчина
       </button>
       <button
         type="button"
         onClick={() => onChange('female')}
         className={cn(
-          'flex-1 flex items-center justify-center gap-1.5 py-3 px-2 sm:px-4 rounded-lg transition-all duration-200 text-sm',
+          'flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-md transition-all duration-200 text-sm',
           value === 'female'
-            ? 'bg-background shadow-md text-pink-600 font-medium'
+            ? 'bg-background shadow-sm text-pink-600'
             : 'text-muted-foreground hover:text-foreground'
         )}
       >
-        <span className="text-xl">👩</span>
+        <Venus className="h-5 w-5" />
         Женщина
       </button>
     </div>

@@ -3,11 +3,40 @@ import Link from 'next/link'
 import { MacroCalculator } from '@/components/calculators/MacroCalculator'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { JsonLd } from '@/components/seo/JsonLd'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
+import {
+  Flame,
+  Scale,
+  TrendingDown,
+  GlassWater,
+  Activity,
+  Target,
+  Beef,
+  Droplets,
+  Wheat,
+  AlertTriangle,
+  Lightbulb,
+  BookOpen,
+  Compass,
+  Info,
+  Calculator,
+  Puzzle,
+  Utensils,
+  Search,
+  ClipboardList,
+  CircleHelp,
+  ArrowUpRight,
+} from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Калькулятор БЖУ онлайн — расчёт белков, жиров и углеводов',
   description:
-    'Бесплатный калькулятор БЖУ: расчёт белков, жиров и углеводов для похудения, набора массы и поддержания веса. 5 типов диет, граммы на кг веса.',
+    'Бесплатный калькулятор БЖУ онлайн ✓ 5 типов диет ✓ Расчёт в граммах и на кг веса ✓ Белки, жиры, углеводы для похудения и набора массы. Без регистрации.',
   keywords: [
     'калькулятор БЖУ',
     'расчёт БЖУ',
@@ -19,9 +48,9 @@ export const metadata: Metadata = {
     'расчёт макросов',
   ],
   openGraph: {
-    title: 'Калькулятор БЖУ онлайн — расчёт белков, жиров и углеводов',
+    title: 'Калькулятор БЖУ — расчёт белков, жиров и углеводов',
     description:
-      'Рассчитайте оптимальное соотношение белков, жиров и углеводов. 5 типов диет, граммы на кг веса.',
+      'Рассчитайте оптимальное соотношение БЖУ. 5 типов диет, результат в граммах и на кг веса.',
     type: 'website',
     url: '/zdorovye/pitanie/kalkulyator-bzhu',
   },
@@ -48,6 +77,7 @@ export default function MacroCalculatorPage() {
           description:
             'Онлайн калькулятор белков, жиров и углеводов с 5 типами диет',
           applicationCategory: 'HealthApplication',
+          url: 'https://calcbox.ru/zdorovye/pitanie/kalkulyator-bzhu',
           operatingSystem: 'All',
           offers: {
             '@type': 'Offer',
@@ -68,7 +98,7 @@ export default function MacroCalculatorPage() {
               name: 'Что такое БЖУ?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'БЖУ — это аббревиатура, обозначающая три макронутриента: белки, жиры и углеводы. Эти вещества являются основными источниками энергии и строительным материалом для организма.',
+                text: 'БЖУ — это аббревиатура, обозначающая три макронутриента: белки, жиры и углеводы. Это основные источники энергии и строительный материал для организма. Белки и углеводы дают по 4 ккал на грамм, жиры — 9 ккал.',
               },
             },
             {
@@ -76,7 +106,7 @@ export default function MacroCalculatorPage() {
               name: 'Какое соотношение БЖУ оптимально для похудения?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Для похудения рекомендуется повышенное содержание белка — около 35–40% от калорий. Это помогает сохранить мышечную массу при дефиците калорий. Оптимальное соотношение: белки 35–40%, жиры 25–30%, углеводы 30–35%.',
+                text: 'Для похудения рекомендуется повышенное содержание белка — около 35–40% от калорий. Оптимальное соотношение: белки 35–40%, жиры 25–30%, углеводы 30–35%. Высокий белок помогает сохранить мышечную массу при дефиците калорий.',
               },
             },
             {
@@ -84,7 +114,39 @@ export default function MacroCalculatorPage() {
               name: 'Сколько белка нужно в день?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Для обычного человека — 0,8–1,2 г на кг веса. При занятиях спортом — 1,4–2 г на кг. При похудении — 1,6–2 г на кг для сохранения мышц.',
+                text: 'Для обычного человека — 0,8–1,2 г на кг веса. При занятиях спортом — 1,4–2 г на кг. При похудении — 1,6–2 г на кг для сохранения мышц. При интенсивном спорте — до 2,5 г на кг.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Можно ли полностью убрать жиры из рациона?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Нет, жиры жизненно необходимы. Минимальная безопасная норма — 0,8 г на кг веса. Жиры участвуют в усвоении витаминов A, D, E, K, производстве гормонов и работе нервной системы.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Чем отличается кето-диета от низкоуглеводной?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Низкоуглеводная диета ограничивает углеводы до 25% от калорий (около 100–150 г в день). Кето-диета — это экстремальное ограничение до 5% (менее 50 г), при котором организм переходит в состояние кетоза и использует жиры как основной источник энергии.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Нужно ли считать БЖУ или достаточно калорий?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Калории определяют, будете вы худеть или набирать вес. БЖУ определяет качество — сохраните ли мышцы или потеряете их. Два рациона с одинаковой калорийностью, но разным БЖУ дадут разные результаты. Для оптимального результата важно контролировать и то, и другое.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Как часто нужно пересчитывать норму БЖУ?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Пересчитывайте при изменении веса на 5 кг и более, при смене уровня активности, при переходе на другой тип диеты или при отсутствии прогресса в течение 3–4 недель.',
               },
             },
           ],
@@ -104,19 +166,19 @@ export default function MacroCalculatorPage() {
               '@type': 'HowToStep',
               position: 1,
               name: 'Укажите параметры тела',
-              text: 'Введите пол, возраст, рост, вес и уровень активности.',
+              text: 'Укажите пол, возраст, рост, вес и уровень физической активности.',
             },
             {
               '@type': 'HowToStep',
               position: 2,
-              name: 'Выберите цель',
-              text: 'Укажите вашу цель: похудение, поддержание или набор массы.',
+              name: 'Выберите цель и тип питания',
+              text: 'Укажите цель (похудение, поддержание, набор массы) и подходящий тип диеты из 5 вариантов.',
             },
             {
               '@type': 'HowToStep',
               position: 3,
-              name: 'Выберите тип питания',
-              text: 'Выберите подходящий тип диеты — сбалансированная, высокобелковая, низкоуглеводная, кето или для спортсменов.',
+              name: 'Получите результат',
+              text: 'Калькулятор мгновенно покажет количество граммов белков, жиров и углеводов, а также сравнение всех типов диет.',
             },
           ],
         }}
@@ -163,15 +225,92 @@ export default function MacroCalculatorPage() {
           </p>
         </header>
 
-        <section className="mb-12">
+        {/* Как пользоваться */}
+        <section className="mb-8 space-y-3 text-sm text-muted-foreground">
+          <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+            <BookOpen className="h-5 w-5" />
+            Как пользоваться калькулятором
+          </h2>
+          <div className="space-y-2">
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                1
+              </span>
+              <p>
+                Укажите пол, возраст, рост, вес и уровень физической
+                активности.
+              </p>
+            </div>
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                2
+              </span>
+              <p>
+                Выберите цель (похудение, поддержание, набор массы)
+                и подходящий тип диеты из 5 вариантов.
+              </p>
+            </div>
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                3
+              </span>
+              <p>
+                Калькулятор мгновенно покажет количество граммов белков,
+                жиров и углеводов, а также сравнение всех типов диет.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-12" aria-labelledby="calculator-heading">
+          <h2 id="calculator-heading" className="sr-only">Расчёт белков, жиров и углеводов</h2>
           <MacroCalculator />
         </section>
 
+        {/* Вам также будет полезно */}
+        <div className="mb-10 space-y-3">
+          <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+            <Compass className="h-5 w-5" />
+            Вам также будет полезно
+          </h2>
+          <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
+            <Link
+              href="/zdorovye/pitanie/kalkulyator-kalorij"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор калорий</span>
+            </Link>
+            <Link
+              href="/zdorovye/pitanie/defitsit-kalorij"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <TrendingDown className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Дефицит калорий</span>
+            </Link>
+            <Link
+              href="/zdorovye/telo/kalkulyator-imt"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор ИМТ</span>
+            </Link>
+            <Link
+              href="/zdorovye/telo/bazovyj-metabolizm"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Activity className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Базовый метаболизм</span>
+            </Link>
+          </div>
+        </div>
+
         {/* SEO-контент */}
-        <section className="space-y-10 text-base leading-7 text-muted-foreground">
-          {/* Блок 1 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+        <section className="space-y-8 text-sm text-muted-foreground">
+          {/* Блок 1: Что такое БЖУ */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Info className="h-5 w-5" />
               Что такое БЖУ и зачем их считать
             </h2>
             <p>
@@ -182,7 +321,11 @@ export default function MacroCalculatorPage() {
               обеспечивают энергией мозг и мышцы.
             </p>
             <p>
-              Простой подсчёт калорий не даёт полной картины. Два рациона
+              Простой подсчёт{' '}
+              <Link href="/zdorovye/pitanie/kalkulyator-kalorij" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                калорий
+              </Link>{' '}
+              не даёт полной картины. Два рациона
               с одинаковой калорийностью, но разным{' '}
               <strong className="text-foreground">соотношением БЖУ</strong>,
               дадут совершенно разные результаты. Рацион с высоким содержанием
@@ -194,9 +337,10 @@ export default function MacroCalculatorPage() {
 
           <hr className="border-border" />
 
-          {/* Блок 2 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+          {/* Блок 2: Как работает калькулятор */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Calculator className="h-5 w-5" />
               Как работает калькулятор БЖУ
             </h2>
             <p>
@@ -209,40 +353,56 @@ export default function MacroCalculatorPage() {
             <p>
               Результат обновляется мгновенно при изменении любого параметра.
               Вы можете переключать типы диет и сразу видеть, как меняется
-              количество граммов каждого макронутриента.
+              количество граммов каждого макронутриента. Калькулятор также
+              показывает количество белков, жиров и углеводов{' '}
+              <strong className="text-foreground">на килограмм веса</strong> —
+              это удобно для сравнения с научными рекомендациями.
             </p>
           </div>
 
           <hr className="border-border" />
 
-          {/* Блок 3 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+          {/* Блок 3: Роль каждого макронутриента */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Puzzle className="h-5 w-5" />
               Роль каждого макронутриента
             </h2>
             <div className="grid gap-3 md:grid-cols-3">
-              <div className="rounded-lg border p-4 space-y-1">
-                <h3 className="font-semibold text-foreground">🥩 Белки</h3>
-                <p className="text-sm">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Beef className="h-5 w-5 text-rose-300" />
+                  Белки
+                </h3>
+                <p>
                   Строительный материал для мышц, иммунной системы, гормонов
-                  и ферментов. 1 грамм = 4 ккал. При похудении защищают мышцы
-                  от разрушения. Норма: 0,8–2 г на кг веса.
+                  и ферментов. <strong className="text-foreground">1 грамм = 4 ккал</strong>.
+                  При похудении защищают мышцы от разрушения.
+                  Норма: <strong className="text-foreground">0,8–2</strong> г на кг веса.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-1">
-                <h3 className="font-semibold text-foreground">🥑 Жиры</h3>
-                <p className="text-sm">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Droplets className="h-5 w-5 text-amber-300" />
+                  Жиры
+                </h3>
+                <p>
                   Необходимы для усвоения жирорастворимых витаминов (A, D, E, K),
-                  работы нервной системы и выработки гормонов. 1 грамм = 9 ккал.
-                  Минимум: 0,8 г на кг веса.
+                  работы нервной системы и выработки гормонов.{' '}
+                  <strong className="text-foreground">1 грамм = 9 ккал</strong>.
+                  Минимум: <strong className="text-foreground">0,8</strong> г на кг веса.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-1">
-                <h3 className="font-semibold text-foreground">🍞 Углеводы</h3>
-                <p className="text-sm">
-                  Основной источник энергии для мозга и мышц. 1 грамм = 4 ккал.
-                  Предпочтительны сложные: крупы, овощи, цельнозерновые. Простые
-                  углеводы (сахар) лучше ограничивать.
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Wheat className="h-5 w-5 text-orange-300" />
+                  Углеводы
+                </h3>
+                <p>
+                  Основной источник энергии для мозга и мышц.{' '}
+                  <strong className="text-foreground">1 грамм = 4 ккал</strong>.
+                  Предпочтительны сложные: крупы, овощи, цельнозерновые.
+                  Простые углеводы (сахар) лучше ограничивать.
                 </p>
               </div>
             </div>
@@ -250,269 +410,540 @@ export default function MacroCalculatorPage() {
 
           <hr className="border-border" />
 
-          {/* Блок 4 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+          {/* Блок 4: 5 типов питания */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Utensils className="h-5 w-5" />
               5 типов питания в калькуляторе
             </h2>
-            <ul className="space-y-3 pl-5 list-disc marker:text-primary">
+            <p>
+              Калькулятор предлагает <strong className="text-foreground">5</strong> готовых
+              профилей питания с разным распределением макронутриентов.
+              Выбирайте тип в зависимости от вашей цели и образа жизни:
+            </p>
+            <div className="space-y-2">
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  1
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
+                    Сбалансированная
+                    <span className="font-normal text-xs text-muted-foreground"> 30/30/40</span>
+                  </p>
+                  <p>
+                    Классическое соотношение, подходит большинству людей для
+                    поддержания здоровья и веса.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  2
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
+                    Высокобелковая
+                    <span className="font-normal text-xs text-muted-foreground"> 40/30/30</span>
+                  </p>
+                  <p>
+                    Акцент на белок для сохранения мышц при похудении или их
+                    роста при наборе массы.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  3
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
+                    Низкоуглеводная
+                    <span className="font-normal text-xs text-muted-foreground"> 35/40/25</span>
+                  </p>
+                  <p>
+                    Ограничение углеводов при увеличении доли жиров. Помогает
+                    контролировать аппетит и уровень сахара в крови.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  4
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
+                    Кето
+                    <span className="font-normal text-xs text-muted-foreground"> 25/70/5</span>
+                  </p>
+                  <p>
+                    Экстремальное ограничение углеводов (менее <strong className="text-foreground">50</strong> г
+                    в день). Организм переключается на жиры как основной источник
+                    энергии — состояние кетоза.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  5
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
+                    Для спортсменов
+                    <span className="font-normal text-xs text-muted-foreground"> 30/20/50</span>
+                  </p>
+                  <p>
+                    Больше углеводов для обеспечения энергией при интенсивных
+                    тренировках. Жиры снижены до минимума.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 5: БЖУ для похудения и набора */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Target className="h-5 w-5" />
+              БЖУ для похудения и набора массы
+            </h2>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="space-y-3 rounded-lg border p-4">
+                <h3 className="font-semibold text-foreground">
+                  Для похудения
+                </h3>
+                <p>
+                  Ключевой момент — достаточное количество белка. При{' '}
+                  <Link href="/zdorovye/pitanie/defitsit-kalorij" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                    дефиците калорий
+                  </Link>{' '}
+                  организм теряет не только жир, но и мышечную массу.
+                  Высокое потребление белка (<strong className="text-foreground">1,6–2</strong> г/кг)
+                  помогает сохранить мышцы.
+                </p>
+                <div className="flex gap-2 items-start">
+                  <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+                  <p>
+                    Не рекомендуется сочетать жёсткий дефицит калорий с
+                    низкобелковой диетой — это приведёт к потере мышц
+                    и замедлению метаболизма.
+                  </p>
+                </div>
+              </div>
+              <div className="space-y-3 rounded-lg border p-4">
+                <h3 className="font-semibold text-foreground">
+                  Для набора массы
+                </h3>
+                <p>
+                  Для роста мышц нужен профицит калорий и достаточно белка.
+                  Оптимально: профицит <strong className="text-foreground">300–500</strong> ккал
+                  и <strong className="text-foreground">1,6–2</strong> г белка на кг веса.
+                </p>
+                <div className="flex gap-2 items-start">
+                  <Lightbulb className="h-5 w-5 shrink-0 text-blue-400" />
+                  <p>
+                    При наборе массы <strong className="text-foreground">углеводы не менее важны</strong>,
+                    чем белок — они необходимы для восполнения гликогена
+                    в мышцах после тренировок.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p className="text-sm">
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                Рассчитать свою норму БЖУ&nbsp;→
+              </a>
+            </p>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 6: Норма белка — таблица */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Beef className="h-5 w-5" />
+              Норма белка в зависимости от цели
+            </h2>
+            <p>
+              Потребность в белке сильно зависит от цели и уровня
+              физической активности. В таблице ниже приведены научно обоснованные
+              нормы:
+            </p>
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="w-full text-left border-collapse text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-2 pr-2 font-semibold text-foreground">Цель</th>
+                    <th className="py-2 px-2 font-semibold text-foreground">Белок, г/кг</th>
+                    <th className="py-2 pl-2 font-semibold text-foreground">Пример (75 кг)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">Поддержание</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">0,8–1,2</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">60–90</strong> г</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">Похудение</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">1,6–2,0</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">120–150</strong> г</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">Набор мышц</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">1,6–2,2</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">120–165</strong> г</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 pr-2">Интенсивный спорт</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">1,8–2,5</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">135–188</strong> г</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm rounded-md bg-primary/5 text-foreground p-3">
+              Таблица показывает средние значения. Точную норму для вашего веса
+              и цели рассчитает{' '}
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                калькулятор выше&nbsp;→
+              </a>
+            </p>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 7: Как подобрать тип питания */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Search className="h-5 w-5" />
+              Как подобрать тип питания
+            </h2>
+            <p>
+              Выбор типа диеты зависит от вашей цели, образа жизни
+              и индивидуальных особенностей организма:
+            </p>
+            <ul className="space-y-2 pl-5 list-disc marker:text-primary">
               <li>
-                <strong className="text-foreground">Сбалансированная</strong>{' '}
-                (30/30/40) — классическое соотношение, подходит большинству
-                людей для поддержания здоровья и веса.
+                <strong className="text-foreground">Хотите похудеть без потери мышц</strong> —
+                выберите высокобелковую диету. Повышенный белок помогает
+                сохранить мышечную массу при дефиците калорий.
               </li>
               <li>
-                <strong className="text-foreground">Высокобелковая</strong>{' '}
-                (40/30/30) — акцент на белок для сохранения мышц при
-                похудении или их роста при наборе массы.
+                <strong className="text-foreground">Занимаетесь спортом регулярно</strong> —
+                подойдёт спортивная диета с акцентом на углеводы. Они
+                обеспечивают энергию для тренировок и восстановления.
               </li>
               <li>
-                <strong className="text-foreground">Низкоуглеводная</strong>{' '}
-                (35/40/25) — ограничение углеводов при увеличении доли
-                жиров. Помогает контролировать аппетит.
+                <strong className="text-foreground">Хотите контролировать аппетит</strong> —
+                попробуйте низкоуглеводную диету. Жиры и белки дают более
+                длительное чувство сытости.
               </li>
               <li>
-                <strong className="text-foreground">Кето</strong>{' '}
-                (25/70/5) — экстремальное ограничение углеводов (менее 50 г в
-                день). Организм переключается на жиры как основной источник
-                энергии.
+                <strong className="text-foreground">Нет специфических целей</strong> —
+                сбалансированная диета является оптимальным выбором для
+                большинства людей.
               </li>
               <li>
-                <strong className="text-foreground">Для спортсменов</strong>{' '}
-                (30/20/50) — больше углеводов для обеспечения энергией при
-                интенсивных тренировках.
+                <strong className="text-foreground">Рассматриваете кето</strong> —
+                проконсультируйтесь с врачом. Кето-диета имеет
+                противопоказания и требует контроля.
               </li>
             </ul>
           </div>
 
           <hr className="border-border" />
 
-          {/* Блок 5 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
-              Как пользоваться калькулятором
+          {/* Блок 8: Примеры расчёта */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <ClipboardList className="h-5 w-5" />
+              Примеры расчёта БЖУ
             </h2>
-            <div className="space-y-3">
-              <div className="flex gap-3">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-sm font-bold">
-                  1
-                </span>
+            <p>
+              Рассмотрим два примера расчёта по формуле Миффлина-Сан Жеора
+              с высокобелковой диетой (40/30/30):
+            </p>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="rounded-lg border p-4 space-y-2">
+                <h3 className="font-semibold text-foreground">
+                  Женщина, 30 лет, похудение
+                </h3>
                 <p>
-                  Укажите пол, возраст, рост, вес и уровень физической
-                  активности.
+                  Рост <strong className="text-foreground">165</strong> см,
+                  вес <strong className="text-foreground">68</strong> кг,
+                  средняя активность.
                 </p>
+                <ul className="space-y-1 pl-5 list-disc marker:text-primary">
+                  <li>TDEE: <strong className="text-foreground">2079</strong> ккал</li>
+                  <li>Для похудения (−15%): <strong className="text-foreground">1767</strong> ккал</li>
+                  <li>Белки: <strong className="text-foreground">177</strong> г (40%)</li>
+                  <li>Жиры: <strong className="text-foreground">59</strong> г (30%)</li>
+                  <li>Углеводы: <strong className="text-foreground">133</strong> г (30%)</li>
+                </ul>
               </div>
-              <div className="flex gap-3">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-sm font-bold">
-                  2
-                </span>
+              <div className="rounded-lg border p-4 space-y-2">
+                <h3 className="font-semibold text-foreground">
+                  Мужчина, 25 лет, набор массы
+                </h3>
                 <p>
-                  Выберите вашу цель — похудение, поддержание или набор
-                  массы.
+                  Рост <strong className="text-foreground">180</strong> см,
+                  вес <strong className="text-foreground">75</strong> кг,
+                  высокая активность.
                 </p>
-              </div>
-              <div className="flex gap-3">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-sm font-bold">
-                  3
-                </span>
-                <p>
-                  Выберите тип питания — калькулятор мгновенно покажет
-                  количество граммов белков, жиров и углеводов.
-                </p>
+                <ul className="space-y-1 pl-5 list-disc marker:text-primary">
+                  <li>TDEE: <strong className="text-foreground">3009</strong> ккал</li>
+                  <li>Для набора (+15%): <strong className="text-foreground">3460</strong> ккал</li>
+                  <li>Белки: <strong className="text-foreground">346</strong> г (40%)</li>
+                  <li>Жиры: <strong className="text-foreground">115</strong> г (30%)</li>
+                  <li>Углеводы: <strong className="text-foreground">260</strong> г (30%)</li>
+                </ul>
               </div>
             </div>
+            <p>
+              Обратите внимание: при наборе массы количество белка значительно
+              выше за счёт большей калорийности. Используйте
+              показатель <strong className="text-foreground">«г на кг»</strong> для
+              контроля — он не должен превышать <strong className="text-foreground">2,5</strong> г/кг.
+            </p>
+            <p className="text-sm">
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                Рассчитать свою норму БЖУ&nbsp;→
+              </a>
+            </p>
           </div>
 
           <hr className="border-border" />
 
-          {/* Блок 6 */}
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="space-y-4 rounded-lg border p-5">
-              <h2 className="text-xl font-bold text-foreground">
-                БЖУ для похудения
-              </h2>
-              <p>
-                Ключевой момент при похудении — достаточное количество белка.
-                При дефиците калорий организм теряет не только жир, но
-                и мышечную массу. Высокое потребление белка (1,6–2 г/кг)
-                помогает сохранить мышцы.
-              </p>
-              <p className="text-sm rounded-md bg-destructive/10 text-destructive p-3">
-                Не рекомендуется сочетать жёсткий дефицит калорий с
-                низкобелковой диетой — это приведёт к потере мышц,
-                замедлению метаболизма и эффекту «йо-йо».
-              </p>
-            </div>
-            <div className="space-y-4 rounded-lg border p-5">
-              <h2 className="text-xl font-bold text-foreground">
-                БЖУ для набора массы
-              </h2>
-              <p>
-                Для роста мышц нужен профицит калорий и достаточно белка.
-                Оптимально: профицит 300–500 ккал и 1,6–2 г белка на кг
-                веса. Углеводы обеспечивают энергию для тренировок.
-              </p>
-              <p className="text-sm rounded-md bg-primary/5 text-foreground p-3">
-                При наборе массы <strong>углеводы не менее важны</strong>,
-                чем белок — они необходимы для восполнения гликогена
-                в мышцах после тренировок.
-              </p>
-            </div>
-          </div>
-
-          <hr className="border-border" />
-
-          {/* Блок 7 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
-              Норма белка в зависимости от цели
+          {/* Блок 9: Советы */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
+              Практические советы по контролю БЖУ
             </h2>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b">
-                    <th className="text-left py-2 pr-4 font-semibold text-foreground">
-                      Цель
-                    </th>
-                    <th className="text-left py-2 pr-4 font-semibold text-foreground">
-                      Белок (г/кг)
-                    </th>
-                    <th className="text-left py-2 font-semibold text-foreground">
-                      Пример (75 кг)
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b">
-                    <td className="py-2 pr-4">Поддержание веса</td>
-                    <td className="py-2 pr-4">0,8–1,2</td>
-                    <td className="py-2">60–90 г</td>
-                  </tr>
-                  <tr className="border-b">
-                    <td className="py-2 pr-4">Похудение</td>
-                    <td className="py-2 pr-4">1,6–2,0</td>
-                    <td className="py-2">120–150 г</td>
-                  </tr>
-                  <tr className="border-b">
-                    <td className="py-2 pr-4">Набор мышц</td>
-                    <td className="py-2 pr-4">1,6–2,2</td>
-                    <td className="py-2">120–165 г</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 pr-4">Интенсивный спорт</td>
-                    <td className="py-2 pr-4">1,8–2,5</td>
-                    <td className="py-2">135–188 г</td>
-                  </tr>
-                </tbody>
-              </table>
+            <p>
+              Контроль макронутриентов не должен превращаться в стресс. Вот
+              несколько рекомендаций для начала:
+            </p>
+            <div className="space-y-2">
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">1</span>
+                <div>
+                  <p className="text-foreground font-medium">Начните с белка</p>
+                  <p>
+                    Белок — самый сложный макронутриент для набора. Планируйте
+                    его в каждый приём пищи: мясо, рыба, яйца, творог,
+                    бобовые.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">2</span>
+                <div>
+                  <p className="text-foreground font-medium">Не бойтесь жиров</p>
+                  <p>
+                    Полезные жиры (авокадо, орехи, оливковое масло, рыба)
+                    необходимы для здоровья. Ограничивать стоит только
+                    трансжиры и избыток насыщенных.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">3</span>
+                <div>
+                  <p className="text-foreground font-medium">Выбирайте сложные углеводы</p>
+                  <p>
+                    Крупы, овощи, цельнозерновой хлеб дают стабильную энергию.
+                    Простые углеводы (сахар, белый хлеб) вызывают скачки
+                    глюкозы и быстрый голод.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">4</span>
+                <div>
+                  <p className="text-foreground font-medium">Используйте приложения</p>
+                  <p>
+                    На первых порах используйте приложения для подсчёта БЖУ.
+                    Через <strong className="text-foreground">2–3</strong> недели вы научитесь
+                    оценивать порции интуитивно.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">5</span>
+                <div>
+                  <p className="text-foreground font-medium">Пейте достаточно воды</p>
+                  <p>
+                    При повышенном потреблении белка организму нужно больше воды.
+                    Рекомендуется{' '}
+                    <Link href="/zdorovye/pitanie/norma-vody" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                      минимум 30 мл на кг веса
+                    </Link>{' '}
+                    в день.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
+              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <p>
+                Калькулятор даёт ориентировочные значения. При заболеваниях
+                почек, печени, диабете или расстройствах пищевого поведения
+                проконсультируйтесь с врачом перед изменением рациона.
+              </p>
             </div>
           </div>
 
           <hr className="border-border" />
 
           {/* FAQ */}
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-foreground">
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <CircleHelp className="h-5 w-5" />
               Часто задаваемые вопросы
             </h2>
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+            <Accordion type="multiple" className="w-full">
+              <AccordionItem value="faq-1">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Что такое БЖУ?
-                </h3>
-                <p>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
                   БЖУ — аббревиатура, обозначающая белки, жиры и углеводы.
                   Это три основных макронутриента, из которых организм получает
-                  энергию и строительный материал для клеток.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+                  энергию и строительный материал для клеток. Белки и углеводы
+                  дают по <strong className="text-foreground">4</strong> ккал на грамм,
+                  жиры — <strong className="text-foreground">9</strong> ккал.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-2">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Какое соотношение БЖУ оптимально для похудения?
-                </h3>
-                <p>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
                   Для похудения рекомендуется повышенное содержание белка —
-                  около 35–40% от калорий. Это помогает сохранить мышечную
-                  массу при дефиците калорий. Оптимальное соотношение:
-                  белки 35–40%, жиры 25–30%, углеводы 30–35%.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+                  около <strong className="text-foreground">35–40%</strong> от калорий.
+                  Это помогает сохранить мышечную массу при дефиците калорий.
+                  Оптимальное соотношение: белки 35–40%, жиры 25–30%,
+                  углеводы 30–35%.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-3">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Сколько белка нужно в день?
-                </h3>
-                <p>
-                  Для обычного человека — 0,8–1,2 г на кг веса. При занятиях
-                  спортом — 1,4–2 г на кг. При похудении — 1,6–2 г на кг
-                  для сохранения мышц.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Для обычного человека — <strong className="text-foreground">0,8–1,2</strong> г
+                  на кг веса. При занятиях спортом — <strong className="text-foreground">1,4–2</strong> г
+                  на кг. При похудении — <strong className="text-foreground">1,6–2</strong> г на кг
+                  для сохранения мышц. При интенсивном спорте — до{' '}
+                  <strong className="text-foreground">2,5</strong> г на кг.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-4">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Можно ли полностью убрать жиры из рациона?
-                </h3>
-                <p>
-                  Нет, жиры жизненно необходимы. Минимальная безопасная норма —
-                  0,8 г на кг веса. Жиры участвуют в усвоении витаминов A, D,
-                  E, K, производстве гормонов и работе нервной системы.
-                </p>
-              </div>
-            </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Нет, жиры жизненно необходимы. Минимальная безопасная норма —{' '}
+                  <strong className="text-foreground">0,8</strong> г на кг веса.
+                  Жиры участвуют в усвоении витаминов A, D, E, K, производстве
+                  гормонов и работе нервной системы.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-5">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Чем отличается кето-диета от низкоуглеводной?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Низкоуглеводная диета ограничивает углеводы до{' '}
+                  <strong className="text-foreground">25%</strong> от калорий
+                  (около <strong className="text-foreground">100–150</strong> г в день).
+                  Кето-диета — это экстремальное ограничение до{' '}
+                  <strong className="text-foreground">5%</strong> (менее{' '}
+                  <strong className="text-foreground">50</strong> г), при котором организм
+                  переходит в состояние кетоза и использует жиры как основной
+                  источник энергии.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-6">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Нужно ли считать БЖУ или достаточно калорий?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Калории определяют, будете вы худеть или набирать вес. БЖУ
+                  определяет качество — сохраните ли мышцы или потеряете их.
+                  Два рациона с одинаковой калорийностью, но разным БЖУ дадут
+                  разные результаты. Для оптимального результата важно
+                  контролировать и то, и другое.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-7">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Как часто нужно пересчитывать норму БЖУ?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Пересчитывайте при изменении веса
+                  на <strong className="text-foreground">5</strong> кг и более, при смене уровня
+                  активности, при переходе на другой тип диеты или при
+                  отсутствии прогресса в течение <strong className="text-foreground">3–4</strong> недель.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
 
           <hr className="border-border" />
 
           {/* Связанные калькуляторы */}
-          <nav className="space-y-4" aria-label="Связанные калькуляторы">
-            <h2 className="text-2xl font-bold text-foreground">
+          <nav className="space-y-3" aria-label="Связанные калькуляторы">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <ArrowUpRight className="h-5 w-5" />
               Связанные калькуляторы
             </h2>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="flex flex-wrap gap-2">
               <Link
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                  Калькулятор калорий
-                </h3>
-                <p className="text-sm mt-1">
-                  Расчёт суточной нормы калорий по 5 научным формулам.
-                </p>
+                <Flame className="h-4 w-4 text-muted-foreground" />
+                Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/pitanie/defitsit-kalorij"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                  Дефицит калорий
-                </h3>
-                <p className="text-sm mt-1">
-                  Узнайте оптимальный дефицит для безопасного похудения.
-                </p>
+                <TrendingDown className="h-4 w-4 text-muted-foreground" />
+                Дефицит калорий
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                  Калькулятор ИМТ
-                </h3>
-                <p className="text-sm mt-1">
-                  Рассчитайте индекс массы тела и узнайте, в норме ли ваш
-                  вес.
-                </p>
+                <Scale className="h-4 w-4 text-muted-foreground" />
+                Калькулятор ИМТ
               </Link>
               <Link
-                href="/zdorovye/sport/belok-dlya-sportsmenov"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                href="/zdorovye/telo/bazovyj-metabolizm"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                  Белок для спортсменов
-                </h3>
-                <p className="text-sm mt-1">
-                  Точный расчёт нормы белка с учётом вида спорта
-                  и интенсивности.
-                </p>
+                <Activity className="h-4 w-4 text-muted-foreground" />
+                Базовый метаболизм
+              </Link>
+              <Link
+                href="/zdorovye/pitanie/norma-vody"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
+              >
+                <GlassWater className="h-4 w-4 text-muted-foreground" />
+                Норма воды
+              </Link>
+              <Link
+                href="/zdorovye/telo/idealnyj-ves"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
+              >
+                <Target className="h-4 w-4 text-muted-foreground" />
+                Идеальный вес
               </Link>
             </div>
           </nav>

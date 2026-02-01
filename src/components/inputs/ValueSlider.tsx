@@ -1,7 +1,6 @@
 'use client'
 
 import { Slider } from '@/components/ui/slider'
-import { Label } from '@/components/ui/label'
 
 interface ValueSliderProps {
   label: string
@@ -25,15 +24,15 @@ export function ValueSlider({
   icon,
 }: ValueSliderProps) {
   return (
-    <div className="space-y-3">
+    <div className="space-y-1">
       <div className="flex justify-between items-center">
-        <Label className="flex items-center gap-2">
+        <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
           {icon}
           {label}
-        </Label>
-        <div className="text-right">
-          <span className="text-2xl font-bold text-primary">{value}</span>
-          <span className="text-muted-foreground ml-1">{unit}</span>
+        </span>
+        <div className="text-right text-sm">
+          <span className="font-semibold">{value}</span>
+          <span className="font-normal text-muted-foreground ml-0.5">{unit}</span>
         </div>
       </div>
 
@@ -43,7 +42,7 @@ export function ValueSlider({
         min={min}
         max={max}
         step={step}
-        className="py-2"
+        className="py-1.5"
       />
 
     </div>

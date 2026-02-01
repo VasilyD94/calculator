@@ -9,24 +9,47 @@ import {
   ACTIVITY_LEVELS,
 } from '@/components/inputs/ActivitySelector'
 import { useUserParams } from '@/hooks/useUserParams'
-import { ResultCard } from '@/components/results/ResultCard'
 import { MacroBreakdown } from '@/components/results/MacroBreakdown'
 import {
   calculateMacrosFull,
-  calculateAllDiets,
   DIET_PROFILES,
   type DietType,
 } from '@/lib/calculations/macros'
-import { Ruler, Weight, Calendar, Target, Utensils } from 'lucide-react'
+import {
+  Ruler,
+  Weight,
+  Calendar,
+  Target,
+  Utensils,
+  TrendingDown,
+  Equal,
+  TrendingUp,
+  Scale,
+  Beef,
+  LeafyGreen,
+  Flame,
+  Dumbbell,
+  SlidersHorizontal,
+  ChartPie,
+  type LucideIcon,
+} from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 type Goal = 'lose' | 'maintain' | 'gain'
 
-const GOALS: { id: Goal; label: string; emoji: string }[] = [
-  { id: 'lose', label: 'Похудение', emoji: '📉' },
-  { id: 'maintain', label: 'Поддержание', emoji: '⚖️' },
-  { id: 'gain', label: 'Набор массы', emoji: '📈' },
+const GOALS: { id: Goal; label: string; icon: LucideIcon; color: string }[] = [
+  { id: 'lose', label: 'Похудение', icon: TrendingDown, color: 'text-red-400' },
+  { id: 'maintain', label: 'Поддержание', icon: Equal, color: 'text-green-400' },
+  { id: 'gain', label: 'Набор массы', icon: TrendingUp, color: 'text-blue-400' },
 ]
+
+const DIET_META: Record<string, { icon: LucideIcon; color: string }> = {
+  balanced: { icon: Scale, color: 'text-green-400' },
+  highProtein: { icon: Beef, color: 'text-rose-400' },
+  lowCarb: { icon: LeafyGreen, color: 'text-emerald-400' },
+  keto: { icon: Flame, color: 'text-orange-400' },
+  athlete: { icon: Dumbbell, color: 'text-blue-400' },
+}
 
 export function MacroCalculator() {
   const { gender, age, weight, height, activity, setParam, loaded } = useUserParams()
@@ -50,32 +73,22 @@ export function MacroCalculator() {
     [gender, age, weight, height, activityFactor, goal, dietType]
   )
 
-  const allDiets = useMemo(
-    () =>
-      calculateAllDiets({
-        gender,
-        age,
-        weight,
-        height,
-        activityFactor,
-        goal,
-      }),
-    [gender, age, weight, height, activityFactor, goal]
-  )
-
   const currentDiet = DIET_PROFILES.find((d) => d.id === dietType) ?? DIET_PROFILES[0]
 
   const goalLabel =
-    goal === 'lose' ? 'похудение' : goal === 'gain' ? 'набор массы' : 'поддержание'
+    goal === 'lose' ? 'Для похудения' : goal === 'gain' ? 'Для набора массы' : 'Ваша норма'
 
   if (!loaded) {
     return (
-      <div className="space-y-8">
-        <Card>
-          <CardHeader>
-            <CardTitle>Ваши параметры</CardTitle>
+      <div className="space-y-6">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
+              <SlidersHorizontal className="h-5 w-5" />
+              Ваши параметры
+            </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-4">
             {Array.from({ length: 5 }).map((_, i) => (
               <div key={i} className="space-y-3">
                 <div className="h-4 w-24 rounded bg-muted animate-pulse" />
@@ -84,19 +97,22 @@ export function MacroCalculator() {
             ))}
           </CardContent>
         </Card>
-        <div className="h-24 rounded-xl border bg-muted/50 animate-pulse" />
+        <div className="h-16 rounded-xl border bg-muted/50 animate-pulse" />
       </div>
     )
   }
 
   return (
-    <div className="space-y-8">
+    <div id="calculator" className="space-y-4">
       {/* Ввод данных */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Ваши параметры</CardTitle>
+      <Card className="gap-3 py-4">
+        <CardHeader className="pb-0">
+          <CardTitle className="text-base flex items-center gap-2">
+            <SlidersHorizontal className="h-5 w-5" />
+            Ваши параметры
+          </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-3">
           <GenderToggle value={gender} onChange={(v) => setParam('gender', v)} />
 
           <ValueSlider
@@ -106,7 +122,7 @@ export function MacroCalculator() {
             min={15}
             max={80}
             unit="лет"
-            icon={<Calendar className="h-4 w-4" />}
+            icon={<Calendar className="h-5 w-5" />}
           />
 
           <ValueSlider
@@ -116,7 +132,7 @@ export function MacroCalculator() {
             min={140}
             max={220}
             unit="см"
-            icon={<Ruler className="h-4 w-4" />}
+            icon={<Ruler className="h-5 w-5" />}
           />
 
           <ValueSlider
@@ -126,104 +142,103 @@ export function MacroCalculator() {
             min={30}
             max={200}
             unit="кг"
-            icon={<Weight className="h-4 w-4" />}
+            icon={<Weight className="h-5 w-5" />}
           />
 
           <ActivitySelector value={activity} onChange={(v) => setParam('activity', v)} />
-        </CardContent>
-      </Card>
 
-      {/* Цель */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Target className="h-5 w-5" />
-            Ваша цель
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex gap-1 p-1 bg-muted rounded-xl">
-            {GOALS.map((g) => (
-              <button
-                key={g.id}
-                type="button"
-                onClick={() => setGoal(g.id)}
-                className={cn(
-                  'flex-1 flex items-center justify-center gap-1.5 py-3 px-1 sm:px-3 rounded-lg transition-all duration-200 text-xs sm:text-sm',
-                  goal === g.id
-                    ? 'bg-background shadow-md font-medium text-foreground'
-                    : 'text-muted-foreground hover:text-foreground'
-                )}
-              >
-                <span className="hidden sm:inline">{g.emoji}</span>
-                {g.label}
-              </button>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Тип диеты */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Utensils className="h-5 w-5" />
-            Тип питания
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-            {DIET_PROFILES.map((diet) => (
-              <button
-                key={diet.id}
-                type="button"
-                onClick={() => setDietType(diet.id)}
-                className={cn(
-                  'flex flex-col items-start p-3 rounded-xl border-2 transition-all duration-200 text-left',
-                  dietType === diet.id
-                    ? 'border-primary bg-primary/5 shadow-md'
-                    : 'border-border hover:border-muted-foreground/30 hover:bg-muted/50'
-                )}
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-lg">{diet.emoji}</span>
-                  <span
+          {/* Цель */}
+          <div className="space-y-1">
+            <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+              <Target className="h-5 w-5" />
+              Цель
+            </span>
+            <div className="flex gap-1 p-1 bg-muted rounded-xl">
+              {GOALS.map((g) => {
+                const Icon = g.icon
+                return (
+                  <button
+                    key={g.id}
+                    type="button"
+                    onClick={() => setGoal(g.id)}
                     className={cn(
-                      'text-sm font-medium',
-                      dietType === diet.id ? 'text-primary' : 'text-foreground'
+                      'flex-1 flex items-center justify-center gap-1.5 py-3 px-1 sm:px-3 rounded-lg transition-all duration-200 text-xs sm:text-sm',
+                      goal === g.id
+                        ? 'bg-background shadow-md font-medium text-foreground'
+                        : 'text-muted-foreground hover:text-foreground'
                     )}
                   >
-                    {diet.label}
-                  </span>
-                </div>
-                <span className="text-xs text-muted-foreground">
-                  {diet.description}
-                </span>
-              </button>
-            ))}
+                    <Icon className={cn('h-4 w-4 hidden sm:block', goal === g.id ? g.color : '')} />
+                    {g.label}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Тип питания */}
+          <div className="space-y-1">
+            <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+              <Utensils className="h-5 w-5" />
+              Тип питания
+            </span>
+            <div className="grid gap-2 sm:grid-cols-2">
+              {DIET_PROFILES.map((diet) => {
+                const meta = DIET_META[diet.id] ?? { icon: Utensils, color: 'text-muted-foreground' }
+                const Icon = meta.icon
+                return (
+                  <button
+                    key={diet.id}
+                    type="button"
+                    onClick={() => setDietType(diet.id)}
+                    className={cn(
+                      'flex items-center gap-2.5 p-3 rounded-lg border transition-all duration-200 text-left',
+                      diet.id === dietType
+                        ? 'bg-primary/5 border-primary shadow-sm'
+                        : 'bg-muted/50 border-transparent hover:border-border'
+                    )}
+                  >
+                    <Icon className={cn('h-5 w-5 shrink-0', meta.color)} />
+                    <div>
+                      <span className={cn(
+                        'text-sm font-medium block',
+                        diet.id === dietType ? 'text-primary' : 'text-foreground'
+                      )}>
+                        {diet.label}
+                      </span>
+                      <p className="text-xs text-muted-foreground">{diet.description}</p>
+                    </div>
+                  </button>
+                )
+              })}
+            </div>
           </div>
         </CardContent>
       </Card>
 
       {/* Результаты */}
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Калорийность */}
-        <ResultCard
-          title={`Калорийность (${goalLabel})`}
-          value={result.calories}
-          unit="ккал/день"
-          description={`${currentDiet.label} диета`}
-          status={
-            goal === 'lose' ? 'warning' : goal === 'gain' ? 'info' : 'success'
-          }
-        />
+        <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
+          <p className="text-sm text-muted-foreground mb-1">{goalLabel}</p>
+          <p className="text-4xl font-bold text-primary">
+            {result.calories.toLocaleString('ru-RU')}
+            <span className="text-lg font-normal text-muted-foreground ml-1">ккал/день</span>
+          </p>
+          <p className="text-xs text-muted-foreground mt-1">
+            {currentDiet.label} диета
+          </p>
+        </div>
 
         {/* БЖУ */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Ваше БЖУ</CardTitle>
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
+              <ChartPie className="h-5 w-5" />
+              Ваше БЖУ
+            </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-4">
             <p className="text-sm text-muted-foreground">
               При {result.calories.toLocaleString('ru-RU')} ккал/день (
               {currentDiet.label.toLowerCase()})
@@ -232,72 +247,10 @@ export function MacroCalculator() {
               protein={result.protein}
               fat={result.fat}
               carbs={result.carbs}
+              proteinPerKg={result.proteinPerKg}
+              fatPerKg={result.fatPerKg}
+              carbsPerKg={result.carbsPerKg}
             />
-
-            {/* Граммы на кг */}
-            <div className="grid gap-3 grid-cols-3">
-              <div className="rounded-lg bg-muted/50 p-3 text-center">
-                <div className="text-lg font-bold text-foreground">
-                  {result.proteinPerKg}
-                </div>
-                <div className="text-xs text-muted-foreground">г белка / кг</div>
-              </div>
-              <div className="rounded-lg bg-muted/50 p-3 text-center">
-                <div className="text-lg font-bold text-foreground">
-                  {result.fatPerKg}
-                </div>
-                <div className="text-xs text-muted-foreground">г жиров / кг</div>
-              </div>
-              <div className="rounded-lg bg-muted/50 p-3 text-center">
-                <div className="text-lg font-bold text-foreground">
-                  {result.carbsPerKg}
-                </div>
-                <div className="text-xs text-muted-foreground">г углев. / кг</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Сравнение диет */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Сравнение типов питания</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              {allDiets.map((d) => (
-                <button
-                  key={d.diet.id}
-                  type="button"
-                  onClick={() => setDietType(d.diet.id)}
-                  className={cn(
-                    'w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2 p-3 rounded-lg border transition-all text-left',
-                    d.diet.id === dietType
-                      ? 'bg-primary/5 border-primary'
-                      : 'bg-muted/50 border-transparent hover:border-border'
-                  )}
-                >
-                  <div className="flex items-center gap-2">
-                    <span>{d.diet.emoji}</span>
-                    <span className="font-medium text-sm">{d.diet.label}</span>
-                  </div>
-                  <div className="flex gap-3 text-xs text-muted-foreground pl-7 sm:pl-0">
-                    <span>
-                      Б:{' '}
-                      <strong className="text-foreground">{d.protein}г</strong>
-                    </span>
-                    <span>
-                      Ж:{' '}
-                      <strong className="text-foreground">{d.fat}г</strong>
-                    </span>
-                    <span>
-                      У:{' '}
-                      <strong className="text-foreground">{d.carbs}г</strong>
-                    </span>
-                  </div>
-                </button>
-              ))}
-            </div>
           </CardContent>
         </Card>
       </div>
