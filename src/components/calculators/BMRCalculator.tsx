@@ -12,7 +12,6 @@ import {
   Weight,
   Ruler,
   Flame,
-  Clock,
   Info,
   Lightbulb,
   CalendarDays,
@@ -108,32 +107,33 @@ export function BMRCalculator() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="text-center">
+            <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
               <p className="text-sm text-muted-foreground mb-1">
                 По формуле Миффлина-Сан Жеора
               </p>
-              <p className="text-4xl font-bold">
+              <p className="text-4xl font-bold whitespace-nowrap">
                 {result.recommended}
-                <span className="text-lg font-normal text-muted-foreground ml-2">
+                <span className="text-lg font-normal text-muted-foreground ml-1">
                   ккал/день
                 </span>
               </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Диапазон: <span className="font-medium text-foreground">{result.min}–{result.max} ккал</span>
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
-              <div className="flex items-center gap-2 rounded-lg bg-orange-50 px-3 py-2">
-                <Clock className="h-4 w-4 text-orange-600 shrink-0" />
-                <span className="text-orange-700">В час</span>
-                <span className="ml-auto font-semibold text-orange-700 whitespace-nowrap">
-                  {result.hourly} ккал
-                </span>
+            <div className="grid grid-cols-2 gap-2 text-center">
+              <div className="rounded-lg bg-orange-50 p-3">
+                <p className="text-sm text-orange-700 mb-0.5">В час</p>
+                <p className="text-2xl font-bold text-orange-700">
+                  {result.hourly} <span className="text-sm font-normal">ккал</span>
+                </p>
               </div>
-              <div className="flex items-center gap-2 rounded-lg bg-blue-50 px-3 py-2">
-                <Flame className="h-4 w-4 text-blue-600 shrink-0" />
-                <span className="text-blue-700">Диапазон</span>
-                <span className="ml-auto font-semibold text-blue-700 whitespace-nowrap">
-                  {result.min}–{result.max} ккал
-                </span>
+              <div className="rounded-lg bg-blue-50 p-3">
+                <p className="text-sm text-blue-700 mb-0.5">В сутки (TDEE &times;1,55)</p>
+                <p className="text-2xl font-bold text-blue-700">
+                  {Math.round(result.recommended * 1.55)} <span className="text-sm font-normal">ккал</span>
+                </p>
               </div>
             </div>
           </CardContent>
