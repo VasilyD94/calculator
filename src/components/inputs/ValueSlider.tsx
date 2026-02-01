@@ -83,7 +83,7 @@ export function ValueSlider({
               onClick={() => setIsEditing(true)}
               className="cursor-text rounded px-1 -mx-1 hover:bg-accent transition-colors"
             >
-              <span className="font-semibold">{value}</span>
+              <span className="font-semibold border-b border-dashed border-muted-foreground/40">{value}</span>
               <span className="font-normal text-muted-foreground ml-0.5">{unit}</span>
             </button>
           )}
