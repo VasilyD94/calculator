@@ -124,16 +124,14 @@ export function BMRCalculator() {
 
             <div className="grid grid-cols-2 gap-2 text-center">
               <div className="rounded-lg bg-orange-50 p-3">
-                <p className="text-sm text-orange-700 mb-0.5">В час</p>
-                <p className="text-2xl font-bold text-orange-700">
-                  {result.hourly} <span className="text-sm font-normal">ккал</span>
-                </p>
+                <p className="text-xs sm:text-sm text-orange-700 mb-0.5">В час</p>
+                <p className="text-2xl font-bold text-orange-700">{result.hourly}</p>
+                <p className="text-xs text-orange-600 mt-0.5">ккал</p>
               </div>
               <div className="rounded-lg bg-blue-50 p-3">
-                <p className="text-sm text-blue-700 mb-0.5">В сутки</p>
-                <p className="text-2xl font-bold text-blue-700">
-                  {Math.round(result.recommended * 1.55)} <span className="text-sm font-normal">ккал</span>
-                </p>
+                <p className="text-xs sm:text-sm text-blue-700 mb-0.5">В сутки</p>
+                <p className="text-2xl font-bold text-blue-700">{Math.round(result.recommended * 1.55)}</p>
+                <p className="text-xs text-blue-600 mt-0.5">ккал</p>
               </div>
             </div>
           </CardContent>
