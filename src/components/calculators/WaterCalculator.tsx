@@ -182,54 +182,53 @@ export function WaterCalculator() {
         {/* Основной результат + разбивка */}
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
-            <div className="text-center">
-              <p className="text-sm text-muted-foreground mb-1">Ваша норма воды</p>
-              <p className="text-4xl font-bold text-primary">
+            <CardTitle className="text-base flex items-center gap-2">
+              <Droplets className="h-5 w-5" />
+              Ваша норма воды
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
+              <p className="text-4xl font-bold whitespace-nowrap">
                 {result.totalMl.toLocaleString('ru-RU')}
                 <span className="text-lg font-normal text-muted-foreground ml-1">мл/день</span>
               </p>
-              <p className="text-xs text-muted-foreground mt-1">
-                {result.totalLiters} л — {result.glasses} стаканов по 250 мл
+              <p className="text-sm text-muted-foreground mt-1">
+                {result.totalLiters} л — <span className="font-medium text-foreground">{result.glasses} стаканов</span> по 250 мл
               </p>
             </div>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
+
+            <div className="border-t pt-3 space-y-3">
+              <BreakdownRow
+                label="Базовая потребность"
+                sublabel={`${gender === 'male' ? '35' : '31'} мл × ${weight} кг`}
+                value={result.breakdown.base}
+                total={result.totalMl}
+              />
+              {result.breakdown.activity > 0 && (
                 <BreakdownRow
-                  label="Базовая потребность"
-                  sublabel={`${gender === 'male' ? '35' : '31'} мл × ${weight} кг`}
-                  value={result.breakdown.base}
+                  label="Физическая активность"
+                  sublabel="дополнительная нагрузка"
+                  value={result.breakdown.activity}
                   total={result.totalMl}
                 />
-                {result.breakdown.activity > 0 && (
-                  <BreakdownRow
-                    label="Физическая активность"
-                    sublabel="дополнительная нагрузка"
-                    value={result.breakdown.activity}
-                    total={result.totalMl}
-                  />
-                )}
-                {result.breakdown.climate > 0 && (
-                  <BreakdownRow
-                    label="Жаркий климат"
-                    sublabel="компенсация потоотделения"
-                    value={result.breakdown.climate}
-                    total={result.totalMl}
-                  />
-                )}
-                {result.breakdown.special > 0 && (
-                  <BreakdownRow
-                    label={special === 'pregnant' ? 'Беременность' : 'Кормление грудью'}
-                    sublabel="повышенная потребность"
-                    value={result.breakdown.special}
-                    total={result.totalMl}
-                  />
-                )}
-                {/* Итого */}
-                <div className="flex items-center justify-between pt-3 border-t">
-                  <span className="font-medium">Итого</span>
-                  <span className="text-lg font-bold text-primary">{result.totalMl} мл</span>
-                </div>
+              )}
+              {result.breakdown.climate > 0 && (
+                <BreakdownRow
+                  label="Жаркий климат"
+                  sublabel="компенсация потоотделения"
+                  value={result.breakdown.climate}
+                  total={result.totalMl}
+                />
+              )}
+              {result.breakdown.special > 0 && (
+                <BreakdownRow
+                  label={special === 'pregnant' ? 'Беременность' : 'Кормление грудью'}
+                  sublabel="повышенная потребность"
+                  value={result.breakdown.special}
+                  total={result.totalMl}
+                />
+              )}
             </div>
           </CardContent>
         </Card>
