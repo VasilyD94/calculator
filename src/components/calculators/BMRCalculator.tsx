@@ -130,7 +130,7 @@ export function BMRCalculator() {
                 </p>
               </div>
               <div className="rounded-lg bg-blue-50 p-3">
-                <p className="text-sm text-blue-700 mb-0.5">В сутки (TDEE &times;1,55)</p>
+                <p className="text-sm text-blue-700 mb-0.5">В сутки</p>
                 <p className="text-2xl font-bold text-blue-700">
                   {Math.round(result.recommended * 1.55)} <span className="text-sm font-normal">ккал</span>
                 </p>
