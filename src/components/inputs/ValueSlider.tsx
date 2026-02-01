@@ -60,7 +60,7 @@ export function ValueSlider({
         </span>
         <div className="text-right text-sm">
           {isEditing ? (
-            <span className="inline-flex items-center gap-0.5">
+            <span className="inline-flex items-center gap-1 rounded-md border border-primary bg-background px-2 py-0.5 shadow-sm">
               <input
                 ref={inputRef}
                 type="text"
@@ -73,9 +73,9 @@ export function ValueSlider({
                   if (e.key === 'Enter') commitValue()
                   if (e.key === 'Escape') setIsEditing(false)
                 }}
-                className="w-14 text-right font-semibold bg-transparent border-b-2 border-primary outline-none text-sm"
+                className="w-12 text-right font-semibold bg-transparent outline-none text-sm"
               />
-              <span className="font-normal text-muted-foreground">{unit}</span>
+              <span className="font-normal text-muted-foreground text-sm">{unit}</span>
             </span>
           ) : (
             <button
