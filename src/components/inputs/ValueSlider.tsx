@@ -73,7 +73,7 @@ export function ValueSlider({
                   if (e.key === 'Enter') commitValue()
                   if (e.key === 'Escape') setIsEditing(false)
                 }}
-                className="w-12 text-right font-semibold bg-transparent border-b border-muted-foreground/30 outline-none text-base leading-none"
+                className="w-12 text-right font-semibold bg-transparent outline-none text-base leading-none"
               />
               <span className="font-normal text-muted-foreground ml-0.5">{unit}</span>
             </span>
