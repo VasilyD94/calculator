@@ -146,72 +146,59 @@ export function DueDateCalculator() {
         </CardContent>
       </Card>
 
-      {/* Результаты */}
+      {/* Главный результат */}
+      <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
+        <p className="text-sm text-muted-foreground mb-1">Предполагаемая дата родов</p>
+        <p className="text-4xl font-bold text-primary">
+          {result.dueDateFormatted}
+        </p>
+        <p className="text-xs text-muted-foreground mt-1">
+          Текущий срок: {result.currentTermFormatted} · {trimesterLabels[result.trimester]}
+        </p>
+      </div>
+
       <div className="space-y-6">
-        {/* ПДР */}
+        {/* Прогресс и статистика */}
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
               <Baby className="h-5 w-5" />
-              Предполагаемая дата родов
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="text-center">
-              <p className="text-3xl font-bold">{result.dueDateFormatted}</p>
-              <p className="text-sm text-muted-foreground mt-1">
-                Текущий срок:{' '}
-                <span className="font-medium text-foreground">
-                  {result.currentTermFormatted}
-                </span>
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-sm">
-              <div className="flex items-center gap-2 rounded-lg bg-pink-50 px-3 py-2">
-                <Baby className="h-4 w-4 text-pink-600 shrink-0" />
-                <span className="text-pink-700">{trimesterLabels[result.trimester]}</span>
-              </div>
-              <div className="flex items-center gap-2 rounded-lg bg-blue-50 px-3 py-2">
-                <Clock className="h-4 w-4 text-blue-600 shrink-0" />
-                <span className="text-blue-700">
-                  {result.daysLeft > 0
-                    ? `Осталось ${result.daysLeft} дн.`
-                    : 'Срок наступил'}
-                </span>
-              </div>
-              <div className="flex items-center gap-2 rounded-lg bg-green-50 px-3 py-2">
-                <Calendar className="h-4 w-4 text-green-600 shrink-0" />
-                <span className="text-green-700">
-                  Прошло {result.daysPassed} дн.
-                </span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Прогресс */}
-        <Card className="gap-3 py-4">
-          <CardHeader className="pb-0">
-            <CardTitle className="text-base flex items-center gap-2">
-              <Clock className="h-5 w-5" />
               Прогресс беременности
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-3">
-            <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">
-                {result.currentTermFormatted}
-              </span>
-              <span className="font-medium">
-                {Math.round(result.progress)}%
-              </span>
+          <CardContent className="space-y-4">
+            <div className="space-y-3">
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">
+                  {result.currentTermFormatted}
+                </span>
+                <span className="font-medium">
+                  {Math.round(result.progress)}%
+                </span>
+              </div>
+              <Progress value={result.progress} className="h-3" />
+              <div className="flex justify-between text-xs text-muted-foreground">
+                <span>1 триместр</span>
+                <span>2 триместр</span>
+                <span>3 триместр</span>
+              </div>
             </div>
-            <Progress value={result.progress} className="h-3" />
-            <div className="flex justify-between text-xs text-muted-foreground">
-              <span>1 триместр</span>
-              <span>2 триместр</span>
-              <span>3 триместр</span>
+
+            <div className="grid grid-cols-3 gap-2 text-sm">
+              <div className="rounded-lg bg-pink-50 px-3 py-2 text-center">
+                <p className="text-xs text-pink-600 mb-0.5">Триместр</p>
+                <p className="font-semibold text-pink-700">{result.trimester}-й</p>
+              </div>
+              <div className="rounded-lg bg-blue-50 px-3 py-2 text-center">
+                <p className="text-xs text-blue-600 mb-0.5">Осталось</p>
+                <p className="font-semibold text-blue-700">
+                  {result.daysLeft > 0 ? `${result.daysLeft} дн.` : '—'}
+                </p>
+              </div>
+              <div className="rounded-lg bg-green-50 px-3 py-2 text-center">
+                <p className="text-xs text-green-600 mb-0.5">Прошло</p>
+                <p className="font-semibold text-green-700">{result.daysPassed} дн.</p>
+              </div>
             </div>
           </CardContent>
         </Card>
