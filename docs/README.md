@@ -46,7 +46,7 @@
 ```
 ПРАВИЛО: Нейтральный домен (не привязан к нише)
 
-✅ Хорошо: mycalc.ru, calcbox.ru, vsecalc.ru
+✅ Хорошо: mycalc.ru, calc-box.ru, vsecalc.ru
 ❌ Плохо:  zdorovye-calc.ru (нельзя расширить)
 
 СТРУКТУРА:

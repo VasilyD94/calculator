@@ -79,7 +79,7 @@ export default function DeficitCalculatorPage() {
           description:
             'Онлайн калькулятор дефицита калорий с графиком прогресса и оценкой безопасности',
           applicationCategory: 'HealthApplication',
-          url: 'https://calcbox.ru/zdorovye/pitanie/defitsit-kalorij',
+          url: 'https://calc-box.ru/zdorovye/pitanie/defitsit-kalorij',
           operatingSystem: 'All',
           offers: {
             '@type': 'Offer',
@@ -196,19 +196,19 @@ export default function DeficitCalculatorPage() {
               '@type': 'ListItem',
               position: 1,
               name: 'Главная',
-              item: 'https://calcbox.ru',
+              item: 'https://calc-box.ru',
             },
             {
               '@type': 'ListItem',
               position: 2,
               name: 'Питание',
-              item: 'https://calcbox.ru/zdorovye/pitanie',
+              item: 'https://calc-box.ru/zdorovye/pitanie',
             },
             {
               '@type': 'ListItem',
               position: 3,
               name: 'Дефицит калорий',
-              item: 'https://calcbox.ru/zdorovye/pitanie/defitsit-kalorij',
+              item: 'https://calc-box.ru/zdorovye/pitanie/defitsit-kalorij',
             },
           ],
         }}

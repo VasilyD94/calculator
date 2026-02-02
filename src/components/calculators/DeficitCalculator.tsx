@@ -29,7 +29,10 @@ import {
   Clock,
   Percent,
   SlidersHorizontal,
+  Lightbulb,
+  Info,
 } from 'lucide-react'
+import { AlertTitle } from '@/components/ui/alert'
 import { cn } from '@/lib/utils'
 
 const WeightChart = dynamic(() => import('./WeightChart').then((m) => m.WeightChart), {
@@ -117,7 +120,7 @@ export function DeficitCalculator() {
   }
 
   return (
-    <div id="calculator" className="space-y-4">
+    <div id="calculator" className="space-y-6">
       {/* Ввод данных */}
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
@@ -229,31 +232,31 @@ export function DeficitCalculator() {
 
         {/* Метрики */}
         <div className="grid grid-cols-3 gap-2">
-          <div className="rounded-lg bg-muted/50 p-3 text-center">
-            <p className="text-xs text-muted-foreground mb-1">Дефицит</p>
-            <p className="text-xl font-bold">
+          <div className="rounded-lg bg-orange-50 p-3 text-center">
+            <p className="text-xs text-orange-700 mb-1">Дефицит</p>
+            <p className="text-xl font-bold text-orange-700">
               {result.dailyDeficit}
-              <span className="text-xs font-normal text-muted-foreground ml-1">ккал</span>
+              <span className="text-xs font-normal text-orange-600 ml-1">ккал</span>
             </p>
-            <p className="text-[10px] text-muted-foreground mt-0.5">{result.deficitPercent}% от нормы</p>
+            <p className="text-[10px] text-orange-600 mt-0.5">{result.deficitPercent}% от нормы</p>
           </div>
-          <div className="rounded-lg bg-muted/50 p-3 text-center">
-            <p className="text-xs text-muted-foreground mb-1">В неделю</p>
-            <p className="text-xl font-bold">
+          <div className="rounded-lg bg-green-50 p-3 text-center">
+            <p className="text-xs text-green-700 mb-1">В неделю</p>
+            <p className="text-xl font-bold text-green-700">
               {result.weeklyLoss}
-              <span className="text-xs font-normal text-muted-foreground ml-1">кг</span>
+              <span className="text-xs font-normal text-green-600 ml-1">кг</span>
             </p>
-            <p className="text-[10px] text-muted-foreground mt-0.5">
+            <p className="text-[10px] text-green-600 mt-0.5">
               {result.weeklyLoss > 1 ? 'Быстрый темп' : 'Безопасный темп'}
             </p>
           </div>
-          <div className="rounded-lg bg-muted/50 p-3 text-center">
-            <p className="text-xs text-muted-foreground mb-1">Срок</p>
-            <p className="text-xl font-bold">
+          <div className="rounded-lg bg-blue-50 p-3 text-center">
+            <p className="text-xs text-blue-700 mb-1">Срок</p>
+            <p className="text-xl font-bold text-blue-700">
               {result.weeksNeeded}
-              <span className="text-xs font-normal text-muted-foreground ml-1">нед.</span>
+              <span className="text-xs font-normal text-blue-600 ml-1">нед.</span>
             </p>
-            <p className="text-[10px] text-muted-foreground mt-0.5">
+            <p className="text-[10px] text-blue-600 mt-0.5">
               {weightToLose > 0 ? `к ${targetDateStr}` : '—'}
             </p>
           </div>
@@ -423,6 +426,36 @@ export function DeficitCalculator() {
               fat={result.macros.fat}
               carbs={result.macros.carbs}
             />
+          </CardContent>
+        </Card>
+
+        {/* Важно знать */}
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
+              Важно знать
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <Alert>
+              <Info className="h-5 w-5 text-sky-400" />
+              <AlertTitle>Плато при похудении</AlertTitle>
+              <AlertDescription>
+                Через 2–3 недели дефицита вес может перестать снижаться — это
+                нормальное плато. Метаболизм адаптируется. Не снижайте калории ещё
+                больше — лучше добавьте физическую активность.
+              </AlertDescription>
+            </Alert>
+            <Alert>
+              <AlertTriangle className="h-5 w-5 text-amber-400" />
+              <AlertTitle>Безопасный темп</AlertTitle>
+              <AlertDescription>
+                Потеря более 1 кг в неделю повышает риск потери мышечной массы,
+                замедления метаболизма и дефицита питательных веществ. При большом
+                дефиците проконсультируйтесь с врачом.
+              </AlertDescription>
+            </Alert>
           </CardContent>
         </Card>
       </div>

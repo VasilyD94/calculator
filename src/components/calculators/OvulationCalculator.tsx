@@ -17,11 +17,13 @@ import {
   CheckCircle2,
   Circle,
   Clock,
-  Info,
   Lightbulb,
   Heart,
   Droplets,
-  Sun,
+  SlidersHorizontal,
+  AlertTriangle,
+  Stethoscope,
+  ShieldAlert,
 } from 'lucide-react'
 
 function getDefaultDate(): Date {
@@ -38,40 +40,12 @@ function toIso(d: Date): string {
   return `${y}-${m}-${day}`
 }
 
-const PHASE_CONFIG: Record<
-  CyclePhase,
-  { label: string; color: string; bgColor: string; emoji: string }
-> = {
-  menstruation: {
-    label: 'Менструация',
-    color: 'text-red-600',
-    bgColor: 'bg-red-50',
-    emoji: '🔴',
-  },
-  follicular: {
-    label: 'Фолликулярная фаза',
-    color: 'text-slate-600',
-    bgColor: 'bg-slate-50',
-    emoji: '🌱',
-  },
-  fertile: {
-    label: 'Фертильное окно',
-    color: 'text-green-600',
-    bgColor: 'bg-green-50',
-    emoji: '🌸',
-  },
-  ovulation: {
-    label: 'День овуляции',
-    color: 'text-emerald-600',
-    bgColor: 'bg-emerald-50',
-    emoji: '🥚',
-  },
-  luteal: {
-    label: 'Лютеиновая фаза',
-    color: 'text-amber-600',
-    bgColor: 'bg-amber-50',
-    emoji: '🌙',
-  },
+const PHASE_CONFIG: Record<CyclePhase, { label: string }> = {
+  menstruation: { label: 'Менструация' },
+  follicular: { label: 'Фолликулярная фаза' },
+  fertile: { label: 'Фертильное окно' },
+  ovulation: { label: 'День овуляции' },
+  luteal: { label: 'Лютеиновая фаза' },
 }
 
 export function OvulationCalculator() {
@@ -98,18 +72,21 @@ export function OvulationCalculator() {
   const phaseConfig = PHASE_CONFIG[result.currentPhase]
 
   return (
-    <div className="space-y-8">
+    <div id="calculator" className="space-y-6">
       {/* Ввод данных */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Данные о цикле</CardTitle>
+      <Card className="gap-3 py-4">
+        <CardHeader className="pb-0">
+          <CardTitle className="text-base flex items-center gap-2">
+            <SlidersHorizontal className="h-5 w-5" />
+            Данные о цикле
+          </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <DateInput
             label="Первый день последних месячных"
             value={lastPeriod}
             onChange={setLastPeriod}
-            icon={<Calendar className="h-4 w-4" />}
+            icon={<Calendar className="h-5 w-5" />}
             min={toIso(minDate)}
             max={toIso(today)}
           />
@@ -121,7 +98,7 @@ export function OvulationCalculator() {
             min={21}
             max={45}
             unit="дн."
-            icon={<Clock className="h-4 w-4" />}
+            icon={<Clock className="h-5 w-5" />}
           />
 
           <ValueSlider
@@ -131,66 +108,57 @@ export function OvulationCalculator() {
             min={3}
             max={7}
             unit="дн."
-            icon={<Droplets className="h-4 w-4" />}
+            icon={<Droplets className="h-5 w-5" />}
           />
         </CardContent>
       </Card>
 
-      {/* Результаты */}
+      {/* Главный результат */}
+      <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
+        <p className="text-sm text-muted-foreground mb-1">Текущая фаза цикла</p>
+        <p className="text-4xl font-bold text-primary">
+          {phaseConfig.label}
+        </p>
+        <p className="text-xs text-muted-foreground mt-1">
+          День <strong className="text-foreground">{result.currentDayInCycle}</strong> из {result.cycleLength} · Овуляция: <strong className="text-foreground">{result.ovulationFormatted}</strong>
+        </p>
+      </div>
+
+      <div className="grid grid-cols-3 gap-2">
+        <div className="rounded-lg bg-emerald-50 px-2 py-2.5 text-center text-emerald-700">
+          <p className="text-[10px] leading-tight">Овуляция</p>
+          {result.daysUntilOvulation > 0
+            ? <><p className="text-lg font-bold leading-tight">{result.daysUntilOvulation}</p><p className="text-[10px] leading-tight">дн.</p></>
+            : result.daysUntilOvulation === 0
+              ? <p className="text-xs font-bold mt-1">Сегодня!</p>
+              : <p className="text-xs font-bold mt-1">Прошла</p>}
+        </div>
+        <div className="rounded-lg bg-pink-50 px-2 py-2.5 text-center text-pink-700">
+          <p className="text-[10px] leading-tight">Фертильное</p>
+          <p className="text-xs font-bold leading-snug mt-0.5">{result.fertileWindowFormatted}</p>
+        </div>
+        <div className="rounded-lg bg-red-50 px-2 py-2.5 text-center text-red-700">
+          <p className="text-[10px] leading-tight">До мес.</p>
+          {result.daysUntilPeriod > 0
+            ? <><p className="text-lg font-bold leading-tight">{result.daysUntilPeriod}</p><p className="text-[10px] leading-tight">дн.</p></>
+            : <p className="text-xs font-bold mt-1">Ожидаются</p>}
+        </div>
+      </div>
+
       <div className="space-y-6">
-        {/* Текущая фаза — компактная */}
-        <Card>
-          <CardContent className="pt-5 pb-5">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-              <div className="flex items-center gap-3 shrink-0">
-                <span className="text-2xl">{phaseConfig.emoji}</span>
-                <div>
-                  <p className={cn('text-lg font-bold leading-tight', phaseConfig.color)}>
-                    {phaseConfig.label}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    День {result.currentDayInCycle} из {result.cycleLength}
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:flex sm:flex-wrap gap-1.5 sm:ml-auto">
-                <span className="flex items-center gap-1.5 rounded-md bg-emerald-50 px-2.5 py-1.5 text-xs text-emerald-700">
-                  <Heart className="h-3.5 w-3.5 shrink-0" />
-                  {result.daysUntilOvulation > 0
-                    ? `До овуляции ${result.daysUntilOvulation} дн.`
-                    : result.daysUntilOvulation === 0
-                      ? 'Овуляция сегодня!'
-                      : 'Овуляция прошла'}
-                </span>
-                <span className="flex items-center gap-1.5 rounded-md bg-pink-50 px-2.5 py-1.5 text-xs text-pink-700">
-                  <Calendar className="h-3.5 w-3.5 shrink-0" />
-                  Овуляция: {format(result.ovulationDate, 'd MMM', { locale: ru })}
-                </span>
-                <span className="flex items-center gap-1.5 rounded-md bg-red-50 px-2.5 py-1.5 text-xs text-red-700">
-                  <Droplets className="h-3.5 w-3.5 shrink-0" />
-                  {result.daysUntilPeriod > 0
-                    ? `До месячных ${result.daysUntilPeriod} дн.`
-                    : 'Месячные ожидаются'}
-                </span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
         {/* Фертильное окно + Фазы цикла — рядом на десктопе */}
         <div className="grid gap-6 md:grid-cols-2">
           {/* Фертильное окно */}
-          <Card className="flex flex-col">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+          <Card className="gap-3 py-4 flex flex-col">
+            <CardHeader className="pb-0">
+              <CardTitle className="text-base flex items-center gap-2">
                 <Heart className="h-5 w-5" />
                 Фертильное окно
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 flex-1 flex flex-col justify-between">
               <div className="text-center">
-                <p className="text-2xl font-bold text-green-700">
+                <p className="text-2xl font-bold text-foreground">
                   {result.fertileWindowFormatted}
                 </p>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -202,9 +170,9 @@ export function OvulationCalculator() {
               </div>
 
               <div className="space-y-2">
-                <div className="flex items-center justify-between rounded-md bg-green-50 px-3 py-2 text-xs">
-                  <span className="text-green-700">Месячные</span>
-                  <span className="font-medium text-green-700">
+                <div className="flex items-center justify-between rounded-md bg-red-50 px-3 py-2 text-xs">
+                  <span className="text-red-700">Месячные</span>
+                  <span className="font-medium text-red-700">
                     {format(result.nextPeriodDate, 'd MMM yyyy', { locale: ru })}
                   </span>
                 </div>
@@ -223,9 +191,9 @@ export function OvulationCalculator() {
           </Card>
 
           {/* Фазы цикла — вертикальный таймлайн */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+          <Card className="gap-3 py-4">
+            <CardHeader className="pb-0">
+              <CardTitle className="text-base flex items-center gap-2">
                 <Clock className="h-5 w-5" />
                 Фазы цикла
               </CardTitle>
@@ -339,81 +307,17 @@ export function OvulationCalculator() {
           </Card>
         </div>
 
-        {/* Прогноз на 6 циклов */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Calendar className="h-5 w-5" />
-              Прогноз на {result.forecast.length} циклов
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {result.forecast.map((cycle) => (
-                <div
-                  key={cycle.cycleNumber}
-                  className={cn(
-                    'rounded-lg border p-3 space-y-3',
-                    cycle.cycleNumber === 1 && 'border-primary bg-primary/5'
-                  )}
-                >
-                  {/* Заголовок цикла */}
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">
-                      Цикл {cycle.cycleNumber}
-                      {cycle.cycleNumber === 1 && (
-                        <span className="text-xs text-primary ml-1.5">
-                          (текущий)
-                        </span>
-                      )}
-                    </span>
-                    <span className="text-xs text-muted-foreground">
-                      {format(cycle.periodStart, 'd MMM', { locale: ru })} –{' '}
-                      {format(cycle.nextPeriodDate, 'd MMM', { locale: ru })}
-                    </span>
-                  </div>
-
-                  {/* Три цветных блока */}
-                  <div className="space-y-1.5">
-                    <div className="flex items-center gap-2 rounded-md bg-red-50 px-2.5 py-1.5">
-                      <Droplets className="h-3.5 w-3.5 text-red-500 shrink-0" />
-                      <span className="text-xs text-red-700 shrink-0">Менструация</span>
-                      <span className="ml-auto text-xs font-medium text-red-600 shrink-0">
-                        {format(cycle.periodStart, 'd.MM')} – {format(cycle.periodEnd, 'd.MM')}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2 rounded-md bg-green-50 px-2.5 py-1.5">
-                      <Heart className="h-3.5 w-3.5 text-green-500 shrink-0" />
-                      <span className="text-xs text-green-700 shrink-0">Фертильное</span>
-                      <span className="ml-auto text-xs font-medium text-green-600 shrink-0">
-                        {format(cycle.fertileStart, 'd.MM')} – {format(cycle.fertileEnd, 'd.MM')}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2 rounded-md bg-emerald-50 px-2.5 py-1.5">
-                      <Sun className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
-                      <span className="text-xs text-emerald-700 shrink-0">Овуляция</span>
-                      <span className="ml-auto text-xs font-semibold text-emerald-700 shrink-0">
-                        {format(cycle.ovulationDate, 'd.MM')}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-
         {/* Важно знать */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <Lightbulb className="h-5 w-5" />
               Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <Info className="h-4 w-4" />
+              <ShieldAlert className="h-5 w-5 text-red-500" />
               <AlertTitle>Не метод контрацепции</AlertTitle>
               <AlertDescription>
                 Календарный метод не является надёжным средством контрацепции.
@@ -422,7 +326,7 @@ export function OvulationCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Info className="h-4 w-4" />
+              <AlertTriangle className="h-5 w-5 text-amber-500" />
               <AlertTitle>Точность при нерегулярном цикле</AlertTitle>
               <AlertDescription>
                 Калькулятор наиболее точен при регулярном цикле. Если длина
@@ -431,7 +335,7 @@ export function OvulationCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Info className="h-4 w-4" />
+              <Stethoscope className="h-5 w-5 text-blue-500" />
               <AlertTitle>Признаки овуляции</AlertTitle>
               <AlertDescription>
                 Повышение базальной температуры на 0.2–0.5°C, прозрачные
@@ -440,7 +344,7 @@ export function OvulationCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Info className="h-4 w-4" />
+              <Heart className="h-5 w-5 text-pink-500" />
               <AlertTitle>Когда обратиться к врачу</AlertTitle>
               <AlertDescription>
                 Если беременность не наступает в течение 12 месяцев

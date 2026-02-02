@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://calcbox.ru'),
+  metadataBase: new URL('https://calc-box.ru'),
   title: {
     default: 'CalcBox — Онлайн-калькуляторы здоровья',
     template: '%s | CalcBox',
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
       'Современные онлайн-калькуляторы здоровья: калории, ИМТ, БЖУ, беременность и другие.',
   },
   alternates: {
-    canonical: 'https://calcbox.ru',
+    canonical: 'https://calc-box.ru',
   },
 }
 

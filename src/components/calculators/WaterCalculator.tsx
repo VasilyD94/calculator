@@ -78,7 +78,7 @@ export function WaterCalculator() {
   }
 
   return (
-    <div id="calculator" className="space-y-4">
+    <div id="calculator" className="space-y-6">
       {/* Ввод данных */}
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
@@ -273,7 +273,7 @@ export function WaterCalculator() {
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
               <Lightbulb className="h-5 w-5" />
-              Полезные советы
+              Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">

@@ -27,12 +27,18 @@ import {
   Puzzle,
   Timer,
   Egg,
+  RefreshCw,
+  Dna,
+  Hash,
+  Users,
+  CalendarClock,
+  FlaskConical,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Калькулятор даты родов — расчёт ПДР онлайн бесплатно',
   description:
-    'Бесплатный калькулятор даты родов ✓ Расчёт ПДР по 3 методам ✓ По месячным, зачатию и УЗИ ✓ Прогресс беременности и ключевые даты. Без регистрации.',
+    'Бесплатный калькулятор даты родов онлайн ✓ Расчёт ПДР по 3 методам ✓ По месячным, зачатию и УЗИ ✓ Прогресс беременности и ключевые даты. Без регистрации.',
   keywords: [
     'дата родов',
     'ПДР',
@@ -73,7 +79,7 @@ export default function DueDatePage() {
           description:
             'Онлайн калькулятор предполагаемой даты родов по дате последних месячных, зачатия или УЗИ',
           applicationCategory: 'HealthApplication',
-          url: 'https://calcbox.ru/zdorovye/beremennost/data-rodov',
+          url: 'https://calc-box.ru/zdorovye/beremennost/data-rodov',
           operatingSystem: 'All',
           offers: {
             '@type': 'Offer',
@@ -190,19 +196,19 @@ export default function DueDatePage() {
               '@type': 'ListItem',
               position: 1,
               name: 'Главная',
-              item: 'https://calcbox.ru',
+              item: 'https://calc-box.ru',
             },
             {
               '@type': 'ListItem',
               position: 2,
               name: 'Беременность',
-              item: 'https://calcbox.ru/zdorovye/beremennost',
+              item: 'https://calc-box.ru/zdorovye/beremennost',
             },
             {
               '@type': 'ListItem',
               position: 3,
               name: 'Дата родов',
-              item: 'https://calcbox.ru/zdorovye/beremennost/data-rodov',
+              item: 'https://calc-box.ru/zdorovye/beremennost/data-rodov',
             },
           ],
         }}
@@ -350,7 +356,7 @@ export default function DueDatePage() {
                   <p>
                     Самый распространённый метод. К первому дню последних месячных
                     прибавляют <strong className="text-foreground">280</strong> дней. Формула предполагает
-                    регулярный цикл <strong className="text-foreground">28</strong> дней с овуляцией
+                    регулярный цикл <strong className="text-foreground">28</strong> дней с <Link href="/zdorovye/beremennost/ovulyatsiya" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">овуляцией</Link>{' '}
                     на <strong className="text-foreground">14</strong>-й день. При нерегулярном цикле точность снижается.
                   </p>
                 </div>
@@ -440,11 +446,14 @@ export default function DueDatePage() {
                 </tbody>
               </table>
             </div>
-            <p className="text-sm rounded-md bg-primary/5 text-foreground p-3">
-              УЗИ в первом триместре — наиболее точный метод определения ПДР.
-              Если данные УЗИ расходятся с расчётом по месячным более чем
-              на <strong className="text-foreground">5–7</strong> дней, врач скорректирует дату.
-            </p>
+            <div className="flex gap-2 items-start text-sm rounded-md bg-primary/5 text-foreground p-3">
+              <Stethoscope className="h-5 w-5 shrink-0 text-blue-400" />
+              <p>
+                УЗИ в первом триместре — наиболее точный метод определения ПДР.
+                Если данные УЗИ расходятся с расчётом по месячным более чем
+                на <strong className="text-foreground">5–7</strong> дней, врач скорректирует дату.
+              </p>
+            </div>
           </div>
 
           <hr className="border-border" />
@@ -461,8 +470,8 @@ export default function DueDatePage() {
             </p>
             <div className="grid gap-3 md:grid-cols-3">
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground">
-                  1-й триместр (1–12 нед.)
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Egg className="h-5 w-5 text-pink-500" />1-й триместр (1–12 нед.)
                 </h3>
                 <ul className="space-y-1 pl-4 list-disc marker:text-primary text-sm">
                   <li>Формирование всех органов</li>
@@ -472,8 +481,8 @@ export default function DueDatePage() {
                 </ul>
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground">
-                  2-й триместр (13–26 нед.)
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Baby className="h-5 w-5 text-violet-500" />2-й триместр (13–26 нед.)
                 </h3>
                 <ul className="space-y-1 pl-4 list-disc marker:text-primary text-sm">
                   <li>Активный рост малыша</li>
@@ -483,8 +492,8 @@ export default function DueDatePage() {
                 </ul>
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground">
-                  3-й триместр (27–40 нед.)
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Heart className="h-5 w-5 text-red-500" />3-й триместр (27–40 нед.)
                 </h3>
                 <ul className="space-y-1 pl-4 list-disc marker:text-primary text-sm">
                   <li>Набор веса малышом</li>
@@ -510,29 +519,29 @@ export default function DueDatePage() {
             </p>
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground">Длина цикла</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><RefreshCw className="h-5 w-5 text-violet-500" />Длина цикла</h3>
                 <p>
-                  При цикле длиннее <strong className="text-foreground">28</strong> дней овуляция происходит позже,
+                  При цикле длиннее <strong className="text-foreground">28</strong> дней <Link href="/zdorovye/beremennost/ovulyatsiya" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">овуляция</Link> происходит позже,
                   и реальная дата родов может сдвинуться на несколько дней вперёд.
                   При коротком цикле — наоборот.
                 </p>
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground">Наследственность</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><Dna className="h-5 w-5 text-pink-500" />Наследственность</h3>
                 <p>
                   Если в вашей семье женщины рожали позже <strong className="text-foreground">40</strong> недель,
                   у вас тоже может быть склонность к пролонгированной беременности.
                 </p>
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground">Количество беременностей</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><Hash className="h-5 w-5 text-blue-500" />Количество беременностей</h3>
                 <p>
                   Первая беременность в среднем длится на <strong className="text-foreground">5–7</strong> дней дольше
                   последующих. Повторнородящие чаще рожают ближе к <strong className="text-foreground">39</strong> неделе.
                 </p>
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground">Многоплодная беременность</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><Users className="h-5 w-5 text-amber-500" />Многоплодная беременность</h3>
                 <p>
                   Двойня в среднем рождается на <strong className="text-foreground">36–37</strong> неделе,
                   тройня — на <strong className="text-foreground">33–34</strong>. ПДР для многоплодной беременности
@@ -679,7 +688,7 @@ export default function DueDatePage() {
             </p>
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground">Акушерский срок</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><CalendarClock className="h-5 w-5 text-blue-500" />Акушерский срок</h3>
                 <p>
                   Отсчитывается от первого дня последних месячных.
                   Полная беременность = <strong className="text-foreground">40</strong> недель.
@@ -688,7 +697,7 @@ export default function DueDatePage() {
                 </p>
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground">Эмбриональный срок</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><FlaskConical className="h-5 w-5 text-green-500" />Эмбриональный срок</h3>
                 <p>
                   Отсчитывается от момента зачатия (обычно на <strong className="text-foreground">14</strong> дней позже).
                   Полная беременность = <strong className="text-foreground">38</strong> недель.
@@ -697,11 +706,14 @@ export default function DueDatePage() {
                 </p>
               </div>
             </div>
-            <p className="text-sm rounded-md bg-primary/5 text-foreground p-3">
-              Наш калькулятор автоматически пересчитывает срок в акушерский — тот,
-              который использует ваш врач. Если вы вводите дату зачатия, к ней
-              прибавляется <strong className="text-foreground">14</strong> дней для перевода в акушерские недели.
-            </p>
+            <div className="flex gap-2 items-start text-sm rounded-md bg-primary/5 text-foreground p-3">
+              <Calculator className="h-5 w-5 shrink-0 text-blue-400" />
+              <p>
+                Наш калькулятор автоматически пересчитывает срок в акушерский — тот,
+                который использует ваш врач. Если вы вводите дату зачатия, к ней
+                прибавляется <strong className="text-foreground">14</strong> дней для перевода в акушерские недели.
+              </p>
+            </div>
           </div>
 
           <hr className="border-border" />
@@ -721,7 +733,7 @@ export default function DueDatePage() {
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">1</span>
                 <div>
                   <p className="text-foreground font-medium">Встаньте на учёт до 12 недель</p>
-                  <p>Это позволит своевременно пройти первый скрининг и даёт право на дополнительное пособие при ранней постановке на учёт.</p>
+                  <p>Это позволит своевременно пройти первый скрининг, проверить <Link href="/zdorovye/telo/kalkulyator-imt" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">индекс массы тела</Link> и получить право на дополнительное пособие при ранней постановке на учёт.</p>
                 </div>
               </div>
               <div className="flex gap-3 items-start">
@@ -761,6 +773,11 @@ export default function DueDatePage() {
                 обязательно обратитесь к врачу.
               </p>
             </div>
+            <p className="text-sm">
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                Рассчитать дату родов&nbsp;→
+              </a>
+            </p>
           </div>
 
           <hr className="border-border" />

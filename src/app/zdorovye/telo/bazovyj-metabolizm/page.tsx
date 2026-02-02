@@ -39,7 +39,7 @@ import {
 export const metadata: Metadata = {
   title: 'Калькулятор базового метаболизма — BMR по 5 формулам',
   description:
-    'Бесплатный калькулятор базового метаболизма ✓ 5 формул BMR ✓ Миффлина-Сан Жеора ✓ Харриса-Бенедикта ✓ Сравнение результатов и рекомендации.',
+    'Бесплатный калькулятор базового метаболизма онлайн ✓ 5 формул BMR ✓ Миффлина-Сан Жеора и Харриса-Бенедикта ✓ Сравнение результатов и рекомендации по питанию.',
   keywords: [
     'базовый метаболизм',
     'калькулятор BMR',
@@ -80,7 +80,7 @@ export default function BMRPage() {
           description:
             'Онлайн калькулятор базового метаболизма по 5 научным формулам с мгновенным сравнением результатов',
           applicationCategory: 'HealthApplication',
-          url: 'https://calcbox.ru/zdorovye/telo/bazovyj-metabolizm',
+          url: 'https://calc-box.ru/zdorovye/telo/bazovyj-metabolizm',
           operatingSystem: 'All',
           offers: {
             '@type': 'Offer',
@@ -197,19 +197,19 @@ export default function BMRPage() {
               '@type': 'ListItem',
               position: 1,
               name: 'Главная',
-              item: 'https://calcbox.ru',
+              item: 'https://calc-box.ru',
             },
             {
               '@type': 'ListItem',
               position: 2,
               name: 'Тело',
-              item: 'https://calcbox.ru/zdorovye/telo',
+              item: 'https://calc-box.ru/zdorovye/telo',
             },
             {
               '@type': 'ListItem',
               position: 3,
               name: 'Базовый метаболизм',
-              item: 'https://calcbox.ru/zdorovye/telo/bazovyj-metabolizm',
+              item: 'https://calc-box.ru/zdorovye/telo/bazovyj-metabolizm',
             },
           ],
         }}

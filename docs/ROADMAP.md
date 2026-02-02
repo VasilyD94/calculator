@@ -25,8 +25,8 @@
   → Настроить цели (использование калькулятора, глубина просмотра)
 
 □ Обновить домен в коде
-  → src/app/sitemap.ts — заменить calcbox.ru на реальный домен
-  → src/app/robots.ts — заменить calcbox.ru на реальный домен
+  → src/app/sitemap.ts — заменить calc-box.ru на реальный домен
+  → src/app/robots.ts — заменить calc-box.ru на реальный домен
   → src/app/layout.tsx — metadataBase
   → JSON-LD схемы в page.tsx — BreadcrumbList URLs
 
@@ -78,7 +78,7 @@
 
 ✅ ХОРОШО:
 - mycalc.ru
-- calcbox.ru
+- calc-box.ru
 - vsecalc.ru
 - onlinecalc.ru
 - quickcalc.ru

@@ -41,7 +41,7 @@ export default function HomePage() {
           '@context': 'https://schema.org',
           '@type': 'WebSite',
           name: 'CalcBox',
-          url: 'https://calcbox.ru',
+          url: 'https://calc-box.ru',
           description:
             'Современные онлайн-калькуляторы здоровья: калории, ИМТ, БЖУ, беременность и другие.',
           inLanguage: 'ru',
@@ -58,7 +58,7 @@ export default function HomePage() {
             '@type': 'ListItem',
             position: i + 1,
             name: item.label,
-            url: `https://calcbox.ru${item.href}`,
+            url: `https://calc-box.ru${item.href}`,
           })),
         }}
       />

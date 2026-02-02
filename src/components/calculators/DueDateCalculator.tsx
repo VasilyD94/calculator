@@ -15,13 +15,14 @@ import { cn } from '@/lib/utils'
 import {
   Calendar,
   Baby,
-  Clock,
-  Info,
   Lightbulb,
   CheckCircle2,
   Circle,
   Stethoscope,
   SlidersHorizontal,
+  CalendarHeart,
+  Calculator,
+  Hospital,
 } from 'lucide-react'
 
 const METHODS: { id: ConceptionMethod; label: string; short: string }[] = [
@@ -115,7 +116,7 @@ export function DueDateCalculator() {
             }
             value={date}
             onChange={setDate}
-            icon={<Calendar className="h-4 w-4" />}
+            icon={<Calendar className="h-5 w-5" />}
             min={toIso(minDate)}
             max={toIso(today)}
           />
@@ -130,7 +131,7 @@ export function DueDateCalculator() {
                 min={4}
                 max={40}
                 unit="нед."
-                icon={<Stethoscope className="h-4 w-4" />}
+                icon={<Stethoscope className="h-5 w-5" />}
               />
               <ValueSlider
                 label="Срок на УЗИ — дни"
@@ -139,7 +140,7 @@ export function DueDateCalculator() {
                 min={0}
                 max={6}
                 unit="дн."
-                icon={<Stethoscope className="h-4 w-4" />}
+                icon={<Stethoscope className="h-5 w-5" />}
               />
             </div>
           )}
@@ -153,7 +154,7 @@ export function DueDateCalculator() {
           {result.dueDateFormatted}
         </p>
         <p className="text-xs text-muted-foreground mt-1">
-          Текущий срок: {result.currentTermFormatted} · {trimesterLabels[result.trimester]}
+          Текущий срок: <strong className="text-foreground">{result.currentTermFormatted}</strong> · <strong className="text-foreground">{trimesterLabels[result.trimester]}</strong>
         </p>
       </div>
 
@@ -185,19 +186,14 @@ export function DueDateCalculator() {
             </div>
 
             <div className="grid grid-cols-3 gap-2 text-sm">
-              <div className="rounded-lg bg-pink-50 px-3 py-2 text-center">
-                <p className="text-xs text-pink-600 mb-0.5">Триместр</p>
-                <p className="font-semibold text-pink-700">{result.trimester}-й</p>
+              <div className="rounded-lg bg-pink-50 px-2 py-2 text-center">
+                <span className="text-pink-700"><span className="font-semibold">{result.trimester}-й</span> <span className="text-xs">триместр</span></span>
               </div>
-              <div className="rounded-lg bg-blue-50 px-3 py-2 text-center">
-                <p className="text-xs text-blue-600 mb-0.5">Осталось</p>
-                <p className="font-semibold text-blue-700">
-                  {result.daysLeft > 0 ? `${result.daysLeft} дн.` : '—'}
-                </p>
+              <div className="rounded-lg bg-blue-50 px-2 py-2 text-center">
+                <span className="text-blue-700"><span className="text-xs">Осталось</span> <span className="font-semibold">{result.daysLeft > 0 ? `${result.daysLeft}` : '—'}</span> <span className="text-xs">дн.</span></span>
               </div>
-              <div className="rounded-lg bg-green-50 px-3 py-2 text-center">
-                <p className="text-xs text-green-600 mb-0.5">Прошло</p>
-                <p className="font-semibold text-green-700">{result.daysPassed} дн.</p>
+              <div className="rounded-lg bg-green-50 px-2 py-2 text-center">
+                <span className="text-green-700"><span className="text-xs">Прошло</span> <span className="font-semibold">{result.daysPassed}</span> <span className="text-xs">дн.</span></span>
               </div>
             </div>
           </CardContent>
@@ -214,14 +210,14 @@ export function DueDateCalculator() {
           <CardContent>
             <div className="space-y-3">
               {/* Расчётные даты */}
-              <div className="grid grid-cols-2 gap-2 text-sm mb-4">
-                <div className="rounded-lg border px-3 py-2">
-                  <p className="text-xs text-muted-foreground">Последние месячные</p>
-                  <p className="font-medium">{result.lmpDateFormatted}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm mb-4">
+                <div className="flex justify-between items-center rounded-lg border px-3 py-2">
+                  <span className="text-muted-foreground">Месячные</span>
+                  <span className="font-medium">{result.lmpDateFormatted}</span>
                 </div>
-                <div className="rounded-lg border px-3 py-2">
-                  <p className="text-xs text-muted-foreground">Предполагаемое зачатие</p>
-                  <p className="font-medium">{result.conceptionDateFormatted}</p>
+                <div className="flex justify-between items-center rounded-lg border px-3 py-2">
+                  <span className="text-muted-foreground">Зачатие</span>
+                  <span className="font-medium">{result.conceptionDateFormatted}</span>
                 </div>
               </div>
 
@@ -314,7 +310,7 @@ export function DueDateCalculator() {
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <Info className="h-4 w-4" />
+              <CalendarHeart className="h-5 w-5 text-pink-500" />
               <AlertTitle>ПДР — приблизительная дата</AlertTitle>
               <AlertDescription>
                 Только 4–5% детей рождаются точно в ПДР. Нормальные роды
@@ -323,7 +319,7 @@ export function DueDateCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Info className="h-4 w-4" />
+              <Calculator className="h-5 w-5 text-blue-500" />
               <AlertTitle>Метод расчёта</AlertTitle>
               <AlertDescription>
                 Расчёт по дате месячных (правило Негеле) предполагает цикл
@@ -332,7 +328,7 @@ export function DueDateCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Info className="h-4 w-4" />
+              <Hospital className="h-5 w-5 text-green-500" />
               <AlertTitle>Уточнение у врача</AlertTitle>
               <AlertDescription>
                 Наиболее точно срок беременности определяется на УЗИ в 11–13

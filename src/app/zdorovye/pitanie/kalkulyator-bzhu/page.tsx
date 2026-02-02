@@ -77,7 +77,7 @@ export default function MacroCalculatorPage() {
           description:
             'Онлайн калькулятор белков, жиров и углеводов с 5 типами диет',
           applicationCategory: 'HealthApplication',
-          url: 'https://calcbox.ru/zdorovye/pitanie/kalkulyator-bzhu',
+          url: 'https://calc-box.ru/zdorovye/pitanie/kalkulyator-bzhu',
           operatingSystem: 'All',
           offers: {
             '@type': 'Offer',
@@ -194,19 +194,19 @@ export default function MacroCalculatorPage() {
               '@type': 'ListItem',
               position: 1,
               name: 'Главная',
-              item: 'https://calcbox.ru',
+              item: 'https://calc-box.ru',
             },
             {
               '@type': 'ListItem',
               position: 2,
               name: 'Питание',
-              item: 'https://calcbox.ru/zdorovye/pitanie',
+              item: 'https://calc-box.ru/zdorovye/pitanie',
             },
             {
               '@type': 'ListItem',
               position: 3,
               name: 'Калькулятор БЖУ',
-              item: 'https://calcbox.ru/zdorovye/pitanie/kalkulyator-bzhu',
+              item: 'https://calc-box.ru/zdorovye/pitanie/kalkulyator-bzhu',
             },
           ],
         }}

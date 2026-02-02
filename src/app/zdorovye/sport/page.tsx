@@ -8,36 +8,36 @@ import { NAV_SECTIONS } from '@/lib/constants/navigation'
 import { Heart, Info, Calculator, BookOpen } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Калькуляторы беременности — дата родов, срок, овуляция',
+  title: 'Калькуляторы для спорта онлайн — пульс, белок, тренировки',
   description:
-    'Бесплатные калькуляторы беременности: расчёт даты родов (ПДР), определение срока беременности и календарь овуляции. Мгновенный результат без регистрации.',
+    'Бесплатные калькуляторы для спорта: пульсовые зоны для тренировок и норма белка для спортсменов. Мгновенный расчёт по научным формулам без регистрации.',
   keywords: [
-    'калькулятор беременности',
-    'дата родов',
-    'срок беременности',
-    'калькулятор овуляции',
-    'ПДР онлайн',
-    'календарь беременности',
+    'калькулятор для спорта',
+    'пульсовые зоны',
+    'калькулятор пульса',
+    'белок для спортсменов',
+    'норма белка',
+    'тренировки онлайн',
   ],
   openGraph: {
-    title: 'Калькуляторы беременности — дата родов, срок, овуляция',
+    title: 'Калькуляторы для спорта онлайн — пульс, белок, тренировки',
     description:
-      'Бесплатные калькуляторы беременности: дата родов, срок беременности и овуляция.',
+      'Бесплатные калькуляторы для спорта: пульсовые зоны и норма белка для спортсменов.',
     type: 'website',
-    url: '/zdorovye/beremennost',
+    url: '/zdorovye/sport',
   },
   alternates: {
-    canonical: '/zdorovye/beremennost',
+    canonical: '/zdorovye/sport',
   },
 }
 
 const breadcrumbs = [
   { label: 'Главная', href: '/' },
-  { label: 'Беременность', href: '/zdorovye/beremennost' },
+  { label: 'Спорт', href: '/zdorovye/sport' },
 ]
 
-export default function BeremennostPage() {
-  const section = NAV_SECTIONS.find((s) => s.href === '/zdorovye/beremennost')
+export default function SportPage() {
+  const section = NAV_SECTIONS.find((s) => s.href === '/zdorovye/sport')
   if (!section) return null
 
   return (
@@ -46,10 +46,10 @@ export default function BeremennostPage() {
         data={{
           '@context': 'https://schema.org',
           '@type': 'CollectionPage',
-          name: 'Калькуляторы беременности',
+          name: 'Калькуляторы для спорта',
           description:
-            'Бесплатные онлайн-калькуляторы беременности: дата родов, срок и овуляция.',
-          url: 'https://calc-box.ru/zdorovye/beremennost',
+            'Бесплатные онлайн-калькуляторы для спорта: пульсовые зоны и норма белка.',
+          url: 'https://calc-box.ru/zdorovye/sport',
           inLanguage: 'ru',
         }}
       />
@@ -71,12 +71,12 @@ export default function BeremennostPage() {
 
         <header className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Калькуляторы беременности
+            Калькуляторы для спорта
           </h1>
           <p className="text-lg text-muted-foreground">
-            Рассчитайте предполагаемую дату родов, определите текущий срок
-            беременности и спланируйте зачатие с помощью календаря овуляции.
-            Мгновенный результат без регистрации.
+            Рассчитайте персональные пульсовые зоны для эффективных тренировок
+            и суточную норму белка для роста мышц и восстановления. Мгновенный
+            результат по научным формулам.
           </p>
         </header>
 
@@ -115,13 +115,14 @@ export default function BeremennostPage() {
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
               <Info className="h-5 w-5" />
-              Калькуляторы для будущих мам
+              Зачем нужны спортивные калькуляторы
             </h2>
             <p>
-              Беременность — особенный период, когда важно знать точные сроки
-              и ключевые даты. Наши калькуляторы помогут определить
-              предполагаемую дату родов, узнать текущий срок и спланировать
-              визиты к врачу.
+              Эффективные тренировки требуют точных данных. Зная свои пульсовые
+              зоны, вы тренируетесь в нужной интенсивности — жжёте жир,
+              развиваете выносливость или наращиваете скорость. Правильная норма
+              белка обеспечивает восстановление мышц и прогресс в силовых
+              показателях.
             </p>
           </div>
 
@@ -135,34 +136,24 @@ export default function BeremennostPage() {
             <ul className="space-y-3 pl-5 list-disc marker:text-primary">
               <li>
                 <Link
-                  href="/zdorovye/beremennost/data-rodov"
+                  href="/zdorovye/sport/puls-dlya-trenirovok"
                   className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary"
                 >
-                  <strong>Дата родов</strong>
+                  <strong>Пульс для тренировок</strong>
                 </Link>{' '}
-                — расчёт предполагаемой даты родов (ПДР) по дате последних
-                месячных, дате зачатия или данным УЗИ. Таймлайн ключевых
-                событий беременности.
+                — 5 персональных пульсовых зон по методу Карвонена. Сравнение
+                3 формул максимального пульса (Танака, Хаскелла–Фокса, Гелиша).
               </li>
               <li>
                 <Link
-                  href="/zdorovye/beremennost/srok-beremennosti"
+                  href="/zdorovye/sport/belok-dlya-sportsmenov"
                   className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary"
                 >
-                  <strong>Срок беременности</strong>
+                  <strong>Белок для спортсменов</strong>
                 </Link>{' '}
-                — определение текущего акушерского срока в неделях и днях
-                с прогрессом по триместрам.
-              </li>
-              <li>
-                <Link
-                  href="/zdorovye/beremennost/ovulyatsiya"
-                  className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary"
-                >
-                  <strong>Овуляция</strong>
-                </Link>{' '}
-                — расчёт дней овуляции и фертильного окна для планирования
-                беременности.
+                — суточная норма протеина по рекомендациям ISSN и ACSM для
+                4 типов тренировок. Распределение по приёмам пищи и сравнение
+                формул.
               </li>
             </ul>
           </div>
@@ -175,14 +166,14 @@ export default function BeremennostPage() {
               Как пользоваться
             </h2>
             <p>
-              Все калькуляторы работают мгновенно — результат обновляется
-              при изменении параметров. Укажите дату последних месячных или
-              другие данные, и калькулятор рассчитает все необходимые сроки
-              и даты.
+              Все калькуляторы работают в реальном времени — результат
+              обновляется мгновенно при изменении параметров. Укажите возраст,
+              вес и тип тренировок, и калькулятор подберёт оптимальные значения
+              для вашего уровня подготовки.
             </p>
             <p>
               Результаты расчётов носят информационный характер и не заменяют
-              наблюдение у врача акушера-гинеколога.
+              консультацию спортивного врача или тренера.
             </p>
           </div>
         </section>

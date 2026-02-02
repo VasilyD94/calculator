@@ -36,7 +36,7 @@ import {
 export const metadata: Metadata = {
   title: 'Калькулятор калорий онлайн — расчёт суточной нормы бесплатно',
   description:
-    'Бесплатный калькулятор калорий онлайн: расчёт суточной нормы по 5 формулам, сравнение результатов, калории для похудения и набора массы, расчёт БЖУ. Без регистрации.',
+    'Бесплатный калькулятор калорий онлайн ✓ Расчёт суточной нормы по 5 формулам ✓ Сравнение результатов ✓ Калории для похудения и набора массы ✓ Расчёт БЖУ.',
   keywords: [
     'калькулятор калорий',
     'расчёт калорий',
@@ -76,7 +76,7 @@ export default function CalorieCalculatorPage() {
           name: 'Калькулятор калорий онлайн',
           description: 'Онлайн калькулятор суточной нормы калорий по 5 научным формулам',
           applicationCategory: 'HealthApplication',
-          url: 'https://calcbox.ru/zdorovye/pitanie/kalkulyator-kalorij',
+          url: 'https://calc-box.ru/zdorovye/pitanie/kalkulyator-kalorij',
           operatingSystem: 'All',
           offers: {
             '@type': 'Offer',
@@ -193,19 +193,19 @@ export default function CalorieCalculatorPage() {
               '@type': 'ListItem',
               position: 1,
               name: 'Главная',
-              item: 'https://calcbox.ru',
+              item: 'https://calc-box.ru',
             },
             {
               '@type': 'ListItem',
               position: 2,
               name: 'Питание',
-              item: 'https://calcbox.ru/zdorovye/pitanie',
+              item: 'https://calc-box.ru/zdorovye/pitanie',
             },
             {
               '@type': 'ListItem',
               position: 3,
               name: 'Калькулятор калорий',
-              item: 'https://calcbox.ru/zdorovye/pitanie/kalkulyator-kalorij',
+              item: 'https://calc-box.ru/zdorovye/pitanie/kalkulyator-kalorij',
             },
           ],
         }}

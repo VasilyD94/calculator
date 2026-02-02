@@ -35,9 +35,9 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Калькулятор ИМТ — индекс массы тела онлайн',
+  title: 'Калькулятор ИМТ онлайн — индекс массы тела бесплатно',
   description:
-    'Бесплатный калькулятор ИМТ ✓ Расчёт индекса массы тела по росту и весу ✓ Шкала категорий ВОЗ ✓ Идеальный диапазон веса ✓ Персональные рекомендации. Без регистрации.',
+    'Бесплатный калькулятор ИМТ онлайн ✓ Расчёт индекса массы тела по росту и весу ✓ Шкала 7 категорий ВОЗ ✓ Идеальный диапазон веса ✓ Персональные рекомендации.',
   keywords: [
     'калькулятор ИМТ',
     'индекс массы тела',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     'идеальный вес',
   ],
   openGraph: {
-    title: 'Калькулятор ИМТ — индекс массы тела онлайн',
+    title: 'Калькулятор ИМТ онлайн — индекс массы тела бесплатно',
     description:
       'Рассчитайте индекс массы тела и узнайте, в норме ли ваш вес. Шкала категорий ВОЗ и рекомендации.',
     type: 'website',
@@ -78,7 +78,7 @@ export default function BMICalculatorPage() {
           description:
             'Онлайн калькулятор индекса массы тела с визуальной шкалой категорий ВОЗ и расчётом идеального веса',
           applicationCategory: 'HealthApplication',
-          url: 'https://calcbox.ru/zdorovye/telo/kalkulyator-imt',
+          url: 'https://calc-box.ru/zdorovye/telo/kalkulyator-imt',
           operatingSystem: 'All',
           offers: {
             '@type': 'Offer',
@@ -195,19 +195,19 @@ export default function BMICalculatorPage() {
               '@type': 'ListItem',
               position: 1,
               name: 'Главная',
-              item: 'https://calcbox.ru',
+              item: 'https://calc-box.ru',
             },
             {
               '@type': 'ListItem',
               position: 2,
               name: 'Тело',
-              item: 'https://calcbox.ru/zdorovye/telo',
+              item: 'https://calc-box.ru/zdorovye/telo',
             },
             {
               '@type': 'ListItem',
               position: 3,
               name: 'Калькулятор ИМТ',
-              item: 'https://calcbox.ru/zdorovye/telo/kalkulyator-imt',
+              item: 'https://calc-box.ru/zdorovye/telo/kalkulyator-imt',
             },
           ],
         }}

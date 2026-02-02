@@ -94,7 +94,7 @@ const breadcrumbs = [
   name: 'Название калькулятора',
   description: 'Описание',
   applicationCategory: 'HealthApplication',
-  url: 'https://calcbox.ru/zdorovye/раздел/страница',
+  url: 'https://calc-box.ru/zdorovye/раздел/страница',
   operatingSystem: 'All',
   offers: {
     '@type': 'Offer',
@@ -153,9 +153,9 @@ const breadcrumbs = [
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://calcbox.ru' },
-    { '@type': 'ListItem', position: 2, name: 'Раздел', item: 'https://calcbox.ru/zdorovye/раздел' },
-    { '@type': 'ListItem', position: 3, name: 'Калькулятор', item: 'https://calcbox.ru/zdorovye/раздел/страница' },
+    { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://calc-box.ru' },
+    { '@type': 'ListItem', position: 2, name: 'Раздел', item: 'https://calc-box.ru/zdorovye/раздел' },
+    { '@type': 'ListItem', position: 3, name: 'Калькулятор', item: 'https://calc-box.ru/zdorovye/раздел/страница' },
   ],
 }} />
 ```

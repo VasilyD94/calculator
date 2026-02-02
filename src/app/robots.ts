@@ -12,7 +12,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://calcbox.ru/sitemap.xml',
-    host: 'https://calcbox.ru',
+    sitemap: 'https://calc-box.ru/sitemap.xml',
+    host: 'https://calc-box.ru',
   }
 }

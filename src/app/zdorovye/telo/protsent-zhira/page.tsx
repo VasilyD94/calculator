@@ -30,7 +30,7 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Калькулятор процента жира — расчёт по 3 формулам',
+  title: 'Калькулятор процента жира онлайн — расчёт по 3 формулам',
   description:
     'Бесплатный онлайн калькулятор процента жира в организме ✓ Метод ВМС США ✓ Формулы Deurenberg и Gallagher ✓ Категории ACE ✓ Состав тела и сравнение 3 формул.',
   keywords: [
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     'body fat calculator',
   ],
   openGraph: {
-    title: 'Калькулятор процента жира — расчёт по 3 формулам',
+    title: 'Калькулятор процента жира онлайн — расчёт по 3 формулам',
     description:
       'Узнайте процент жира в организме по 3 научным формулам. Категории ACE, состав тела и сравнение методов.',
     type: 'website',
@@ -73,7 +73,7 @@ export default function BodyFatPage() {
           description:
             'Онлайн калькулятор процента жира в организме по 3 научным формулам с визуальной шкалой категорий',
           applicationCategory: 'HealthApplication',
-          url: 'https://calcbox.ru/zdorovye/telo/protsent-zhira',
+          url: 'https://calc-box.ru/zdorovye/telo/protsent-zhira',
           operatingSystem: 'All',
           offers: {
             '@type': 'Offer',
@@ -190,19 +190,19 @@ export default function BodyFatPage() {
               '@type': 'ListItem',
               position: 1,
               name: 'Главная',
-              item: 'https://calcbox.ru',
+              item: 'https://calc-box.ru',
             },
             {
               '@type': 'ListItem',
               position: 2,
               name: 'Тело',
-              item: 'https://calcbox.ru/zdorovye/telo',
+              item: 'https://calc-box.ru/zdorovye/telo',
             },
             {
               '@type': 'ListItem',
               position: 3,
               name: 'Процент жира',
-              item: 'https://calcbox.ru/zdorovye/telo/protsent-zhira',
+              item: 'https://calc-box.ru/zdorovye/telo/protsent-zhira',
             },
           ],
         }}

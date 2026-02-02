@@ -8,36 +8,36 @@ import { NAV_SECTIONS } from '@/lib/constants/navigation'
 import { Heart, Info, Calculator, BookOpen } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Калькуляторы питания — калории, БЖУ, дефицит и норма воды',
+  title: 'Калькуляторы тела — ИМТ, идеальный вес, жир и метаболизм',
   description:
-    'Бесплатные калькуляторы питания: суточная норма калорий, соотношение БЖУ, дефицит калорий для похудения и норма воды. Мгновенный расчёт без регистрации.',
+    'Бесплатные калькуляторы тела: индекс массы тела, идеальный вес, процент жира и базовый метаболизм. Мгновенный расчёт по научным формулам без регистрации.',
   keywords: [
-    'калькулятор питания',
-    'калькулятор калорий',
-    'калькулятор БЖУ',
-    'дефицит калорий',
-    'норма воды',
-    'расчёт калорий онлайн',
+    'калькулятор тела',
+    'калькулятор ИМТ',
+    'идеальный вес',
+    'процент жира',
+    'базовый метаболизм',
+    'индекс массы тела',
   ],
   openGraph: {
-    title: 'Калькуляторы питания — калории, БЖУ, дефицит и норма воды',
+    title: 'Калькуляторы тела — ИМТ, идеальный вес, жир и метаболизм',
     description:
-      'Бесплатные калькуляторы питания: калории, БЖУ, дефицит калорий и норма воды.',
+      'Бесплатные калькуляторы тела: ИМТ, идеальный вес, процент жира и базовый метаболизм.',
     type: 'website',
-    url: '/zdorovye/pitanie',
+    url: '/zdorovye/telo',
   },
   alternates: {
-    canonical: '/zdorovye/pitanie',
+    canonical: '/zdorovye/telo',
   },
 }
 
 const breadcrumbs = [
   { label: 'Главная', href: '/' },
-  { label: 'Питание', href: '/zdorovye/pitanie' },
+  { label: 'Тело', href: '/zdorovye/telo' },
 ]
 
-export default function PitaniePage() {
-  const section = NAV_SECTIONS.find((s) => s.href === '/zdorovye/pitanie')
+export default function TeloPage() {
+  const section = NAV_SECTIONS.find((s) => s.href === '/zdorovye/telo')
   if (!section) return null
 
   return (
@@ -46,10 +46,10 @@ export default function PitaniePage() {
         data={{
           '@context': 'https://schema.org',
           '@type': 'CollectionPage',
-          name: 'Калькуляторы питания',
+          name: 'Калькуляторы тела',
           description:
-            'Бесплатные онлайн-калькуляторы питания: калории, БЖУ, дефицит калорий и норма воды.',
-          url: 'https://calc-box.ru/zdorovye/pitanie',
+            'Бесплатные онлайн-калькуляторы тела: ИМТ, идеальный вес, процент жира и метаболизм.',
+          url: 'https://calc-box.ru/zdorovye/telo',
           inLanguage: 'ru',
         }}
       />
@@ -71,12 +71,12 @@ export default function PitaniePage() {
 
         <header className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Калькуляторы питания
+            Калькуляторы тела
           </h1>
           <p className="text-lg text-muted-foreground">
-            Рассчитайте суточную норму калорий, оптимальное соотношение белков,
-            жиров и углеводов, дефицит калорий для похудения и норму воды.
-            Мгновенный результат по научным формулам.
+            Узнайте свой индекс массы тела, идеальный вес по 5 формулам,
+            процент жира и базовый метаболизм. Все расчёты мгновенные
+            и основаны на научных формулах.
           </p>
         </header>
 
@@ -115,15 +115,13 @@ export default function PitaniePage() {
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
               <Info className="h-5 w-5" />
-              Зачем считать калории и БЖУ
+              Зачем знать параметры тела
             </h2>
             <p>
-              Контроль питания — основа управления весом и здоровьем. Зная свою
-              суточную норму калорий, вы можете осознанно планировать рацион:
-              создавать дефицит для похудения, профицит для набора массы или
-              поддерживать текущий вес. Расчёт БЖУ помогает сбалансировать
-              макронутриенты — белки для мышц, жиры для гормонов и углеводы для
-              энергии.
+              Понимание своих физических показателей — первый шаг к управлению
+              здоровьем. ИМТ помогает оценить соотношение роста и веса, процент
+              жира показывает реальный состав тела, а базовый метаболизм —
+              сколько калорий сжигает ваш организм в состоянии покоя.
             </p>
           </div>
 
@@ -132,49 +130,48 @@ export default function PitaniePage() {
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
               <Calculator className="h-5 w-5" />
-              Наши калькуляторы питания
+              Наши калькуляторы
             </h2>
             <ul className="space-y-3 pl-5 list-disc marker:text-primary">
               <li>
                 <Link
-                  href="/zdorovye/pitanie/kalkulyator-kalorij"
+                  href="/zdorovye/telo/kalkulyator-imt"
                   className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary"
                 >
-                  <strong>Калькулятор калорий</strong>
+                  <strong>Калькулятор ИМТ</strong>
                 </Link>{' '}
-                — расчёт суточной нормы по 5 научным формулам с прогнозом
-                похудения и набора массы.
+                — индекс массы тела по шкале ВОЗ с 7 категориями, идеальным
+                диапазоном веса и персональными рекомендациями.
               </li>
               <li>
                 <Link
-                  href="/zdorovye/pitanie/kalkulyator-bzhu"
+                  href="/zdorovye/telo/idealnyj-ves"
                   className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary"
                 >
-                  <strong>Калькулятор БЖУ</strong>
+                  <strong>Идеальный вес</strong>
                 </Link>{' '}
-                — оптимальное соотношение белков, жиров и углеводов для 5 типов
-                диет: сбалансированная, высокобелковая, низкоуглеводная, кето и
-                спортивная.
+                — расчёт по 5 формулам (Devine, Robinson, Miller, Hamwi, Брока)
+                с наглядным сравнением результатов.
               </li>
               <li>
                 <Link
-                  href="/zdorovye/pitanie/defitsit-kalorij"
+                  href="/zdorovye/telo/protsent-zhira"
                   className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary"
                 >
-                  <strong>Дефицит калорий</strong>
+                  <strong>Процент жира</strong>
                 </Link>{' '}
-                — расчёт безопасного дефицита для похудения с прогнозом сроков
-                достижения цели.
+                — оценка содержания жировой ткани по 3 формулам на основе
+                обхватов тела. Визуальная шкала и рекомендации.
               </li>
               <li>
                 <Link
-                  href="/zdorovye/pitanie/norma-vody"
+                  href="/zdorovye/telo/bazovyj-metabolizm"
                   className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary"
                 >
-                  <strong>Норма воды</strong>
+                  <strong>Базовый метаболизм</strong>
                 </Link>{' '}
-                — индивидуальный расчёт суточной потребности в воде с учётом
-                веса, активности и климата.
+                — расчёт BMR по 5 формулам (Миффлина-Сан Жеора,
+                Харриса-Бенедикта и другим) для планирования питания.
               </li>
             </ul>
           </div>
@@ -184,18 +181,16 @@ export default function PitaniePage() {
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
               <BookOpen className="h-5 w-5" />
-              Как пользоваться калькуляторами
+              Как пользоваться
             </h2>
             <p>
               Все калькуляторы работают в реальном времени — результат
-              обновляется мгновенно при изменении параметров. Введите свои данные
-              (пол, возраст, рост, вес и уровень активности) один раз — они
-              автоматически сохранятся и будут подставлены во все остальные
-              калькуляторы.
+              обновляется мгновенно при изменении параметров. Введите рост, вес,
+              возраст и пол — остальное калькулятор рассчитает сам.
             </p>
             <p>
               Результаты расчётов носят информационный характер и не заменяют
-              консультацию диетолога или врача.
+              консультацию врача или диетолога.
             </p>
           </div>
         </section>

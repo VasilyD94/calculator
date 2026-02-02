@@ -25,7 +25,10 @@ import {
   AlertTriangle,
   SlidersHorizontal,
   ChartPie,
+  Lightbulb,
+  Info,
 } from 'lucide-react'
+import { AlertTitle } from '@/components/ui/alert'
 
 type Goal = 'lose' | 'maintain' | 'gain'
 
@@ -132,7 +135,7 @@ export function CalorieCalculator() {
   }
 
   return (
-    <div className="space-y-4" id="calculator">
+    <div id="calculator" className="space-y-6">
       {/* Ввод данных */}
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
@@ -266,6 +269,36 @@ export function CalorieCalculator() {
               fat={macros.fat}
               carbs={macros.carbs}
             />
+          </CardContent>
+        </Card>
+
+        {/* Важно знать */}
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
+              Важно знать
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <Alert>
+              <Info className="h-5 w-5 text-sky-400" />
+              <AlertTitle>Формулы дают оценку</AlertTitle>
+              <AlertDescription>
+                Все формулы рассчитывают приблизительную норму. Реальная потребность
+                зависит от состава тела, генетики и образа жизни. Используйте
+                результат как отправную точку.
+              </AlertDescription>
+            </Alert>
+            <Alert>
+              <AlertTriangle className="h-5 w-5 text-amber-400" />
+              <AlertTitle>Минимальная калорийность</AlertTitle>
+              <AlertDescription>
+                Не опускайтесь ниже {gender === 'male' ? '1 500' : '1 200'} ккал/день
+                без наблюдения врача. Слишком низкая калорийность замедляет метаболизм
+                и приводит к потере мышечной массы.
+              </AlertDescription>
+            </Alert>
           </CardContent>
         </Card>
 

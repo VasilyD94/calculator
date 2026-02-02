@@ -116,7 +116,7 @@ cat /etc/nginx/sites-available/calculator
 ```
 1. Изменить server_name в /etc/nginx/sites-available/calculator
 2. Установить certbot: apt install certbot python3-certbot-nginx
-3. Получить SSL: certbot --nginx -d calcbox.ru -d www.calcbox.ru
+3. Получить SSL: certbot --nginx -d calc-box.ru -d www.calc-box.ru
 4. Nginx перезагрузится автоматически
 ```
 
@@ -125,7 +125,7 @@ cat /etc/nginx/sites-available/calculator
 ## 🌐 Домен и структура
 
 ```
-ДОМЕН: Нейтральный (mycalc.ru, calcbox.ru, vsecalc.ru)
+ДОМЕН: Нейтральный (mycalc.ru, calc-box.ru, vsecalc.ru)
 
 СТРУКТУРА URL:
 /
@@ -3891,7 +3891,7 @@ export const metadata: Metadata = {
 ```
 ✅ lang="ru" в <html>
 ✅ Кириллический subset шрифтов (Geist + Geist_Mono)
-✅ metadataBase: 'https://calcbox.ru'
+✅ metadataBase: 'https://calc-box.ru'
 ✅ Title template: '%s | CalcBox'
 ✅ Geo-теги: geo.region=RU, geo.placename=Russia, content-language=ru
 ✅ Open Graph: locale=ru_RU, siteName=CalcBox

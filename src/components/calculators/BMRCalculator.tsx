@@ -52,7 +52,7 @@ export function BMRCalculator() {
   }
 
   return (
-    <div id="calculator" className="space-y-4">
+    <div id="calculator" className="space-y-6">
       {/* Ввод данных */}
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">

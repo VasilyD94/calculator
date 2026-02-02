@@ -15,12 +15,11 @@ import { cn } from '@/lib/utils'
 import {
   Calendar,
   Baby,
-  Clock,
-  Info,
   Lightbulb,
   Stethoscope,
-  Ruler,
-  Heart,
+  SlidersHorizontal,
+  CalendarClock,
+  Hospital,
 } from 'lucide-react'
 
 const METHODS: { id: ConceptionMethod; label: string; short: string }[] = [
@@ -78,11 +77,14 @@ export function GestationalAgeCalculator() {
   )
 
   return (
-    <div className="space-y-8">
+    <div id="calculator" className="space-y-6">
       {/* Ввод данных */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Выберите метод расчёта</CardTitle>
+      <Card className="gap-3 py-4">
+        <CardHeader className="pb-0">
+          <CardTitle className="text-base flex items-center gap-2">
+            <SlidersHorizontal className="h-5 w-5" />
+            Выберите метод расчёта
+          </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="flex gap-2 p-1 bg-muted rounded-xl">
@@ -114,7 +116,7 @@ export function GestationalAgeCalculator() {
             }
             value={date}
             onChange={setDate}
-            icon={<Calendar className="h-4 w-4" />}
+            icon={<Calendar className="h-5 w-5" />}
             min={toIso(minDate)}
             max={toIso(today)}
           />
@@ -128,7 +130,7 @@ export function GestationalAgeCalculator() {
                 min={4}
                 max={40}
                 unit="нед."
-                icon={<Stethoscope className="h-4 w-4" />}
+                icon={<Stethoscope className="h-5 w-5" />}
               />
               <ValueSlider
                 label="Срок на УЗИ — дни"
@@ -137,64 +139,54 @@ export function GestationalAgeCalculator() {
                 min={0}
                 max={6}
                 unit="дн."
-                icon={<Stethoscope className="h-4 w-4" />}
+                icon={<Stethoscope className="h-5 w-5" />}
               />
             </div>
           )}
         </CardContent>
       </Card>
 
-      {/* Результаты */}
-      <div className="space-y-6">
-        {/* Текущий срок — компактная */}
-        <Card>
-          <CardContent className="pt-5 pb-5">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-              <div className="flex items-center gap-3 shrink-0">
-                <Baby className="h-6 w-6 text-pink-500 shrink-0" />
-                <div>
-                  <p className="text-xl font-bold leading-tight">
-                    {result.currentTermFormatted}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    ПДР: {result.dueDateFormatted}
-                  </p>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 sm:flex sm:flex-wrap gap-1.5 sm:ml-auto">
-                <span className="flex items-center gap-1.5 rounded-md bg-pink-50 px-2.5 py-1.5 text-xs text-pink-700">
-                  <Baby className="h-3.5 w-3.5 shrink-0" />
-                  {trimesterLabels[result.trimester]}
-                </span>
-                <span className="flex items-center gap-1.5 rounded-md bg-green-50 px-2.5 py-1.5 text-xs text-green-700">
-                  <Calendar className="h-3.5 w-3.5 shrink-0" />
-                  Прошло {result.daysPassed} дн.
-                </span>
-                <span className="flex items-center gap-1.5 rounded-md bg-blue-50 px-2.5 py-1.5 text-xs text-blue-700">
-                  <Clock className="h-3.5 w-3.5 shrink-0" />
-                  {result.daysLeft > 0
-                    ? `Осталось ${result.daysLeft} дн.`
-                    : 'Срок наступил'}
-                </span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+      {/* Главный результат */}
+      <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
+        <p className="text-sm text-muted-foreground mb-1">Текущий срок беременности</p>
+        <p className="text-4xl font-bold text-primary">
+          {result.currentTermFormatted}
+        </p>
+        <p className="text-xs text-muted-foreground mt-1">
+          <strong className="text-foreground">{trimesterLabels[result.trimester]}</strong> · ПДР: <strong className="text-foreground">{result.dueDateFormatted}</strong>
+        </p>
+      </div>
 
-        {/* Развитие малыша — компактное */}
-        <Card>
-          <CardContent className="pt-5 pb-5 space-y-4">
+      <div className="grid grid-cols-3 gap-2 text-sm">
+        <div className="rounded-lg bg-pink-50 px-2 py-2 text-center">
+          <span className="text-pink-700"><span className="font-semibold">{result.trimester}-й</span> <span className="text-xs">триместр</span></span>
+        </div>
+        <div className="rounded-lg bg-blue-50 px-2 py-2 text-center">
+          <span className="text-blue-700"><span className="text-xs">Осталось</span> <span className="font-semibold">{result.daysLeft > 0 ? `${result.daysLeft}` : '—'}</span> <span className="text-xs">дн.</span></span>
+        </div>
+        <div className="rounded-lg bg-green-50 px-2 py-2 text-center">
+          <span className="text-green-700"><span className="text-xs">Прошло</span> <span className="font-semibold">{result.daysPassed}</span> <span className="text-xs">дн.</span></span>
+        </div>
+      </div>
+
+      <div className="space-y-6">
+        {/* Развитие малыша и прогресс */}
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
+              <Baby className="h-5 w-5" />
+              Развитие малыша
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
             <div className="flex items-center gap-4">
-              <span className="text-4xl shrink-0">{development.emoji}</span>
+              <span className="text-3xl">{development.emoji}</span>
               <div>
                 <p className="font-semibold">
                   Размер: {development.size}
                 </p>
                 <div className="flex items-center gap-3 mt-0.5 text-sm text-muted-foreground">
-                  <span className="flex items-center gap-1">
-                    <Ruler className="h-3.5 w-3.5" />
-                    {development.length}
-                  </span>
+                  <span>{development.length}</span>
                   <span>&#183;</span>
                   <span>{development.weight}</span>
                 </div>
@@ -212,123 +204,45 @@ export function GestationalAgeCalculator() {
 
             <div className="rounded-lg bg-primary/5 border border-primary/20 p-3 space-y-1.5">
               <h4 className="font-medium text-sm flex items-center gap-1.5">
-                <Lightbulb className="h-3.5 w-3.5 text-primary" />
+                <Lightbulb className="h-4 w-4 text-amber-500" />
                 Совет
               </h4>
               <p className="text-sm text-muted-foreground">
                 {development.momTip}
               </p>
             </div>
-          </CardContent>
-        </Card>
 
-        {/* Прогресс */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Clock className="h-5 w-5" />
-              Прогресс беременности
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">
-                {result.currentTermFormatted}
-              </span>
-              <span className="font-medium">
-                {Math.round(result.progress)}%
-              </span>
+            {/* Прогресс */}
+            <div className="space-y-2 pt-2 border-t">
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">
+                  {result.currentTermFormatted}
+                </span>
+                <span className="font-medium">
+                  {Math.round(result.progress)}%
+                </span>
+              </div>
+              <Progress value={result.progress} className="h-3" />
+              <div className="flex justify-between text-xs text-muted-foreground">
+                <span>1 триместр</span>
+                <span>2 триместр</span>
+                <span>3 триместр</span>
+              </div>
             </div>
-            <Progress value={result.progress} className="h-3" />
-            <div className="flex justify-between text-xs text-muted-foreground">
-              <span>1 триместр</span>
-              <span>2 триместр</span>
-              <span>3 триместр</span>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Путь по триместрам */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Calendar className="h-5 w-5" />
-              Путь по триместрам
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-5">
-            {([
-              { label: '1 триместр', range: '1–12 нед.', start: 1, end: 12, color: 'pink' as const },
-              { label: '2 триместр', range: '13–26 нед.', start: 13, end: 26, color: 'purple' as const },
-              { label: '3 триместр', range: '27–40 нед.', start: 27, end: 40, color: 'blue' as const },
-            ] as const).map((tri) => {
-              const totalWeeks = tri.end - tri.start + 1
-              const weekInTri = Math.min(
-                Math.max(result.currentWeek - tri.start + 1, 0),
-                totalWeeks
-              )
-              const percent = Math.round((weekInTri / totalWeeks) * 100)
-              const isActive =
-                result.currentWeek >= tri.start && result.currentWeek <= tri.end
-              const isDone = result.currentWeek > tri.end
-
-              const barColor = {
-                pink: 'bg-pink-500',
-                purple: 'bg-purple-500',
-                blue: 'bg-blue-500',
-              }[tri.color]
-
-              const textColor = {
-                pink: 'text-pink-600',
-                purple: 'text-purple-600',
-                blue: 'text-blue-600',
-              }[tri.color]
-
-              const trackColor = {
-                pink: 'bg-pink-100',
-                purple: 'bg-purple-100',
-                blue: 'bg-blue-100',
-              }[tri.color]
-
-              return (
-                <div key={tri.label} className="space-y-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className={cn('font-medium', isActive ? textColor : 'text-muted-foreground')}>
-                      {tri.label}
-                      <span className="font-normal text-muted-foreground ml-1.5">
-                        ({tri.range})
-                      </span>
-                    </span>
-                    <span className={cn(
-                      'text-xs font-medium',
-                      isDone ? 'text-green-600' : isActive ? textColor : 'text-muted-foreground'
-                    )}>
-                      {isDone ? 'Пройден' : isActive ? `${result.currentWeek} нед.` : 'Впереди'}
-                    </span>
-                  </div>
-                  <div className={cn('h-3 rounded-full overflow-hidden', trackColor)}>
-                    <div
-                      className={cn('h-full rounded-full transition-all duration-500', barColor)}
-                      style={{ width: `${isDone ? 100 : percent}%` }}
-                    />
-                  </div>
-                </div>
-              )
-            })}
           </CardContent>
         </Card>
 
         {/* Важно знать */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <Lightbulb className="h-5 w-5" />
               Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <Info className="h-4 w-4" />
+              <CalendarClock className="h-5 w-5 text-blue-500" />
               <AlertTitle>Акушерский и эмбриональный срок</AlertTitle>
               <AlertDescription>
                 Акушерский срок считается от первого дня последних месячных
@@ -337,7 +251,7 @@ export function GestationalAgeCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Info className="h-4 w-4" />
+              <Stethoscope className="h-5 w-5 text-pink-500" />
               <AlertTitle>Точность определения срока</AlertTitle>
               <AlertDescription>
                 Наиболее точно срок определяется на УЗИ в 11–13 недель
@@ -346,7 +260,7 @@ export function GestationalAgeCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Info className="h-4 w-4" />
+              <Hospital className="h-5 w-5 text-green-500" />
               <AlertTitle>Наблюдение у врача</AlertTitle>
               <AlertDescription>
                 Рекомендуется встать на учёт до 12 недель. Регулярные

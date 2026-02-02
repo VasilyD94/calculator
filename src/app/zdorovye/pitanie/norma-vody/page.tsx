@@ -31,7 +31,7 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Калькулятор нормы воды — сколько воды пить в день',
+  title: 'Калькулятор нормы воды онлайн — сколько воды пить в день',
   description:
     'Бесплатный калькулятор нормы воды ✓ Индивидуальный расчёт по весу и активности ✓ Учёт климата и особенностей ✓ Расписание приёма воды на день. Без регистрации.',
   keywords: [
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     'сколько воды нужно пить',
   ],
   openGraph: {
-    title: 'Калькулятор нормы воды — сколько воды пить в день',
+    title: 'Калькулятор нормы воды онлайн — сколько воды пить в день',
     description:
       'Рассчитайте индивидуальную норму воды с учётом веса, активности и климата. Расписание на день.',
     type: 'website',
@@ -74,7 +74,7 @@ export default function WaterCalculatorPage() {
           description:
             'Онлайн калькулятор суточной нормы воды с учётом веса, активности, климата и особенностей организма',
           applicationCategory: 'HealthApplication',
-          url: 'https://calcbox.ru/zdorovye/pitanie/norma-vody',
+          url: 'https://calc-box.ru/zdorovye/pitanie/norma-vody',
           operatingSystem: 'All',
           offers: {
             '@type': 'Offer',
@@ -191,19 +191,19 @@ export default function WaterCalculatorPage() {
               '@type': 'ListItem',
               position: 1,
               name: 'Главная',
-              item: 'https://calcbox.ru',
+              item: 'https://calc-box.ru',
             },
             {
               '@type': 'ListItem',
               position: 2,
               name: 'Питание',
-              item: 'https://calcbox.ru/zdorovye/pitanie',
+              item: 'https://calc-box.ru/zdorovye/pitanie',
             },
             {
               '@type': 'ListItem',
               position: 3,
               name: 'Норма воды',
-              item: 'https://calcbox.ru/zdorovye/pitanie/norma-vody',
+              item: 'https://calc-box.ru/zdorovye/pitanie/norma-vody',
             },
           ],
         }}

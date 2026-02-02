@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://calcbox.ru'
+const BASE_URL = 'https://calc-box.ru'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -39,6 +39,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/zdorovye/telo`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
     {
       url: `${BASE_URL}/zdorovye/telo/kalkulyator-imt`,
@@ -84,6 +90,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/zdorovye/beremennost/ovulyatsiya`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/zdorovye/sport`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/zdorovye/sport/puls-dlya-trenirovok`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/zdorovye/sport/belok-dlya-sportsmenov`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,

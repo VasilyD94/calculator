@@ -31,8 +31,12 @@ import {
   Dumbbell,
   SlidersHorizontal,
   ChartPie,
+  Lightbulb,
+  Info,
+  AlertTriangle,
   type LucideIcon,
 } from 'lucide-react'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { cn } from '@/lib/utils'
 
 type Goal = 'lose' | 'maintain' | 'gain'
@@ -103,7 +107,7 @@ export function MacroCalculator() {
   }
 
   return (
-    <div id="calculator" className="space-y-4">
+    <div id="calculator" className="space-y-6">
       {/* Ввод данных */}
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
@@ -251,6 +255,36 @@ export function MacroCalculator() {
               fatPerKg={result.fatPerKg}
               carbsPerKg={result.carbsPerKg}
             />
+          </CardContent>
+        </Card>
+
+        {/* Важно знать */}
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
+              Важно знать
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <Alert>
+              <Info className="h-5 w-5 text-sky-400" />
+              <AlertTitle>Индивидуальные потребности</AlertTitle>
+              <AlertDescription>
+                Оптимальное соотношение БЖУ зависит от типа тренировок, состояния
+                здоровья и целей. Расчёт даёт отправную точку — корректируйте
+                рацион по самочувствию и результатам.
+              </AlertDescription>
+            </Alert>
+            <Alert>
+              <AlertTriangle className="h-5 w-5 text-amber-400" />
+              <AlertTitle>Ограничения диет</AlertTitle>
+              <AlertDescription>
+                Кето-диета и низкоуглеводное питание подходят не всем. При диабете,
+                заболеваниях почек или печени проконсультируйтесь с врачом перед
+                изменением рациона.
+              </AlertDescription>
+            </Alert>
           </CardContent>
         </Card>
       </div>

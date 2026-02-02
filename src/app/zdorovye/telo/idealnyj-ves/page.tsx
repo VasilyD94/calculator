@@ -36,7 +36,7 @@ import {
 export const metadata: Metadata = {
   title: 'Калькулятор идеального веса — расчёт по 5 формулам',
   description:
-    'Бесплатный калькулятор идеального веса ✓ Расчёт по формулам Devine, Robinson, Miller, Hamwi и Брока ✓ Сравнение 5 формул ✓ Диапазон и отклонение от текущего веса.',
+    'Бесплатный калькулятор идеального веса онлайн ✓ Расчёт по формулам Devine, Robinson, Miller, Hamwi и Брока ✓ Сравнение 5 формул ✓ Отклонение от нормы.',
   keywords: [
     'идеальный вес',
     'калькулятор идеального веса',
@@ -77,7 +77,7 @@ export default function IdealWeightPage() {
           description:
             'Онлайн калькулятор идеального веса по 5 научным формулам с визуальным сравнением результатов',
           applicationCategory: 'HealthApplication',
-          url: 'https://calcbox.ru/zdorovye/telo/idealnyj-ves',
+          url: 'https://calc-box.ru/zdorovye/telo/idealnyj-ves',
           operatingSystem: 'All',
           offers: {
             '@type': 'Offer',
@@ -194,19 +194,19 @@ export default function IdealWeightPage() {
               '@type': 'ListItem',
               position: 1,
               name: 'Главная',
-              item: 'https://calcbox.ru',
+              item: 'https://calc-box.ru',
             },
             {
               '@type': 'ListItem',
               position: 2,
               name: 'Тело',
-              item: 'https://calcbox.ru/zdorovye/telo',
+              item: 'https://calc-box.ru/zdorovye/telo',
             },
             {
               '@type': 'ListItem',
               position: 3,
               name: 'Идеальный вес',
-              item: 'https://calcbox.ru/zdorovye/telo/idealnyj-ves',
+              item: 'https://calc-box.ru/zdorovye/telo/idealnyj-ves',
             },
           ],
         }}

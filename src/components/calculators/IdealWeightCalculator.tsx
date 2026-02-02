@@ -12,7 +12,11 @@ import {
   Ruler,
   Target,
   SlidersHorizontal,
+  Lightbulb,
+  Info,
+  AlertTriangle,
 } from 'lucide-react'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 
 export function IdealWeightCalculator() {
   const { gender, weight, height, setParam, loaded } = useUserParams()
@@ -47,7 +51,7 @@ export function IdealWeightCalculator() {
   }
 
   return (
-    <div id="calculator" className="space-y-4">
+    <div id="calculator" className="space-y-6">
       {/* Ввод данных */}
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
@@ -129,6 +133,36 @@ export function IdealWeightCalculator() {
                 Ваш вес ниже идеального на <span className="whitespace-nowrap">{Math.abs(result.currentDiff)} кг</span>
               </div>
             )}
+          </CardContent>
+        </Card>
+
+        {/* Важно знать */}
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
+              Важно знать
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <Alert>
+              <Info className="h-5 w-5 text-sky-400" />
+              <AlertTitle>Формулы — ориентир</AlertTitle>
+              <AlertDescription>
+                Формулы идеального веса разработаны десятилетия назад и не учитывают
+                телосложение, мышечную массу и процент жира. Используйте среднее
+                значение как ориентир, а не жёсткую цель.
+              </AlertDescription>
+            </Alert>
+            <Alert>
+              <AlertTriangle className="h-5 w-5 text-amber-400" />
+              <AlertTitle>Не только вес</AlertTitle>
+              <AlertDescription>
+                Здоровье определяется не только весом. Обхват талии, процент жира
+                и уровень физической активности — более информативные показатели,
+                чем цифра на весах.
+              </AlertDescription>
+            </Alert>
           </CardContent>
         </Card>
 

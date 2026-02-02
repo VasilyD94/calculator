@@ -3,12 +3,38 @@ import Link from 'next/link'
 import { OvulationCalculator } from '@/components/calculators/OvulationCalculator'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { JsonLd } from '@/components/seo/JsonLd'
-import { Calendar, FlaskConical, Thermometer, ScanSearch } from 'lucide-react'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
+import {
+  BookOpen,
+  Compass,
+  CircleHelp,
+  ArrowUpRight,
+  Info,
+  Calculator,
+  Puzzle,
+  Lightbulb,
+  ClipboardList,
+  Heart,
+  CalendarDays,
+  Stethoscope,
+  Thermometer,
+  FlaskConical,
+  ScanSearch,
+  Baby,
+  Scale,
+  Flame,
+  AlertTriangle,
+} from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Калькулятор овуляции — рассчитайте дни для зачатия',
   description:
-    'Бесплатный калькулятор овуляции: узнайте дату овуляции, фертильное окно и прогноз на 6 циклов. Расчёт по дате месячных и длине цикла. Мгновенный результат.',
+    'Бесплатный калькулятор овуляции онлайн ✓ Точная дата овуляции и фертильное окно ✓ Фазы менструального цикла ✓ По дате месячных и длине цикла. Без регистрации.',
   keywords: [
     'калькулятор овуляции',
     'овуляция расчёт',
@@ -49,6 +75,7 @@ export default function OvulationPage() {
           description:
             'Онлайн калькулятор овуляции с расчётом фертильного окна и прогнозом циклов',
           applicationCategory: 'HealthApplication',
+          url: 'https://calc-box.ru/zdorovye/beremennost/ovulyatsiya',
           operatingSystem: 'All',
           offers: {
             '@type': 'Offer',
@@ -69,7 +96,7 @@ export default function OvulationPage() {
               name: 'Как рассчитать день овуляции?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Овуляция происходит примерно за 14 дней до начала следующих месячных. При цикле 28 дней это 14-й день цикла. При цикле 30 дней — 16-й день. Наиболее точные методы — тесты на овуляцию и фолликулометрия (УЗИ).',
+                text: 'Овуляция происходит примерно за 14 дней до начала следующих месячных. При цикле 28 дней это 14-й день цикла, при цикле 30 дней — 16-й день. Для точного определения используйте тесты на овуляцию или фолликулометрию (УЗИ).',
               },
             },
             {
@@ -94,6 +121,30 @@ export default function OvulationPage() {
               acceptedAnswer: {
                 '@type': 'Answer',
                 text: 'Да, зачатие возможно в течение всего фертильного окна (5–6 дней). Сперматозоиды сохраняют жизнеспособность в женских половых путях до 5 дней, поэтому половой акт за несколько дней до овуляции тоже может привести к беременности.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Почему овуляция может сдвигаться?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'На сроки овуляции влияют: стресс, болезни, смена климата, физические нагрузки, резкое изменение веса, приём лекарств. Лютеиновая фаза стабильна (14 дней), а вот фолликулярная фаза может удлиняться или укорачиваться.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Можно ли использовать калькулятор овуляции как метод контрацепции?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Календарный метод не является надёжным методом контрацепции. Индекс Перля составляет 12–24 при типичном использовании. Овуляция может сдвинуться непредсказуемо. Для контрацепции используйте барьерные или гормональные методы.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Когда обратиться к врачу при планировании беременности?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Обратитесь к репродуктологу, если беременность не наступает в течение 12 месяцев регулярных попыток (или 6 месяцев после 35 лет). Также рекомендуется консультация при нерегулярном цикле (разброс более 7 дней) или отсутствии овуляции по тестам.',
               },
             },
           ],
@@ -125,7 +176,7 @@ export default function OvulationPage() {
               '@type': 'HowToStep',
               position: 3,
               name: 'Получите результат',
-              text: 'Калькулятор покажет дату овуляции, фертильное окно, текущую фазу цикла и прогноз на 6 циклов.',
+              text: 'Калькулятор покажет дату овуляции, фертильное окно и текущую фазу цикла.',
             },
           ],
         }}
@@ -141,19 +192,19 @@ export default function OvulationPage() {
               '@type': 'ListItem',
               position: 1,
               name: 'Главная',
-              item: 'https://calcbox.ru',
+              item: 'https://calc-box.ru',
             },
             {
               '@type': 'ListItem',
               position: 2,
               name: 'Беременность',
-              item: 'https://calcbox.ru/zdorovye/beremennost',
+              item: 'https://calc-box.ru/zdorovye/beremennost',
             },
             {
               '@type': 'ListItem',
               position: 3,
               name: 'Овуляция',
-              item: 'https://calcbox.ru/zdorovye/beremennost/ovulyatsiya',
+              item: 'https://calc-box.ru/zdorovye/beremennost/ovulyatsiya',
             },
           ],
         }}
@@ -168,161 +219,141 @@ export default function OvulationPage() {
           </h1>
           <p className="text-lg text-muted-foreground">
             Рассчитайте дату овуляции и фертильное окно для планирования
-            беременности. Прогноз на 6 циклов вперёд по дате последних месячных
+            беременности. Мгновенный результат по дате последних месячных
             и длине цикла.
           </p>
         </header>
 
-        <section className="mb-12">
+        {/* Как пользоваться */}
+        <section className="mb-8 space-y-3 text-sm text-muted-foreground">
+          <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+            <BookOpen className="h-5 w-5" />
+            Как пользоваться калькулятором
+          </h2>
+          <div className="space-y-2">
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                1
+              </span>
+              <p>Введите первый день ваших последних месячных.</p>
+            </div>
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                2
+              </span>
+              <p>Укажите среднюю длину цикла (21–45 дней) и длительность менструации.</p>
+            </div>
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                3
+              </span>
+              <p>Получите дату овуляции, фертильное окно и текущую фазу цикла.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Калькулятор */}
+        <section className="mb-12" aria-labelledby="calculator-heading">
+          <h2 id="calculator-heading" className="sr-only">Расчёт овуляции</h2>
           <OvulationCalculator />
         </section>
 
+        {/* Вам также будет полезно */}
+        <div className="mb-10 space-y-3">
+          <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+            <Compass className="h-5 w-5" />
+            Вам также будет полезно
+          </h2>
+          <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
+            <Link
+              href="/zdorovye/beremennost/data-rodov"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <CalendarDays className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Дата родов
+              </span>
+            </Link>
+            <Link
+              href="/zdorovye/beremennost/srok-beremennosti"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Baby className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Срок беременности
+              </span>
+            </Link>
+            <Link
+              href="/zdorovye/telo/kalkulyator-imt"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Калькулятор ИМТ
+              </span>
+            </Link>
+            <Link
+              href="/zdorovye/pitanie/kalkulyator-kalorij"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Калькулятор калорий
+              </span>
+            </Link>
+          </div>
+        </div>
+
         {/* SEO-контент */}
-        <section className="space-y-10 text-base leading-7 text-muted-foreground">
-          {/* Блок 1 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+        <section className="space-y-8 text-sm text-muted-foreground">
+
+          {/* Блок 1 — Что такое овуляция */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Info className="h-5 w-5" />
               Что такое овуляция
             </h2>
             <p>
               Овуляция — это выход созревшей яйцеклетки из яичника
               в маточную трубу. Это единственный момент в цикле, когда
-              возможно зачатие. Яйцеклетка живёт всего 12–24 часа после
+              возможно зачатие. Яйцеклетка живёт всего <strong className="text-foreground">12–24 часа</strong> после
               выхода, поэтому знание точной даты овуляции критически важно
               при планировании беременности.
             </p>
-            <div className="grid sm:grid-cols-3 gap-2">
-              <div className="flex items-center sm:flex-col sm:text-center gap-3 sm:gap-1.5 rounded-lg bg-pink-50 border border-pink-200 px-3 py-2.5 sm:px-2 sm:py-3">
-                <span className="text-xl shrink-0">🥚</span>
-                <div>
-                  <p className="text-sm font-medium text-pink-700">Яйцеклетка</p>
-                  <p className="text-xs text-pink-600">живёт 12–24 часа</p>
-                </div>
-              </div>
-              <div className="flex items-center sm:flex-col sm:text-center gap-3 sm:gap-1.5 rounded-lg bg-blue-50 border border-blue-200 px-3 py-2.5 sm:px-2 sm:py-3">
-                <span className="text-xl shrink-0">💧</span>
-                <div>
-                  <p className="text-sm font-medium text-blue-700">Сперматозоиды</p>
-                  <p className="text-xs text-blue-600">живут до 5 дней</p>
-                </div>
-              </div>
-              <div className="flex items-center sm:flex-col sm:text-center gap-3 sm:gap-1.5 rounded-lg bg-green-50 border border-green-200 px-3 py-2.5 sm:px-2 sm:py-3">
-                <span className="text-xl shrink-0">📅</span>
-                <div>
-                  <p className="text-sm font-medium text-primary">Лютеиновая фаза</p>
-                  <p className="text-xs text-green-600">стабильно 14 дней</p>
-                </div>
-              </div>
-            </div>
             <p>
-              Овуляция обычно происходит за 14 дней до начала следующей
+              Овуляция обычно происходит за <strong className="text-foreground">14 дней</strong> до начала следующей
               менструации. Эта закономерность (постоянство лютеиновой фазы)
-              лежит в основе календарного метода расчёта.
+              лежит в основе календарного метода расчёта. Наш калькулятор использует
+              именно этот принцип для определения даты овуляции и фертильного окна.
+            </p>
+            <p>
+              Если вы уже знаете дату овуляции и планируете беременность, вам будет полезен{' '}
+              <Link href="/zdorovye/beremennost/data-rodov" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                калькулятор даты родов
+              </Link>{' '}
+              для расчёта ПДР, а также{' '}
+              <Link href="/zdorovye/beremennost/srok-beremennosti" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                калькулятор срока беременности
+              </Link>{' '}
+              для определения текущей недели.
             </p>
           </div>
 
           <hr className="border-border" />
 
-          {/* Блок 2 — Методы определения */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
-              Как определить овуляцию
-            </h2>
-            <div className="grid gap-3 md:grid-cols-2">
-              <div className="rounded-lg border p-4 space-y-3">
-                <div className="flex items-center gap-2.5">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-100 text-purple-600 shrink-0">
-                    <Calendar className="h-4 w-4" />
-                  </span>
-                  <div>
-                    <h3 className="font-semibold text-foreground leading-tight">
-                      Календарный метод
-                    </h3>
-                    <span className="text-xs text-purple-600 font-medium">
-                      Точность ~80%
-                    </span>
-                  </div>
-                </div>
-                <p className="text-sm">
-                  Расчёт по формуле: день овуляции = длина цикла &minus; 14.
-                  Прост, но точен только при регулярном цикле. Погрешность
-                  &plusmn;2–3 дня.
-                </p>
-              </div>
-              <div className="rounded-lg border p-4 space-y-3">
-                <div className="flex items-center gap-2.5">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-pink-100 text-pink-600 shrink-0">
-                    <FlaskConical className="h-4 w-4" />
-                  </span>
-                  <div>
-                    <h3 className="font-semibold text-foreground leading-tight">
-                      Тесты на овуляцию
-                    </h3>
-                    <span className="text-xs text-pink-600 font-medium">
-                      Точность 97–99%
-                    </span>
-                  </div>
-                </div>
-                <p className="text-sm">
-                  Определяют пик лютеинизирующего гормона (ЛГ) в моче
-                  за 24–36 часов до овуляции. Продаются в аптеках.
-                </p>
-              </div>
-              <div className="rounded-lg border p-4 space-y-3">
-                <div className="flex items-center gap-2.5">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-100 text-orange-600 shrink-0">
-                    <Thermometer className="h-4 w-4" />
-                  </span>
-                  <div>
-                    <h3 className="font-semibold text-foreground leading-tight">
-                      Базальная температура
-                    </h3>
-                    <span className="text-xs text-orange-600 font-medium">
-                      Постфактум
-                    </span>
-                  </div>
-                </div>
-                <p className="text-sm">
-                  Измеряется утром до подъёма. После овуляции повышается
-                  на 0.2–0.5°C и остаётся высокой до менструации.
-                </p>
-              </div>
-              <div className="rounded-lg border p-4 space-y-3">
-                <div className="flex items-center gap-2.5">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100 text-blue-600 shrink-0">
-                    <ScanSearch className="h-4 w-4" />
-                  </span>
-                  <div>
-                    <h3 className="font-semibold text-foreground leading-tight">
-                      Фолликулометрия (УЗИ)
-                    </h3>
-                    <span className="text-xs text-blue-600 font-medium">
-                      Самый точный
-                    </span>
-                  </div>
-                </div>
-                <p className="text-sm">
-                  Врач отслеживает рост фолликула на УЗИ каждые 2–3 дня.
-                  Применяется при лечении бесплодия и стимуляции овуляции.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <hr className="border-border" />
-
-          {/* Блок 3 — Фертильное окно */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
-              Фертильное окно
+          {/* Блок 2 — Фертильное окно */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Heart className="h-5 w-5" />
+              Фертильное окно и вероятность зачатия
             </h2>
             <p>
               Фертильное окно — это период, когда зачатие наиболее вероятно.
-              Оно длится около 6–7 дней: 5 дней до овуляции (столько живут
+              Оно длится около <strong className="text-foreground">6–7 дней</strong>: 5 дней до овуляции (столько живут
               сперматозоиды в женских половых путях) плюс 1–2 дня после
               (срок жизни яйцеклетки).
             </p>
-            <div className="rounded-lg border p-4 space-y-3">
+            <div className="rounded-lg border p-3 space-y-1.5">
               <h3 className="font-semibold text-foreground">
                 Вероятность зачатия по дням
               </h3>
@@ -356,7 +387,7 @@ export default function OvulationPage() {
                 </div>
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="font-medium text-foreground">День овуляции 🥚</span>
+                    <span className="font-medium text-foreground">День овуляции</span>
                     <span className="font-semibold text-primary">~20–25%</span>
                   </div>
                   <div className="h-2 rounded-full bg-muted overflow-hidden">
@@ -374,85 +405,70 @@ export default function OvulationPage() {
                 </div>
               </div>
             </div>
+            <p className="text-sm rounded-md bg-primary/5 text-foreground p-3 flex gap-2">
+              <Heart className="h-5 w-5 text-pink-500 shrink-0 mt-0.5" />
+              <span>Наибольшие шансы на зачатие — при половом акте за <strong className="text-foreground">1–2 дня до овуляции</strong>. Именно в эти дни сперматозоиды успевают достичь маточной трубы к моменту выхода яйцеклетки.</span>
+            </p>
+            <p className="text-sm">
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                Рассчитать своё фертильное окно&nbsp;→
+              </a>
+            </p>
           </div>
 
           <hr className="border-border" />
 
-          {/* Блок 4 — Фазы цикла */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
-              Фазы менструального цикла
+          {/* Блок 3 — Методы определения */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Calculator className="h-5 w-5" />
+              Как определить овуляцию
             </h2>
+            <p>
+              Существует несколько методов определения овуляции — от простых домашних
+              до высокоточных медицинских.
+            </p>
             <div className="grid gap-3 md:grid-cols-2">
-              <div className="rounded-lg border border-red-200 bg-red-50/50 p-4 space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-red-100 text-sm">
-                    1
-                  </span>
-                  <h3 className="font-semibold text-foreground">
-                    Менструальная фаза
-                  </h3>
-                  <span className="ml-auto text-xs text-red-600 font-medium">
-                    1–5 день
-                  </span>
-                </div>
-                <p className="text-sm">
-                  Отторжение эндометрия, менструальное кровотечение.
-                  Уровень гормонов минимален. Длится 3–7 дней.
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <CalendarDays className="h-5 w-5 text-violet-400" />
+                  Календарный метод
+                </h3>
+                <p>
+                  Расчёт по формуле: день овуляции = длина цикла &minus; 14.
+                  Прост, но точен только при регулярном цикле. Погрешность <strong className="text-foreground">&plusmn;2–3 дня</strong>.
+                  Точность около <strong className="text-foreground">80%</strong>.
                 </p>
               </div>
-              <div className="rounded-lg border border-blue-200 bg-blue-50/50 p-4 space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 text-sm">
-                    2
-                  </span>
-                  <h3 className="font-semibold text-foreground">
-                    Фолликулярная фаза
-                  </h3>
-                  <span className="ml-auto text-xs text-blue-600 font-medium">
-                    6–13 день
-                  </span>
-                </div>
-                <p className="text-sm">
-                  В яичнике растёт доминантный фолликул с яйцеклеткой.
-                  Эстроген повышается, эндометрий нарастает. Длительность
-                  варьируется.
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <FlaskConical className="h-5 w-5 text-pink-400" />
+                  Тесты на овуляцию
+                </h3>
+                <p>
+                  Определяют пик лютеинизирующего гормона (ЛГ) в моче
+                  за <strong className="text-foreground">24–36 часов</strong> до овуляции. Продаются в аптеках.
+                  Точность <strong className="text-foreground">97–99%</strong>.
                 </p>
               </div>
-              <div className="rounded-lg border border-green-200 bg-green-50/50 p-4 space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-green-100 text-sm">
-                    3
-                  </span>
-                  <h3 className="font-semibold text-foreground">
-                    Овуляция
-                  </h3>
-                  <span className="ml-auto text-xs text-green-600 font-medium">
-                    14 день
-                  </span>
-                </div>
-                <p className="text-sm">
-                  Пик ЛГ вызывает выход яйцеклетки из фолликула. Она
-                  попадает в маточную трубу и ждёт оплодотворения 12–24
-                  часа.
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Thermometer className="h-5 w-5 text-orange-400" />
+                  Базальная температура
+                </h3>
+                <p>
+                  Измеряется утром до подъёма. После овуляции повышается
+                  на <strong className="text-foreground">0.2–0.5°C</strong> и остаётся высокой до менструации. Определяет овуляцию постфактум.
                 </p>
               </div>
-              <div className="rounded-lg border border-amber-200 bg-amber-50/50 p-4 space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-amber-100 text-sm">
-                    4
-                  </span>
-                  <h3 className="font-semibold text-foreground">
-                    Лютеиновая фаза
-                  </h3>
-                  <span className="ml-auto text-xs text-amber-600 font-medium">
-                    15–28 день
-                  </span>
-                </div>
-                <p className="text-sm">
-                  Фолликул превращается в жёлтое тело и вырабатывает
-                  прогестерон. Длится стабильно ~14 дней. Если зачатия нет —
-                  начинается менструация.
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <ScanSearch className="h-5 w-5 text-blue-400" />
+                  Фолликулометрия (УЗИ)
+                </h3>
+                <p>
+                  Врач отслеживает рост фолликула на УЗИ каждые 2–3 дня.
+                  <strong className="text-foreground"> Самый точный</strong> метод. Применяется при лечении бесплодия и стимуляции.
                 </p>
               </div>
             </div>
@@ -460,188 +476,472 @@ export default function OvulationPage() {
 
           <hr className="border-border" />
 
-          {/* Блок 5 — Признаки овуляции */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+          {/* Блок 4 — Фазы менструального цикла */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Puzzle className="h-5 w-5" />
+              Фазы менструального цикла
+            </h2>
+            <p>
+              Менструальный цикл состоит из <strong className="text-foreground">4 основных фаз</strong>, каждая из которых
+              регулируется гормонами и выполняет свою функцию в подготовке к возможной беременности.
+            </p>
+            <div className="space-y-2">
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  1
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
+                    Менструальная фаза
+                    <span className="font-normal text-xs text-muted-foreground"> дни 1–5</span>
+                  </p>
+                  <p>Отторжение эндометрия, менструальное кровотечение. Уровень гормонов минимален. Длится 3–7 дней.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  2
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
+                    Фолликулярная фаза
+                    <span className="font-normal text-xs text-muted-foreground"> дни 6–13</span>
+                  </p>
+                  <p>В яичнике растёт доминантный фолликул с яйцеклеткой. Эстроген повышается, эндометрий нарастает. Длительность варьируется.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  3
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
+                    Овуляция
+                    <span className="font-normal text-xs text-muted-foreground"> ~14 день</span>
+                  </p>
+                  <p>Пик ЛГ вызывает выход яйцеклетки из фолликула. Она попадает в маточную трубу и ждёт оплодотворения 12–24 часа.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  4
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
+                    Лютеиновая фаза
+                    <span className="font-normal text-xs text-muted-foreground"> дни 15–28</span>
+                  </p>
+                  <p>Фолликул превращается в жёлтое тело и вырабатывает прогестерон. Длится стабильно ~14 дней. Если зачатия нет — начинается менструация.</p>
+                </div>
+              </div>
+            </div>
+            <p className="text-sm">
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                Узнать свою текущую фазу&nbsp;→
+              </a>
+            </p>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 5 — Таблица: длина цикла и день овуляции */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <ClipboardList className="h-5 w-5" />
+              День овуляции при разной длине цикла
+            </h2>
+            <p>
+              Овуляция рассчитывается по формуле: <strong className="text-foreground">длина цикла &minus; 14</strong>.
+              Ниже таблица для наиболее распространённых вариантов.
+            </p>
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="w-full text-left border-collapse text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-2 pr-2 font-semibold text-foreground">Длина цикла</th>
+                    <th className="py-2 px-2 font-semibold text-foreground">Овуляция</th>
+                    <th className="py-2 px-2 font-semibold text-foreground">Ферт. окно</th>
+                    <th className="py-2 pl-2 font-semibold text-foreground">Лютеин. фаза</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2 whitespace-nowrap">21 день</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">7-й день</strong></td>
+                    <td className="py-2 px-2 whitespace-nowrap">дни 2–8</td>
+                    <td className="py-2 pl-2 whitespace-nowrap">14 дней</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2 whitespace-nowrap">24 дня</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">10-й день</strong></td>
+                    <td className="py-2 px-2 whitespace-nowrap">дни 5–11</td>
+                    <td className="py-2 pl-2 whitespace-nowrap">14 дней</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2 whitespace-nowrap">28 дней</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">14-й день</strong></td>
+                    <td className="py-2 px-2 whitespace-nowrap">дни 9–15</td>
+                    <td className="py-2 pl-2 whitespace-nowrap">14 дней</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2 whitespace-nowrap">30 дней</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">16-й день</strong></td>
+                    <td className="py-2 px-2 whitespace-nowrap">дни 11–17</td>
+                    <td className="py-2 pl-2 whitespace-nowrap">14 дней</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2 whitespace-nowrap">32 дня</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">18-й день</strong></td>
+                    <td className="py-2 px-2 whitespace-nowrap">дни 13–19</td>
+                    <td className="py-2 pl-2 whitespace-nowrap">14 дней</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2 whitespace-nowrap">35 дней</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">21-й день</strong></td>
+                    <td className="py-2 px-2 whitespace-nowrap">дни 16–22</td>
+                    <td className="py-2 pl-2 whitespace-nowrap">14 дней</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 pr-2 whitespace-nowrap">40 дней</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">26-й день</strong></td>
+                    <td className="py-2 px-2 whitespace-nowrap">дни 21–27</td>
+                    <td className="py-2 pl-2 whitespace-nowrap">14 дней</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm rounded-md bg-primary/5 text-foreground p-3">
+              Обратите внимание: лютеиновая фаза стабильна (<strong className="text-foreground">14 дней</strong>), а фолликулярная фаза
+              варьируется. Именно поэтому при коротком цикле овуляция происходит раньше, а при длинном — позже.
+            </p>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 6 — Признаки овуляции */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Stethoscope className="h-5 w-5" />
               Признаки овуляции
             </h2>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <div className="rounded-lg border border-purple-200 bg-purple-50/50 p-4 space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">💧</span>
-                  <h3 className="font-semibold text-foreground">
-                    Изменение выделений
-                  </h3>
-                </div>
-                <p className="text-sm">
-                  Становятся прозрачными, тягучими (как яичный белок).
-                  Это цервикальная слизь, которая помогает сперматозоидам
-                  достичь яйцеклетки.
+            <p>
+              Помимо календарного метода, организм даёт подсказки о наступлении овуляции.
+              Эти признаки помогают подтвердить расчёт калькулятора.
+            </p>
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Thermometer className="h-5 w-5 text-orange-400" />
+                  Базальная температура
+                </h3>
+                <p>
+                  Повышается на <strong className="text-foreground">0.2–0.5°C</strong> после овуляции из-за выброса
+                  прогестерона. Фиксируется при ежедневном измерении утром до подъёма с постели.
                 </p>
               </div>
-              <div className="rounded-lg border border-orange-200 bg-orange-50/50 p-4 space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">🌡️</span>
-                  <h3 className="font-semibold text-foreground">
-                    Базальная температура
-                  </h3>
-                </div>
-                <p className="text-sm">
-                  Повышается на 0.2–0.5°C после овуляции из-за выброса
-                  прогестерона. Фиксируется при ежедневном измерении утром.
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <FlaskConical className="h-5 w-5 text-violet-400" />
+                  Цервикальная слизь
+                </h3>
+                <p>
+                  Становится прозрачной, тягучей (как яичный белок) — помогает
+                  сперматозоидам достичь яйцеклетки. Это один из самых надёжных домашних признаков.
                 </p>
               </div>
-              <div className="rounded-lg border border-rose-200 bg-rose-50/50 p-4 space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">✨</span>
-                  <h3 className="font-semibold text-foreground">
-                    Овуляторный синдром
-                  </h3>
-                </div>
-                <p className="text-sm">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Heart className="h-5 w-5 text-pink-400" />
+                  Овуляторный синдром
+                </h3>
+                <p>
                   Лёгкая тянущая боль внизу живота с одной стороны.
-                  Ощущается примерно у 20% женщин.
+                  Ощущается примерно у <strong className="text-foreground">20%</strong> женщин и длится от нескольких минут до суток.
                 </p>
               </div>
-              <div className="rounded-lg border border-pink-200 bg-pink-50/50 p-4 space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">❤️‍🔥</span>
-                  <h3 className="font-semibold text-foreground">
-                    Повышение либидо
-                  </h3>
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
+                  <Stethoscope className="h-5 w-5 text-blue-400" />
+                  Другие признаки
+                </h3>
+                <p>
+                  Повышение либидо, нагрубание и чувствительность груди,
+                  повышение энергии — природные механизмы для увеличения шансов зачатия.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 7 — Факторы, влияющие на овуляцию */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Puzzle className="h-5 w-5" />
+              Что влияет на сроки овуляции
+            </h2>
+            <p>
+              Овуляция может сдвигаться на несколько дней даже при стабильном цикле.
+              Основные факторы, которые влияют на её сроки:
+            </p>
+            <ul className="space-y-2 pl-5 list-disc marker:text-primary">
+              <li>
+                <strong className="text-foreground">Стресс</strong> — повышенный кортизол подавляет выброс ЛГ и может задержать или заблокировать овуляцию.
+              </li>
+              <li>
+                <strong className="text-foreground">Болезни и ОРВИ</strong> — даже лёгкая простуда может сдвинуть овуляцию на 1–2 недели.
+              </li>
+              <li>
+                <strong className="text-foreground">Физические нагрузки</strong> — чрезмерные тренировки (марафоны, кроссфит) могут привести к ановуляции.
+              </li>
+              <li>
+                <strong className="text-foreground">Вес тела</strong> — как дефицит, так и значительный избыток веса нарушают гормональный баланс. Для оценки используйте{' '}
+                <Link href="/zdorovye/telo/kalkulyator-imt" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                  калькулятор ИМТ
+                </Link>.
+              </li>
+              <li>
+                <strong className="text-foreground">Смена климата</strong> — перелёты, акклиматизация могут сдвинуть цикл.
+              </li>
+              <li>
+                <strong className="text-foreground">Лекарства</strong> — НПВС (ибупрофен), некоторые антидепрессанты и антибиотики могут влиять на овуляцию.
+              </li>
+            </ul>
+            <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
+              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <p>При нерегулярном цикле (разброс более <strong className="text-foreground">7 дней</strong>) календарный метод ненадёжен. Используйте тесты на овуляцию или обратитесь к гинекологу.</p>
+            </div>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 8 — Примеры расчёта */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <ClipboardList className="h-5 w-5" />
+              Примеры расчёта овуляции
+            </h2>
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground">Пример 1: цикл 28 дней</h3>
+                <p>
+                  Последние месячные начались <strong className="text-foreground">1 января</strong>.
+                  Овуляция: 28 &minus; 14 = <strong className="text-foreground">14-й день цикла</strong> → <strong className="text-foreground">14 января</strong>.
+                  Фертильное окно: <strong className="text-foreground">9–15 января</strong>.
+                  Лучшие дни для зачатия: 12–14 января.
+                </p>
+              </div>
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground">Пример 2: цикл 32 дня</h3>
+                <p>
+                  Последние месячные начались <strong className="text-foreground">1 января</strong>.
+                  Овуляция: 32 &minus; 14 = <strong className="text-foreground">18-й день цикла</strong> → <strong className="text-foreground">18 января</strong>.
+                  Фертильное окно: <strong className="text-foreground">13–19 января</strong>.
+                  Лучшие дни для зачатия: 16–18 января.
+                </p>
+              </div>
+            </div>
+            <p className="text-sm">
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                Рассчитать свою овуляцию&nbsp;→
+              </a>
+            </p>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 9 — Практические советы */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
+              Практические советы при планировании
+            </h2>
+            <div className="space-y-2">
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  1
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Ведите дневник цикла</p>
+                  <p>Записывайте дату начала месячных, их длительность и ощущения. Через 3–4 цикла вы увидите свою закономерность.</p>
                 </div>
-                <p className="text-sm">
-                  Природный механизм для увеличения шансов зачатия
-                  в фертильные дни.
-                </p>
               </div>
-              <div className="rounded-lg border border-blue-200 bg-blue-50/50 p-4 sm:col-span-2 space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">🤱</span>
-                  <h3 className="font-semibold text-foreground">
-                    Нагрубание груди
-                  </h3>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  2
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Используйте тесты на овуляцию</p>
+                  <p>Начните тестирование за <strong className="text-foreground">3–4 дня</strong> до предполагаемой овуляции. Две яркие полоски = овуляция через 24–36 часов.</p>
                 </div>
-                <p className="text-sm">
-                  Чувствительность и лёгкая болезненность молочных желёз
-                  из-за гормональных изменений.
-                </p>
               </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  3
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Не ждите точный день овуляции</p>
+                  <p>Регулярная близость каждые <strong className="text-foreground">2–3 дня</strong> в фертильное окно эффективнее, чем попытка попасть в один день.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  4
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Следите за питанием</p>
+                  <p>Фолиевая кислота (<strong className="text-foreground">400 мкг/день</strong>) рекомендуется за 3 месяца до планируемого зачатия. Контролируйте{' '}
+                    <Link href="/zdorovye/pitanie/kalkulyator-kalorij" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
+                      калорийность рациона
+                    </Link>.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  5
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Обратитесь к врачу вовремя</p>
+                  <p>Если беременность не наступает <strong className="text-foreground">12 месяцев</strong> (или 6 месяцев после 35 лет) — обратитесь к репродуктологу.</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
+              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <p>Калькулятор овуляции — вспомогательный инструмент. Он не заменяет консультацию гинеколога и не является методом контрацепции.</p>
             </div>
           </div>
 
           <hr className="border-border" />
 
           {/* FAQ */}
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-foreground">
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <CircleHelp className="h-5 w-5" />
               Часто задаваемые вопросы
             </h2>
-            <div className="space-y-3">
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-bold shrink-0">?</span>
+            <Accordion type="multiple" className="w-full">
+              <AccordionItem value="faq-1">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Как рассчитать день овуляции?
-                </h3>
-                <p className="text-sm pl-8">
-                  Овуляция происходит примерно за 14 дней до начала
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Овуляция происходит примерно за <strong className="text-foreground">14 дней</strong> до начала
                   следующих месячных. При цикле 28 дней это 14-й день,
                   при цикле 30 дней — 16-й день. Для точного определения
-                  используйте тесты на овуляцию или фолликулометрию.
-                </p>
-              </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-bold shrink-0">?</span>
+                  используйте тесты на овуляцию или фолликулометрию (УЗИ).
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-2">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Сколько длится фертильное окно?
-                </h3>
-                <p className="text-sm pl-8">
-                  Фертильное окно длится 6–7 дней: 5 дней до овуляции
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Фертильное окно длится <strong className="text-foreground">6–7 дней</strong>: 5 дней до овуляции
                   и 1–2 дня после. Наибольшие шансы зачатия — за 1–2 дня
                   до овуляции и в день овуляции.
-                </p>
-              </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-bold shrink-0">?</span>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-3">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Какие признаки овуляции?
-                </h3>
-                <p className="text-sm pl-8">
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
                   Основные признаки: прозрачные тягучие выделения, повышение
-                  базальной температуры, лёгкая боль внизу живота, повышение
+                  базальной температуры на <strong className="text-foreground">0.2–0.5°C</strong>, лёгкая боль внизу живота, повышение
                   либидо, нагрубание груди.
-                </p>
-              </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-bold shrink-0">?</span>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-4">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Можно ли забеременеть не в день овуляции?
-                </h3>
-                <p className="text-sm pl-8">
-                  Да. Сперматозоиды живут в женских половых путях до 5
-                  дней, поэтому половой акт за несколько дней до овуляции
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Да. Сперматозоиды живут в женских половых путях до <strong className="text-foreground">5 дней</strong>,
+                  поэтому половой акт за несколько дней до овуляции
                   тоже может привести к беременности.
-                </p>
-              </div>
-            </div>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-5">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Почему овуляция может сдвигаться?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  На сроки овуляции влияют: стресс, болезни, смена климата, физические нагрузки,
+                  резкое изменение веса, приём лекарств. Лютеиновая фаза стабильна (<strong className="text-foreground">14 дней</strong>),
+                  а вот фолликулярная фаза может удлиняться или укорачиваться.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-6">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Можно ли использовать калькулятор овуляции как метод контрацепции?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Календарный метод <strong className="text-foreground">не является</strong> надёжным методом контрацепции.
+                  Индекс Перля составляет 12–24 при типичном использовании.
+                  Овуляция может сдвинуться непредсказуемо. Для контрацепции используйте
+                  барьерные или гормональные методы.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-7">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Когда обратиться к врачу при планировании беременности?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Обратитесь к репродуктологу, если беременность не наступает в течение{' '}
+                  <strong className="text-foreground">12 месяцев</strong> регулярных попыток (или <strong className="text-foreground">6 месяцев</strong> после 35 лет).
+                  Также рекомендуется консультация при нерегулярном цикле (разброс более 7 дней)
+                  или отсутствии овуляции по тестам.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
 
           <hr className="border-border" />
 
           {/* Связанные калькуляторы */}
-          <nav className="space-y-4" aria-label="Связанные калькуляторы">
-            <h2 className="text-2xl font-bold text-foreground">
+          <nav className="space-y-3" aria-label="Связанные калькуляторы">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <ArrowUpRight className="h-5 w-5" />
               Связанные калькуляторы
             </h2>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="flex flex-wrap gap-2">
               <Link
                 href="/zdorovye/beremennost/data-rodov"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
-                  <span className="text-lg">🤰</span>
-                  Дата родов
-                </h3>
-                <p className="text-sm mt-1 pl-7">
-                  Расчёт предполагаемой даты родов (ПДР) с таймлайном
-                  ключевых дат.
-                </p>
+                <CalendarDays className="h-4 w-4 text-muted-foreground" />
+                Дата родов
               </Link>
               <Link
                 href="/zdorovye/beremennost/srok-beremennosti"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
-                  <span className="text-lg">👶</span>
-                  Срок беременности
-                </h3>
-                <p className="text-sm mt-1 pl-7">
-                  Определите текущую неделю и развитие малыша.
-                </p>
-              </Link>
-              <Link
-                href="/zdorovye/pitanie/kalkulyator-kalorij"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
-              >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
-                  <span className="text-lg">🔥</span>
-                  Калькулятор калорий
-                </h3>
-                <p className="text-sm mt-1 pl-7">
-                  Расчёт суточной нормы калорий по 5 формулам.
-                </p>
+                <Baby className="h-4 w-4 text-muted-foreground" />
+                Срок беременности
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
-                  <span className="text-lg">⚖️</span>
-                  Калькулятор ИМТ
-                </h3>
-                <p className="text-sm mt-1 pl-7">
-                  Индекс массы тела с визуальной шкалой категорий ВОЗ.
-                </p>
+                <Scale className="h-4 w-4 text-muted-foreground" />
+                Калькулятор ИМТ
+              </Link>
+              <Link
+                href="/zdorovye/pitanie/kalkulyator-kalorij"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
+              >
+                <Flame className="h-4 w-4 text-muted-foreground" />
+                Калькулятор калорий
+              </Link>
+              <Link
+                href="/zdorovye/telo/idealnyj-ves"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
+              >
+                <Scale className="h-4 w-4 text-muted-foreground" />
+                Идеальный вес
               </Link>
             </div>
           </nav>
