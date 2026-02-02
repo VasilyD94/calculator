@@ -21,6 +21,7 @@ import {
   CheckCircle2,
   Circle,
   Stethoscope,
+  SlidersHorizontal,
 } from 'lucide-react'
 
 const METHODS: { id: ConceptionMethod; label: string; short: string }[] = [
@@ -73,11 +74,14 @@ export function DueDateCalculator() {
   )
 
   return (
-    <div className="space-y-8">
+    <div id="calculator" className="space-y-6">
       {/* Ввод данных */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Выберите метод расчёта</CardTitle>
+      <Card className="gap-3 py-4">
+        <CardHeader className="pb-0">
+          <CardTitle className="text-base flex items-center gap-2">
+            <SlidersHorizontal className="h-5 w-5" />
+            Выберите метод расчёта
+          </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           {/* Метод */}
@@ -145,9 +149,9 @@ export function DueDateCalculator() {
       {/* Результаты */}
       <div className="space-y-6">
         {/* ПДР */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <Baby className="h-5 w-5" />
               Предполагаемая дата родов
             </CardTitle>
@@ -187,9 +191,9 @@ export function DueDateCalculator() {
         </Card>
 
         {/* Прогресс */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <Clock className="h-5 w-5" />
               Прогресс беременности
             </CardTitle>
@@ -213,9 +217,9 @@ export function DueDateCalculator() {
         </Card>
 
         {/* Ключевые даты */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <Calendar className="h-5 w-5" />
               Ключевые даты
             </CardTitle>
@@ -314,9 +318,9 @@ export function DueDateCalculator() {
         </Card>
 
         {/* Важно знать */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="gap-3 py-4">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-base flex items-center gap-2">
               <Lightbulb className="h-5 w-5" />
               Важно знать
             </CardTitle>

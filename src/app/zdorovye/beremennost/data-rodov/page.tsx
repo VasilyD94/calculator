@@ -3,11 +3,36 @@ import Link from 'next/link'
 import { DueDateCalculator } from '@/components/calculators/DueDateCalculator'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { JsonLd } from '@/components/seo/JsonLd'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
+import {
+  BookOpen,
+  Compass,
+  Info,
+  Calculator,
+  AlertTriangle,
+  Lightbulb,
+  ClipboardList,
+  CircleHelp,
+  ArrowUpRight,
+  Baby,
+  CalendarDays,
+  Stethoscope,
+  Heart,
+  Scale,
+  Puzzle,
+  Timer,
+  Egg,
+} from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Калькулятор даты родов — расчёт ПДР онлайн',
+  title: 'Калькулятор даты родов — расчёт ПДР онлайн бесплатно',
   description:
-    'Бесплатный калькулятор даты родов: расчёт ПДР по последним месячным, дате зачатия или УЗИ. Срок беременности, прогресс по триместрам и ключевые даты.',
+    'Бесплатный калькулятор даты родов ✓ Расчёт ПДР по 3 методам ✓ По месячным, зачатию и УЗИ ✓ Прогресс беременности и ключевые даты. Без регистрации.',
   keywords: [
     'дата родов',
     'ПДР',
@@ -48,6 +73,7 @@ export default function DueDatePage() {
           description:
             'Онлайн калькулятор предполагаемой даты родов по дате последних месячных, зачатия или УЗИ',
           applicationCategory: 'HealthApplication',
+          url: 'https://calcbox.ru/zdorovye/beremennost/data-rodov',
           operatingSystem: 'All',
           offers: {
             '@type': 'Offer',
@@ -93,6 +119,30 @@ export default function DueDatePage() {
               acceptedAnswer: {
                 '@type': 'Answer',
                 text: 'Рекомендуется встать на учёт до 12 недель беременности. Это позволит своевременно пройти первый скрининг и все необходимые обследования. Ранняя постановка на учёт также даёт право на дополнительное пособие.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Может ли ПДР измениться после УЗИ?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Да. Если УЗИ первого триместра показывает срок, отличающийся от расчётного более чем на 5–7 дней, врач может скорректировать ПДР. Данные УЗИ в 11–13 недель считаются наиболее точными.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Чем отличается акушерский срок от эмбрионального?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Акушерский срок отсчитывается от первого дня последних месячных и составляет 40 недель. Эмбриональный — от момента зачатия, то есть 38 недель. Разница обычно около 2 недель. Врачи используют акушерский срок.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Когда делать первое УЗИ при беременности?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Первое скрининговое УЗИ проводится на сроке 11–13 недель. На этом сроке можно точно определить срок беременности, количество плодов и провести оценку рисков хромосомных аномалий.',
               },
             },
           ],
@@ -163,369 +213,686 @@ export default function DueDatePage() {
 
         <header className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            Калькулятор даты родов
+            Калькулятор даты родов онлайн
           </h1>
           <p className="text-lg text-muted-foreground">
             Рассчитайте предполагаемую дату родов по дате последних месячных,
-            зачатия или УЗИ. Узнайте текущий срок, триместр и ключевые даты
-            вашей беременности.
+            зачатия или УЗИ. Результат обновляется мгновенно — без кнопки «Рассчитать».
           </p>
         </header>
 
-        <section className="mb-12">
+        {/* Как пользоваться */}
+        <section className="mb-8 space-y-3 text-sm text-muted-foreground">
+          <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+            <BookOpen className="h-5 w-5" />
+            Как пользоваться калькулятором
+          </h2>
+          <div className="space-y-2">
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                1
+              </span>
+              <p>
+                Выберите один из трёх методов: по дате последних месячных, по дате
+                зачатия или по данным УЗИ.
+              </p>
+            </div>
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                2
+              </span>
+              <p>
+                Введите соответствующую дату. Для метода УЗИ также укажите срок,
+                определённый врачом.
+              </p>
+            </div>
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                3
+              </span>
+              <p>
+                Калькулятор покажет ПДР, текущий срок, прогресс беременности
+                и таймлайн ключевых дат.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-12" aria-labelledby="calculator-heading">
+          <h2 id="calculator-heading" className="sr-only">Расчёт даты родов</h2>
           <DueDateCalculator />
         </section>
 
+        {/* Вам будет полезно */}
+        <div className="mb-10 space-y-3">
+          <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+            <Compass className="h-5 w-5" />
+            Вам также будет полезно
+          </h2>
+          <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
+            <Link
+              href="/zdorovye/beremennost/srok-beremennosti"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Baby className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Срок беременности</span>
+            </Link>
+            <Link
+              href="/zdorovye/beremennost/ovulyatsiya"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Egg className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор овуляции</span>
+            </Link>
+            <Link
+              href="/zdorovye/telo/kalkulyator-imt"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор ИМТ</span>
+            </Link>
+            <Link
+              href="/zdorovye/pitanie/kalkulyator-kalorij"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
+            >
+              <CalendarDays className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор калорий</span>
+            </Link>
+          </div>
+        </div>
+
         {/* SEO-контент */}
-        <section className="space-y-10 text-base leading-7 text-muted-foreground">
-          {/* Блок 1 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
-              Как рассчитать дату родов
+        <section className="space-y-8 text-sm text-muted-foreground">
+          {/* Блок 1: Что это */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Info className="h-5 w-5" />
+              Что такое ПДР и зачем её рассчитывать
             </h2>
             <p>
               Предполагаемая дата родов (ПДР) — это ориентировочная дата, когда
               ваш малыш появится на свет. Расчёт основан на средней
-              продолжительности беременности — 280 дней (40 акушерских недель)
-              от первого дня последних месячных.
+              продолжительности беременности — <strong className="text-foreground">280</strong> дней
+              (<strong className="text-foreground">40</strong> акушерских недель) от первого дня
+              последних месячных.
             </p>
             <p>
-              Важно понимать, что ПДР — это именно предполагаемая дата. Только
-              4–5% детей рождаются точно в этот день. Нормальными считаются
-              роды в период с 37 по 42 неделю беременности. Ваш малыш родится
-              тогда, когда будет полностью готов.
+              Важно понимать, что ПДР — это именно <strong className="text-foreground">предполагаемая</strong> дата.
+              Только <strong className="text-foreground">4–5%</strong> детей рождаются точно в этот день.
+              Нормальными считаются роды в период с <strong className="text-foreground">37</strong> по{' '}
+              <strong className="text-foreground">42</strong> неделю беременности. Знание ПДР помогает
+              врачам планировать наблюдение, скрининги и подготовку к родам,
+              а будущим родителям — морально и практически подготовиться к появлению малыша.
             </p>
           </div>
 
           <hr className="border-border" />
 
-          {/* Блок 2 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
-              Методы определения ПДР
+          {/* Блок 2: Методы расчёта */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Calculator className="h-5 w-5" />
+              Методы определения даты родов
             </h2>
-
-            <div className="grid gap-3">
-              <div className="rounded-lg border border-pink-200 bg-pink-50/50 p-4 space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">📅</span>
-                  <h3 className="font-semibold text-foreground">
+            <p>
+              Существует три основных метода расчёта ПДР. Наш калькулятор
+              поддерживает все три — выберите наиболее подходящий:
+            </p>
+            <div className="space-y-2">
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  1
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
                     По дате последних месячных (правило Негеле)
-                  </h3>
+                  </p>
+                  <p>
+                    Самый распространённый метод. К первому дню последних месячных
+                    прибавляют <strong className="text-foreground">280</strong> дней. Формула предполагает
+                    регулярный цикл <strong className="text-foreground">28</strong> дней с овуляцией
+                    на <strong className="text-foreground">14</strong>-й день. При нерегулярном цикле точность снижается.
+                  </p>
                 </div>
-                <p className="text-sm">
-                  Самый распространённый метод. К первому дню последних
-                  месячных прибавляют 280 дней (40 недель). Формула
-                  предполагает регулярный цикл 28 дней с овуляцией
-                  на 14-й день. При нерегулярном цикле точность снижается.
-                </p>
-                <p className="text-xs rounded-md bg-pink-100/50 border border-pink-200 px-3 py-2 text-pink-700">
-                  <strong>Формула:</strong> ПДР = дата последних месячных + 280 дней
-                </p>
               </div>
-
-              <div className="rounded-lg border border-purple-200 bg-purple-50/50 p-4 space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">🧬</span>
-                  <h3 className="font-semibold text-foreground">
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  2
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
                     По дате зачатия
-                  </h3>
+                  </p>
+                  <p>
+                    Если вы точно знаете дату зачатия (например, при ЭКО),
+                    к ней прибавляют <strong className="text-foreground">266</strong> дней (<strong className="text-foreground">38</strong> недель).
+                    Это эмбриональный срок — на <strong className="text-foreground">2</strong> недели меньше акушерского.
+                  </p>
                 </div>
-                <p className="text-sm">
-                  Если вы точно знаете дату зачатия (например, при ЭКО),
-                  к ней прибавляют 266 дней (38 недель). Это эмбриональный
-                  срок беременности, который на 2 недели меньше акушерского.
-                </p>
               </div>
-
-              <div className="rounded-lg border border-green-200 bg-green-50/50 p-4 space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">🔬</span>
-                  <h3 className="font-semibold text-foreground">
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  3
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
                     По данным УЗИ
-                  </h3>
+                  </p>
+                  <p>
+                    Наиболее точный метод — УЗИ в первом триместре (<strong className="text-foreground">11–13</strong> недель).
+                    Врач измеряет размеры эмбриона и определяет срок с точностью
+                    до <strong className="text-foreground">3–5</strong> дней. Во втором и третьем триместрах точность снижается.
+                  </p>
                 </div>
-                <p className="text-sm">
-                  Наиболее точный метод — УЗИ в первом триместре (11–13
-                  недель). Врач измеряет размеры эмбриона и определяет срок
-                  с точностью до 3–5 дней. Во втором и третьем триместрах
-                  точность УЗИ снижается.
-                </p>
               </div>
             </div>
+            <p className="text-sm">
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                Рассчитать свою дату родов&nbsp;→
+              </a>
+            </p>
           </div>
 
           <hr className="border-border" />
 
-          {/* Блок 3 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
-              Триместры беременности
-            </h2>
-            <div className="grid gap-3 md:grid-cols-3">
-              <div className="rounded-lg border border-pink-200 bg-pink-50/50 p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <span className="text-xl">🌱</span>
-                  1-й триместр (1–12 нед.)
-                </h3>
-                <ul className="space-y-1 pl-4 list-disc text-sm marker:text-pink-400">
-                  <li>Формирование всех органов</li>
-                  <li>Сердцебиение с 6–8 недели</li>
-                  <li>Первый скрининг на 11–13 нед.</li>
-                  <li>Токсикоз и адаптация организма</li>
-                </ul>
-              </div>
-              <div className="rounded-lg border border-purple-200 bg-purple-50/50 p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <span className="text-xl">🌸</span>
-                  2-й триместр (13–26 нед.)
-                </h3>
-                <ul className="space-y-1 pl-4 list-disc text-sm marker:text-purple-400">
-                  <li>Активный рост малыша</li>
-                  <li>Определение пола на 16–20 нед.</li>
-                  <li>Второй скрининг на 18–21 нед.</li>
-                  <li>Первые шевеления</li>
-                </ul>
-              </div>
-              <div className="rounded-lg border border-blue-200 bg-blue-50/50 p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <span className="text-xl">👶</span>
-                  3-й триместр (27–40 нед.)
-                </h3>
-                <ul className="space-y-1 pl-4 list-disc text-sm marker:text-blue-400">
-                  <li>Набор веса малышом</li>
-                  <li>Декретный отпуск с 30 нед.</li>
-                  <li>Подготовка к родам</li>
-                  <li>Доношенность с 37 недели</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <hr className="border-border" />
-
-          {/* Блок 4 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+          {/* Блок 3: Точность */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Stethoscope className="h-5 w-5" />
               Точность расчёта ПДР
             </h2>
             <p>
               Точность определения даты родов зависит от метода расчёта
-              и индивидуальных особенностей организма:
+              и индивидуальных особенностей организма. Ни один метод не даёт
+              абсолютно точного результата — роды происходят в диапазоне
+              от <strong className="text-foreground">37</strong> до <strong className="text-foreground">42</strong> недель.
             </p>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <div className="rounded-lg border p-4 space-y-2">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-semibold text-foreground flex items-center gap-2 min-w-0">
-                    <span className="text-lg shrink-0">📅</span>
-                    По месячным
-                  </h3>
-                  <span className="text-xs rounded-full bg-amber-100 text-amber-700 px-2.5 py-1 font-medium shrink-0 whitespace-nowrap">&plusmn;2 нед.</span>
-                </div>
-                <p className="text-sm">Регулярный цикл 28 дней</p>
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="w-full text-left border-collapse text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-2 pr-2 font-semibold text-foreground">Метод</th>
+                    <th className="py-2 px-2 font-semibold text-foreground">Погрешность</th>
+                    <th className="py-2 pl-2 font-semibold text-foreground">Условие</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">По месячным</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">±2 нед.</strong></td>
+                    <td className="py-2 pl-2">Регулярный цикл 28 дн.</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">По зачатию</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">±1–2 нед.</strong></td>
+                    <td className="py-2 pl-2">Точная дата известна</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">УЗИ (1 трим.)</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">±3–5 дн.</strong></td>
+                    <td className="py-2 pl-2">11–13 недель</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 pr-2">УЗИ (2–3 трим.)</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">±1–3 нед.</strong></td>
+                    <td className="py-2 pl-2">После 14 недель</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm rounded-md bg-primary/5 text-foreground p-3">
+              УЗИ в первом триместре — наиболее точный метод определения ПДР.
+              Если данные УЗИ расходятся с расчётом по месячным более чем
+              на <strong className="text-foreground">5–7</strong> дней, врач скорректирует дату.
+            </p>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 4: Триместры */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Heart className="h-5 w-5" />
+              Триместры беременности
+            </h2>
+            <p>
+              Беременность делится на три триместра — каждый со своими
+              особенностями развития малыша и изменениями в организме мамы:
+            </p>
+            <div className="grid gap-3 md:grid-cols-3">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground">
+                  1-й триместр (1–12 нед.)
+                </h3>
+                <ul className="space-y-1 pl-4 list-disc marker:text-primary text-sm">
+                  <li>Формирование всех органов</li>
+                  <li>Сердцебиение с <strong className="text-foreground">6–8</strong> недели</li>
+                  <li>Первый скрининг на <strong className="text-foreground">11–13</strong> нед.</li>
+                  <li>Токсикоз и адаптация организма</li>
+                </ul>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-semibold text-foreground flex items-center gap-2 min-w-0">
-                    <span className="text-lg shrink-0">🧬</span>
-                    По дате зачатия
-                  </h3>
-                  <span className="text-xs rounded-full bg-amber-100 text-amber-700 px-2.5 py-1 font-medium shrink-0 whitespace-nowrap">&plusmn;1–2 нед.</span>
-                </div>
-                <p className="text-sm">Точная дата известна</p>
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground">
+                  2-й триместр (13–26 нед.)
+                </h3>
+                <ul className="space-y-1 pl-4 list-disc marker:text-primary text-sm">
+                  <li>Активный рост малыша</li>
+                  <li>Определение пола на <strong className="text-foreground">16–20</strong> нед.</li>
+                  <li>Второй скрининг на <strong className="text-foreground">18–21</strong> нед.</li>
+                  <li>Первые шевеления</li>
+                </ul>
               </div>
-              <div className="rounded-lg border border-green-200 bg-green-50/50 p-4 space-y-2">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-semibold text-foreground flex items-center gap-2 min-w-0">
-                    <span className="text-lg shrink-0">🔬</span>
-                    УЗИ (1 триместр)
-                  </h3>
-                  <span className="text-xs rounded-full bg-green-100 text-green-700 px-2.5 py-1 font-medium shrink-0 whitespace-nowrap">&plusmn;3–5 дн.</span>
-                </div>
-                <p className="text-sm font-medium text-green-700">11–13 недель — самый точный метод</p>
-              </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-semibold text-foreground flex items-center gap-2 min-w-0">
-                    <span className="text-lg shrink-0">🔬</span>
-                    УЗИ (2–3 триместр)
-                  </h3>
-                  <span className="text-xs rounded-full bg-amber-100 text-amber-700 px-2.5 py-1 font-medium shrink-0 whitespace-nowrap">&plusmn;1–3 нед.</span>
-                </div>
-                <p className="text-sm">После 14 недель</p>
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground">
+                  3-й триместр (27–40 нед.)
+                </h3>
+                <ul className="space-y-1 pl-4 list-disc marker:text-primary text-sm">
+                  <li>Набор веса малышом</li>
+                  <li>Декретный отпуск с <strong className="text-foreground">30</strong> нед.</li>
+                  <li>Подготовка к родам</li>
+                  <li>Доношенность с <strong className="text-foreground">37</strong> недели</li>
+                </ul>
               </div>
             </div>
           </div>
 
           <hr className="border-border" />
 
-          {/* Блок 5 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground">
+          {/* Блок 5: Факторы */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Puzzle className="h-5 w-5" />
+              Что влияет на дату родов
+            </h2>
+            <p>
+              ПДР — это статистическое среднее. Фактическая дата родов зависит
+              от множества факторов, которые калькулятор не может учесть:
+            </p>
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground">Длина цикла</h3>
+                <p>
+                  При цикле длиннее <strong className="text-foreground">28</strong> дней овуляция происходит позже,
+                  и реальная дата родов может сдвинуться на несколько дней вперёд.
+                  При коротком цикле — наоборот.
+                </p>
+              </div>
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground">Наследственность</h3>
+                <p>
+                  Если в вашей семье женщины рожали позже <strong className="text-foreground">40</strong> недель,
+                  у вас тоже может быть склонность к пролонгированной беременности.
+                </p>
+              </div>
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground">Количество беременностей</h3>
+                <p>
+                  Первая беременность в среднем длится на <strong className="text-foreground">5–7</strong> дней дольше
+                  последующих. Повторнородящие чаще рожают ближе к <strong className="text-foreground">39</strong> неделе.
+                </p>
+              </div>
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground">Многоплодная беременность</h3>
+                <p>
+                  Двойня в среднем рождается на <strong className="text-foreground">36–37</strong> неделе,
+                  тройня — на <strong className="text-foreground">33–34</strong>. ПДР для многоплодной беременности
+                  рассчитывается врачом индивидуально.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 6: Развитие малыша */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Baby className="h-5 w-5" />
               Развитие малыша по неделям
             </h2>
             <p>
-              Краткий обзор ключевых этапов развития ребёнка во время
-              беременности:
+              Краткий обзор ключевых этапов развития ребёнка во время беременности.
+              Размеры приведены для наглядного сравнения:
+            </p>
+            <div className="space-y-2">
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  1
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
+                    4–8 недель
+                    <span className="font-normal text-xs text-muted-foreground"> 1–16 мм</span>
+                  </p>
+                  <p>Формируется нервная трубка, сердце начинает биться. Размер — от макового зёрнышка до фасолинки.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  2
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
+                    12–16 недель
+                    <span className="font-normal text-xs text-muted-foreground"> 5–12 см</span>
+                  </p>
+                  <p>Все органы сформированы, малыш активно двигается. Можно узнать пол. Размер — от лайма до авокадо.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  3
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
+                    20–28 недель
+                    <span className="font-normal text-xs text-muted-foreground"> 25–37 см</span>
+                  </p>
+                  <p>Мама чувствует шевеления. Малыш слышит звуки и открывает глаза. Размер — от банана до баклажана.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  4
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">
+                    32–40 недель
+                    <span className="font-normal text-xs text-muted-foreground"> 42–53 см, 2,5–4 кг</span>
+                  </p>
+                  <p>Активный набор веса. Лёгкие созревают, малыш занимает окончательное положение и готовится к рождению.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 7: Ключевые обследования */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <ClipboardList className="h-5 w-5" />
+              Ключевые обследования и даты
+            </h2>
+            <p>
+              Зная ПДР, вы можете заранее спланировать все важные обследования
+              и события. Вот основные ориентиры по неделям:
+            </p>
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="w-full text-left border-collapse text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-2 pr-2 font-semibold text-foreground">Срок</th>
+                    <th className="py-2 pl-2 font-semibold text-foreground">Событие</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2 whitespace-nowrap"><strong className="text-foreground">6–8 нед.</strong></td>
+                    <td className="py-2 pl-2">Первое УЗИ, подтверждение беременности и сердцебиения</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2 whitespace-nowrap"><strong className="text-foreground">11–13 нед.</strong></td>
+                    <td className="py-2 pl-2">Первый скрининг: УЗИ + анализ крови на хромосомные аномалии</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2 whitespace-nowrap"><strong className="text-foreground">18–21 нед.</strong></td>
+                    <td className="py-2 pl-2">Второй скрининг: подробное УЗИ, определение пола</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2 whitespace-nowrap"><strong className="text-foreground">24–28 нед.</strong></td>
+                    <td className="py-2 pl-2">Тест на гестационный диабет (глюкозотолерантный тест)</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2 whitespace-nowrap"><strong className="text-foreground">30 нед.</strong></td>
+                    <td className="py-2 pl-2">Оформление декретного отпуска, выдача больничного</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2 whitespace-nowrap"><strong className="text-foreground">32–34 нед.</strong></td>
+                    <td className="py-2 pl-2">Третий скрининг: оценка положения плода и плаценты</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 pr-2 whitespace-nowrap"><strong className="text-foreground">37+ нед.</strong></td>
+                    <td className="py-2 pl-2">Беременность считается доношенной, подготовка к родам</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm">
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                Рассчитать все ключевые даты&nbsp;→
+              </a>
+            </p>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 8: Акушерский vs эмбриональный */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Timer className="h-5 w-5" />
+              Акушерский и эмбриональный срок: в чём разница
+            </h2>
+            <p>
+              Один из самых частых вопросов у беременных — почему врач называет один
+              срок, а по зачатию получается другой. Дело в двух системах отсчёта:
             </p>
             <div className="grid gap-3 md:grid-cols-2">
-              <div className="rounded-lg border border-rose-200 bg-rose-50/50 p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <span className="text-xl">🫘</span>
-                  4–8 недель
-                </h3>
-                <p className="text-sm">
-                  Формируется нервная трубка, сердце начинает биться. Размер
-                  эмбриона — от макового зёрнышка до фасолинки (1–16 мм).
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground">Акушерский срок</h3>
+                <p>
+                  Отсчитывается от первого дня последних месячных.
+                  Полная беременность = <strong className="text-foreground">40</strong> недель.
+                  Именно этот срок используют врачи, указывают в обменной карте
+                  и по нему рассчитывают ПДР.
                 </p>
               </div>
-              <div className="rounded-lg border border-amber-200 bg-amber-50/50 p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <span className="text-xl">🍋</span>
-                  12–16 недель
-                </h3>
-                <p className="text-sm">
-                  Все органы сформированы, малыш двигается. Размер — от лайма
-                  до авокадо (5–12 см). Можно узнать пол.
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground">Эмбриональный срок</h3>
+                <p>
+                  Отсчитывается от момента зачатия (обычно на <strong className="text-foreground">14</strong> дней позже).
+                  Полная беременность = <strong className="text-foreground">38</strong> недель.
+                  Используется реже, в основном при ЭКО, когда дата оплодотворения
+                  точно известна.
                 </p>
               </div>
-              <div className="rounded-lg border border-green-200 bg-green-50/50 p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <span className="text-xl">🍌</span>
-                  20–28 недель
-                </h3>
-                <p className="text-sm">
-                  Мама чувствует шевеления. Малыш слышит звуки, открывает
-                  глаза. Размер — от банана до баклажана (25–37 см).
-                </p>
+            </div>
+            <p className="text-sm rounded-md bg-primary/5 text-foreground p-3">
+              Наш калькулятор автоматически пересчитывает срок в акушерский — тот,
+              который использует ваш врач. Если вы вводите дату зачатия, к ней
+              прибавляется <strong className="text-foreground">14</strong> дней для перевода в акушерские недели.
+            </p>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 9: Советы */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
+              Практические советы для будущих мам
+            </h2>
+            <p>
+              Зная свою ПДР и текущий <Link href="/zdorovye/beremennost/srok-beremennosti" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">срок беременности</Link>, вы можете
+              лучше спланировать подготовку. Вот несколько рекомендаций:
+            </p>
+            <div className="space-y-2">
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">1</span>
+                <div>
+                  <p className="text-foreground font-medium">Встаньте на учёт до 12 недель</p>
+                  <p>Это позволит своевременно пройти первый скрининг и даёт право на дополнительное пособие при ранней постановке на учёт.</p>
+                </div>
               </div>
-              <div className="rounded-lg border border-blue-200 bg-blue-50/50 p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <span className="text-xl">🍉</span>
-                  32–40 недель
-                </h3>
-                <p className="text-sm">
-                  Активный набор веса. Лёгкие созревают, малыш готовится
-                  к рождению. Вес при рождении — 2,5–4 кг, рост — 48–53 см.
-                </p>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">2</span>
+                <div>
+                  <p className="text-foreground font-medium">Не пропускайте скрининги</p>
+                  <p>Первый (<strong className="text-foreground">11–13</strong> нед.) и второй (<strong className="text-foreground">18–21</strong> нед.) скрининги — ключевые для оценки развития малыша. Запланируйте их заранее.</p>
+                </div>
               </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">3</span>
+                <div>
+                  <p className="text-foreground font-medium">Подготовьте сумку в роддом к 36 неделе</p>
+                  <p>Роды могут начаться раньше ПДР. С <strong className="text-foreground">37</strong> недели беременность считается доношенной, и малыш может появиться в любой момент.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">4</span>
+                <div>
+                  <p className="text-foreground font-medium">Следите за шевелениями с 28 недели</p>
+                  <p>С третьего триместра считайте шевеления: не менее <strong className="text-foreground">10</strong> за <strong className="text-foreground">12</strong> часов. При снижении активности обратитесь к врачу.</p>
+                </div>
+              </div>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">5</span>
+                <div>
+                  <p className="text-foreground font-medium">Принимайте фолиевую кислоту</p>
+                  <p>В первом триместре — <strong className="text-foreground">400</strong> мкг/день. Фолиевая кислота критически важна для формирования нервной трубки малыша.</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
+              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <p>
+                Калькулятор даёт ориентировочную дату. При любых вопросах
+                о течении беременности, болях или необычных симптомах
+                обязательно обратитесь к врачу.
+              </p>
             </div>
           </div>
 
           <hr className="border-border" />
 
           {/* FAQ */}
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-foreground">
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <CircleHelp className="h-5 w-5" />
               Часто задаваемые вопросы
             </h2>
-            <div className="space-y-3">
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-bold shrink-0">?</span>
+            <Accordion type="multiple" className="w-full">
+              <AccordionItem value="faq-1">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Как рассчитать дату родов?
-                </h3>
-                <p className="text-sm pl-8">
-                  Самый распространённый способ — правило Негеле: к первому
-                  дню последних месячных прибавляют 280 дней (40 недель). Также
-                  можно рассчитать по дате зачатия (прибавить 266 дней) или
-                  по данным УЗИ первого триместра.
-                </p>
-              </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-bold shrink-0">?</span>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Самый распространённый способ — правило Негеле: к первому дню
+                  последних месячных прибавляют <strong className="text-foreground">280</strong> дней
+                  (<strong className="text-foreground">40</strong> недель). Также можно рассчитать по дате зачатия
+                  (прибавить <strong className="text-foreground">266</strong> дней) или по данным УЗИ первого триместра.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-2">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Насколько точен расчёт даты родов?
-                </h3>
-                <p className="text-sm pl-8">
-                  Только 4–5% детей рождаются точно в ПДР. Нормальные роды
-                  происходят на сроке 37–42 недели. Наиболее точный метод —
-                  УЗИ в первом триместре (11–13 недель), погрешность
-                  составляет 3–5 дней.
-                </p>
-              </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-bold shrink-0">?</span>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Только <strong className="text-foreground">4–5%</strong> детей рождаются точно в ПДР.
+                  Нормальные роды происходят на сроке <strong className="text-foreground">37–42</strong> недели.
+                  Наиболее точный метод — УЗИ в первом триместре
+                  (<strong className="text-foreground">11–13</strong> недель), погрешность — <strong className="text-foreground">3–5</strong> дней.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-3">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Что такое акушерский срок беременности?
-                </h3>
-                <p className="text-sm pl-8">
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
                   Акушерский срок считается от первого дня последних месячных,
-                  а не от зачатия. Он примерно на 2 недели больше
-                  эмбрионального срока. Именно акушерский срок используют
-                  врачи для наблюдения беременности.
-                </p>
-              </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-bold shrink-0">?</span>
+                  а не от зачатия. Он примерно на <strong className="text-foreground">2</strong> недели больше
+                  эмбрионального. Именно акушерский срок используют врачи
+                  для наблюдения беременности и указывают в обменной карте.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-4">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Когда вставать на учёт по беременности?
-                </h3>
-                <p className="text-sm pl-8">
-                  Рекомендуется встать на учёт до 12 недель беременности. Это
-                  позволит своевременно пройти первый скрининг и все
-                  необходимые обследования. Ранняя постановка на учёт также
-                  даёт право на дополнительное пособие.
-                </p>
-              </div>
-            </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Рекомендуется встать на учёт до <strong className="text-foreground">12</strong> недель.
+                  Это позволит пройти первый скрининг и все необходимые обследования.
+                  Ранняя постановка на учёт также даёт право на дополнительное пособие.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-5">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Может ли ПДР измениться после УЗИ?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Да. Если УЗИ первого триместра показывает срок, отличающийся
+                  от расчётного более чем на <strong className="text-foreground">5–7</strong> дней, врач может
+                  скорректировать ПДР. Данные УЗИ в <strong className="text-foreground">11–13</strong> недель
+                  считаются наиболее точными.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-6">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Чем отличается акушерский срок от эмбрионального?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Акушерский срок — от первого дня последних месячных
+                  (<strong className="text-foreground">40</strong> недель). Эмбриональный — от момента зачатия
+                  (<strong className="text-foreground">38</strong> недель). Разница обычно
+                  около <strong className="text-foreground">2</strong> недель. Врачи используют акушерский срок.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-7">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Когда делать первое УЗИ при беременности?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Первое скрининговое УЗИ проводится на сроке <strong className="text-foreground">11–13</strong> недель.
+                  На этом сроке можно точно определить срок беременности, количество
+                  плодов и провести оценку рисков хромосомных аномалий.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
 
           <hr className="border-border" />
 
           {/* Связанные калькуляторы */}
-          <nav className="space-y-4" aria-label="Связанные калькуляторы">
-            <h2 className="text-2xl font-bold text-foreground">
+          <nav className="space-y-3" aria-label="Связанные калькуляторы">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <ArrowUpRight className="h-5 w-5" />
               Связанные калькуляторы
             </h2>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="flex flex-wrap gap-2">
               <Link
                 href="/zdorovye/beremennost/srok-beremennosti"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
-                  <span className="text-lg">👶</span>
-                  Срок беременности
-                </h3>
-                <p className="text-sm mt-1 pl-7">
-                  Определите текущий акушерский срок в неделях и днях.
-                </p>
+                <Baby className="h-4 w-4 text-muted-foreground" />
+                Срок беременности
               </Link>
               <Link
                 href="/zdorovye/beremennost/ovulyatsiya"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
-                  <span className="text-lg">🥚</span>
-                  Калькулятор овуляции
-                </h3>
-                <p className="text-sm mt-1 pl-7">
-                  Определите дни овуляции и фертильное окно.
-                </p>
-              </Link>
-              <Link
-                href="/zdorovye/pitanie/kalkulyator-kalorij"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
-              >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
-                  <span className="text-lg">🔥</span>
-                  Калькулятор калорий
-                </h3>
-                <p className="text-sm mt-1 pl-7">
-                  Расчёт суточной нормы калорий по 5 формулам.
-                </p>
+                <Egg className="h-4 w-4 text-muted-foreground" />
+                Калькулятор овуляции
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
-                className="rounded-lg border p-4 transition-colors hover:bg-accent group"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
-                  <span className="text-lg">⚖️</span>
-                  Калькулятор ИМТ
-                </h3>
-                <p className="text-sm mt-1 pl-7">
-                  Индекс массы тела с визуальной шкалой категорий ВОЗ.
-                </p>
+                <Scale className="h-4 w-4 text-muted-foreground" />
+                Калькулятор ИМТ
+              </Link>
+              <Link
+                href="/zdorovye/pitanie/kalkulyator-kalorij"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
+              >
+                <CalendarDays className="h-4 w-4 text-muted-foreground" />
+                Калькулятор калорий
+              </Link>
+              <Link
+                href="/zdorovye/telo/idealnyj-ves"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
+              >
+                <Scale className="h-4 w-4 text-muted-foreground" />
+                Идеальный вес
               </Link>
             </div>
           </nav>
