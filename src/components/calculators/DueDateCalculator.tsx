@@ -214,14 +214,14 @@ export function DueDateCalculator() {
           <CardContent>
             <div className="space-y-3">
               {/* Расчётные даты */}
-              <div className="grid gap-2 text-sm mb-4">
-                <div className="flex justify-between items-center rounded-lg border px-3 py-2">
-                  <span className="text-muted-foreground">Последние месячные</span>
-                  <span className="font-medium">{result.lmpDateFormatted}</span>
+              <div className="grid grid-cols-2 gap-2 text-sm mb-4">
+                <div className="rounded-lg border px-3 py-2">
+                  <p className="text-xs text-muted-foreground">Последние месячные</p>
+                  <p className="font-medium">{result.lmpDateFormatted}</p>
                 </div>
-                <div className="flex justify-between items-center rounded-lg border px-3 py-2">
-                  <span className="text-muted-foreground">Предполагаемое зачатие</span>
-                  <span className="font-medium">{result.conceptionDateFormatted}</span>
+                <div className="rounded-lg border px-3 py-2">
+                  <p className="text-xs text-muted-foreground">Предполагаемое зачатие</p>
+                  <p className="font-medium">{result.conceptionDateFormatted}</p>
                 </div>
               </div>
 
