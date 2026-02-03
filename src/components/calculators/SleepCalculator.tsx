@@ -50,34 +50,6 @@ export function SleepCalculator() {
 
   return (
     <div id="calculator" className="space-y-6">
-      {/* Выбор режима */}
-      <div className="flex gap-2 p-1 bg-muted rounded-xl">
-        <button
-          type="button"
-          onClick={() => handleModeChange('wakeUp')}
-          className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg transition-all duration-200 ${
-            mode === 'wakeUp'
-              ? 'bg-background shadow-md text-primary font-medium'
-              : 'text-muted-foreground hover:text-foreground'
-          }`}
-        >
-          <Sun className="h-4 w-4" />
-          Хочу проснуться в...
-        </button>
-        <button
-          type="button"
-          onClick={() => handleModeChange('goToSleep')}
-          className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg transition-all duration-200 ${
-            mode === 'goToSleep'
-              ? 'bg-background shadow-md text-primary font-medium'
-              : 'text-muted-foreground hover:text-foreground'
-          }`}
-        >
-          <Moon className="h-4 w-4" />
-          Ложусь спать в...
-        </button>
-      </div>
-
       {/* Ввод данных */}
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
@@ -87,6 +59,34 @@ export function SleepCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-5">
+          {/* Выбор режима */}
+          <div className="flex gap-2 p-1 bg-muted rounded-lg">
+            <button
+              type="button"
+              onClick={() => handleModeChange('wakeUp')}
+              className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-md transition-all duration-200 text-sm ${
+                mode === 'wakeUp'
+                  ? 'bg-background shadow-sm font-medium'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <Sun className={`h-4 w-4 ${mode === 'wakeUp' ? 'text-amber-500' : ''}`} />
+              Хочу проснуться в...
+            </button>
+            <button
+              type="button"
+              onClick={() => handleModeChange('goToSleep')}
+              className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-md transition-all duration-200 text-sm ${
+                mode === 'goToSleep'
+                  ? 'bg-background shadow-sm font-medium'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <Moon className={`h-4 w-4 ${mode === 'goToSleep' ? 'text-indigo-500' : ''}`} />
+              Ложусь спать в...
+            </button>
+          </div>
+
           {/* Время */}
           <div className="space-y-3">
             <Label className="flex items-center gap-2">
@@ -122,28 +122,28 @@ export function SleepCalculator() {
       </Card>
 
       {/* Главный результат */}
-      <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4">
-        <p className="text-sm text-muted-foreground mb-3 text-center">
+      <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-3">
+        <p className="text-sm text-muted-foreground mb-2 text-center">
           {mode === 'wakeUp'
             ? 'Оптимальное время отхода ко сну'
             : 'Оптимальное время пробуждения'}
         </p>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-4 gap-2">
           {result.times.map((sleepTime, index) => (
             <motion.div
               key={sleepTime.time}
-              className={`rounded-lg border p-3 text-center ${getQualityColor(sleepTime.quality)}`}
+              className={`rounded-lg border p-2 text-center ${getQualityColor(sleepTime.quality)}`}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.05 }}
             >
-              <p className="text-2xl font-bold">{sleepTime.time}</p>
-              <p className="text-sm font-medium">{sleepTime.cycles} цикл{sleepTime.cycles === 1 ? '' : sleepTime.cycles < 5 ? 'а' : 'ов'}</p>
-              <p className="text-xs opacity-80">{sleepTime.duration}</p>
+              <p className="text-lg sm:text-xl font-bold">{sleepTime.time}</p>
+              <p className="text-xs font-medium">{sleepTime.cycles} цикл{sleepTime.cycles === 1 ? '' : sleepTime.cycles < 5 ? 'а' : 'ов'}</p>
+              <p className="text-[10px] opacity-80 hidden sm:block">{sleepTime.duration}</p>
             </motion.div>
           ))}
         </div>
-        <p className="text-sm text-center mt-4 text-muted-foreground">
+        <p className="text-xs text-center mt-2 text-muted-foreground">
           {result.recommendation}
         </p>
       </div>
@@ -182,21 +182,21 @@ export function SleepCalculator() {
         </CardHeader>
         <CardContent className="space-y-3 text-sm text-muted-foreground">
           <div className="flex gap-2">
-            <Moon className="h-4 w-4 mt-0.5 text-primary shrink-0" />
+            <Moon className="h-4 w-4 mt-0.5 text-indigo-400 shrink-0" />
             <p>
               Один цикл сна длится примерно 90 минут и включает все фазы: лёгкий сон,
               глубокий сон и фазу быстрого движения глаз (REM).
             </p>
           </div>
           <div className="flex gap-2">
-            <Moon className="h-4 w-4 mt-0.5 text-primary shrink-0" />
+            <Sun className="h-4 w-4 mt-0.5 text-amber-400 shrink-0" />
             <p>
               Просыпаться лучше в конце цикла, а не в середине. Тогда вы будете чувствовать
               себя отдохнувшим, даже если спали меньше обычного.
             </p>
           </div>
           <div className="flex gap-2">
-            <Moon className="h-4 w-4 mt-0.5 text-primary shrink-0" />
+            <Clock className="h-4 w-4 mt-0.5 text-blue-400 shrink-0" />
             <p>
               Взрослому человеку рекомендуется спать 5-6 полных циклов (7.5-9 часов).
               Минимум для восстановления — 4 цикла (6 часов).

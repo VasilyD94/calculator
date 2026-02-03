@@ -26,6 +26,9 @@ import {
   BedDouble,
   Brain,
   Activity,
+  Heart,
+  Shield,
+  Utensils,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -488,28 +491,40 @@ export default function SleepCalculatorPage() {
             </p>
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground">Когнитивные функции</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-2">
+                  <Brain className="h-4 w-4 text-violet-400" />
+                  Когнитивные функции
+                </h3>
                 <p>
                   Снижается концентрация, память, скорость реакции. Повышается риск ошибок
                   и несчастных случаев.
                 </p>
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground">Иммунная система</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-2">
+                  <Shield className="h-4 w-4 text-green-400" />
+                  Иммунная система
+                </h3>
                 <p>
                   Организм хуже сопротивляется инфекциям. Увеличивается время
                   выздоровления от болезней.
                 </p>
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground">Обмен веществ</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-2">
+                  <Utensils className="h-4 w-4 text-amber-400" />
+                  Обмен веществ
+                </h3>
                 <p>
                   Нарушается выработка гормонов голода. Повышается тяга к сладкому
                   и калорийной пище.
                 </p>
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground">Сердечно-сосудистая система</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-2">
+                  <Heart className="h-4 w-4 text-red-400" />
+                  Сердечно-сосудистая система
+                </h3>
                 <p>
                   Повышается артериальное давление. Увеличивается риск сердечно-сосудистых
                   заболеваний.
