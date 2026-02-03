@@ -2,6 +2,12 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { BodyTypeCalculator } from '@/components/calculators/BodyTypeCalculator'
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
+import {
   ChevronRight,
   User,
   Info,
@@ -15,8 +21,9 @@ import {
   Dumbbell,
   Utensils,
   Ruler,
-  CheckCircle2,
   Lightbulb,
+  BookOpen,
+  Compass,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -133,16 +140,19 @@ const jsonLd = {
       step: [
         {
           '@type': 'HowToStep',
+          position: 1,
           name: 'Укажите пол',
           text: 'Выберите ваш пол — границы типов различаются для мужчин и женщин.',
         },
         {
           '@type': 'HowToStep',
+          position: 2,
           name: 'Измерьте запястье',
           text: 'Измерьте обхват запястья в самом узком месте (чуть ниже косточки) и укажите значение.',
         },
         {
           '@type': 'HowToStep',
+          position: 3,
           name: 'Получите результат',
           text: 'Калькулятор определит ваш тип телосложения и даст рекомендации по питанию и тренировкам.',
         },
@@ -208,82 +218,93 @@ export default function BodyTypePage() {
         </header>
 
         {/* Как пользоваться */}
-        <div className="mb-8 rounded-lg border bg-muted/30 p-4">
-          <h2 className="font-semibold mb-3 flex items-center gap-2">
-            <Info className="h-5 w-5 text-primary" />
+        <section className="mb-8 space-y-3 text-sm text-muted-foreground">
+          <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+            <BookOpen className="h-5 w-5" />
             Как пользоваться калькулятором
           </h2>
-          <ol className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex gap-2">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold">
+          <div className="space-y-2">
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
-              <span>Выберите ваш пол — границы типов различаются для мужчин и женщин.</span>
-            </li>
-            <li className="flex gap-2">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold">
+              <p>Выберите ваш пол — границы типов различаются для мужчин и женщин.</p>
+            </div>
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
-              <span>Измерьте обхват запястья в самом узком месте и укажите значение.</span>
-            </li>
-            <li className="flex gap-2">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold">
+              <p>Измерьте обхват запястья в самом узком месте и укажите значение.</p>
+            </div>
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
-              <span>
-                Получите результат с описанием типа и рекомендациями по питанию и тренировкам.
-              </span>
-            </li>
-          </ol>
-        </div>
+              <p>Получите результат с описанием типа и рекомендациями по питанию и тренировкам.</p>
+            </div>
+          </div>
+        </section>
 
         {/* Калькулятор */}
-        <BodyTypeCalculator />
+        <section className="mb-12" aria-labelledby="calculator-heading">
+          <h2 id="calculator-heading" className="sr-only">
+            Определение типа телосложения
+          </h2>
+          <BodyTypeCalculator />
+        </section>
 
-        {/* Полезные ссылки */}
-        <div className="mt-8 mb-10 rounded-lg border bg-muted/30 p-4">
-          <h2 className="font-semibold mb-3 flex items-center gap-2">
-            <ArrowUpRight className="h-5 w-5 text-primary" />
+        {/* Вам также будет полезно */}
+        <div className="mb-10 space-y-3">
+          <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+            <Compass className="h-5 w-5" />
             Вам также будет полезно
           </h2>
-          <div className="grid gap-2 sm:grid-cols-2">
+          <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
             <Link
               href="/zdorovye/telo/idealnyj-ves"
-              className="flex items-center gap-2 rounded-md border bg-background p-3 text-sm hover:bg-accent transition-colors"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Target className="h-4 w-4 text-primary" />
-              <span>Идеальный вес</span>
+              <Target className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Идеальный вес
+              </span>
             </Link>
             <Link
               href="/zdorovye/pitanie/kalkulyator-kalorij"
-              className="flex items-center gap-2 rounded-md border bg-background p-3 text-sm hover:bg-accent transition-colors"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Flame className="h-4 w-4 text-primary" />
-              <span>Калькулятор калорий</span>
+              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Калькулятор калорий
+              </span>
             </Link>
             <Link
               href="/zdorovye/telo/bazovyj-metabolizm"
-              className="flex items-center gap-2 rounded-md border bg-background p-3 text-sm hover:bg-accent transition-colors"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Activity className="h-4 w-4 text-primary" />
-              <span>Базовый метаболизм</span>
+              <Activity className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Базовый метаболизм
+              </span>
             </Link>
             <Link
               href="/zdorovye/sport/belok-dlya-sportsmenov"
-              className="flex items-center gap-2 rounded-md border bg-background p-3 text-sm hover:bg-accent transition-colors"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Dumbbell className="h-4 w-4 text-primary" />
-              <span>Норма белка</span>
+              <Dumbbell className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Норма белка
+              </span>
             </Link>
           </div>
         </div>
 
         {/* SEO-контент */}
-        <section className="space-y-10 text-base leading-7 text-muted-foreground">
+        <section className="space-y-8 text-sm text-muted-foreground">
           {/* Блок 1 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <Info className="h-6 w-6" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Info className="h-5 w-5" />
               Что такое тип телосложения
             </h2>
             <p>
@@ -294,8 +315,9 @@ export default function BodyTypePage() {
             </p>
             <p>
               Классификация соматотипов была разработана американским психологом Уильямом Шелдоном
-              в 1940-х годах. Он выделил три основных типа: <strong className="text-foreground">
-              эктоморф</strong>, <strong className="text-foreground">мезоморф</strong> и{' '}
+              в 1940-х годах. Он выделил три основных типа:{' '}
+              <strong className="text-foreground">эктоморф</strong>,{' '}
+              <strong className="text-foreground">мезоморф</strong> и{' '}
               <strong className="text-foreground">эндоморф</strong>. Каждый тип имеет свои
               особенности метаболизма и реагирования на физические нагрузки.
             </p>
@@ -304,9 +326,9 @@ export default function BodyTypePage() {
           <hr className="border-border" />
 
           {/* Блок 2 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <Calculator className="h-6 w-6" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Calculator className="h-5 w-5" />
               Методы определения типа телосложения
             </h2>
             <p>
@@ -315,23 +337,23 @@ export default function BodyTypePage() {
               основан на том, что толщина костей запястья практически не зависит от количества
               мышечной или жировой ткани.
             </p>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
                   <Ruler className="h-4 w-4 text-blue-400" />
                   Метод обхвата запястья
                 </h3>
-                <p className="text-sm">
+                <p>
                   Измерьте обхват запястья в самом узком месте (чуть ниже косточки) сантиметровой
                   лентой. Сравните результат с таблицей для вашего пола.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
                   <Calculator className="h-4 w-4 text-green-400" />
                   Индекс Соловьёва
                 </h3>
-                <p className="text-sm">
+                <p>
                   Отношение роста к обхвату запястья. Более точный метод, учитывающий
                   пропорциональность тела. Значение выше 10.4 — эктоморф, 9.6–10.4 — мезоморф,
                   ниже 9.6 — эндоморф.
@@ -343,47 +365,56 @@ export default function BodyTypePage() {
           <hr className="border-border" />
 
           {/* Блок 3 — Таблица границ */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <User className="h-6 w-6" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <User className="h-5 w-5" />
               Таблица определения типа по запястью
             </h2>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm border-collapse">
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="w-full text-left border-collapse text-sm">
                 <thead>
                   <tr className="border-b">
-                    <th className="text-left p-3 font-semibold text-foreground">Тип</th>
-                    <th className="text-center p-3 font-semibold text-foreground">Мужчины</th>
-                    <th className="text-center p-3 font-semibold text-foreground">Женщины</th>
+                    <th className="py-2 pr-2 font-semibold text-foreground">Тип</th>
+                    <th className="py-2 px-2 font-semibold text-foreground">Мужчины</th>
+                    <th className="py-2 pl-2 font-semibold text-foreground">Женщины</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b bg-blue-50/50">
-                    <td className="p-3 font-medium text-blue-700">Эктоморф</td>
-                    <td className="p-3 text-center">&lt; 17 см</td>
-                    <td className="p-3 text-center">&lt; 15 см</td>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2 font-medium text-blue-600">Эктоморф</td>
+                    <td className="py-2 px-2 whitespace-nowrap">&lt;17 см</td>
+                    <td className="py-2 pl-2 whitespace-nowrap">&lt;15 см</td>
                   </tr>
-                  <tr className="border-b bg-green-50/50">
-                    <td className="p-3 font-medium text-green-700">Мезоморф</td>
-                    <td className="p-3 text-center">17–20 см</td>
-                    <td className="p-3 text-center">15–17 см</td>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2 font-medium text-green-600">Мезоморф</td>
+                    <td className="py-2 px-2 whitespace-nowrap">17–20 см</td>
+                    <td className="py-2 pl-2 whitespace-nowrap">15–17 см</td>
                   </tr>
-                  <tr className="bg-orange-50/50">
-                    <td className="p-3 font-medium text-orange-700">Эндоморф</td>
-                    <td className="p-3 text-center">&gt; 20 см</td>
-                    <td className="p-3 text-center">&gt; 17 см</td>
+                  <tr>
+                    <td className="py-2 pr-2 font-medium text-orange-600">Эндоморф</td>
+                    <td className="py-2 px-2 whitespace-nowrap">&gt;20 см</td>
+                    <td className="py-2 pl-2 whitespace-nowrap">&gt;17 см</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
 
+          <p className="text-sm">
+            <a
+              href="#calculator"
+              className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors"
+            >
+              Определить свой тип&nbsp;→
+            </a>
+          </p>
+
           <hr className="border-border" />
 
           {/* Блок 4 — Эктоморф */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <User className="h-6 w-6 text-blue-500" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <User className="h-5 w-5" />
               Эктоморф — тонкокостный тип
             </h2>
             <p>
@@ -391,29 +422,29 @@ export default function BodyTypePage() {
               телосложения. Для них характерны узкие плечи, длинные конечности, тонкие кости и
               быстрый метаболизм. Эктоморфам сложно набирать как мышечную массу, так и жировую.
             </p>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
                   <Utensils className="h-4 w-4 text-amber-400" />
                   Питание для эктоморфа
                 </h3>
-                <ul className="text-sm space-y-1">
-                  <li>• Профицит калорий 300-500 ккал</li>
-                  <li>• 5-6 приёмов пищи в день</li>
-                  <li>• Белок: 1.6-2 г на кг массы</li>
+                <ul className="space-y-1">
+                  <li>• Профицит калорий 300–500 ккал</li>
+                  <li>• 5–6 приёмов пищи в день</li>
+                  <li>• Белок: 1.6–2 г на кг массы</li>
                   <li>• Много сложных углеводов</li>
                   <li>• Полезные жиры (орехи, авокадо)</li>
                 </ul>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
                   <Dumbbell className="h-4 w-4 text-green-400" />
                   Тренировки для эктоморфа
                 </h3>
-                <ul className="text-sm space-y-1">
+                <ul className="space-y-1">
                   <li>• Акцент на базовые упражнения</li>
-                  <li>• 3-4 тренировки в неделю</li>
-                  <li>• Тяжёлые веса, 6-10 повторений</li>
+                  <li>• 3–4 тренировки в неделю</li>
+                  <li>• Тяжёлые веса, 6–10 повторений</li>
                   <li>• Длинный отдых между подходами</li>
                   <li>• Минимум кардио</li>
                 </ul>
@@ -424,9 +455,9 @@ export default function BodyTypePage() {
           <hr className="border-border" />
 
           {/* Блок 5 — Мезоморф */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <User className="h-6 w-6 text-green-500" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <User className="h-5 w-5" />
               Мезоморф — атлетический тип
             </h2>
             <p>
@@ -435,31 +466,31 @@ export default function BodyTypePage() {
               телосложение и сбалансированный метаболизм. Мезоморфы легко набирают мышечную массу
               и хорошо реагируют на любые тренировки.
             </p>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
                   <Utensils className="h-4 w-4 text-amber-400" />
                   Питание для мезоморфа
                 </h3>
-                <ul className="text-sm space-y-1">
+                <ul className="space-y-1">
                   <li>• Сбалансированная калорийность</li>
                   <li>• 40% углеводов, 30% белка, 30% жиров</li>
-                  <li>• Белок: 1.4-1.8 г на кг массы</li>
+                  <li>• Белок: 1.4–1.8 г на кг массы</li>
                   <li>• Контроль размера порций</li>
                   <li>• Разнообразное питание</li>
                 </ul>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
                   <Dumbbell className="h-4 w-4 text-green-400" />
                   Тренировки для мезоморфа
                 </h3>
-                <ul className="text-sm space-y-1">
+                <ul className="space-y-1">
                   <li>• Комбинация силовых и кардио</li>
-                  <li>• 4-5 тренировок в неделю</li>
+                  <li>• 4–5 тренировок в неделю</li>
                   <li>• Разнообразие упражнений</li>
-                  <li>• Смена программы каждые 6-8 недель</li>
-                  <li>• Кардио 2-3 раза по 30-40 мин</li>
+                  <li>• Смена программы каждые 6–8 недель</li>
+                  <li>• Кардио 2–3 раза по 30–40 мин</li>
                 </ul>
               </div>
             </div>
@@ -468,9 +499,9 @@ export default function BodyTypePage() {
           <hr className="border-border" />
 
           {/* Блок 6 — Эндоморф */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <User className="h-6 w-6 text-orange-500" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <User className="h-5 w-5" />
               Эндоморф — ширококостный тип
             </h2>
             <p>
@@ -479,28 +510,28 @@ export default function BodyTypePage() {
               медленный метаболизм. Эндоморфы легко набирают вес (как мышцы, так и жир), но с
               трудом его теряют.
             </p>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
                   <Utensils className="h-4 w-4 text-amber-400" />
                   Питание для эндоморфа
                 </h3>
-                <ul className="text-sm space-y-1">
-                  <li>• Дефицит калорий 300-500 ккал</li>
-                  <li>• Белок: 1.8-2.2 г на кг массы</li>
+                <ul className="space-y-1">
+                  <li>• Дефицит калорий 300–500 ккал</li>
+                  <li>• Белок: 1.8–2.2 г на кг массы</li>
                   <li>• Ограничение простых углеводов</li>
                   <li>• Много овощей и клетчатки</li>
                   <li>• Контроль порций</li>
                 </ul>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5">
                   <Dumbbell className="h-4 w-4 text-green-400" />
                   Тренировки для эндоморфа
                 </h3>
-                <ul className="text-sm space-y-1">
-                  <li>• Акцент на кардио 4-5 раз в неделю</li>
-                  <li>• Силовые 3-4 раза в неделю</li>
+                <ul className="space-y-1">
+                  <li>• Акцент на кардио 4–5 раз в неделю</li>
+                  <li>• Силовые 3–4 раза в неделю</li>
                   <li>• Круговые и HIIT-тренировки</li>
                   <li>• Короткий отдых между подходами</li>
                   <li>• Высокая дневная активность</li>
@@ -512,9 +543,9 @@ export default function BodyTypePage() {
           <hr className="border-border" />
 
           {/* Блок 7 — Смешанные типы */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <Info className="h-6 w-6" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Info className="h-5 w-5" />
               Смешанные типы телосложения
             </h2>
             <p>
@@ -522,24 +553,24 @@ export default function BodyTypePage() {
               <strong className="text-foreground">смешанный тип телосложения</strong> с
               преобладанием характеристик одного из типов. Наиболее распространённые комбинации:
             </p>
-            <div className="grid gap-4 md:grid-cols-3">
-              <div className="rounded-lg border p-4 space-y-2">
+            <div className="grid gap-3 md:grid-cols-3">
+              <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground">Экто-мезоморф</h3>
-                <p className="text-sm">
+                <p>
                   Высокий рост, длинные конечности, но с хорошим потенциалом для набора мышц.
                   Часто встречается среди баскетболистов и пловцов.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground">Мезо-эндоморф</h3>
-                <p className="text-sm">
+                <p>
                   Атлетичное телосложение со склонностью к набору веса. Требует контроля питания
                   для поддержания формы.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground">Эндо-мезоморф</h3>
-                <p className="text-sm">
+                <p>
                   Крупное телосложение с хорошим мышечным потенциалом. Типичен для пауэрлифтеров
                   и борцов.
                 </p>
@@ -550,170 +581,197 @@ export default function BodyTypePage() {
           <hr className="border-border" />
 
           {/* Блок 8 — Важно знать */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-6 w-6" />
-              Важно знать
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
+              Практические советы
             </h2>
-            <div className="space-y-3">
-              <div className="flex gap-3">
-                <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                <p>
-                  <strong className="text-foreground">Тип телосложения — не приговор.</strong>{' '}
-                  Правильное питание и регулярные тренировки позволяют достичь отличных
-                  результатов независимо от генетики.
-                </p>
+            <div className="space-y-2">
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  1
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Тип телосложения — не приговор</p>
+                  <p>
+                    Правильное питание и регулярные тренировки позволяют достичь отличных
+                    результатов независимо от генетики.
+                  </p>
+                </div>
               </div>
-              <div className="flex gap-3">
-                <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                <p>
-                  <strong className="text-foreground">Метаболизм можно ускорить.</strong>{' '}
-                  Наращивание мышечной массы увеличивает базовый обмен веществ, что помогает даже
-                  эндоморфам контролировать вес.
-                </p>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  2
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Метаболизм можно ускорить</p>
+                  <p>
+                    Наращивание мышечной массы увеличивает базовый обмен веществ, что помогает даже
+                    эндоморфам контролировать вес.
+                  </p>
+                </div>
               </div>
-              <div className="flex gap-3">
-                <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                <p>
-                  <strong className="text-foreground">Результат требует времени.</strong>{' '}
-                  Не ожидайте быстрых изменений. Устойчивый прогресс достигается месяцами
-                  последовательной работы.
-                </p>
+              <div className="flex gap-3 items-start">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                  3
+                </span>
+                <div>
+                  <p className="text-foreground font-medium">Результат требует времени</p>
+                  <p>
+                    Не ожидайте быстрых изменений. Устойчивый прогресс достигается месяцами
+                    последовательной работы.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
-          <Link
-            href="#calculator"
-            className="block text-center text-primary hover:underline font-medium"
-          >
-            ↑ Вернуться к калькулятору
-          </Link>
+          <p className="text-sm">
+            <a
+              href="#calculator"
+              className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors"
+            >
+              Определить свой тип&nbsp;→
+            </a>
+          </p>
 
           <hr className="border-border" />
 
           {/* FAQ */}
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-6 w-6" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <CircleHelp className="h-5 w-5" />
               Часто задаваемые вопросы
             </h2>
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+            <Accordion type="multiple" className="w-full">
+              <AccordionItem value="faq-1">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Как определить тип телосложения по запястью?
-                </h3>
-                <p>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
                   Измерьте обхват запястья в самом узком месте (чуть ниже косточки). Для мужчин:
-                  менее 17 см — эктоморф, 17-20 см — мезоморф, более 20 см — эндоморф. Для женщин
-                  границы: 15 и 17 см соответственно.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+                  менее <strong className="text-foreground">17</strong> см — эктоморф,{' '}
+                  <strong className="text-foreground">17–20</strong> см — мезоморф, более{' '}
+                  <strong className="text-foreground">20</strong> см — эндоморф. Для женщин
+                  границы: <strong className="text-foreground">15</strong> и{' '}
+                  <strong className="text-foreground">17</strong> см соответственно.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-2">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Можно ли изменить тип телосложения?
-                </h3>
-                <p>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
                   Тип телосложения определяется генетически и не может быть изменён. Однако
                   правильное питание и тренировки позволяют существенно изменить внешний вид тела
                   и улучшить пропорции.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">Что такое индекс Соловьёва?</h3>
-                <p>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-3">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Что такое индекс Соловьёва?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
                   Индекс Соловьёва — это отношение роста к обхвату запястья. Он помогает уточнить
-                  тип телосложения: значение выше 10.4 — эктоморф, 9.6-10.4 — мезоморф, ниже 9.6
-                  — эндоморф.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+                  тип телосложения: значение выше <strong className="text-foreground">10.4</strong>{' '}
+                  — эктоморф, <strong className="text-foreground">9.6–10.4</strong> — мезоморф,
+                  ниже <strong className="text-foreground">9.6</strong> — эндоморф.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-4">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Какой тип телосложения лучше для спорта?
-                </h3>
-                <p>
-                  Каждый тип имеет преимущества в разных видах спорта. Эктоморфы успешны в беге
-                  на длинные дистанции. Мезоморфы — в силовых видах. Эндоморфы — в тяжёлой
-                  атлетике и борьбе.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Каждый тип имеет преимущества в разных видах спорта. Эктоморфы успешны в беге на
+                  длинные дистанции. Мезоморфы — в силовых видах. Эндоморфы — в тяжёлой атлетике и
+                  борьбе.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-5">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Как питаться эктоморфу для набора массы?
-                </h3>
-                <p>
-                  Эктоморфам необходим профицит калорий 300-500 ккал, 5-6 приёмов пищи в день,
-                  повышенное потребление белка (1.6-2 г/кг) и сложных углеводов. Важно не
-                  пропускать приёмы пищи.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">Как похудеть эндоморфу?</h3>
-                <p>
-                  Эндоморфам рекомендуется умеренный дефицит калорий (300-500 ккал), ограничение
-                  простых углеводов, много кардио, высокобелковая диета и регулярные силовые
-                  тренировки.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Эктоморфам необходим профицит калорий{' '}
+                  <strong className="text-foreground">300–500</strong> ккал,{' '}
+                  <strong className="text-foreground">5–6</strong> приёмов пищи в день, повышенное
+                  потребление белка (<strong className="text-foreground">1.6–2</strong> г/кг) и
+                  сложных углеводов. Важно не пропускать приёмы пищи.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-6">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Как похудеть эндоморфу?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Эндоморфам рекомендуется умеренный дефицит калорий (
+                  <strong className="text-foreground">300–500</strong> ккал), ограничение простых
+                  углеводов, много кардио, высокобелковая диета и регулярные силовые тренировки.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="faq-7">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Существуют ли смешанные типы телосложения?
-                </h3>
-                <p>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
                   Да, большинство людей имеют смешанный тип: экто-мезоморф, эндо-мезоморф и т.д.
                   Чистые типы встречаются редко. При определении ориентируйтесь на преобладающий
                   тип.
-                </p>
-              </div>
-            </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
 
           <hr className="border-border" />
 
           {/* Связанные калькуляторы */}
-          <nav className="space-y-4" aria-label="Связанные калькуляторы">
-            <h2 className="text-2xl font-bold text-foreground">Связанные калькуляторы</h2>
+          <nav className="space-y-3" aria-label="Связанные калькуляторы">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <ArrowUpRight className="h-5 w-5" />
+              Связанные калькуляторы
+            </h2>
             <div className="flex flex-wrap gap-2">
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
-                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm hover:bg-accent transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-3.5 w-3.5" />
+                <Scale className="h-4 w-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/telo/idealnyj-ves"
-                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm hover:bg-accent transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Target className="h-3.5 w-3.5" />
+                <Target className="h-4 w-4 text-muted-foreground" />
                 Идеальный вес
               </Link>
               <Link
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
-                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm hover:bg-accent transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-3.5 w-3.5" />
+                <Flame className="h-4 w-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/telo/bazovyj-metabolizm"
-                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm hover:bg-accent transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Activity className="h-3.5 w-3.5" />
+                <Activity className="h-4 w-4 text-muted-foreground" />
                 Базовый метаболизм
               </Link>
               <Link
                 href="/zdorovye/sport/belok-dlya-sportsmenov"
-                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm hover:bg-accent transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Dumbbell className="h-3.5 w-3.5" />
+                <Dumbbell className="h-4 w-4 text-muted-foreground" />
                 Норма белка
               </Link>
               <Link
                 href="/zdorovye/telo/protsent-zhira"
-                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm hover:bg-accent transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <User className="h-3.5 w-3.5" />
+                <User className="h-4 w-4 text-muted-foreground" />
                 Процент жира
               </Link>
             </div>
