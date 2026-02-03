@@ -34,6 +34,7 @@ export const NAV_SECTIONS: NavSection[] = [
       { label: 'Идеальный вес', href: '/zdorovye/telo/idealnyj-ves' },
       { label: 'Процент жира', href: '/zdorovye/telo/protsent-zhira' },
       { label: 'Основной обмен веществ', href: '/zdorovye/telo/bazovyj-metabolizm' },
+      { label: 'Калькулятор возраста', href: '/zdorovye/telo/kalkulyator-vozrasta' },
     ],
   },
   {

@@ -71,6 +71,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/zdorovye/telo/kalkulyator-vozrasta`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/zdorovye/beremennost`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
