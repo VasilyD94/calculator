@@ -36,6 +36,7 @@ export const NAV_SECTIONS: NavSection[] = [
       { label: 'Основной обмен веществ', href: '/zdorovye/telo/bazovyj-metabolizm' },
       { label: 'Калькулятор возраста', href: '/zdorovye/telo/kalkulyator-vozrasta' },
       { label: 'Калькулятор алкоголя', href: '/zdorovye/telo/kalkulyator-alkogolya' },
+      { label: 'Калькулятор сна', href: '/zdorovye/telo/kalkulyator-sna' },
     ],
   },
   {
