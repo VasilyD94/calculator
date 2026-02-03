@@ -128,7 +128,7 @@ export function SleepCalculator() {
             ? 'Оптимальное время отхода ко сну'
             : 'Оптимальное время пробуждения'}
         </p>
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {result.times.map((sleepTime, index) => (
             <motion.div
               key={sleepTime.time}
@@ -139,7 +139,7 @@ export function SleepCalculator() {
             >
               <p className="text-lg sm:text-xl font-bold">{sleepTime.time}</p>
               <p className="text-xs font-medium">{sleepTime.cycles} цикл{sleepTime.cycles === 1 ? '' : sleepTime.cycles < 5 ? 'а' : 'ов'}</p>
-              <p className="text-[10px] opacity-80 hidden sm:block">{sleepTime.duration}</p>
+              <p className="text-[10px] opacity-80">{sleepTime.duration}</p>
             </motion.div>
           ))}
         </div>
@@ -149,7 +149,7 @@ export function SleepCalculator() {
       </div>
 
       {/* Легенда качества */}
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
         <div className="rounded-lg border bg-green-50 border-green-200 p-2 text-center">
           <Sparkles className="h-4 w-4 mx-auto mb-1 text-green-600" />
           <p className="text-xs font-medium text-green-600">Отличный</p>
