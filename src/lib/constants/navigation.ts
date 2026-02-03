@@ -45,6 +45,7 @@ export const NAV_SECTIONS: NavSection[] = [
       { label: 'Рассчитать дату родов', href: '/zdorovye/beremennost/data-rodov', hot: true },
       { label: 'Срок беременности', href: '/zdorovye/beremennost/srok-beremennosti', hot: true },
       { label: 'Овуляция', href: '/zdorovye/beremennost/ovulyatsiya' },
+      { label: 'Группа крови ребёнка', href: '/zdorovye/beremennost/gruppa-krovi-rebenka' },
     ],
   },
   {
