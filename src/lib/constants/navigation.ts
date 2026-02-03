@@ -37,6 +37,7 @@ export const NAV_SECTIONS: NavSection[] = [
       { label: 'Калькулятор возраста', href: '/zdorovye/telo/kalkulyator-vozrasta' },
       { label: 'Калькулятор алкоголя', href: '/zdorovye/telo/kalkulyator-alkogolya' },
       { label: 'Калькулятор сна', href: '/zdorovye/telo/kalkulyator-sna' },
+      { label: 'Норма давления', href: '/zdorovye/telo/norma-davleniya' },
     ],
   },
   {

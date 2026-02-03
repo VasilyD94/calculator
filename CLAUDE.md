@@ -111,13 +111,13 @@ nginx -t && systemctl reload nginx
 cat /etc/nginx/sites-available/calculator
 ```
 
-### Когда подключим домен
+### Домен и SSL (НАСТРОЕНО)
 
 ```
-1. Изменить server_name в /etc/nginx/sites-available/calculator
-2. Установить certbot: apt install certbot python3-certbot-nginx
-3. Получить SSL: certbot --nginx -d calc-box.ru -d www.calc-box.ru
-4. Nginx перезагрузится автоматически
+Домен: calc-box.ru (куплен на REG.ru, февраль 2026)
+DNS: A-запись → 72.56.97.130
+SSL: Let's Encrypt, автообновление через certbot
+Nginx: server_name calc-box.ru www.calc-box.ru
 ```
 
 ---
@@ -125,7 +125,7 @@ cat /etc/nginx/sites-available/calculator
 ## 🌐 Домен и структура
 
 ```
-ДОМЕН: Нейтральный (mycalc.ru, calc-box.ru, vsecalc.ru)
+ДОМЕН: calc-box.ru
 
 СТРУКТУРА URL:
 /
@@ -1714,7 +1714,7 @@ export function ExportPDF({ targetId, filename, title }: ExportPDFProps) {
       pdf.setFontSize(10)
       pdf.setTextColor(128, 128, 128)
       pdf.text(
-        `Создано на mycalc.ru • ${new Date().toLocaleDateString('ru-RU')}`,
+        `Создано на calc-box.ru • ${new Date().toLocaleDateString('ru-RU')}`,
         pdfWidth / 2,
         pdfHeight - 10,
         { align: 'center' }
@@ -1892,7 +1892,7 @@ export function CaloriePDFReport({ data, inputs }: CalorieReportProps) {
         </View>
         
         <Text style={styles.footer}>
-          Создано на mycalc.ru • {new Date().toLocaleDateString('ru-RU')}
+          Создано на calc-box.ru • {new Date().toLocaleDateString('ru-RU')}
         </Text>
       </Page>
     </Document>
@@ -3712,7 +3712,7 @@ const AdBlock = dynamic(() => import('@/components/layout/AdBlock'), {
 1. SEO-тексты для всех страниц
 2. JSON-LD разметка
 3. sitemap.xml, robots.txt
-4. Деплой на Vercel
+4. Деплой на сервер
 5. Яндекс.Вебмастер + Метрика
 
 ---
