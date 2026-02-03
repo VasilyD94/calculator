@@ -37,23 +37,23 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Основной обмен веществ — расчёт BMR по 5 формулам онлайн',
+  title: 'Сколько калорий нужно в день — расчёт BMR по 5 формулам онлайн',
   description:
-    'Рассчитайте основной обмен веществ бесплатно ✓ 5 формул BMR ✓ Миффлина-Сан Жеора и Харриса-Бенедикта ✓ Сравнение результатов и рекомендации по питанию.',
+    'Узнайте сколько калорий нужно в день для вашего организма ✓ Расчёт базового метаболизма по 5 формулам ✓ Миффлина-Сан Жеора ✓ Минимум калорий для жизни.',
   keywords: [
+    'сколько калорий нужно в день',
+    'сколько калорий нужно',
     'основной обмен веществ',
     'базовый метаболизм',
     'расчёт метаболизма',
     'калькулятор метаболизма',
     'формула Миффлина',
-    'формула Харриса-Бенедикта',
-    'калории в покое',
     'BMR калькулятор',
   ],
   openGraph: {
-    title: 'Основной обмен веществ — расчёт BMR онлайн',
+    title: 'Сколько калорий нужно в день — расчёт BMR онлайн',
     description:
-      'Узнайте свой базовый метаболизм по 5 научным формулам. Сравнение результатов, расход в покое и пояснения.',
+      'Узнайте сколько калорий нужно вашему организму в день. Расчёт базового метаболизма по 5 формулам.',
     type: 'website',
     url: '/zdorovye/telo/bazovyj-metabolizm',
   },
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
 const breadcrumbs = [
   { label: 'Главная', href: '/' },
   { label: 'Тело', href: '/zdorovye/telo' },
-  { label: 'Основной обмен веществ', href: '/zdorovye/telo/bazovyj-metabolizm' },
+  { label: 'Норма калорий', href: '/zdorovye/telo/bazovyj-metabolizm' },
 ]
 
 export default function BMRPage() {
@@ -96,6 +96,14 @@ export default function BMRPage() {
           '@context': 'https://schema.org',
           '@type': 'FAQPage',
           mainEntity: [
+            {
+              '@type': 'Question',
+              name: 'Сколько калорий нужно человеку в день?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Сколько калорий нужно в день зависит от пола, возраста, веса и активности. Минимум (BMR): мужчины 1500–1800 ккал, женщины 1200–1400 ккал. При средней активности: мужчины 2200–2800 ккал, женщины 1800–2200 ккал. Точную норму рассчитает калькулятор.',
+              },
+            },
             {
               '@type': 'Question',
               name: 'Что такое базовый метаболизм (BMR)?',
@@ -208,7 +216,7 @@ export default function BMRPage() {
             {
               '@type': 'ListItem',
               position: 3,
-              name: 'Базовый метаболизм',
+              name: 'Норма калорий',
               item: 'https://calc-box.ru/zdorovye/telo/bazovyj-metabolizm',
             },
           ],
@@ -220,11 +228,12 @@ export default function BMRPage() {
 
         <header className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            Основной обмен веществ (BMR) — онлайн расчёт
+            Сколько калорий нужно в день — расчёт BMR
           </h1>
           <p className="text-lg text-muted-foreground">
-            Узнайте, сколько калорий ваш организм тратит в покое. Расчёт по 5
-            научным формулам с мгновенным сравнением результатов.
+            Узнайте, сколько калорий нужно вашему организму в день для
+            поддержания жизни. Расчёт базового метаболизма по 5 научным формулам
+            с мгновенным сравнением результатов.
           </p>
         </header>
 
@@ -334,6 +343,62 @@ export default function BMRPage() {
               <Link href="/zdorovye/pitanie/kalkulyator-kalorij" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
                 калькулятора калорий
               </Link>.
+            </p>
+          </div>
+
+          <hr className="border-border" />
+
+          {/* Блок 1.5 — Сколько калорий нужно в день */}
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Target className="h-5 w-5" />
+              Сколько калорий нужно в день
+            </h2>
+            <p>
+              Вопрос «сколько калорий нужно в день» — один из самых частых при
+              планировании питания. Ответ зависит от вашего базового метаболизма
+              (BMR) и уровня физической активности. BMR — это минимум калорий,
+              который организм тратит в полном покое.
+            </p>
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="w-full text-left border-collapse text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-2 pr-2 font-semibold text-foreground">Категория</th>
+                    <th className="py-2 px-2 font-semibold text-foreground whitespace-nowrap">Мужчины, ккал</th>
+                    <th className="py-2 pl-2 font-semibold text-foreground whitespace-nowrap">Женщины, ккал</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">Минимум (BMR)</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">1500–1800</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">1200–1400</strong></td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">Сидячий образ жизни</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">1800–2200</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">1400–1800</strong></td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2">Средняя активность</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">2200–2800</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">1800–2200</strong></td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 pr-2">Высокая активность</td>
+                    <td className="py-2 px-2 whitespace-nowrap"><strong className="text-foreground">2800–3500</strong></td>
+                    <td className="py-2 pl-2 whitespace-nowrap"><strong className="text-foreground">2200–2800</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Эти значения ориентировочные. Точную норму калорий для вашего веса,
+              роста и возраста рассчитает{' '}
+              <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+                калькулятор выше&nbsp;&rarr;
+              </a>
             </p>
           </div>
 
@@ -785,6 +850,19 @@ export default function BMRPage() {
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
+              <AccordionItem value="faq-0">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
+                  Сколько калорий нужно человеку в день?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Сколько калорий нужно в день зависит от пола, возраста, веса и уровня активности.
+                  Минимум (BMR): мужчины <strong className="text-foreground">1500–1800</strong> ккал,
+                  женщины <strong className="text-foreground">1200–1400</strong> ккал. При средней
+                  активности: мужчины <strong className="text-foreground">2200–2800</strong> ккал,
+                  женщины <strong className="text-foreground">1800–2200</strong> ккал. Точную норму
+                  рассчитает калькулятор выше.
+                </AccordionContent>
+              </AccordionItem>
               <AccordionItem value="faq-1">
                 <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Что такое базовый метаболизм (BMR)?

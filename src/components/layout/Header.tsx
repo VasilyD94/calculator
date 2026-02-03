@@ -1,12 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import { Calculator, Flame, Menu, X } from 'lucide-react'
+import { Calculator, Menu, X, Flame } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { NAV_SECTIONS } from '@/lib/constants/navigation'
-import { Badge } from '@/components/ui/badge'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -44,15 +43,10 @@ export function Header() {
                         <NavigationMenuLink asChild className="flex-row items-center justify-between gap-4">
                           <Link
                             href={item.href}
-                            className="whitespace-nowrap"
+                            className="whitespace-nowrap flex items-center gap-2"
                           >
                             <span>{item.label}</span>
-                            {item.hot && (
-                              <Badge variant="default" className="text-xs">
-                                <Flame className="h-3 w-3 mr-1 text-white" />
-                                Хит
-                              </Badge>
-                            )}
+                            {item.hot && <Flame className="h-3 w-3 shrink-0 text-foreground" />}
                           </Link>
                         </NavigationMenuLink>
                       </li>
@@ -96,9 +90,10 @@ export function Header() {
                     <Link
                       href={item.href}
                       onClick={() => setMobileOpen(false)}
-                      className="block py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      className="flex items-center gap-2 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
                     >
-                      {item.label}
+                      <span>{item.label}</span>
+                      {item.hot && <Flame className="h-3 w-3 shrink-0 text-foreground" />}
                     </Link>
                   </li>
                 ))}

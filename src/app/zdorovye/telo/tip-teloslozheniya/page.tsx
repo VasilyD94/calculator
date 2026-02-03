@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { BodyTypeCalculator } from '@/components/calculators/BodyTypeCalculator'
+import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
+import { JsonLd } from '@/components/seo/JsonLd'
 import {
   Accordion,
   AccordionContent,
@@ -8,7 +10,6 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import {
-  ChevronRight,
   User,
   Info,
   Calculator,
@@ -51,160 +52,145 @@ export const metadata: Metadata = {
   },
 }
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'WebApplication',
-      name: 'Калькулятор типа телосложения',
-      description:
-        'Онлайн определение типа телосложения по обхвату запястья с рекомендациями',
-      applicationCategory: 'HealthApplication',
-      operatingSystem: 'Any',
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'RUB',
-      },
-      featureList: [
-        'Определение типа телосложения по обхвату запястья',
-        'Расчёт индекса Соловьёва',
-        'Рекомендации по питанию',
-        'Рекомендации по тренировкам',
-      ],
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'Как определить тип телосложения по запястью?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Измерьте обхват запястья в самом узком месте (чуть ниже косточки). Для мужчин: менее 17 см — эктоморф, 17-20 см — мезоморф, более 20 см — эндоморф. Для женщин границы: 15 и 17 см соответственно.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Можно ли изменить тип телосложения?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Тип телосложения определяется генетически и не может быть изменён. Однако правильное питание и тренировки позволяют существенно изменить внешний вид тела и улучшить пропорции независимо от соматотипа.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Что такое индекс Соловьёва?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Индекс Соловьёва — это отношение роста к обхвату запястья. Он помогает уточнить тип телосложения: значение выше 10.4 указывает на астенический тип (эктоморф), 10.4-9.6 — нормостенический (мезоморф), ниже 9.6 — гиперстенический (эндоморф).',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Какой тип телосложения лучше для спорта?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Каждый тип имеет преимущества в разных видах спорта. Эктоморфы успешны в беге на длинные дистанции и баскетболе. Мезоморфы преуспевают в силовых видах и единоборствах. Эндоморфы сильны в тяжёлой атлетике и борьбе.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Как питаться эктоморфу для набора массы?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Эктоморфам необходим профицит калорий 300-500 ккал от нормы, 5-6 приёмов пищи в день, повышенное потребление белка (1.6-2 г/кг) и сложных углеводов. Важно не пропускать приёмы пищи и есть даже без чувства голода.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Как похудеть эндоморфу?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Эндоморфам рекомендуется умеренный дефицит калорий (300-500 ккал), ограничение простых углеводов, много кардио (4-5 раз в неделю), высокобелковая диета (1.8-2.2 г/кг) и регулярные силовые тренировки для сохранения мышц.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Существуют ли смешанные типы телосложения?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Да, большинство людей имеют смешанный тип телосложения: экто-мезоморф, эндо-мезоморф и т.д. Чистые типы встречаются редко. При определении ориентируйтесь на преобладающий тип.',
-          },
-        },
-      ],
-    },
-    {
-      '@type': 'HowTo',
-      name: 'Как определить тип телосложения',
-      step: [
-        {
-          '@type': 'HowToStep',
-          position: 1,
-          name: 'Укажите пол',
-          text: 'Выберите ваш пол — границы типов различаются для мужчин и женщин.',
-        },
-        {
-          '@type': 'HowToStep',
-          position: 2,
-          name: 'Измерьте запястье',
-          text: 'Измерьте обхват запястья в самом узком месте (чуть ниже косточки) и укажите значение.',
-        },
-        {
-          '@type': 'HowToStep',
-          position: 3,
-          name: 'Получите результат',
-          text: 'Калькулятор определит ваш тип телосложения и даст рекомендации по питанию и тренировкам.',
-        },
-      ],
-    },
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Главная',
-          item: 'https://calc-box.ru',
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Тело',
-          item: 'https://calc-box.ru/zdorovye/telo',
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: 'Тип телосложения',
-          item: 'https://calc-box.ru/zdorovye/telo/tip-teloslozheniya',
-        },
-      ],
-    },
-  ],
-}
+const breadcrumbs = [
+  { label: 'Главная', href: '/' },
+  { label: 'Тело', href: '/zdorovye/telo' },
+  { label: 'Тип телосложения', href: '/zdorovye/telo/tip-teloslozheniya' },
+]
 
 export default function BodyTypePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      {/* WebApplication Schema */}
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'WebApplication',
+          name: 'Калькулятор типа телосложения',
+          description:
+            'Онлайн определение типа телосложения по обхвату запястья с рекомендациями',
+          applicationCategory: 'HealthApplication',
+          operatingSystem: 'Any',
+          url: 'https://calc-box.ru/zdorovye/telo/tip-teloslozheniya',
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'RUB',
+          },
+        }}
+      />
+
+      {/* FAQPage Schema */}
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: 'Как определить тип телосложения по запястью?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Измерьте обхват запястья в самом узком месте (чуть ниже косточки). Для мужчин: менее 17 см — эктоморф, 17-20 см — мезоморф, более 20 см — эндоморф. Для женщин границы: 15 и 17 см соответственно.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Можно ли изменить тип телосложения?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Тип телосложения определяется генетически и не может быть изменён. Однако правильное питание и тренировки позволяют существенно изменить внешний вид тела и улучшить пропорции независимо от соматотипа.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Что такое индекс Соловьёва?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Индекс Соловьёва — это отношение роста к обхвату запястья. Он помогает уточнить тип телосложения: значение выше 10.4 указывает на астенический тип (эктоморф), 10.4-9.6 — нормостенический (мезоморф), ниже 9.6 — гиперстенический (эндоморф).',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Какой тип телосложения лучше для спорта?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Каждый тип имеет преимущества в разных видах спорта. Эктоморфы успешны в беге на длинные дистанции и баскетболе. Мезоморфы преуспевают в силовых видах и единоборствах. Эндоморфы сильны в тяжёлой атлетике и борьбе.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Как питаться эктоморфу для набора массы?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Эктоморфам необходим профицит калорий 300-500 ккал от нормы, 5-6 приёмов пищи в день, повышенное потребление белка (1.6-2 г/кг) и сложных углеводов. Важно не пропускать приёмы пищи и есть даже без чувства голода.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Как похудеть эндоморфу?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Эндоморфам рекомендуется умеренный дефицит калорий (300-500 ккал), ограничение простых углеводов, много кардио (4-5 раз в неделю), высокобелковая диета (1.8-2.2 г/кг) и регулярные силовые тренировки для сохранения мышц.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Существуют ли смешанные типы телосложения?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Да, большинство людей имеют смешанный тип телосложения: экто-мезоморф, эндо-мезоморф и т.д. Чистые типы встречаются редко. При определении ориентируйтесь на преобладающий тип.',
+              },
+            },
+          ],
+        }}
+      />
+
+      {/* HowTo Schema */}
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'HowTo',
+          name: 'Как определить тип телосложения',
+          step: [
+            {
+              '@type': 'HowToStep',
+              position: 1,
+              name: 'Укажите пол',
+              text: 'Выберите ваш пол — границы типов различаются для мужчин и женщин.',
+            },
+            {
+              '@type': 'HowToStep',
+              position: 2,
+              name: 'Измерьте запястье',
+              text: 'Измерьте обхват запястья в самом узком месте (чуть ниже косточки) и укажите значение.',
+            },
+            {
+              '@type': 'HowToStep',
+              position: 3,
+              name: 'Получите результат',
+              text: 'Калькулятор определит ваш тип телосложения и даст рекомендации по питанию и тренировкам.',
+            },
+          ],
+        }}
+      />
+
+      {/* BreadcrumbList Schema */}
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: breadcrumbs.map((crumb, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: crumb.label,
+            item: `https://calc-box.ru${crumb.href}`,
+          })),
+        }}
       />
 
       <article className="mx-auto max-w-4xl px-4 py-8">
-        {/* Хлебные крошки */}
-        <nav className="mb-6 flex items-center gap-1 text-sm text-muted-foreground">
-          <Link href="/" className="hover:text-foreground transition-colors">
-            Главная
-          </Link>
-          <ChevronRight className="h-4 w-4" />
-          <Link href="/zdorovye/telo" className="hover:text-foreground transition-colors">
-            Тело
-          </Link>
-          <ChevronRight className="h-4 w-4" />
-          <span className="text-foreground">Тип телосложения</span>
-        </nav>
+        <Breadcrumbs items={breadcrumbs} />
 
         {/* Заголовок */}
         <header className="mb-8">

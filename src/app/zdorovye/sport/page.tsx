@@ -1,11 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { NAV_SECTIONS } from '@/lib/constants/navigation'
-import { Heart, Info, Calculator, BookOpen } from 'lucide-react'
+import { Flame, Info, Calculator, BookOpen } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Калькуляторы для спорта онлайн — пульс, белок, тренировки',
@@ -80,38 +78,23 @@ export default function SportPage() {
           </p>
         </header>
 
-        <section className="mb-12">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <section.icon className="h-5 w-5 text-primary" />
-                {section.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2">
-                {section.items.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="flex min-h-12 items-center justify-between rounded-lg px-4 py-3 text-sm transition-colors hover:bg-accent"
-                    >
-                      <span className="font-medium">{item.label}</span>
-                      {item.hot && (
-                        <Badge variant="default" className="text-xs">
-                          <Heart className="h-3 w-3 mr-1" />
-                          Популярный
-                        </Badge>
-                      )}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+        <section className="mb-10">
+          <ul className="space-y-3">
+            {section.items.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="inline-flex items-center gap-2 text-base text-foreground underline underline-offset-4 decoration-primary/40 hover:decoration-primary transition-colors"
+                >
+                  <span>{item.label}</span>
+                  {item.hot && <Flame className="h-3.5 w-3.5 shrink-0" />}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
 
-        <section className="space-y-8 text-sm text-muted-foreground">
+        <section className="space-y-8 text-sm leading-6 text-muted-foreground">
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
               <Info className="h-5 w-5" />

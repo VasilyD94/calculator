@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Heart } from 'lucide-react'
+import { Flame } from 'lucide-react'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { NAV_SECTIONS } from '@/lib/constants/navigation'
 
@@ -35,7 +33,7 @@ export default function HomePage() {
   const allItems = NAV_SECTIONS.flatMap((s) => s.items)
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <div className="mx-auto max-w-5xl px-4 py-8">
       <JsonLd
         data={{
           '@context': 'https://schema.org',
@@ -62,54 +60,88 @@ export default function HomePage() {
           })),
         }}
       />
+
       {/* Hero */}
-      <section className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+      <section className="text-center mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">
           Онлайн-калькуляторы здоровья
         </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-muted-foreground max-w-2xl mx-auto">
           Точные расчёты по научным формулам. Мгновенный результат без регистрации.
         </p>
       </section>
 
       {/* Calculator grid */}
-      <section className="grid gap-6 md:grid-cols-2">
-        {NAV_SECTIONS.map((section) => (
-          <Card key={section.title} className="h-full">
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2">
-                <section.icon className="h-5 w-5 text-primary" />
-                {section.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="flex-1">
-              <ul className="space-y-2">
+      {/* Мобильная версия — 1 колонка */}
+      <section className="sm:hidden">
+        {NAV_SECTIONS.map((section, idx) => (
+          <div key={section.title}>
+            <div className="py-4">
+              <div className="flex justify-center mb-3">
+                <Link
+                  href={section.href}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 font-semibold text-primary hover:bg-primary/20 transition-colors"
+                >
+                  <section.icon className="h-4 w-4" />
+                  {section.title}
+                </Link>
+              </div>
+              <ul className="space-y-1">
                 {section.items.map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="flex min-h-10 items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors hover:bg-accent"
+                      className="flex items-center justify-center gap-1.5 py-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       <span>{item.label}</span>
-                      {item.hot && (
-                        <Badge variant="default" className="text-xs">
-                          <Heart className="h-3 w-3 mr-1" />
-                          Популярный
-                        </Badge>
-                      )}
+                      {item.hot && <Flame className="h-3 w-3 shrink-0 text-foreground" />}
                     </Link>
                   </li>
                 ))}
               </ul>
-            </CardContent>
-          </Card>
+            </div>
+            {idx < NAV_SECTIONS.length - 1 && <hr className="border-border" />}
+          </div>
+        ))}
+      </section>
+
+      {/* Десктоп версия — 4 колонки без внешней рамки */}
+      <section className="hidden sm:flex">
+        {NAV_SECTIONS.map((section, idx) => (
+          <div key={section.title} className="flex-1 flex">
+            <div className="flex-1 py-4 px-5 flex flex-col items-center text-center">
+              <Link
+                href={section.href}
+                className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full bg-primary/10 font-semibold text-primary hover:bg-primary/20 transition-colors"
+              >
+                <section.icon className="h-4 w-4" />
+                {section.title}
+              </Link>
+              <ul className="space-y-1.5">
+                {section.items.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <span>{item.label}</span>
+                      {item.hot && <Flame className="h-3 w-3 shrink-0 text-foreground" />}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {idx < NAV_SECTIONS.length - 1 && (
+              <div className="w-px bg-border my-6" />
+            )}
+          </div>
         ))}
       </section>
 
       {/* SEO text */}
-      <section className="mt-16 space-y-10 text-base leading-7 text-muted-foreground">
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-foreground">
+      <section className="mt-10 space-y-8 text-sm leading-6 text-muted-foreground">
+        <div className="space-y-3">
+          <h2 className="text-xl font-bold text-foreground">
             Бесплатные калькуляторы здоровья онлайн
           </h2>
           <p>
@@ -125,90 +157,81 @@ export default function HomePage() {
             параметров, без нажатия кнопки и без регистрации. Для каждого
             расчёта доступно сравнение нескольких формул, визуальная шкала
             результата и понятные пояснения. Сервис полностью бесплатный и
-            работает на любом устройстве — компьютере, планшете или телефоне.
+            работает на любом устройстве.
           </p>
         </div>
 
         <hr className="border-border" />
 
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-foreground">
+        {/* 2 колонки для списка калькуляторов */}
+        <div className="space-y-3">
+          <h2 className="text-xl font-bold text-foreground">
             Какие калькуляторы доступны
           </h2>
-          <p>
-            Калькуляторы CalcBox охватывают четыре основных направления
-            здоровья:
-          </p>
-          <ul className="space-y-3 pl-5 list-disc marker:text-primary">
-            <li>
-              <strong className="text-foreground">Питание</strong> — расчёт
-              суточной нормы калорий, соотношения белков, жиров и углеводов
-              (БЖУ), дефицита калорий для похудения и нормы воды.
-            </li>
-            <li>
-              <strong className="text-foreground">Тело</strong> — индекс массы
-              тела (ИМТ), идеальный вес по нескольким формулам, процент жира в
-              организме и базовый метаболизм.
-            </li>
-            <li>
-              <strong className="text-foreground">Беременность</strong> —
-              предполагаемая дата родов, текущий срок беременности и расчёт
-              овуляции.
-            </li>
-            <li>
-              <strong className="text-foreground">Спорт</strong> — оптимальный
-              пульс для тренировок и норма белка для спортсменов.
-            </li>
-          </ul>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="space-y-1">
+              <h3 className="font-semibold text-foreground">Питание</h3>
+              <p>Расчёт калорий, БЖУ, дефицита калорий для похудения и нормы воды.</p>
+            </div>
+            <div className="space-y-1">
+              <h3 className="font-semibold text-foreground">Тело</h3>
+              <p>ИМТ, идеальный вес, процент жира, базовый метаболизм, возраст, давление.</p>
+            </div>
+            <div className="space-y-1">
+              <h3 className="font-semibold text-foreground">Беременность</h3>
+              <p>Дата родов, срок беременности, овуляция, группа крови ребёнка.</p>
+            </div>
+            <div className="space-y-1">
+              <h3 className="font-semibold text-foreground">Спорт</h3>
+              <p>Пульсовые зоны для тренировок и норма белка для спортсменов.</p>
+            </div>
+          </div>
         </div>
 
         <hr className="border-border" />
 
-        <div className="rounded-2xl border bg-muted/30 p-6 md:p-8 space-y-6">
-          <h2 className="text-2xl font-bold text-foreground">
-            Чем CalcBox отличается от других калькуляторов
+        {/* 3 колонки для преимуществ */}
+        <div className="rounded-xl border bg-muted/30 p-5 space-y-4">
+          <h2 className="text-xl font-bold text-foreground">
+            Чем CalcBox отличается от других
           </h2>
-          <div className="grid gap-4 md:grid-cols-3">
-            <div className="rounded-lg bg-background border p-5 space-y-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <div className="rounded-lg bg-background border p-4 space-y-1">
+              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               </div>
-              <h3 className="font-semibold text-foreground">
+              <h3 className="font-semibold text-foreground text-sm">
                 Мгновенный результат
               </h3>
-              <p className="text-sm text-muted-foreground">
-                Результат пересчитывается в реальном времени при изменении
-                параметров — без кнопки «Рассчитать».
+              <p className="text-xs text-muted-foreground">
+                Результат пересчитывается в реальном времени — без кнопки «Рассчитать».
               </p>
             </div>
-            <div className="rounded-lg bg-background border p-5 space-y-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>
+            <div className="rounded-lg bg-background border p-4 space-y-1">
+              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>
               </div>
-              <h3 className="font-semibold text-foreground">
+              <h3 className="font-semibold text-foreground text-sm">
                 Сравнение формул
               </h3>
-              <p className="text-sm text-muted-foreground">
-                Каждый калькулятор показывает результаты по нескольким научным
-                формулам, чтобы вы могли сравнить.
+              <p className="text-xs text-muted-foreground">
+                Результаты по нескольким научным формулам для сравнения.
               </p>
             </div>
-            <div className="rounded-lg bg-background border p-5 space-y-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg>
+            <div className="rounded-lg bg-background border p-4 space-y-1">
+              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg>
               </div>
-              <h3 className="font-semibold text-foreground">
+              <h3 className="font-semibold text-foreground text-sm">
                 Визуальные шкалы
               </h3>
-              <p className="text-sm text-muted-foreground">
-                Результаты отображаются на наглядных шкалах с цветовой
-                индикацией — сразу видно, в норме ли показатель.
+              <p className="text-xs text-muted-foreground">
+                Наглядные шкалы с цветовой индикацией результата.
               </p>
             </div>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Все расчёты носят информационный характер и не заменяют
-            консультацию специалиста.
+          <p className="text-xs text-muted-foreground">
+            Все расчёты носят информационный характер и не заменяют консультацию специалиста.
           </p>
         </div>
       </section>
