@@ -15,19 +15,17 @@ import {
   Lightbulb,
   ClipboardList,
   CircleHelp,
-  ArrowUpRight,
   Baby,
   Droplets,
-  Heart,
   Scale,
   Dna,
-  Users,
   FlaskConical,
   AlertTriangle,
   BookOpen,
-  Puzzle,
+  Compass,
   CalendarDays,
   Egg,
+  Activity,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -205,80 +203,85 @@ export default function BloodTypePage() {
         </header>
 
         {/* Как пользоваться */}
-        <section className="mb-8 rounded-lg border bg-muted/30 p-4">
-          <h2 className="font-semibold mb-3 flex items-center gap-2">
-            <Lightbulb className="h-5 w-5 text-amber-500" />
+        <section className="mb-8 rounded-lg border p-4">
+          <h2 className="text-base font-semibold mb-3 flex items-center gap-2">
+            <BookOpen className="h-5 w-5" />
             Как пользоваться калькулятором
           </h2>
           <ol className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex gap-2">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold">
+            <li className="flex gap-3">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-primary text-xs font-bold text-primary">
                 1
               </span>
-              Выберите группу крови и резус-фактор матери.
+              <span className="pt-0.5">Выберите группу крови и резус-фактор матери.</span>
             </li>
-            <li className="flex gap-2">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold">
+            <li className="flex gap-3">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-primary text-xs font-bold text-primary">
                 2
               </span>
-              Выберите группу крови и резус-фактор отца.
+              <span className="pt-0.5">Выберите группу крови и резус-фактор отца.</span>
             </li>
-            <li className="flex gap-2">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold">
+            <li className="flex gap-3">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-primary text-xs font-bold text-primary">
                 3
               </span>
-              Получите все возможные группы крови ребёнка с процентом вероятности.
+              <span className="pt-0.5">Получите все возможные группы крови ребёнка с процентом вероятности.</span>
             </li>
           </ol>
         </section>
 
         {/* Калькулятор */}
-        <BloodTypeCalculator />
+        <section aria-labelledby="calculator-heading">
+          <h2 id="calculator-heading" className="sr-only">
+            Калькулятор группы крови ребёнка
+          </h2>
+          <BloodTypeCalculator />
+        </section>
 
         {/* Вам также будет полезно */}
-        <section className="mt-8 rounded-lg border bg-muted/30 p-4">
-          <h2 className="font-semibold mb-3 flex items-center gap-2">
-            <ArrowUpRight className="h-5 w-5 text-primary" />
+        <section className="mt-8 rounded-lg border p-4">
+          <h2 className="text-base font-semibold mb-3 flex items-center gap-2">
+            <Compass className="h-5 w-5" />
             Вам также будет полезно
           </h2>
-          <div className="grid gap-2 sm:grid-cols-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             <Link
               href="/zdorovye/beremennost/data-rodov"
-              className="flex items-center gap-2 rounded-md p-2 text-sm hover:bg-accent transition-colors"
+              className="flex flex-col items-center gap-1.5 rounded-md p-3 text-center hover:bg-accent transition-colors"
             >
-              <CalendarDays className="h-4 w-4 text-muted-foreground" />
-              Рассчитать дату родов
+              <CalendarDays className="h-5 w-5 text-muted-foreground" />
+              <span className="text-xs">Дата родов</span>
             </Link>
             <Link
               href="/zdorovye/beremennost/srok-beremennosti"
-              className="flex items-center gap-2 rounded-md p-2 text-sm hover:bg-accent transition-colors"
+              className="flex flex-col items-center gap-1.5 rounded-md p-3 text-center hover:bg-accent transition-colors"
             >
-              <Baby className="h-4 w-4 text-muted-foreground" />
-              Калькулятор срока беременности
+              <Baby className="h-5 w-5 text-muted-foreground" />
+              <span className="text-xs">Срок беременности</span>
             </Link>
             <Link
               href="/zdorovye/beremennost/ovulyatsiya"
-              className="flex items-center gap-2 rounded-md p-2 text-sm hover:bg-accent transition-colors"
+              className="flex flex-col items-center gap-1.5 rounded-md p-3 text-center hover:bg-accent transition-colors"
             >
-              <Egg className="h-4 w-4 text-muted-foreground" />
-              Калькулятор овуляции
+              <Egg className="h-5 w-5 text-muted-foreground" />
+              <span className="text-xs">Овуляция</span>
             </Link>
             <Link
               href="/zdorovye/telo/kalkulyator-imt"
-              className="flex items-center gap-2 rounded-md p-2 text-sm hover:bg-accent transition-colors"
+              className="flex flex-col items-center gap-1.5 rounded-md p-3 text-center hover:bg-accent transition-colors"
             >
-              <Scale className="h-4 w-4 text-muted-foreground" />
-              Калькулятор ИМТ
+              <Scale className="h-5 w-5 text-muted-foreground" />
+              <span className="text-xs">Калькулятор ИМТ</span>
             </Link>
           </div>
         </section>
 
         {/* SEO-контент */}
-        <section className="mt-12 space-y-10 text-base leading-7 text-muted-foreground">
+        <section className="mt-12 space-y-8 text-sm text-muted-foreground">
           {/* Блок 1 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <Info className="h-6 w-6" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Info className="h-5 w-5" />
               Что определяет группу крови
             </h2>
             <p>
@@ -296,51 +299,51 @@ export default function BloodTypePage() {
           <hr className="border-border" />
 
           {/* Блок 2 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <Dna className="h-6 w-6" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Dna className="h-5 w-5" />
               Генотипы групп крови
             </h2>
             <p>
               Каждая группа крови имеет определённые генотипы — комбинации аллелей,
               которые её определяют:
             </p>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground">I группа (O)</h3>
-                <p className="text-sm">
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg border p-3 space-y-1">
+                <h3 className="font-medium text-foreground">I группа (O)</h3>
+                <p>
                   Генотип: <strong className="text-foreground">OO</strong>
                 </p>
-                <p className="text-sm">
+                <p>
                   Оба аллеля рецессивные. Антигены A и B отсутствуют.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground">II группа (A)</h3>
-                <p className="text-sm">
+              <div className="rounded-lg border p-3 space-y-1">
+                <h3 className="font-medium text-foreground">II группа (A)</h3>
+                <p>
                   Генотип: <strong className="text-foreground">AA</strong> или{' '}
                   <strong className="text-foreground">AO</strong>
                 </p>
-                <p className="text-sm">
+                <p>
                   На эритроцитах присутствует антиген A.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground">III группа (B)</h3>
-                <p className="text-sm">
+              <div className="rounded-lg border p-3 space-y-1">
+                <h3 className="font-medium text-foreground">III группа (B)</h3>
+                <p>
                   Генотип: <strong className="text-foreground">BB</strong> или{' '}
                   <strong className="text-foreground">BO</strong>
                 </p>
-                <p className="text-sm">
+                <p>
                   На эритроцитах присутствует антиген B.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground">IV группа (AB)</h3>
-                <p className="text-sm">
+              <div className="rounded-lg border p-3 space-y-1">
+                <h3 className="font-medium text-foreground">IV группа (AB)</h3>
+                <p>
                   Генотип: <strong className="text-foreground">AB</strong>
                 </p>
-                <p className="text-sm">
+                <p>
                   Присутствуют оба антигена — A и B.
                 </p>
               </div>
@@ -350,9 +353,9 @@ export default function BloodTypePage() {
           <hr className="border-border" />
 
           {/* Блок 3 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <Calculator className="h-6 w-6" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Calculator className="h-5 w-5" />
               Как рассчитать группу крови ребёнка
             </h2>
             <p>
@@ -364,7 +367,7 @@ export default function BloodTypePage() {
               Например, если у матери II группа (генотип AO), а у отца III группа
               (генотип BO), возможные комбинации для ребёнка:
             </p>
-            <ul className="space-y-2 pl-5 list-disc marker:text-primary">
+            <ul className="space-y-1.5 pl-5 list-disc marker:text-primary">
               <li><strong className="text-foreground">AB</strong> — IV группа (25%)</li>
               <li><strong className="text-foreground">AO</strong> — II группа (25%)</li>
               <li><strong className="text-foreground">BO</strong> — III группа (25%)</li>
@@ -379,9 +382,9 @@ export default function BloodTypePage() {
           <hr className="border-border" />
 
           {/* Блок 4 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <Droplets className="h-6 w-6" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Droplets className="h-5 w-5" />
               Резус-фактор: наследование
             </h2>
             <p>
@@ -389,23 +392,23 @@ export default function BloodTypePage() {
               эритроцитов. Ген, кодирующий этот белок, имеет два аллеля: D (доминантный,
               Rh+) и d (рецессивный, Rh-).
             </p>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground">Rh+ (положительный)</h3>
-                <p className="text-sm">
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg border p-3 space-y-1">
+                <h3 className="font-medium text-foreground">Rh+ (положительный)</h3>
+                <p>
                   Генотип: <strong className="text-foreground">DD</strong> или{' '}
                   <strong className="text-foreground">Dd</strong>
                 </p>
-                <p className="text-sm">
+                <p>
                   Человек с Dd является носителем рецессивного гена.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
-                <h3 className="font-semibold text-foreground">Rh- (отрицательный)</h3>
-                <p className="text-sm">
+              <div className="rounded-lg border p-3 space-y-1">
+                <h3 className="font-medium text-foreground">Rh- (отрицательный)</h3>
+                <p>
                   Генотип: <strong className="text-foreground">dd</strong>
                 </p>
-                <p className="text-sm">
+                <p>
                   Оба аллеля рецессивные, белок RhD отсутствует.
                 </p>
               </div>
@@ -419,9 +422,9 @@ export default function BloodTypePage() {
           <hr className="border-border" />
 
           {/* Блок 5 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <AlertTriangle className="h-6 w-6" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <AlertTriangle className="h-5 w-5" />
               Резус-конфликт при беременности
             </h2>
             <p>
@@ -430,7 +433,7 @@ export default function BloodTypePage() {
               её организм может начать вырабатывать антитела против резус-положительных
               клеток.
             </p>
-            <p className="text-sm rounded-md bg-amber-50 text-amber-900 p-3 border border-amber-200">
+            <p className="rounded-md bg-amber-50 text-amber-900 p-3 border border-amber-200">
               <strong>Важно:</strong> При первой беременности резус-конфликт обычно не
               проявляется. Проблемы могут возникнуть при последующих беременностях Rh+
               плодом. Современная профилактика — введение антирезусного иммуноглобулина
@@ -445,9 +448,9 @@ export default function BloodTypePage() {
           <hr className="border-border" />
 
           {/* Блок 6 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-6 w-6" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <ClipboardList className="h-5 w-5" />
               Таблица наследования групп крови
             </h2>
             <p>
@@ -455,40 +458,40 @@ export default function BloodTypePage() {
               крови родителей:
             </p>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm border-collapse">
+              <table className="w-full border-collapse">
                 <thead>
                   <tr className="border-b">
-                    <th className="p-2 text-left font-semibold text-foreground">Мать / Отец</th>
-                    <th className="p-2 text-center font-semibold text-foreground">I (O)</th>
-                    <th className="p-2 text-center font-semibold text-foreground">II (A)</th>
-                    <th className="p-2 text-center font-semibold text-foreground">III (B)</th>
-                    <th className="p-2 text-center font-semibold text-foreground">IV (AB)</th>
+                    <th className="p-2 text-left font-medium text-foreground">Мать / Отец</th>
+                    <th className="p-2 text-center font-medium text-foreground">I (O)</th>
+                    <th className="p-2 text-center font-medium text-foreground">II (A)</th>
+                    <th className="p-2 text-center font-medium text-foreground">III (B)</th>
+                    <th className="p-2 text-center font-medium text-foreground">IV (AB)</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b">
-                    <td className="p-2 font-semibold text-foreground">I (O)</td>
+                    <td className="p-2 font-medium text-foreground">I (O)</td>
                     <td className="p-2 text-center">I</td>
                     <td className="p-2 text-center">I, II</td>
                     <td className="p-2 text-center">I, III</td>
                     <td className="p-2 text-center">II, III</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="p-2 font-semibold text-foreground">II (A)</td>
+                    <td className="p-2 font-medium text-foreground">II (A)</td>
                     <td className="p-2 text-center">I, II</td>
                     <td className="p-2 text-center">I, II</td>
                     <td className="p-2 text-center">I, II, III, IV</td>
                     <td className="p-2 text-center">II, III, IV</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="p-2 font-semibold text-foreground">III (B)</td>
+                    <td className="p-2 font-medium text-foreground">III (B)</td>
                     <td className="p-2 text-center">I, III</td>
                     <td className="p-2 text-center">I, II, III, IV</td>
                     <td className="p-2 text-center">I, III</td>
                     <td className="p-2 text-center">II, III, IV</td>
                   </tr>
                   <tr>
-                    <td className="p-2 font-semibold text-foreground">IV (AB)</td>
+                    <td className="p-2 font-medium text-foreground">IV (AB)</td>
                     <td className="p-2 text-center">II, III</td>
                     <td className="p-2 text-center">II, III, IV</td>
                     <td className="p-2 text-center">II, III, IV</td>
@@ -497,7 +500,7 @@ export default function BloodTypePage() {
                 </tbody>
               </table>
             </div>
-            <p className="text-sm">
+            <p>
               Обратите внимание: у родителей с IV группой не может быть ребёнка с I группой,
               а у родителей с I группой не может быть ребёнка с IV группой.
             </p>
@@ -507,7 +510,7 @@ export default function BloodTypePage() {
           <div className="flex justify-center">
             <a
               href="#calculator"
-              className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/20 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/10 transition-colors"
             >
               <Calculator className="h-4 w-4" />
               Рассчитать группу крови ребёнка
@@ -517,16 +520,16 @@ export default function BloodTypePage() {
           <hr className="border-border" />
 
           {/* Блок 7 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <FlaskConical className="h-6 w-6" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <FlaskConical className="h-5 w-5" />
               Как определить группу крови
             </h2>
             <p>
               Группу крови определяют с помощью лабораторного анализа. Существует
               несколько методов:
             </p>
-            <ul className="space-y-3 pl-5 list-disc marker:text-primary">
+            <ul className="space-y-2 pl-5 list-disc marker:text-primary">
               <li>
                 <strong className="text-foreground">Стандартные сыворотки</strong> —
                 капли крови смешивают с сыворотками, содержащими антитела к антигенам
@@ -550,12 +553,12 @@ export default function BloodTypePage() {
           <hr className="border-border" />
 
           {/* Блок 8 */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-6 w-6" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
               Интересные факты о группах крови
             </h2>
-            <ul className="space-y-3 pl-5 list-disc marker:text-primary">
+            <ul className="space-y-2 pl-5 list-disc marker:text-primary">
               <li>
                 <strong className="text-foreground">Распространённость:</strong> В России
                 наиболее распространена II группа (~35-40%), затем I (~30-35%), III (~15-20%)
@@ -579,14 +582,14 @@ export default function BloodTypePage() {
           <hr className="border-border" />
 
           {/* FAQ */}
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-6 w-6" />
+          <div className="space-y-4">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <CircleHelp className="h-5 w-5" />
               Часто задаваемые вопросы
             </h2>
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion type="multiple" className="w-full">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="text-left text-foreground">
+                <AccordionTrigger className="text-left text-foreground hover:no-underline">
                   Как наследуется группа крови?
                 </AccordionTrigger>
                 <AccordionContent>
@@ -596,7 +599,7 @@ export default function BloodTypePage() {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <AccordionTrigger className="text-left text-foreground">
+                <AccordionTrigger className="text-left text-foreground hover:no-underline">
                   Может ли у ребёнка быть группа крови, отличная от родителей?
                 </AccordionTrigger>
                 <AccordionContent>
@@ -605,7 +608,7 @@ export default function BloodTypePage() {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
-                <AccordionTrigger className="text-left text-foreground">
+                <AccordionTrigger className="text-left text-foreground hover:no-underline">
                   Как наследуется резус-фактор?
                 </AccordionTrigger>
                 <AccordionContent>
@@ -615,7 +618,7 @@ export default function BloodTypePage() {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-4">
-                <AccordionTrigger className="text-left text-foreground">
+                <AccordionTrigger className="text-left text-foreground hover:no-underline">
                   Что такое резус-конфликт?
                 </AccordionTrigger>
                 <AccordionContent>
@@ -625,7 +628,7 @@ export default function BloodTypePage() {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-5">
-                <AccordionTrigger className="text-left text-foreground">
+                <AccordionTrigger className="text-left text-foreground hover:no-underline">
                   Можно ли точно определить группу крови ребёнка до рождения?
                 </AccordionTrigger>
                 <AccordionContent>
@@ -635,7 +638,7 @@ export default function BloodTypePage() {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-6">
-                <AccordionTrigger className="text-left text-foreground">
+                <AccordionTrigger className="text-left text-foreground hover:no-underline">
                   Почему у родителей с IV группой не может быть ребёнка с I группой?
                 </AccordionTrigger>
                 <AccordionContent>
@@ -645,7 +648,7 @@ export default function BloodTypePage() {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-7">
-                <AccordionTrigger className="text-left text-foreground">
+                <AccordionTrigger className="text-left text-foreground hover:no-underline">
                   Влияет ли группа крови на здоровье ребёнка?
                 </AccordionTrigger>
                 <AccordionContent>
@@ -660,9 +663,9 @@ export default function BloodTypePage() {
           <hr className="border-border" />
 
           {/* Связанные калькуляторы */}
-          <nav className="space-y-4" aria-label="Связанные калькуляторы">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-6 w-6" />
+          <nav className="space-y-3" aria-label="Связанные калькуляторы">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Compass className="h-5 w-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -670,36 +673,36 @@ export default function BloodTypePage() {
                 href="/zdorovye/beremennost/data-rodov"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm hover:bg-accent transition-colors"
               >
-                <CalendarDays className="h-3.5 w-3.5" />
+                <CalendarDays className="h-4 w-4" />
                 Дата родов
               </Link>
               <Link
                 href="/zdorovye/beremennost/srok-beremennosti"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm hover:bg-accent transition-colors"
               >
-                <Baby className="h-3.5 w-3.5" />
+                <Baby className="h-4 w-4" />
                 Срок беременности
               </Link>
               <Link
                 href="/zdorovye/beremennost/ovulyatsiya"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm hover:bg-accent transition-colors"
               >
-                <Egg className="h-3.5 w-3.5" />
+                <Egg className="h-4 w-4" />
                 Овуляция
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm hover:bg-accent transition-colors"
               >
-                <Scale className="h-3.5 w-3.5" />
+                <Scale className="h-4 w-4" />
                 Калькулятор ИМТ
               </Link>
               <Link
-                href="/zdorovye/telo/kalkulyator-vozrasta"
+                href="/zdorovye/telo/bazovyj-metabolizm"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm hover:bg-accent transition-colors"
               >
-                <Users className="h-3.5 w-3.5" />
-                Калькулятор возраста
+                <Activity className="h-4 w-4" />
+                Базовый метаболизм
               </Link>
             </div>
           </nav>

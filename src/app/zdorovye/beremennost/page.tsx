@@ -8,9 +8,9 @@ import { NAV_SECTIONS } from '@/lib/constants/navigation'
 import { Heart, Info, Calculator, BookOpen } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Калькуляторы беременности — дата родов, срок, овуляция',
+  title: 'Калькуляторы беременности — дата родов, срок, овуляция, группа крови',
   description:
-    'Бесплатные калькуляторы беременности: расчёт даты родов (ПДР), определение срока беременности и календарь овуляции. Мгновенный результат без регистрации.',
+    'Бесплатные калькуляторы беременности: расчёт даты родов (ПДР), определение срока беременности, календарь овуляции и группа крови ребёнка. Мгновенный результат без регистрации.',
   keywords: [
     'калькулятор беременности',
     'дата родов',
@@ -18,11 +18,12 @@ export const metadata: Metadata = {
     'калькулятор овуляции',
     'ПДР онлайн',
     'календарь беременности',
+    'группа крови ребенка',
   ],
   openGraph: {
-    title: 'Калькуляторы беременности — дата родов, срок, овуляция',
+    title: 'Калькуляторы беременности — дата родов, срок, овуляция, группа крови',
     description:
-      'Бесплатные калькуляторы беременности: дата родов, срок беременности и овуляция.',
+      'Бесплатные калькуляторы беременности: дата родов, срок беременности, овуляция и группа крови ребёнка.',
     type: 'website',
     url: '/zdorovye/beremennost',
   },
@@ -48,7 +49,7 @@ export default function BeremennostPage() {
           '@type': 'CollectionPage',
           name: 'Калькуляторы беременности',
           description:
-            'Бесплатные онлайн-калькуляторы беременности: дата родов, срок и овуляция.',
+            'Бесплатные онлайн-калькуляторы беременности: дата родов, срок, овуляция и группа крови ребёнка.',
           url: 'https://calc-box.ru/zdorovye/beremennost',
           inLanguage: 'ru',
         }}
@@ -75,8 +76,8 @@ export default function BeremennostPage() {
           </h1>
           <p className="text-lg text-muted-foreground">
             Рассчитайте предполагаемую дату родов, определите текущий срок
-            беременности и спланируйте зачатие с помощью календаря овуляции.
-            Мгновенный результат без регистрации.
+            беременности, спланируйте зачатие с помощью календаря овуляции
+            и узнайте возможную группу крови ребёнка. Мгновенный результат без регистрации.
           </p>
         </header>
 
@@ -111,28 +112,28 @@ export default function BeremennostPage() {
           </Card>
         </section>
 
-        <section className="space-y-10 text-base leading-7 text-muted-foreground">
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
+        <section className="space-y-8 text-sm text-muted-foreground">
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
               <Info className="h-5 w-5" />
               Калькуляторы для будущих мам
             </h2>
             <p>
               Беременность — особенный период, когда важно знать точные сроки
               и ключевые даты. Наши калькуляторы помогут определить
-              предполагаемую дату родов, узнать текущий срок и спланировать
-              визиты к врачу.
+              предполагаемую дату родов, узнать текущий срок, спланировать
+              визиты к врачу и узнать возможную группу крови будущего малыша.
             </p>
           </div>
 
           <hr className="border-border" />
 
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
               <Calculator className="h-5 w-5" />
               Наши калькуляторы
             </h2>
-            <ul className="space-y-3 pl-5 list-disc marker:text-primary">
+            <ul className="space-y-2 pl-5 list-disc marker:text-primary">
               <li>
                 <Link
                   href="/zdorovye/beremennost/data-rodov"
@@ -164,13 +165,23 @@ export default function BeremennostPage() {
                 — расчёт дней овуляции и фертильного окна для планирования
                 беременности.
               </li>
+              <li>
+                <Link
+                  href="/zdorovye/beremennost/gruppa-krovi-rebenka"
+                  className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary"
+                >
+                  <strong>Группа крови ребёнка</strong>
+                </Link>{' '}
+                — расчёт возможной группы крови и резус-фактора ребёнка
+                по группам крови родителей с процентом вероятности.
+              </li>
             </ul>
           </div>
 
           <hr className="border-border" />
 
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
               <BookOpen className="h-5 w-5" />
               Как пользоваться
             </h2>

@@ -215,42 +215,42 @@ export default function BloodPressurePage() {
         </section>
 
         {/* Вам также будет полезно */}
-        <div className="mb-10 space-y-3">
-          <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+        <section className="mb-10 rounded-lg border p-4">
+          <h2 className="text-base font-semibold mb-3 flex items-center gap-2">
             <Compass className="h-5 w-5" />
             Вам также будет полезно
           </h2>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
             <Link
               href="/zdorovye/telo/kalkulyator-imt"
-              className="flex flex-col items-center rounded-lg border p-3 text-center transition-colors hover:bg-accent"
+              className="flex flex-col items-center gap-1.5 rounded-md p-3 text-center transition-colors hover:bg-accent"
             >
-              <Scale className="h-5 w-5 mb-1 text-muted-foreground" />
-              <span className="text-sm font-medium">Калькулятор ИМТ</span>
+              <Scale className="h-5 w-5 text-muted-foreground" />
+              <span className="text-xs">Калькулятор ИМТ</span>
             </Link>
             <Link
               href="/zdorovye/telo/bazovyj-metabolizm"
-              className="flex flex-col items-center rounded-lg border p-3 text-center transition-colors hover:bg-accent"
+              className="flex flex-col items-center gap-1.5 rounded-md p-3 text-center transition-colors hover:bg-accent"
             >
-              <Activity className="h-5 w-5 mb-1 text-muted-foreground" />
-              <span className="text-sm font-medium">Базовый метаболизм</span>
+              <Activity className="h-5 w-5 text-muted-foreground" />
+              <span className="text-xs">Базовый метаболизм</span>
             </Link>
             <Link
               href="/zdorovye/telo/kalkulyator-vozrasta"
-              className="flex flex-col items-center rounded-lg border p-3 text-center transition-colors hover:bg-accent"
+              className="flex flex-col items-center gap-1.5 rounded-md p-3 text-center transition-colors hover:bg-accent"
             >
-              <Clock className="h-5 w-5 mb-1 text-muted-foreground" />
-              <span className="text-sm font-medium">Калькулятор возраста</span>
+              <Clock className="h-5 w-5 text-muted-foreground" />
+              <span className="text-xs">Калькулятор возраста</span>
             </Link>
             <Link
               href="/zdorovye/sport/puls-dlya-trenirovok"
-              className="flex flex-col items-center rounded-lg border p-3 text-center transition-colors hover:bg-accent"
+              className="flex flex-col items-center gap-1.5 rounded-md p-3 text-center transition-colors hover:bg-accent"
             >
-              <Heart className="h-5 w-5 mb-1 text-muted-foreground" />
-              <span className="text-sm font-medium">Пульсовые зоны</span>
+              <Heart className="h-5 w-5 text-muted-foreground" />
+              <span className="text-xs">Пульсовые зоны</span>
             </Link>
           </div>
-        </div>
+        </section>
 
         {/* SEO-контент */}
         <section className="space-y-8 text-sm text-muted-foreground">

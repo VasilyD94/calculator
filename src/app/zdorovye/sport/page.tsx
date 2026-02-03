@@ -111,9 +111,9 @@ export default function SportPage() {
           </Card>
         </section>
 
-        <section className="space-y-10 text-base leading-7 text-muted-foreground">
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
+        <section className="space-y-8 text-sm text-muted-foreground">
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
               <Info className="h-5 w-5" />
               Зачем нужны спортивные калькуляторы
             </h2>
@@ -128,12 +128,12 @@ export default function SportPage() {
 
           <hr className="border-border" />
 
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
               <Calculator className="h-5 w-5" />
               Наши калькуляторы
             </h2>
-            <ul className="space-y-3 pl-5 list-disc marker:text-primary">
+            <ul className="space-y-2 pl-5 list-disc marker:text-primary">
               <li>
                 <Link
                   href="/zdorovye/sport/puls-dlya-trenirovok"
@@ -160,8 +160,8 @@ export default function SportPage() {
 
           <hr className="border-border" />
 
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
               <BookOpen className="h-5 w-5" />
               Как пользоваться
             </h2>

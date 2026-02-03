@@ -8,21 +8,23 @@ import { NAV_SECTIONS } from '@/lib/constants/navigation'
 import { Heart, Info, Calculator, BookOpen } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Калькуляторы тела — ИМТ, идеальный вес, жир и метаболизм',
+  title: 'Калькуляторы тела — ИМТ, вес, жир, метаболизм, сон и давление',
   description:
-    'Бесплатные калькуляторы тела: индекс массы тела, идеальный вес, процент жира и базовый метаболизм. Мгновенный расчёт по научным формулам без регистрации.',
+    'Бесплатные калькуляторы тела: индекс массы тела, идеальный вес, процент жира, базовый метаболизм, калькулятор сна, норма давления и алкоголя. Мгновенный расчёт без регистрации.',
   keywords: [
     'калькулятор тела',
     'калькулятор ИМТ',
     'идеальный вес',
     'процент жира',
     'базовый метаболизм',
-    'индекс массы тела',
+    'калькулятор сна',
+    'норма давления',
+    'калькулятор алкоголя',
   ],
   openGraph: {
-    title: 'Калькуляторы тела — ИМТ, идеальный вес, жир и метаболизм',
+    title: 'Калькуляторы тела — ИМТ, вес, жир, метаболизм, сон и давление',
     description:
-      'Бесплатные калькуляторы тела: ИМТ, идеальный вес, процент жира и базовый метаболизм.',
+      'Бесплатные калькуляторы тела: ИМТ, идеальный вес, процент жира, базовый метаболизм, калькулятор сна и давления.',
     type: 'website',
     url: '/zdorovye/telo',
   },
@@ -48,7 +50,7 @@ export default function TeloPage() {
           '@type': 'CollectionPage',
           name: 'Калькуляторы тела',
           description:
-            'Бесплатные онлайн-калькуляторы тела: ИМТ, идеальный вес, процент жира и метаболизм.',
+            'Бесплатные онлайн-калькуляторы тела: ИМТ, идеальный вес, процент жира, метаболизм, сон и давление.',
           url: 'https://calc-box.ru/zdorovye/telo',
           inLanguage: 'ru',
         }}
@@ -75,8 +77,8 @@ export default function TeloPage() {
           </h1>
           <p className="text-lg text-muted-foreground">
             Узнайте свой индекс массы тела, идеальный вес по 5 формулам,
-            процент жира и базовый метаболизм. Все расчёты мгновенные
-            и основаны на научных формулах.
+            процент жира, базовый метаболизм, оптимальные часы сна и норму давления.
+            Все расчёты мгновенные и основаны на научных формулах.
           </p>
         </header>
 
@@ -111,9 +113,9 @@ export default function TeloPage() {
           </Card>
         </section>
 
-        <section className="space-y-10 text-base leading-7 text-muted-foreground">
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
+        <section className="space-y-8 text-sm text-muted-foreground">
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
               <Info className="h-5 w-5" />
               Зачем знать параметры тела
             </h2>
@@ -127,12 +129,12 @@ export default function TeloPage() {
 
           <hr className="border-border" />
 
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
               <Calculator className="h-5 w-5" />
               Наши калькуляторы
             </h2>
-            <ul className="space-y-3 pl-5 list-disc marker:text-primary">
+            <ul className="space-y-2 pl-5 list-disc marker:text-primary">
               <li>
                 <Link
                   href="/zdorovye/telo/kalkulyator-imt"
@@ -173,13 +175,63 @@ export default function TeloPage() {
                 — расчёт BMR по 5 формулам (Миффлина-Сан Жеора,
                 Харриса-Бенедикта и другим) для планирования питания.
               </li>
+              <li>
+                <Link
+                  href="/zdorovye/telo/kalkulyator-vozrasta"
+                  className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary"
+                >
+                  <strong>Калькулятор возраста</strong>
+                </Link>{' '}
+                — точный расчёт возраста в годах, месяцах, неделях и днях
+                с ближайшими юбилеями и интересными фактами.
+              </li>
+              <li>
+                <Link
+                  href="/zdorovye/telo/kalkulyator-alkogolya"
+                  className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary"
+                >
+                  <strong>Калькулятор алкоголя</strong>
+                </Link>{' '}
+                — расчёт времени выведения алкоголя из крови по формуле Видмарка
+                с учётом пола, веса и количества выпитого.
+              </li>
+              <li>
+                <Link
+                  href="/zdorovye/telo/kalkulyator-sna"
+                  className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary"
+                >
+                  <strong>Калькулятор сна</strong>
+                </Link>{' '}
+                — расчёт оптимального времени пробуждения по циклам сна
+                для максимальной бодрости утром.
+              </li>
+              <li>
+                <Link
+                  href="/zdorovye/telo/norma-davleniya"
+                  className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary"
+                >
+                  <strong>Норма давления</strong>
+                </Link>{' '}
+                — проверка артериального давления по возрасту с классификацией
+                по стандартам ВОЗ и рекомендациями.
+              </li>
+              <li>
+                <Link
+                  href="/zdorovye/telo/tip-teloslozheniya"
+                  className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary"
+                >
+                  <strong>Тип телосложения</strong>
+                </Link>{' '}
+                — определение соматотипа (эктоморф, мезоморф, эндоморф)
+                по обхвату запястья с рекомендациями по питанию и тренировкам.
+              </li>
             </ul>
           </div>
 
           <hr className="border-border" />
 
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
               <BookOpen className="h-5 w-5" />
               Как пользоваться
             </h2>
