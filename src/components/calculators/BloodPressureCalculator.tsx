@@ -135,12 +135,11 @@ export function BloodPressureCalculator() {
 
       {/* Главный результат */}
       <motion.div
-        className={`rounded-xl border-2 p-4 ${
+        className={`rounded-xl border-2 p-4 transition-colors ${
           result.statusColor ? statusColors[result.statusColor] : 'border-primary/20 bg-primary/5'
         }`}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        key={`${systolic}-${diastolic}`}
       >
         <p className="text-sm opacity-80 text-center mb-1">Ваше давление</p>
         <p className="text-4xl font-bold text-center">
