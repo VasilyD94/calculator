@@ -26,8 +26,6 @@ import {
   BedDouble,
   Brain,
   Activity,
-  Heart,
-  Zap,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -223,97 +221,90 @@ export default function SleepCalculatorPage() {
         </header>
 
         {/* Как пользоваться */}
-        <section className="mb-8 rounded-lg border bg-muted/30 p-4">
-          <h2 className="font-semibold mb-3 flex items-center gap-2">
-            <Compass className="h-5 w-5 text-primary" />
+        <section className="mb-8 space-y-3 text-sm text-muted-foreground">
+          <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+            <BookOpen className="h-5 w-5" />
             Как пользоваться калькулятором
           </h2>
-          <div className="grid gap-3 md:grid-cols-3">
-            <div className="flex gap-3">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-sm font-bold">
+          <div className="space-y-2">
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
-              <p className="text-sm text-muted-foreground">
-                Выберите режим: рассчитать время отхода ко сну или время пробуждения.
-              </p>
+              <p>Выберите режим: рассчитать время отхода ко сну или время пробуждения.</p>
             </div>
-            <div className="flex gap-3">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-sm font-bold">
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
-              <p className="text-sm text-muted-foreground">
-                Укажите желаемое время и время, которое вам нужно на засыпание.
-              </p>
+              <p>Укажите желаемое время и время, которое вам нужно на засыпание.</p>
             </div>
-            <div className="flex gap-3">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-sm font-bold">
+            <div className="flex gap-3 items-start">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
-              <p className="text-sm text-muted-foreground">
-                Получите 4 варианта с разным количеством циклов сна.
-              </p>
+              <p>Получите 4 варианта с разным количеством циклов сна.</p>
             </div>
           </div>
         </section>
 
         {/* Калькулятор */}
-        <SleepCalculator />
+        <section className="mb-12" aria-labelledby="calculator-heading">
+          <h2 id="calculator-heading" className="sr-only">Расчёт времени сна</h2>
+          <SleepCalculator />
+        </section>
 
         {/* Вам также будет полезно */}
-        <section className="mt-10 mb-8">
-          <h2 className="font-semibold mb-4 flex items-center gap-2">
-            <Lightbulb className="h-5 w-5 text-primary" />
+        <div className="mb-10 space-y-3">
+          <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+            <Compass className="h-5 w-5" />
             Вам также будет полезно
           </h2>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
             <Link
               href="/zdorovye/pitanie/kalkulyator-kalorij"
-              className="flex items-center gap-3 rounded-lg border p-3 hover:bg-accent transition-colors"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Flame className="h-5 w-5 text-orange-500" />
-              <div>
-                <p className="font-medium">Калькулятор калорий</p>
-                <p className="text-sm text-muted-foreground">Норма калорий в день</p>
-              </div>
+              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Калькулятор калорий
+              </span>
             </Link>
             <Link
               href="/zdorovye/telo/kalkulyator-imt"
-              className="flex items-center gap-3 rounded-lg border p-3 hover:bg-accent transition-colors"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Scale className="h-5 w-5 text-blue-500" />
-              <div>
-                <p className="font-medium">Калькулятор ИМТ</p>
-                <p className="text-sm text-muted-foreground">Индекс массы тела</p>
-              </div>
+              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Калькулятор ИМТ
+              </span>
             </Link>
             <Link
               href="/zdorovye/telo/bazovyj-metabolizm"
-              className="flex items-center gap-3 rounded-lg border p-3 hover:bg-accent transition-colors"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Activity className="h-5 w-5 text-green-500" />
-              <div>
-                <p className="font-medium">Базовый метаболизм</p>
-                <p className="text-sm text-muted-foreground">Основной обмен веществ</p>
-              </div>
+              <Activity className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Базовый метаболизм
+              </span>
             </Link>
             <Link
               href="/zdorovye/telo/kalkulyator-vozrasta"
-              className="flex items-center gap-3 rounded-lg border p-3 hover:bg-accent transition-colors"
+              className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Clock className="h-5 w-5 text-purple-500" />
-              <div>
-                <p className="font-medium">Калькулятор возраста</p>
-                <p className="text-sm text-muted-foreground">Точный возраст в днях</p>
-              </div>
+              <Clock className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                Калькулятор возраста
+              </span>
             </Link>
           </div>
-        </section>
+        </div>
 
         {/* SEO-контент */}
-        <section className="space-y-10 text-base leading-7 text-muted-foreground">
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <Info className="h-6 w-6 text-primary" />
+        <section className="space-y-8 text-sm text-muted-foreground">
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Info className="h-5 w-5" />
               Что такое циклы сна
             </h2>
             <p>
@@ -331,36 +322,36 @@ export default function SleepCalculatorPage() {
 
           <hr className="border-border" />
 
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <Moon className="h-6 w-6 text-primary" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Moon className="h-5 w-5" />
               Фазы сна и их значение
             </h2>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-lg border p-4 space-y-2">
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground">N1 — Дремота (5%)</h3>
-                <p className="text-sm">
+                <p>
                   Переходная стадия между бодрствованием и сном. Длится 5-10 минут.
                   Легко проснуться от малейшего шума.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground">N2 — Лёгкий сон (45%)</h3>
-                <p className="text-sm">
+                <p>
                   Температура тела снижается, пульс замедляется. Мозг начинает
                   обрабатывать дневную информацию.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground">N3 — Глубокий сон (25%)</h3>
-                <p className="text-sm">
+                <p>
                   Самая важная фаза для физического восстановления. Происходит выработка
                   гормона роста, восстановление тканей.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground">REM — Быстрый сон (25%)</h3>
-                <p className="text-sm">
+                <p>
                   Фаза сновидений. Мозг активен почти как днём. Важна для памяти,
                   обучения и эмоциональной регуляции.
                 </p>
@@ -370,9 +361,9 @@ export default function SleepCalculatorPage() {
 
           <hr className="border-border" />
 
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <Sun className="h-6 w-6 text-primary" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Sun className="h-5 w-5" />
               Почему важно просыпаться в конце цикла
             </h2>
             <p>
@@ -393,16 +384,16 @@ export default function SleepCalculatorPage() {
 
           <hr className="border-border" />
 
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <BedDouble className="h-6 w-6 text-primary" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <BedDouble className="h-5 w-5" />
               Сколько нужно спать по возрасту
             </h2>
             <p>
               Потребность во сне меняется с возрастом. Научные рекомендации по
               продолжительности сна:
             </p>
-            <ul className="space-y-3 pl-5 list-disc marker:text-primary">
+            <ul className="space-y-2 pl-5 list-disc marker:text-primary">
               <li>
                 <strong className="text-foreground">Новорождённые (0-3 месяца)</strong> — 14-17 часов
               </li>
@@ -429,49 +420,49 @@ export default function SleepCalculatorPage() {
 
           <hr className="border-border" />
 
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <Clock className="h-6 w-6 text-primary" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Clock className="h-5 w-5" />
               Таблица времени сна
             </h2>
             <p>
               Если вы хотите проснуться в 7:00, вот оптимальное время отхода ко сну
               (с учётом 15 минут на засыпание):
             </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="w-full text-left border-collapse text-sm">
                 <thead>
                   <tr className="border-b">
-                    <th className="text-left py-2 font-semibold text-foreground">Лечь спать</th>
-                    <th className="text-center py-2 font-semibold text-foreground">Циклов</th>
-                    <th className="text-center py-2 font-semibold text-foreground">Часов сна</th>
-                    <th className="text-right py-2 font-semibold text-foreground">Качество</th>
+                    <th className="py-2 pr-2 font-semibold text-foreground">Лечь спать</th>
+                    <th className="py-2 px-2 font-semibold text-foreground">Циклов</th>
+                    <th className="py-2 px-2 font-semibold text-foreground">Часов сна</th>
+                    <th className="py-2 pl-2 font-semibold text-foreground">Качество</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b">
-                    <td className="py-2 text-foreground font-medium">21:30</td>
-                    <td className="text-center py-2">6</td>
-                    <td className="text-center py-2">9 ч</td>
-                    <td className="text-right py-2 text-green-600">Отличный</td>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2"><strong className="text-foreground">21:30</strong></td>
+                    <td className="py-2 px-2 whitespace-nowrap">6</td>
+                    <td className="py-2 px-2 whitespace-nowrap">9 ч</td>
+                    <td className="py-2 pl-2 whitespace-nowrap text-green-600">Отличный</td>
                   </tr>
-                  <tr className="border-b">
-                    <td className="py-2 text-foreground font-medium">23:00</td>
-                    <td className="text-center py-2">5</td>
-                    <td className="text-center py-2">7,5 ч</td>
-                    <td className="text-right py-2 text-green-600">Отличный</td>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2"><strong className="text-foreground">23:00</strong></td>
+                    <td className="py-2 px-2 whitespace-nowrap">5</td>
+                    <td className="py-2 px-2 whitespace-nowrap">7,5 ч</td>
+                    <td className="py-2 pl-2 whitespace-nowrap text-green-600">Отличный</td>
                   </tr>
-                  <tr className="border-b">
-                    <td className="py-2 text-foreground font-medium">00:30</td>
-                    <td className="text-center py-2">4</td>
-                    <td className="text-center py-2">6 ч</td>
-                    <td className="text-right py-2 text-blue-600">Хороший</td>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-2"><strong className="text-foreground">00:30</strong></td>
+                    <td className="py-2 px-2 whitespace-nowrap">4</td>
+                    <td className="py-2 px-2 whitespace-nowrap">6 ч</td>
+                    <td className="py-2 pl-2 whitespace-nowrap text-blue-600">Хороший</td>
                   </tr>
                   <tr>
-                    <td className="py-2 text-foreground font-medium">02:00</td>
-                    <td className="text-center py-2">3</td>
-                    <td className="text-center py-2">4,5 ч</td>
-                    <td className="text-right py-2 text-yellow-600">Минимум</td>
+                    <td className="py-2 pr-2"><strong className="text-foreground">02:00</strong></td>
+                    <td className="py-2 px-2 whitespace-nowrap">3</td>
+                    <td className="py-2 px-2 whitespace-nowrap">4,5 ч</td>
+                    <td className="py-2 pl-2 whitespace-nowrap text-yellow-600">Минимум</td>
                   </tr>
                 </tbody>
               </table>
@@ -479,51 +470,47 @@ export default function SleepCalculatorPage() {
           </div>
 
           {/* Якорная ссылка */}
-          <div className="text-center">
-            <Link
-              href="#calculator"
-              className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
-            >
-              <Calculator className="h-4 w-4" />
-              Рассчитать своё время сна
-            </Link>
-          </div>
+          <p className="text-sm">
+            <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+              Рассчитать своё время сна&nbsp;→
+            </a>
+          </p>
 
           <hr className="border-border" />
 
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <Brain className="h-6 w-6 text-primary" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Brain className="h-5 w-5" />
               Последствия недосыпа
             </h2>
             <p>
               Хронический недостаток сна негативно влияет на все системы организма:
             </p>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-lg border p-4 space-y-2">
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground">Когнитивные функции</h3>
-                <p className="text-sm">
+                <p>
                   Снижается концентрация, память, скорость реакции. Повышается риск ошибок
                   и несчастных случаев.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground">Иммунная система</h3>
-                <p className="text-sm">
+                <p>
                   Организм хуже сопротивляется инфекциям. Увеличивается время
                   выздоровления от болезней.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground">Обмен веществ</h3>
-                <p className="text-sm">
+                <p>
                   Нарушается выработка гормонов голода. Повышается тяга к сладкому
                   и калорийной пище.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 space-y-2">
+              <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground">Сердечно-сосудистая система</h3>
-                <p className="text-sm">
+                <p>
                   Повышается артериальное давление. Увеличивается риск сердечно-сосудистых
                   заболеваний.
                 </p>
@@ -533,12 +520,12 @@ export default function SleepCalculatorPage() {
 
           <hr className="border-border" />
 
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-6 w-6 text-primary" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <Lightbulb className="h-5 w-5" />
               Советы для улучшения качества сна
             </h2>
-            <ul className="space-y-3 pl-5 list-disc marker:text-primary">
+            <ul className="space-y-2 pl-5 list-disc marker:text-primary">
               <li>
                 <strong className="text-foreground">Соблюдайте режим.</strong> Ложитесь и вставайте
                 в одно время даже в выходные. Это помогает настроить биологические часы.
@@ -567,46 +554,41 @@ export default function SleepCalculatorPage() {
           </div>
 
           {/* Якорная ссылка */}
-          <div className="text-center">
-            <Link
-              href="#calculator"
-              className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
-            >
-              <Calculator className="h-4 w-4" />
-              Рассчитать оптимальное время сна
-            </Link>
-          </div>
+          <p className="text-sm">
+            <a href="#calculator" className="inline-flex items-center gap-1 text-primary font-medium rounded-md bg-primary/5 px-2.5 py-1 hover:bg-primary/10 transition-colors">
+              Рассчитать оптимальное время сна&nbsp;→
+            </a>
+          </p>
 
           <hr className="border-border" />
 
           {/* FAQ */}
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-6 w-6 text-primary" />
+          <div className="space-y-3">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <CircleHelp className="h-5 w-5" />
               Часто задаваемые вопросы
             </h2>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="item-1">
-                <AccordionTrigger className="text-left font-medium text-foreground">
+            <Accordion type="multiple" className="w-full">
+              <AccordionItem value="faq-1">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Сколько длится один цикл сна?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
-                  Один полный цикл сна длится примерно 90 минут (1,5 часа). За это время
+                  Один полный цикл сна длится примерно <strong className="text-foreground">90 минут</strong> (1,5 часа). За это время
                   организм проходит все фазы: лёгкий сон, глубокий сон и фазу быстрого
                   движения глаз (REM).
                 </AccordionContent>
               </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger className="text-left font-medium text-foreground">
+              <AccordionItem value="faq-2">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Сколько циклов нужно для полноценного отдыха?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
-                  Для полноценного отдыха взрослому человеку рекомендуется 5-6 циклов
-                  (7,5-9 часов сна). Минимум для восстановления — 4 цикла (6 часов).
+                  Для полноценного отдыха взрослому человеку рекомендуется <strong className="text-foreground">5-6 циклов</strong> (7,5-9 часов сна). Минимум для восстановления — <strong className="text-foreground">4 цикла</strong> (6 часов).
                 </AccordionContent>
               </AccordionItem>
-              <AccordionItem value="item-3">
-                <AccordionTrigger className="text-left font-medium text-foreground">
+              <AccordionItem value="faq-3">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Почему я просыпаюсь разбитым даже после 8 часов сна?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
@@ -615,28 +597,28 @@ export default function SleepCalculatorPage() {
                   оптимального времени пробуждения.
                 </AccordionContent>
               </AccordionItem>
-              <AccordionItem value="item-4">
-                <AccordionTrigger className="text-left font-medium text-foreground">
+              <AccordionItem value="faq-4">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Можно ли выспаться за 4-5 часов?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
-                  4-5 часов — это 3 цикла сна, что недостаточно для полноценного
+                  4-5 часов — это <strong className="text-foreground">3 цикла</strong> сна, что недостаточно для полноценного
                   восстановления. Такой режим можно использовать изредка, но регулярный
                   недосып вредит здоровью.
                 </AccordionContent>
               </AccordionItem>
-              <AccordionItem value="item-5">
-                <AccordionTrigger className="text-left font-medium text-foreground">
+              <AccordionItem value="faq-5">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Что такое фаза REM и почему она важна?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
                   REM (Rapid Eye Movement) — фаза быстрого сна, во время которой мы видим
                   сновидения. Она важна для обработки информации, закрепления памяти и
-                  эмоциональной регуляции.
+                  эмоциональной регуляции. REM занимает около <strong className="text-foreground">20-25%</strong> всего сна.
                 </AccordionContent>
               </AccordionItem>
-              <AccordionItem value="item-6">
-                <AccordionTrigger className="text-left font-medium text-foreground">
+              <AccordionItem value="faq-6">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Влияет ли время засыпания на качество сна?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
@@ -645,12 +627,12 @@ export default function SleepCalculatorPage() {
                   восстановления.
                 </AccordionContent>
               </AccordionItem>
-              <AccordionItem value="item-7">
-                <AccordionTrigger className="text-left font-medium text-foreground">
+              <AccordionItem value="faq-7">
+                <AccordionTrigger className="text-foreground font-semibold hover:no-underline">
                   Как учитывать время засыпания в расчётах?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
-                  Среднее время засыпания — 10-20 минут. Калькулятор позволяет указать
+                  Среднее время засыпания — <strong className="text-foreground">10-20 минут</strong>. Калькулятор позволяет указать
                   ваше индивидуальное время засыпания для более точного расчёта.
                 </AccordionContent>
               </AccordionItem>
@@ -660,45 +642,45 @@ export default function SleepCalculatorPage() {
           <hr className="border-border" />
 
           {/* Связанные калькуляторы */}
-          <nav className="space-y-4" aria-label="Связанные калькуляторы">
-            <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-6 w-6 text-primary" />
+          <nav className="space-y-3" aria-label="Связанные калькуляторы">
+            <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
+              <ArrowUpRight className="h-5 w-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
               <Link
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
-                className="inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm transition-colors hover:bg-accent"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-4 w-4 text-orange-500" />
+                <Flame className="h-4 w-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
-                className="inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm transition-colors hover:bg-accent"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-blue-500" />
+                <Scale className="h-4 w-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/telo/idealnyj-ves"
-                className="inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm transition-colors hover:bg-accent"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Target className="h-4 w-4 text-green-500" />
+                <Target className="h-4 w-4 text-muted-foreground" />
                 Идеальный вес
               </Link>
               <Link
                 href="/zdorovye/telo/bazovyj-metabolizm"
-                className="inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm transition-colors hover:bg-accent"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Activity className="h-4 w-4 text-purple-500" />
+                <Activity className="h-4 w-4 text-muted-foreground" />
                 Базовый метаболизм
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-alkogolya"
-                className="inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm transition-colors hover:bg-accent"
+                className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Clock className="h-4 w-4 text-amber-500" />
+                <Clock className="h-4 w-4 text-muted-foreground" />
                 Калькулятор алкоголя
               </Link>
             </div>
