@@ -38,6 +38,7 @@ export const NAV_SECTIONS: NavSection[] = [
       { label: 'Калькулятор алкоголя', href: '/zdorovye/telo/kalkulyator-alkogolya' },
       { label: 'Калькулятор сна', href: '/zdorovye/telo/kalkulyator-sna' },
       { label: 'Норма давления', href: '/zdorovye/telo/norma-davleniya' },
+      { label: 'Тип телосложения', href: '/zdorovye/telo/tip-teloslozheniya' },
     ],
   },
   {
