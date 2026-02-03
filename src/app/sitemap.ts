@@ -107,6 +107,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/zdorovye/telo/kalkulyator-alkogolya`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/zdorovye/sport`,
       lastModified: new Date(),
       changeFrequency: 'monthly',

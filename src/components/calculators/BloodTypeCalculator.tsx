@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Label } from '@/components/ui/label'
 import {
   Select,
   SelectContent,
@@ -16,10 +15,11 @@ import {
   Droplets,
   Baby,
   Heart,
-  Users,
   AlertTriangle,
   Info,
   SlidersHorizontal,
+  Venus,
+  Mars,
 } from 'lucide-react'
 import {
   calculateBloodType,
@@ -87,10 +87,10 @@ export function BloodTypeCalculator() {
           <div className="grid grid-cols-2 gap-4">
             {/* Мать */}
             <div className="space-y-2">
-              <Label className="flex items-center gap-2 font-medium">
-                <Users className="h-4 w-4" />
+              <div className="flex items-center justify-center gap-1.5 py-1.5 px-2 bg-pink-50 text-pink-600 rounded-md text-sm font-medium">
+                <Venus className="h-4 w-4" />
                 Мать
-              </Label>
+              </div>
               <Select value={motherGroup} onValueChange={(v) => setMotherGroup(v as BloodGroup)}>
                 <SelectTrigger className="w-full">
                   <SelectValue />
@@ -119,22 +119,22 @@ export function BloodTypeCalculator() {
 
             {/* Отец */}
             <div className="space-y-2">
-              <Label className="flex items-center gap-2 font-medium">
-                <Users className="h-4 w-4" />
+              <div className="flex items-center justify-center gap-1.5 py-1.5 px-2 bg-blue-50 text-blue-600 rounded-md text-sm font-medium">
+                <Mars className="h-4 w-4" />
                 Отец
-              </Label>
+              </div>
               <Select value={fatherGroup} onValueChange={(v) => setFatherGroup(v as BloodGroup)}>
                 <SelectTrigger className="w-full">
                   <SelectValue />
                 </SelectTrigger>
-                  <SelectContent>
-                    {BLOOD_GROUPS.map((group) => (
-                      <SelectItem key={group} value={group}>
-                        {getGroupName(group)}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <SelectContent>
+                  {BLOOD_GROUPS.map((group) => (
+                    <SelectItem key={group} value={group}>
+                      {getGroupName(group)}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <Select value={fatherRh} onValueChange={(v) => setFatherRh(v as RhFactor)}>
                 <SelectTrigger className="w-full">
                   <SelectValue />

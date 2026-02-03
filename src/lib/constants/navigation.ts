@@ -35,6 +35,7 @@ export const NAV_SECTIONS: NavSection[] = [
       { label: 'Процент жира', href: '/zdorovye/telo/protsent-zhira' },
       { label: 'Основной обмен веществ', href: '/zdorovye/telo/bazovyj-metabolizm' },
       { label: 'Калькулятор возраста', href: '/zdorovye/telo/kalkulyator-vozrasta' },
+      { label: 'Калькулятор алкоголя', href: '/zdorovye/telo/kalkulyator-alkogolya' },
     ],
   },
   {
