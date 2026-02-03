@@ -30,20 +30,21 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Калькулятор пульса для тренировок — зоны ЧСС онлайн',
+  title: 'Пульсовые зоны — расчёт зон ЧСС для тренировок онлайн',
   description:
-    'Бесплатный калькулятор пульсовых зон для тренировок ✓ 5 зон по Карвонену ✓ Сравнение 3 формул макс. пульса ✓ Персональные зоны по возрасту и пульсу покоя.',
+    'Рассчитайте пульсовые зоны бесплатно ✓ 5 зон по Карвонену ✓ Сравнение 3 формул макс. пульса ✓ Персональные зоны по возрасту и пульсу покоя.',
   keywords: [
-    'калькулятор пульса',
     'пульсовые зоны',
+    'зоны пульса',
+    'калькулятор пульса',
+    'пульс для жиросжигания',
     'зоны ЧСС',
-    'пульс для тренировок',
     'максимальный пульс',
     'формула Карвонена',
     'зоны сердечного ритма',
   ],
   openGraph: {
-    title: 'Калькулятор пульса для тренировок',
+    title: 'Пульсовые зоны — расчёт зон ЧСС',
     description: 'Рассчитайте 5 пульсовых зон по возрасту и пульсу покоя. Сравнение 3 формул.',
     type: 'website',
     url: '/zdorovye/sport/puls-dlya-trenirovok',
@@ -56,7 +57,7 @@ export const metadata: Metadata = {
 const breadcrumbs = [
   { label: 'Главная', href: '/' },
   { label: 'Спорт', href: '/zdorovye/sport' },
-  { label: 'Пульс для тренировок', href: '/zdorovye/sport/puls-dlya-trenirovok' },
+  { label: 'Пульсовые зоны', href: '/zdorovye/sport/puls-dlya-trenirovok' },
 ]
 
 export default function HeartRateCalculatorPage() {
@@ -212,7 +213,7 @@ export default function HeartRateCalculatorPage() {
         {/* Header */}
         <header className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            Калькулятор пульса для тренировок онлайн
+            Пульсовые зоны — расчёт зон ЧСС онлайн
           </h1>
           <p className="text-lg text-muted-foreground">
             Рассчитайте персональные пульсовые зоны по формуле Карвонена.
