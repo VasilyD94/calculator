@@ -116,7 +116,7 @@ export function CalorieCalculator() {
         <Card>
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
-              <SlidersHorizontal className="h-5 w-5" />
+              <SlidersHorizontal className="size-5" />
               Ваши параметры
             </CardTitle>
           </CardHeader>
@@ -140,7 +140,7 @@ export function CalorieCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Ваши параметры
           </CardTitle>
         </CardHeader>
@@ -154,7 +154,7 @@ export function CalorieCalculator() {
             min={15}
             max={80}
             unit="лет"
-            icon={<Calendar className="h-5 w-5" />}
+            icon={<Calendar className="size-5" />}
           />
 
           <ValueSlider
@@ -164,7 +164,7 @@ export function CalorieCalculator() {
             min={140}
             max={220}
             unit="см"
-            icon={<Ruler className="h-5 w-5" />}
+            icon={<Ruler className="size-5" />}
           />
 
           <ValueSlider
@@ -181,7 +181,7 @@ export function CalorieCalculator() {
             min={30}
             max={200}
             unit="кг"
-            icon={<Weight className="h-5 w-5" />}
+            icon={<Weight className="size-5" />}
           />
 
           <ActivitySelector value={activity} onChange={(v) => setParam('activity', v)} />
@@ -191,14 +191,14 @@ export function CalorieCalculator() {
               <div className="flex justify-between items-center text-center text-sm">
                 <div>
                   <p className="text-muted-foreground">Текущий вес</p>
-                  <p className="font-semibold">
+                  <p className="font-semibold tabular-nums">
                     {weight}
                     <span className="font-normal text-muted-foreground ml-0.5">кг</span>
                   </p>
                 </div>
                 <div>
                   <p className="text-muted-foreground">Желаемый вес</p>
-                  <p className="font-semibold text-primary">
+                  <p className="font-semibold text-primary tabular-nums">
                     {targetWeight}
                     <span className="font-normal text-muted-foreground ml-0.5">кг</span>
                   </p>
@@ -214,19 +214,19 @@ export function CalorieCalculator() {
                 className="py-2"
               />
 
-              <p className={`text-center text-sm ${goal === 'maintain' ? 'invisible' : ''}`}>
+              <p className={`text-center text-sm tabular-nums ${goal === 'maintain' ? 'invisible' : ''}`}>
                 <span className="text-primary font-medium">{resultTitle}</span>
                 <span className="text-muted-foreground"> · <span className="font-semibold text-foreground">{goal === 'lose' ? '−' : '+'}{weightDiff}</span> кг за <span className="font-semibold text-foreground">~{weeksNeeded}</span> нед.</span>
               </p>
 
-              <p className="text-center text-xs text-muted-foreground">
+              <p className="text-center text-xs text-muted-foreground tabular-nums">
                 Идеальный вес для вашего роста: <span className="font-semibold text-foreground">{idealMin}–{idealMax}</span> кг
               </p>
             </div>
 
             {showDeficitWarning && (
               <Alert variant="destructive">
-                <AlertTriangle className="h-5 w-5" />
+                <AlertTriangle className="size-5" />
                 <AlertDescription>
                   Калорийность ограничена до {minSafe} ккал — минимум для
                   безопасного похудения.
@@ -241,11 +241,11 @@ export function CalorieCalculator() {
         <p className="text-sm text-muted-foreground mb-1">
           {goal === 'lose' ? 'Для похудения' : goal === 'gain' ? 'Для набора массы' : 'Ваша норма'}
         </p>
-        <p className="text-4xl font-bold text-primary">
+        <p className="text-4xl font-bold text-primary tabular-nums">
           {targetCalories.toLocaleString('ru-RU')}
           <span className="text-lg font-normal text-muted-foreground ml-1">ккал/день</span>
         </p>
-        <p className="text-xs text-muted-foreground mt-1">
+        <p className="text-xs text-muted-foreground mt-1 tabular-nums">
           Базовый метаболизм: {result.bmr.toLocaleString('ru-RU')} ккал · TDEE: {result.tdee.toLocaleString('ru-RU')} ккал
         </p>
       </div>
@@ -256,12 +256,12 @@ export function CalorieCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <ChartPie className="h-5 w-5" />
+              <ChartPie className="size-5" />
               Рекомендуемое БЖУ
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground mb-3">
+            <p className="text-sm text-muted-foreground mb-3 tabular-nums">
               При <span className="font-semibold text-foreground">{targetCalories.toLocaleString('ru-RU')}</span> ккал/день{goal !== 'maintain' && ` (${goal === 'lose' ? 'похудение' : 'набор веса'})`}
             </p>
             <MacroBreakdown
@@ -276,13 +276,13 @@ export function CalorieCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <Info className="h-5 w-5 text-sky-400" />
+              <Info className="size-5 text-sky-400" />
               <AlertTitle>Формулы дают оценку</AlertTitle>
               <AlertDescription>
                 Все формулы рассчитывают приблизительную норму. Реальная потребность
@@ -291,7 +291,7 @@ export function CalorieCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <AlertTriangle className="h-5 w-5 text-amber-400" />
+              <AlertTriangle className="size-5 text-amber-400" />
               <AlertTitle>Минимальная калорийность</AlertTitle>
               <AlertDescription>
                 Не опускайтесь ниже {gender === 'male' ? '1 500' : '1 200'} ккал/день

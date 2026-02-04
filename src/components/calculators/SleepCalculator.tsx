@@ -54,7 +54,7 @@ export function SleepCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Параметры
           </CardTitle>
         </CardHeader>
@@ -70,7 +70,7 @@ export function SleepCalculator() {
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
-              <Sun className={`h-4 w-4 ${mode === 'wakeUp' ? 'text-amber-500' : ''}`} />
+              <Sun className={`size-4 ${mode === 'wakeUp' ? 'text-amber-500' : ''}`} />
               Хочу проснуться в...
             </button>
             <button
@@ -82,7 +82,7 @@ export function SleepCalculator() {
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
-              <Moon className={`h-4 w-4 ${mode === 'goToSleep' ? 'text-indigo-500' : ''}`} />
+              <Moon className={`size-4 ${mode === 'goToSleep' ? 'text-indigo-500' : ''}`} />
               Ложусь спать в...
             </button>
           </div>
@@ -90,7 +90,7 @@ export function SleepCalculator() {
           {/* Время */}
           <div className="space-y-3">
             <Label className="flex items-center gap-2">
-              <Clock className="h-4 w-4" />
+              <Clock className="size-4" />
               {mode === 'wakeUp' ? 'Время пробуждения' : 'Время отхода ко сну'}
             </Label>
             <input
@@ -105,10 +105,10 @@ export function SleepCalculator() {
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <Label className="flex items-center gap-2">
-                <BedDouble className="h-4 w-4" />
+                <BedDouble className="size-4" />
                 Время на засыпание
               </Label>
-              <span className="text-xl font-bold">{fallAsleepMinutes} мин</span>
+              <span className="text-xl font-bold tabular-nums">{fallAsleepMinutes} мин</span>
             </div>
             <Slider
               value={[fallAsleepMinutes]}
@@ -137,7 +137,7 @@ export function SleepCalculator() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.05 }}
             >
-              <p className="text-lg sm:text-xl font-bold">{sleepTime.time}</p>
+              <p className="text-lg sm:text-xl font-bold tabular-nums">{sleepTime.time}</p>
               <p className="text-xs font-medium">{sleepTime.cycles} цикл{sleepTime.cycles === 1 ? '' : sleepTime.cycles < 5 ? 'а' : 'ов'}</p>
               <p className="text-[10px] opacity-80">{sleepTime.duration}</p>
             </motion.div>
@@ -151,22 +151,22 @@ export function SleepCalculator() {
       {/* Легенда качества */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
         <div className="rounded-lg border bg-green-50 border-green-200 p-2 text-center">
-          <Sparkles className="h-4 w-4 mx-auto mb-1 text-green-600" />
+          <Sparkles className="size-4 mx-auto mb-1 text-green-600" />
           <p className="text-xs font-medium text-green-600">Отличный</p>
           <p className="text-[10px] text-green-600/70">5-6 циклов</p>
         </div>
         <div className="rounded-lg border bg-blue-50 border-blue-200 p-2 text-center">
-          <Sparkles className="h-4 w-4 mx-auto mb-1 text-blue-600" />
+          <Sparkles className="size-4 mx-auto mb-1 text-blue-600" />
           <p className="text-xs font-medium text-blue-600">Хороший</p>
           <p className="text-[10px] text-blue-600/70">4 цикла</p>
         </div>
         <div className="rounded-lg border bg-yellow-50 border-yellow-200 p-2 text-center">
-          <Sparkles className="h-4 w-4 mx-auto mb-1 text-yellow-600" />
+          <Sparkles className="size-4 mx-auto mb-1 text-yellow-600" />
           <p className="text-xs font-medium text-yellow-600">Минимум</p>
           <p className="text-[10px] text-yellow-600/70">3 цикла</p>
         </div>
         <div className="rounded-lg border bg-red-50 border-red-200 p-2 text-center">
-          <Sparkles className="h-4 w-4 mx-auto mb-1 text-red-600" />
+          <Sparkles className="size-4 mx-auto mb-1 text-red-600" />
           <p className="text-xs font-medium text-red-600">Мало</p>
           <p className="text-[10px] text-red-600/70">&lt;3 цикла</p>
         </div>
@@ -176,27 +176,27 @@ export function SleepCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Info className="h-5 w-5" />
+            <Info className="size-5" />
             О циклах сна
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3 text-sm text-muted-foreground">
           <div className="flex gap-2">
-            <Moon className="h-4 w-4 mt-0.5 text-indigo-400 shrink-0" />
+            <Moon className="size-4 mt-0.5 text-indigo-400 shrink-0" />
             <p>
               Один цикл сна длится примерно 90 минут и включает все фазы: лёгкий сон,
               глубокий сон и фазу быстрого движения глаз (REM).
             </p>
           </div>
           <div className="flex gap-2">
-            <Sun className="h-4 w-4 mt-0.5 text-amber-400 shrink-0" />
+            <Sun className="size-4 mt-0.5 text-amber-400 shrink-0" />
             <p>
               Просыпаться лучше в конце цикла, а не в середине. Тогда вы будете чувствовать
               себя отдохнувшим, даже если спали меньше обычного.
             </p>
           </div>
           <div className="flex gap-2">
-            <Clock className="h-4 w-4 mt-0.5 text-blue-400 shrink-0" />
+            <Clock className="size-4 mt-0.5 text-blue-400 shrink-0" />
             <p>
               Взрослому человеку рекомендуется спать 5-6 полных циклов (7.5-9 часов).
               Минимум для восстановления — 4 цикла (6 часов).

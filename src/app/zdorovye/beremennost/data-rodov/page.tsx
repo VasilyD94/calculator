@@ -218,10 +218,10 @@ export default function DueDatePage() {
         <Breadcrumbs items={breadcrumbs} />
 
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
             Рассчитать дату родов — ПДР онлайн
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Рассчитайте предполагаемую дату родов по дате последних месячных,
             зачатия или УЗИ. Результат обновляется мгновенно — без кнопки «Рассчитать».
           </p>
@@ -230,12 +230,12 @@ export default function DueDatePage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>
@@ -244,7 +244,7 @@ export default function DueDatePage() {
               </p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>
@@ -253,7 +253,7 @@ export default function DueDatePage() {
               </p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>
@@ -272,7 +272,7 @@ export default function DueDatePage() {
         {/* Вам будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
@@ -280,28 +280,28 @@ export default function DueDatePage() {
               href="/zdorovye/beremennost/srok-beremennosti"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Baby className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Baby className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Срок беременности</span>
             </Link>
             <Link
               href="/zdorovye/beremennost/ovulyatsiya"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Egg className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Egg className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор овуляции</span>
             </Link>
             <Link
               href="/zdorovye/telo/kalkulyator-imt"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Scale className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор ИМТ</span>
             </Link>
             <Link
               href="/zdorovye/pitanie/kalkulyator-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <CalendarDays className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <CalendarDays className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор калорий</span>
             </Link>
           </div>
@@ -312,7 +312,7 @@ export default function DueDatePage() {
           {/* Блок 1: Что это */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Что такое ПДР и зачем её рассчитывать
             </h2>
             <p>
@@ -337,7 +337,7 @@ export default function DueDatePage() {
           {/* Блок 2: Методы расчёта */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
+              <Calculator className="size-5" />
               Методы определения даты родов
             </h2>
             <p>
@@ -346,7 +346,7 @@ export default function DueDatePage() {
             </p>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -362,7 +362,7 @@ export default function DueDatePage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -377,7 +377,7 @@ export default function DueDatePage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -404,7 +404,7 @@ export default function DueDatePage() {
           {/* Блок 3: Точность */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Stethoscope className="h-5 w-5" />
+              <Stethoscope className="size-5" />
               Точность расчёта ПДР
             </h2>
             <p>
@@ -447,7 +447,7 @@ export default function DueDatePage() {
               </table>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-primary/5 text-foreground p-3">
-              <Stethoscope className="h-5 w-5 shrink-0 text-blue-400" />
+              <Stethoscope className="size-5 shrink-0 text-blue-400" />
               <p>
                 УЗИ в первом триместре — наиболее точный метод определения ПДР.
                 Если данные УЗИ расходятся с расчётом по месячным более чем
@@ -461,7 +461,7 @@ export default function DueDatePage() {
           {/* Блок 4: Триместры */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Heart className="h-5 w-5" />
+              <Heart className="size-5" />
               Триместры беременности
             </h2>
             <p>
@@ -471,7 +471,7 @@ export default function DueDatePage() {
             <div className="grid gap-3 md:grid-cols-3">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Egg className="h-5 w-5 text-pink-500" />1-й триместр (1–12 нед.)
+                  <Egg className="size-5 text-pink-500" />1-й триместр (1–12 нед.)
                 </h3>
                 <ul className="space-y-1 pl-4 list-disc marker:text-primary text-sm">
                   <li>Формирование всех органов</li>
@@ -482,7 +482,7 @@ export default function DueDatePage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Baby className="h-5 w-5 text-violet-500" />2-й триместр (13–26 нед.)
+                  <Baby className="size-5 text-violet-500" />2-й триместр (13–26 нед.)
                 </h3>
                 <ul className="space-y-1 pl-4 list-disc marker:text-primary text-sm">
                   <li>Активный рост малыша</li>
@@ -493,7 +493,7 @@ export default function DueDatePage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Heart className="h-5 w-5 text-red-500" />3-й триместр (27–40 нед.)
+                  <Heart className="size-5 text-red-500" />3-й триместр (27–40 нед.)
                 </h3>
                 <ul className="space-y-1 pl-4 list-disc marker:text-primary text-sm">
                   <li>Набор веса малышом</li>
@@ -510,7 +510,7 @@ export default function DueDatePage() {
           {/* Блок 5: Факторы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Puzzle className="h-5 w-5" />
+              <Puzzle className="size-5" />
               Что влияет на дату родов
             </h2>
             <p>
@@ -519,7 +519,7 @@ export default function DueDatePage() {
             </p>
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><RefreshCw className="h-5 w-5 text-violet-500" />Длина цикла</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><RefreshCw className="size-5 text-violet-500" />Длина цикла</h3>
                 <p>
                   При цикле длиннее <strong className="text-foreground">28</strong> дней <Link href="/zdorovye/beremennost/ovulyatsiya" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">овуляция</Link> происходит позже,
                   и реальная дата родов может сдвинуться на несколько дней вперёд.
@@ -527,21 +527,21 @@ export default function DueDatePage() {
                 </p>
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><Dna className="h-5 w-5 text-pink-500" />Наследственность</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><Dna className="size-5 text-pink-500" />Наследственность</h3>
                 <p>
                   Если в вашей семье женщины рожали позже <strong className="text-foreground">40</strong> недель,
                   у вас тоже может быть склонность к пролонгированной беременности.
                 </p>
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><Hash className="h-5 w-5 text-blue-500" />Количество беременностей</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><Hash className="size-5 text-blue-500" />Количество беременностей</h3>
                 <p>
                   Первая беременность в среднем длится на <strong className="text-foreground">5–7</strong> дней дольше
                   последующих. Повторнородящие чаще рожают ближе к <strong className="text-foreground">39</strong> неделе.
                 </p>
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><Users className="h-5 w-5 text-amber-500" />Многоплодная беременность</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><Users className="size-5 text-amber-500" />Многоплодная беременность</h3>
                 <p>
                   Двойня в среднем рождается на <strong className="text-foreground">36–37</strong> неделе,
                   тройня — на <strong className="text-foreground">33–34</strong>. ПДР для многоплодной беременности
@@ -556,7 +556,7 @@ export default function DueDatePage() {
           {/* Блок 6: Развитие малыша */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Baby className="h-5 w-5" />
+              <Baby className="size-5" />
               Развитие малыша по неделям
             </h2>
             <p>
@@ -565,7 +565,7 @@ export default function DueDatePage() {
             </p>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -577,7 +577,7 @@ export default function DueDatePage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -589,7 +589,7 @@ export default function DueDatePage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -601,7 +601,7 @@ export default function DueDatePage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -620,7 +620,7 @@ export default function DueDatePage() {
           {/* Блок 7: Ключевые обследования */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               Ключевые обследования и даты
             </h2>
             <p>
@@ -679,7 +679,7 @@ export default function DueDatePage() {
           {/* Блок 8: Акушерский vs эмбриональный */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Timer className="h-5 w-5" />
+              <Timer className="size-5" />
               Акушерский и эмбриональный срок: в чём разница
             </h2>
             <p>
@@ -688,7 +688,7 @@ export default function DueDatePage() {
             </p>
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><CalendarClock className="h-5 w-5 text-blue-500" />Акушерский срок</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><CalendarClock className="size-5 text-blue-500" />Акушерский срок</h3>
                 <p>
                   Отсчитывается от первого дня последних месячных.
                   Полная беременность = <strong className="text-foreground">40</strong> недель.
@@ -697,7 +697,7 @@ export default function DueDatePage() {
                 </p>
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
-                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><FlaskConical className="h-5 w-5 text-green-500" />Эмбриональный срок</h3>
+                <h3 className="font-semibold text-foreground flex items-center gap-1.5"><FlaskConical className="size-5 text-green-500" />Эмбриональный срок</h3>
                 <p>
                   Отсчитывается от момента зачатия (обычно на <strong className="text-foreground">14</strong> дней позже).
                   Полная беременность = <strong className="text-foreground">38</strong> недель.
@@ -707,7 +707,7 @@ export default function DueDatePage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-primary/5 text-foreground p-3">
-              <Calculator className="h-5 w-5 shrink-0 text-blue-400" />
+              <Calculator className="size-5 shrink-0 text-blue-400" />
               <p>
                 Наш калькулятор автоматически пересчитывает срок в акушерский — тот,
                 который использует ваш врач. Если вы вводите дату зачатия, к ней
@@ -721,7 +721,7 @@ export default function DueDatePage() {
           {/* Блок 9: Советы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Практические советы для будущих мам
             </h2>
             <p>
@@ -730,35 +730,35 @@ export default function DueDatePage() {
             </p>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">1</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">1</span>
                 <div>
                   <p className="text-foreground font-medium">Встаньте на учёт до 12 недель</p>
                   <p>Это позволит своевременно пройти первый скрининг, проверить <Link href="/zdorovye/telo/kalkulyator-imt" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">индекс массы тела</Link> и получить право на дополнительное пособие при ранней постановке на учёт.</p>
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">2</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">2</span>
                 <div>
                   <p className="text-foreground font-medium">Не пропускайте скрининги</p>
                   <p>Первый (<strong className="text-foreground">11–13</strong> нед.) и второй (<strong className="text-foreground">18–21</strong> нед.) скрининги — ключевые для оценки развития малыша. Запланируйте их заранее.</p>
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">3</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">3</span>
                 <div>
                   <p className="text-foreground font-medium">Подготовьте сумку в роддом к 36 неделе</p>
                   <p>Роды могут начаться раньше ПДР. С <strong className="text-foreground">37</strong> недели беременность считается доношенной, и малыш может появиться в любой момент.</p>
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">4</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">4</span>
                 <div>
                   <p className="text-foreground font-medium">Следите за шевелениями с 28 недели</p>
                   <p>С третьего триместра считайте шевеления: не менее <strong className="text-foreground">10</strong> за <strong className="text-foreground">12</strong> часов. При снижении активности обратитесь к врачу.</p>
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">5</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">5</span>
                 <div>
                   <p className="text-foreground font-medium">Принимайте фолиевую кислоту</p>
                   <p>В первом триместре — <strong className="text-foreground">400</strong> мкг/день. Фолиевая кислота критически важна для формирования нервной трубки малыша.</p>
@@ -766,7 +766,7 @@ export default function DueDatePage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <AlertTriangle className="size-5 shrink-0 text-amber-400" />
               <p>
                 Калькулятор даёт ориентировочную дату. При любых вопросах
                 о течении беременности, болях или необычных симптомах
@@ -785,7 +785,7 @@ export default function DueDatePage() {
           {/* FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -872,7 +872,7 @@ export default function DueDatePage() {
           {/* Связанные калькуляторы */}
           <nav className="space-y-3" aria-label="Связанные калькуляторы">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -880,35 +880,35 @@ export default function DueDatePage() {
                 href="/zdorovye/beremennost/srok-beremennosti"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Baby className="h-4 w-4 text-muted-foreground" />
+                <Baby className="size-4 text-muted-foreground" />
                 Срок беременности
               </Link>
               <Link
                 href="/zdorovye/beremennost/ovulyatsiya"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Egg className="h-4 w-4 text-muted-foreground" />
+                <Egg className="size-4 text-muted-foreground" />
                 Калькулятор овуляции
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <CalendarDays className="h-4 w-4 text-muted-foreground" />
+                <CalendarDays className="size-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/telo/idealnyj-ves"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Идеальный вес
               </Link>
             </div>

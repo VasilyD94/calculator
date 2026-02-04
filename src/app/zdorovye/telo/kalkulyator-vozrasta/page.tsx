@@ -215,10 +215,10 @@ export default function AgeCalculatorPage() {
         <Breadcrumbs items={breadcrumbs} />
 
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
             Сколько мне лет — онлайн расчёт
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Узнайте свой точный возраст в годах, месяцах и днях. Калькулятор
             покажет, сколько дней до следующего дня рождения, ваш знак зодиака
             и интересные факты о прожитом времени.
@@ -228,24 +228,24 @@ export default function AgeCalculatorPage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>Укажите день, месяц и год вашего рождения в поле ввода.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>Калькулятор мгновенно покажет ваш точный возраст в годах, месяцах и днях.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>Посмотрите, сколько дней до дня рождения, ваш знак зодиака и интересные факты.</p>
@@ -262,7 +262,7 @@ export default function AgeCalculatorPage() {
         {/* Вам также будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
@@ -270,7 +270,7 @@ export default function AgeCalculatorPage() {
               href="/zdorovye/telo/kalkulyator-imt"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Scale className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор ИМТ
               </span>
@@ -279,7 +279,7 @@ export default function AgeCalculatorPage() {
               href="/zdorovye/telo/idealnyj-ves"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Target className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Target className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Идеальный вес
               </span>
@@ -288,7 +288,7 @@ export default function AgeCalculatorPage() {
               href="/zdorovye/telo/bazovyj-metabolizm"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Flame className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Базовый метаболизм
               </span>
@@ -297,7 +297,7 @@ export default function AgeCalculatorPage() {
               href="/zdorovye/pitanie/kalkulyator-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Calculator className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Calculator className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор калорий
               </span>
@@ -311,7 +311,7 @@ export default function AgeCalculatorPage() {
           {/* Блок 1 — Что такое возраст */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Зачем знать свой точный возраст
             </h2>
             <p>
@@ -346,7 +346,7 @@ export default function AgeCalculatorPage() {
           {/* Блок 2 — Как рассчитывается возраст */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
+              <Calculator className="size-5" />
               Как рассчитывается возраст
             </h2>
             <p>
@@ -380,7 +380,7 @@ export default function AgeCalculatorPage() {
           {/* Блок 3 — Интересные факты о времени */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Clock className="h-5 w-5" />
+              <Clock className="size-5" />
               Интересные факты о времени жизни
             </h2>
             <p>
@@ -390,7 +390,7 @@ export default function AgeCalculatorPage() {
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Heart className="h-5 w-5 text-red-400" />
+                  <Heart className="size-5 text-red-400" />
                   Сердцебиение
                 </h3>
                 <p>
@@ -401,7 +401,7 @@ export default function AgeCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Clock className="h-5 w-5 text-blue-400" />
+                  <Clock className="size-5 text-blue-400" />
                   Дыхание
                 </h3>
                 <p>
@@ -411,7 +411,7 @@ export default function AgeCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Globe className="h-5 w-5 text-green-400" />
+                  <Globe className="size-5 text-green-400" />
                   Путь вокруг Солнца
                 </h3>
                 <p>
@@ -421,7 +421,7 @@ export default function AgeCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Users className="h-5 w-5 text-amber-400" />
+                  <Users className="size-5 text-amber-400" />
                   Сон
                 </h3>
                 <p>
@@ -437,7 +437,7 @@ export default function AgeCalculatorPage() {
           {/* Блок 4 — Знаки зодиака */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Star className="h-5 w-5" />
+              <Star className="size-5" />
               Знаки зодиака по дате рождения
             </h2>
             <p>
@@ -530,7 +530,7 @@ export default function AgeCalculatorPage() {
           {/* Блок 5 — Возрастные этапы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <History className="h-5 w-5" />
+              <History className="size-5" />
               Возрастные этапы жизни
             </h2>
             <p>
@@ -539,7 +539,7 @@ export default function AgeCalculatorPage() {
             </p>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -551,7 +551,7 @@ export default function AgeCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -563,7 +563,7 @@ export default function AgeCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -575,7 +575,7 @@ export default function AgeCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -587,7 +587,7 @@ export default function AgeCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   5
                 </span>
                 <div>
@@ -599,7 +599,7 @@ export default function AgeCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   6
                 </span>
                 <div>
@@ -618,7 +618,7 @@ export default function AgeCalculatorPage() {
           {/* Блок 6 — Юбилеи и важные даты */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Cake className="h-5 w-5" />
+              <Cake className="size-5" />
               Юбилеи и важные даты
             </h2>
             <p>
@@ -676,12 +676,12 @@ export default function AgeCalculatorPage() {
           {/* Блок 7 — Практические советы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Практические советы
             </h2>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -690,7 +690,7 @@ export default function AgeCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -699,7 +699,7 @@ export default function AgeCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -708,7 +708,7 @@ export default function AgeCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -726,7 +726,7 @@ export default function AgeCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   5
                 </span>
                 <div>
@@ -747,7 +747,7 @@ export default function AgeCalculatorPage() {
           {/* FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -828,7 +828,7 @@ export default function AgeCalculatorPage() {
           {/* Связанные калькуляторы */}
           <nav className="space-y-3" aria-label="Связанные калькуляторы">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -836,35 +836,35 @@ export default function AgeCalculatorPage() {
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/telo/idealnyj-ves"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Target className="h-4 w-4 text-muted-foreground" />
+                <Target className="size-4 text-muted-foreground" />
                 Идеальный вес
               </Link>
               <Link
                 href="/zdorovye/telo/bazovyj-metabolizm"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-4 w-4 text-muted-foreground" />
+                <Flame className="size-4 text-muted-foreground" />
                 Базовый метаболизм
               </Link>
               <Link
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Calculator className="h-4 w-4 text-muted-foreground" />
+                <Calculator className="size-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/telo/protsent-zhira"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Percent className="h-4 w-4 text-muted-foreground" />
+                <Percent className="size-4 text-muted-foreground" />
                 Процент жира
               </Link>
             </div>

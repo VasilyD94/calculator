@@ -81,7 +81,7 @@ export function AlcoholCalculator() {
     <div id="calculator" className="space-y-6">
       {/* Предупреждение */}
       <Alert variant="destructive" className="border-amber-200 bg-amber-50 text-amber-900">
-        <AlertTriangle className="h-4 w-4 !text-amber-600" />
+        <AlertTriangle className="size-4 !text-amber-600" />
         <AlertTitle className="text-amber-800">Важно</AlertTitle>
         <AlertDescription className="text-amber-700">
           Калькулятор даёт приблизительную оценку. Реальный уровень алкоголя зависит от многих
@@ -94,7 +94,7 @@ export function AlcoholCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Параметры
           </CardTitle>
         </CardHeader>
@@ -106,10 +106,10 @@ export function AlcoholCalculator() {
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <Label className="flex items-center gap-2">
-                <Weight className="h-4 w-4" />
+                <Weight className="size-4" />
                 Вес
               </Label>
-              <span className="text-xl font-bold">{weight} кг</span>
+              <span className="text-xl font-bold tabular-nums">{weight} кг</span>
             </div>
             <Slider
               value={[weight]}
@@ -123,7 +123,7 @@ export function AlcoholCalculator() {
           {/* Напиток */}
           <div className="space-y-2">
             <Label className="flex items-center gap-2">
-              <Wine className="h-4 w-4" />
+              <Wine className="size-4" />
               Напиток
             </Label>
             <Select value={drinkId} onValueChange={handleDrinkChange}>
@@ -144,7 +144,7 @@ export function AlcoholCalculator() {
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <Label>Объём выпитого</Label>
-              <span className="text-xl font-bold">{volume} мл</span>
+              <span className="text-xl font-bold tabular-nums">{volume} мл</span>
             </div>
             <Slider
               value={[volume]}
@@ -168,19 +168,19 @@ export function AlcoholCalculator() {
       {/* Статистика */}
       <div className="grid grid-cols-3 gap-2">
         <div className="rounded-lg border bg-muted/50 p-2 sm:p-3 text-center">
-          <Wine className="h-4 w-4 sm:h-5 sm:w-5 mx-auto mb-1 text-muted-foreground" />
+          <Wine className="size-4 sm:h-5 sm:w-5 mx-auto mb-1 text-muted-foreground" />
           <p className="text-sm sm:text-lg font-bold whitespace-nowrap">{result.pureAlcohol} г</p>
           <p className="text-[10px] sm:text-xs text-muted-foreground leading-tight">чистый спирт</p>
         </div>
 
         <div className="rounded-lg border bg-muted/50 p-2 sm:p-3 text-center">
-          <Clock className="h-4 w-4 sm:h-5 sm:w-5 mx-auto mb-1 text-muted-foreground" />
+          <Clock className="size-4 sm:h-5 sm:w-5 mx-auto mb-1 text-muted-foreground" />
           <p className="text-sm sm:text-lg font-bold whitespace-nowrap">{formatTime(result.timeToSober)}</p>
           <p className="text-[10px] sm:text-xs text-muted-foreground leading-tight">до трезвости</p>
         </div>
 
         <div className="rounded-lg border bg-muted/50 p-2 sm:p-3 text-center">
-          <Car className="h-4 w-4 sm:h-5 sm:w-5 mx-auto mb-1 text-muted-foreground" />
+          <Car className="size-4 sm:h-5 sm:w-5 mx-auto mb-1 text-muted-foreground" />
           <p className="text-sm sm:text-lg font-bold whitespace-nowrap">{formatTime(result.timeToLegal)}</p>
           <p className="text-[10px] sm:text-xs text-muted-foreground leading-tight">до {LEGAL_LIMIT}‰</p>
         </div>
@@ -190,14 +190,14 @@ export function AlcoholCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Clock className="h-5 w-5" />
+            <Clock className="size-5" />
             Когда можно за руль
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           {result.bac <= LEGAL_LIMIT ? (
             <div className="flex items-center gap-3 p-3 rounded-lg bg-green-50 border border-green-200">
-              <Car className="h-6 w-6 text-green-600" />
+              <Car className="size-6 text-green-600" />
               <div>
                 <p className="font-medium text-green-700">Можно садиться за руль</p>
                 <p className="text-sm text-green-600">Уровень алкоголя в пределах нормы</p>
@@ -205,7 +205,7 @@ export function AlcoholCalculator() {
             </div>
           ) : (
             <div className="flex items-center gap-3 p-3 rounded-lg bg-red-50 border border-red-200">
-              <Car className="h-6 w-6 text-red-600" />
+              <Car className="size-6 text-red-600" />
               <div>
                 <p className="font-medium text-red-700">
                   Можно за руль с{' '}
@@ -228,7 +228,7 @@ export function AlcoholCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <TrendingDown className="h-5 w-5" />
+              <TrendingDown className="size-5" />
               Снижение уровня алкоголя
             </CardTitle>
           </CardHeader>
@@ -273,7 +273,7 @@ export function AlcoholCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Info className="h-5 w-5" />
+            <Info className="size-5" />
             Как это работает
           </CardTitle>
         </CardHeader>

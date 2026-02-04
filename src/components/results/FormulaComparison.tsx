@@ -27,7 +27,7 @@ export function FormulaComparison({ results, unit }: FormulaComparisonProps) {
     <Card className="gap-3 py-4">
       <CardHeader className="pb-0">
         <CardTitle className="text-base flex items-center gap-2">
-          <BarChart3 className="h-5 w-5" />
+          <BarChart3 className="size-5" />
           Сравнение формул
         </CardTitle>
       </CardHeader>
@@ -52,7 +52,7 @@ export function FormulaComparison({ results, unit }: FormulaComparisonProps) {
                   <span className={`truncate ${result.recommended ? 'text-foreground' : 'text-muted-foreground'}`}>
                     {result.name}
                   </span>
-                  <span className="flex-shrink-0">
+                  <span className="flex-shrink-0 tabular-nums">
                     <span className={`font-semibold ${result.recommended ? '' : 'text-muted-foreground'}`}>{result.value.toLocaleString('ru-RU')}</span>
                     <span className="font-normal text-muted-foreground ml-0.5">{unit}</span>
                   </span>
@@ -72,7 +72,7 @@ export function FormulaComparison({ results, unit }: FormulaComparisonProps) {
         </div>
 
         {/* Summary */}
-        <div className="mt-4 pt-3 border-t grid grid-cols-3 gap-2 text-center text-sm">
+        <div className="mt-4 pt-3 border-t grid grid-cols-3 gap-2 text-center text-sm tabular-nums">
           <div>
             <p className="text-xs text-muted-foreground">Минимум</p>
             <p className="font-semibold">{min.toLocaleString('ru-RU')}</p>

@@ -212,10 +212,10 @@ export default function HeartRateCalculatorPage() {
 
         {/* Header */}
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
             Пульсовые зоны — расчёт зон ЧСС онлайн
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Рассчитайте персональные пульсовые зоны по формуле Карвонена.
             Мгновенный результат по возрасту и пульсу покоя.
           </p>
@@ -224,24 +224,24 @@ export default function HeartRateCalculatorPage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>Укажите возраст и пульс покоя в полях калькулятора.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>Калькулятор автоматически рассчитает максимальный пульс по формуле Танака.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>Получите 5 персональных пульсовых зон для разных типов тренировок.</p>
@@ -258,7 +258,7 @@ export default function HeartRateCalculatorPage() {
         {/* Вам также будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-5">
@@ -266,7 +266,7 @@ export default function HeartRateCalculatorPage() {
               href="/zdorovye/sport/belok-dlya-sportsmenov"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Dumbbell className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Dumbbell className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Белок для спортсменов
               </span>
@@ -275,7 +275,7 @@ export default function HeartRateCalculatorPage() {
               href="/zdorovye/pitanie/kalkulyator-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Flame className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор калорий
               </span>
@@ -284,7 +284,7 @@ export default function HeartRateCalculatorPage() {
               href="/zdorovye/telo/kalkulyator-imt"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Scale className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор ИМТ
               </span>
@@ -293,7 +293,7 @@ export default function HeartRateCalculatorPage() {
               href="/zdorovye/telo/bazovyj-metabolizm"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Activity className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Activity className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Базовый метаболизм
               </span>
@@ -302,7 +302,7 @@ export default function HeartRateCalculatorPage() {
               href="/zdorovye/pitanie/defitsit-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <TrendingDown className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <TrendingDown className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Дефицит калорий
               </span>
@@ -316,7 +316,7 @@ export default function HeartRateCalculatorPage() {
           {/* Блок 1: Что такое пульсовые зоны */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Что такое пульсовые зоны
             </h2>
             <p>
@@ -339,7 +339,7 @@ export default function HeartRateCalculatorPage() {
           {/* Блок 2: Формулы расчёта максимального пульса */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
+              <Calculator className="size-5" />
               Формулы расчёта максимального пульса
             </h2>
             <p>
@@ -363,7 +363,7 @@ export default function HeartRateCalculatorPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-primary/5 text-foreground p-3">
-              <Calculator className="h-5 w-5 shrink-0 text-blue-500 mt-0.5" />
+              <Calculator className="size-5 shrink-0 text-blue-500 mt-0.5" />
               <p>Наш калькулятор по умолчанию использует формулу Танака как наиболее точную. Вы можете сравнить результаты всех трёх формул в блоке «Сравнение формул» калькулятора.</p>
             </div>
           </div>
@@ -373,7 +373,7 @@ export default function HeartRateCalculatorPage() {
           {/* Блок 3: Метод Карвонена */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Puzzle className="h-5 w-5" />
+              <Puzzle className="size-5" />
               Метод Карвонена
             </h2>
             <p>
@@ -398,7 +398,7 @@ export default function HeartRateCalculatorPage() {
           {/* Блок 4: Пять пульсовых зон */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Activity className="h-5 w-5" />
+              <Activity className="size-5" />
               Пять пульсовых зон
             </h2>
             <p>
@@ -408,7 +408,7 @@ export default function HeartRateCalculatorPage() {
             <div className="space-y-3">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-400 text-[10px] font-bold text-white">1</span>
+                  <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-blue-400 text-[10px] font-bold text-white">1</span>
                   Восстановление (50–60% ЧСС резерва)
                 </h3>
                 <p>Лёгкая нагрузка для разминки, заминки и активного восстановления между тяжёлыми тренировками. В этой зоне организм использует жиры как основной источник энергии. Можно свободно разговаривать.</p>
@@ -416,7 +416,7 @@ export default function HeartRateCalculatorPage() {
 
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-400 text-[10px] font-bold text-white">2</span>
+                  <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-green-400 text-[10px] font-bold text-white">2</span>
                   Жиросжигание (60–70% ЧСС резерва)
                 </h3>
                 <p>Оптимальная зона для длительных тренировок и похудения. Организм эффективно сжигает жиры, при этом нагрузка комфортна для тренировок продолжительностью 40–90 минут. Вы можете говорить полными предложениями. Подходит для начинающих и тех, кто следит за{' '}
@@ -428,7 +428,7 @@ export default function HeartRateCalculatorPage() {
 
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-yellow-400 text-[10px] font-bold text-white">3</span>
+                  <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-yellow-400 text-[10px] font-bold text-white">3</span>
                   Аэробная (70–80% ЧСС резерва)
                 </h3>
                 <p>Основная зона для развития кардиовыносливости. Сердце становится сильнее, улучшается транспорт кислорода к мышцам. Тренировки длятся 20–60 минут. Говорить можно только короткими фразами.</p>
@@ -436,7 +436,7 @@ export default function HeartRateCalculatorPage() {
 
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-orange-400 text-[10px] font-bold text-white">4</span>
+                  <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-orange-400 text-[10px] font-bold text-white">4</span>
                   Анаэробная (80–90% ЧСС резерва)
                 </h3>
                 <p>Высокая интенсивность, при которой организм переходит на анаэробный режим. Развивает скоростную выносливость и повышает лактатный порог. Тренировки — интервалами по 2–10 минут с отдыхом. Говорить практически невозможно.</p>
@@ -444,7 +444,7 @@ export default function HeartRateCalculatorPage() {
 
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-400 text-[10px] font-bold text-white">5</span>
+                  <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-red-400 text-[10px] font-bold text-white">5</span>
                   Максимальная (90–100% ЧСС резерва)
                 </h3>
                 <p>Предельная нагрузка для коротких спринтов и финишных рывков. Допустима только интервалами по 15–60 секунд. Используется опытными спортсменами не чаще 1–2 раз в неделю. Требует полного восстановления между подходами.</p>
@@ -457,7 +457,7 @@ export default function HeartRateCalculatorPage() {
           {/* Блок 5: Таблица пульсовых зон по возрасту */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               Таблица пульсовых зон по возрасту
             </h2>
             <p>
@@ -546,7 +546,7 @@ export default function HeartRateCalculatorPage() {
           {/* Блок 6: Как измерить пульс покоя */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Heart className="h-5 w-5" />
+              <Heart className="size-5" />
               Как измерить пульс покоя
             </h2>
             <p>
@@ -554,7 +554,7 @@ export default function HeartRateCalculatorPage() {
             </p>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -563,7 +563,7 @@ export default function HeartRateCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -572,7 +572,7 @@ export default function HeartRateCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -581,7 +581,7 @@ export default function HeartRateCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -591,7 +591,7 @@ export default function HeartRateCalculatorPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-primary/5 text-foreground p-3">
-              <Heart className="h-5 w-5 shrink-0 text-red-500 mt-0.5" />
+              <Heart className="size-5 shrink-0 text-red-500 mt-0.5" />
               <p>Нормальный пульс покоя для взрослого — <strong className="text-foreground">60–80 уд/мин</strong>. У тренированных спортсменов — <strong className="text-foreground">40–55 уд/мин</strong>. Пульс покоя выше <strong className="text-foreground">100 уд/мин</strong> (тахикардия) — повод обратиться к врачу.</p>
             </div>
           </div>
@@ -601,7 +601,7 @@ export default function HeartRateCalculatorPage() {
           {/* Блок 7: Примеры расчёта */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               Примеры расчёта
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
@@ -638,12 +638,12 @@ export default function HeartRateCalculatorPage() {
           {/* Блок 8: Практические советы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Практические советы
             </h2>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -652,7 +652,7 @@ export default function HeartRateCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -661,7 +661,7 @@ export default function HeartRateCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -670,7 +670,7 @@ export default function HeartRateCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -689,7 +689,7 @@ export default function HeartRateCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   5
                 </span>
                 <div>
@@ -699,7 +699,7 @@ export default function HeartRateCalculatorPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <AlertTriangle className="size-5 shrink-0 text-amber-400" />
               <p>Перед началом интенсивных тренировок проконсультируйтесь с врачом, особенно если у вас есть заболевания сердечно-сосудистой системы или вы старше 45 лет.</p>
             </div>
             <p className="text-sm">
@@ -714,7 +714,7 @@ export default function HeartRateCalculatorPage() {
           {/* Блок 9: FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -788,7 +788,7 @@ export default function HeartRateCalculatorPage() {
           {/* Блок 10: Связанные калькуляторы */}
           <nav className="space-y-3" aria-label="Связанные калькуляторы">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -796,42 +796,42 @@ export default function HeartRateCalculatorPage() {
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-4 w-4 text-muted-foreground" />
+                <Flame className="size-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/telo/idealnyj-ves"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Target className="h-4 w-4 text-muted-foreground" />
+                <Target className="size-4 text-muted-foreground" />
                 Идеальный вес
               </Link>
               <Link
                 href="/zdorovye/telo/bazovyj-metabolizm"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Activity className="h-4 w-4 text-muted-foreground" />
+                <Activity className="size-4 text-muted-foreground" />
                 Базовый метаболизм
               </Link>
               <Link
                 href="/zdorovye/pitanie/defitsit-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <TrendingDown className="h-4 w-4 text-muted-foreground" />
+                <TrendingDown className="size-4 text-muted-foreground" />
                 Дефицит калорий
               </Link>
               <Link
                 href="/zdorovye/sport/belok-dlya-sportsmenov"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Dumbbell className="h-4 w-4 text-muted-foreground" />
+                <Dumbbell className="size-4 text-muted-foreground" />
                 Белок для спортсменов
               </Link>
             </div>

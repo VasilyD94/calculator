@@ -216,10 +216,10 @@ export default function OvulationPage() {
         <Breadcrumbs items={breadcrumbs} />
 
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
             Калькулятор овуляции
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Рассчитайте дату овуляции и фертильное окно для планирования
             беременности. Мгновенный результат по дате последних месячных
             и длине цикла.
@@ -229,24 +229,24 @@ export default function OvulationPage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>Введите первый день ваших последних месячных.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>Укажите среднюю длину цикла (21–45 дней) и длительность менструации.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>Получите дату овуляции, фертильное окно и текущую фазу цикла.</p>
@@ -263,7 +263,7 @@ export default function OvulationPage() {
         {/* Вам также будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
@@ -271,7 +271,7 @@ export default function OvulationPage() {
               href="/zdorovye/beremennost/data-rodov"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <CalendarDays className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <CalendarDays className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Дата родов
               </span>
@@ -280,7 +280,7 @@ export default function OvulationPage() {
               href="/zdorovye/beremennost/srok-beremennosti"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Baby className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Baby className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Срок беременности
               </span>
@@ -289,7 +289,7 @@ export default function OvulationPage() {
               href="/zdorovye/telo/kalkulyator-imt"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Scale className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор ИМТ
               </span>
@@ -298,7 +298,7 @@ export default function OvulationPage() {
               href="/zdorovye/pitanie/kalkulyator-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Flame className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор калорий
               </span>
@@ -312,7 +312,7 @@ export default function OvulationPage() {
           {/* Блок 1 — Что такое овуляция */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Что такое овуляция
             </h2>
             <p>
@@ -346,7 +346,7 @@ export default function OvulationPage() {
           {/* Блок 2 — Фертильное окно */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Heart className="h-5 w-5" />
+              <Heart className="size-5" />
               Фертильное окно и вероятность зачатия
             </h2>
             <p>
@@ -408,7 +408,7 @@ export default function OvulationPage() {
               </div>
             </div>
             <p className="text-sm rounded-md bg-primary/5 text-foreground p-3 flex gap-2">
-              <Heart className="h-5 w-5 text-pink-500 shrink-0 mt-0.5" />
+              <Heart className="size-5 text-pink-500 shrink-0 mt-0.5" />
               <span>Наибольшие шансы на зачатие — при половом акте за <strong className="text-foreground">1–2 дня до овуляции</strong>. Именно в эти дни сперматозоиды успевают достичь маточной трубы к моменту выхода яйцеклетки.</span>
             </p>
             <p className="text-sm">
@@ -423,7 +423,7 @@ export default function OvulationPage() {
           {/* Блок 3 — Методы определения */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
+              <Calculator className="size-5" />
               Как определить овуляцию
             </h2>
             <p>
@@ -433,7 +433,7 @@ export default function OvulationPage() {
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <CalendarDays className="h-5 w-5 text-violet-400" />
+                  <CalendarDays className="size-5 text-violet-400" />
                   Календарный метод
                 </h3>
                 <p>
@@ -444,7 +444,7 @@ export default function OvulationPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <FlaskConical className="h-5 w-5 text-pink-400" />
+                  <FlaskConical className="size-5 text-pink-400" />
                   Тесты на овуляцию
                 </h3>
                 <p>
@@ -455,7 +455,7 @@ export default function OvulationPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Thermometer className="h-5 w-5 text-orange-400" />
+                  <Thermometer className="size-5 text-orange-400" />
                   Базальная температура
                 </h3>
                 <p>
@@ -465,7 +465,7 @@ export default function OvulationPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <ScanSearch className="h-5 w-5 text-blue-400" />
+                  <ScanSearch className="size-5 text-blue-400" />
                   Фолликулометрия (УЗИ)
                 </h3>
                 <p>
@@ -481,7 +481,7 @@ export default function OvulationPage() {
           {/* Блок 4 — Фазы менструального цикла */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Puzzle className="h-5 w-5" />
+              <Puzzle className="size-5" />
               Фазы менструального цикла
             </h2>
             <p>
@@ -490,7 +490,7 @@ export default function OvulationPage() {
             </p>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -502,7 +502,7 @@ export default function OvulationPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -514,7 +514,7 @@ export default function OvulationPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -526,7 +526,7 @@ export default function OvulationPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -550,7 +550,7 @@ export default function OvulationPage() {
           {/* Блок 5 — Таблица: длина цикла и день овуляции */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               День овуляции при разной длине цикла
             </h2>
             <p>
@@ -624,7 +624,7 @@ export default function OvulationPage() {
           {/* Блок 6 — Признаки овуляции */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Stethoscope className="h-5 w-5" />
+              <Stethoscope className="size-5" />
               Признаки овуляции
             </h2>
             <p>
@@ -634,7 +634,7 @@ export default function OvulationPage() {
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Thermometer className="h-5 w-5 text-orange-400" />
+                  <Thermometer className="size-5 text-orange-400" />
                   Базальная температура
                 </h3>
                 <p>
@@ -644,7 +644,7 @@ export default function OvulationPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <FlaskConical className="h-5 w-5 text-violet-400" />
+                  <FlaskConical className="size-5 text-violet-400" />
                   Цервикальная слизь
                 </h3>
                 <p>
@@ -654,7 +654,7 @@ export default function OvulationPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Heart className="h-5 w-5 text-pink-400" />
+                  <Heart className="size-5 text-pink-400" />
                   Овуляторный синдром
                 </h3>
                 <p>
@@ -664,7 +664,7 @@ export default function OvulationPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Stethoscope className="h-5 w-5 text-blue-400" />
+                  <Stethoscope className="size-5 text-blue-400" />
                   Другие признаки
                 </h3>
                 <p>
@@ -680,7 +680,7 @@ export default function OvulationPage() {
           {/* Блок 7 — Факторы, влияющие на овуляцию */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Puzzle className="h-5 w-5" />
+              <Puzzle className="size-5" />
               Что влияет на сроки овуляции
             </h2>
             <p>
@@ -711,7 +711,7 @@ export default function OvulationPage() {
               </li>
             </ul>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <AlertTriangle className="size-5 shrink-0 text-amber-400" />
               <p>При нерегулярном цикле (разброс более <strong className="text-foreground">7 дней</strong>) календарный метод ненадёжен. Используйте тесты на овуляцию или обратитесь к гинекологу.</p>
             </div>
           </div>
@@ -721,7 +721,7 @@ export default function OvulationPage() {
           {/* Блок 8 — Примеры расчёта */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               Примеры расчёта овуляции
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
@@ -756,12 +756,12 @@ export default function OvulationPage() {
           {/* Блок 9 — Практические советы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Практические советы при планировании
             </h2>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -770,7 +770,7 @@ export default function OvulationPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -779,7 +779,7 @@ export default function OvulationPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -788,7 +788,7 @@ export default function OvulationPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -801,7 +801,7 @@ export default function OvulationPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   5
                 </span>
                 <div>
@@ -811,7 +811,7 @@ export default function OvulationPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <AlertTriangle className="size-5 shrink-0 text-amber-400" />
               <p>Калькулятор овуляции — вспомогательный инструмент. Он не заменяет консультацию гинеколога и не является методом контрацепции.</p>
             </div>
           </div>
@@ -821,7 +821,7 @@ export default function OvulationPage() {
           {/* FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -906,7 +906,7 @@ export default function OvulationPage() {
           {/* Связанные калькуляторы */}
           <nav className="space-y-3" aria-label="Связанные калькуляторы">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -914,35 +914,35 @@ export default function OvulationPage() {
                 href="/zdorovye/beremennost/data-rodov"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <CalendarDays className="h-4 w-4 text-muted-foreground" />
+                <CalendarDays className="size-4 text-muted-foreground" />
                 Дата родов
               </Link>
               <Link
                 href="/zdorovye/beremennost/srok-beremennosti"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Baby className="h-4 w-4 text-muted-foreground" />
+                <Baby className="size-4 text-muted-foreground" />
                 Срок беременности
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-4 w-4 text-muted-foreground" />
+                <Flame className="size-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/telo/idealnyj-ves"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Идеальный вес
               </Link>
             </div>

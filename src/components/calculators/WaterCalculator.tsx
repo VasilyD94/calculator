@@ -59,7 +59,7 @@ export function WaterCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <SlidersHorizontal className="h-5 w-5" />
+              <SlidersHorizontal className="size-5" />
               Ваши параметры
             </CardTitle>
           </CardHeader>
@@ -83,7 +83,7 @@ export function WaterCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Ваши параметры
           </CardTitle>
         </CardHeader>
@@ -97,7 +97,7 @@ export function WaterCalculator() {
             min={30}
             max={200}
             unit="кг"
-            icon={<Weight className="h-5 w-5" />}
+            icon={<Weight className="size-5" />}
           />
 
           <ActivitySelector value={activity} onChange={(v) => setParam('activity', v)} />
@@ -105,7 +105,7 @@ export function WaterCalculator() {
           {/* Климат */}
           <div className="space-y-1">
             <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-              <ThermometerSun className="h-5 w-5" />
+              <ThermometerSun className="size-5" />
               Климат
             </span>
             <div className="flex gap-1 p-1 bg-muted rounded-xl">
@@ -119,7 +119,7 @@ export function WaterCalculator() {
                     : 'text-muted-foreground hover:text-foreground'
                 )}
               >
-                <CloudSun className="h-4 w-4 text-sky-400" />
+                <CloudSun className="size-4 text-sky-400" />
                 Обычный
               </button>
               <button
@@ -132,7 +132,7 @@ export function WaterCalculator() {
                     : 'text-muted-foreground hover:text-foreground'
                 )}
               >
-                <Flame className="h-4 w-4 text-orange-400" />
+                <Flame className="size-4 text-orange-400" />
                 <span className="sm:hidden">Жаркий</span>
                 <span className="hidden sm:inline">Жаркий (&gt;30°C)</span>
               </button>
@@ -143,7 +143,7 @@ export function WaterCalculator() {
           {gender === 'female' && (
             <div className="space-y-1">
               <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                <Baby className="h-5 w-5" />
+                <Baby className="size-5" />
                 Особенности
               </span>
               <div className="flex gap-1 p-1 bg-muted rounded-xl">
@@ -165,7 +165,7 @@ export function WaterCalculator() {
                           : 'text-muted-foreground hover:text-foreground'
                       )}
                     >
-                      {Icon && <Icon className={cn('h-4 w-4', opt.color)} />}
+                      {Icon && <Icon className={cn('size-4', opt.color)} />}
                       <span className="sm:hidden">{opt.shortLabel}</span>
                       <span className="hidden sm:inline">{opt.label}</span>
                     </button>
@@ -183,7 +183,7 @@ export function WaterCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Droplets className="h-5 w-5" />
+              <Droplets className="size-5" />
               Ваша норма воды
             </CardTitle>
           </CardHeader>
@@ -237,7 +237,7 @@ export function WaterCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Clock className="h-5 w-5" />
+              <Clock className="size-5" />
               Расписание на день
             </CardTitle>
           </CardHeader>
@@ -249,7 +249,7 @@ export function WaterCalculator() {
                 return (
                   <div key={item.period} className="rounded-lg border p-3 space-y-2">
                     <div className="flex items-center gap-2">
-                      <Icon className={cn('h-5 w-5', meta.color)} />
+                      <Icon className={cn('size-5', meta.color)} />
                       <div className="min-w-0">
                         <span className="text-sm font-medium">{item.period}</span>
                         <span className="block text-xs text-muted-foreground">{item.time}</span>
@@ -272,13 +272,13 @@ export function WaterCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <AlertTriangle className="h-5 w-5 text-amber-400" />
+              <AlertTriangle className="size-5 text-amber-400" />
               <AlertTitle>Признаки обезвоживания</AlertTitle>
               <AlertDescription>
                 Тёмная моча, сухость во рту, головная боль, усталость, головокружение. Если заметили
@@ -286,7 +286,7 @@ export function WaterCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Sun className="h-5 w-5 text-yellow-400" />
+              <Sun className="size-5 text-yellow-400" />
               <AlertTitle>Когда нужно пить больше</AlertTitle>
               <AlertDescription>
                 В жаркую погоду, при интенсивных тренировках, при болезни с температурой, после
@@ -294,7 +294,7 @@ export function WaterCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Droplets className="h-5 w-5 text-sky-400" />
+              <Droplets className="size-5 text-sky-400" />
               <AlertTitle>Что считается</AlertTitle>
               <AlertDescription>
                 В норму входит не только чистая вода, но и чай, морс, суп, сочные фрукты и овощи.

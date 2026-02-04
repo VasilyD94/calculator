@@ -58,7 +58,7 @@ export function BloodPressureCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Ваши параметры
           </CardTitle>
         </CardHeader>
@@ -70,10 +70,10 @@ export function BloodPressureCalculator() {
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <Label className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
+                <Calendar className="size-4" />
                 Возраст
               </Label>
-              <span className="text-xl font-bold">{age} лет</span>
+              <span className="text-xl font-bold tabular-nums">{age} лет</span>
             </div>
             <Slider
               value={[age]}
@@ -90,7 +90,7 @@ export function BloodPressureCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Activity className="h-5 w-5" />
+            <Activity className="size-5" />
             Ваше давление
           </CardTitle>
         </CardHeader>
@@ -99,10 +99,10 @@ export function BloodPressureCalculator() {
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <Label className="flex items-center gap-2">
-                <TrendingUp className="h-4 w-4 text-red-400" />
+                <TrendingUp className="size-4 text-red-400" />
                 Систолическое (верхнее)
               </Label>
-              <span className="text-xl font-bold">{systolic} мм рт.ст.</span>
+              <span className="text-xl font-bold tabular-nums">{systolic} мм рт.ст.</span>
             </div>
             <Slider
               value={[systolic]}
@@ -117,10 +117,10 @@ export function BloodPressureCalculator() {
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <Label className="flex items-center gap-2">
-                <TrendingDown className="h-4 w-4 text-blue-400" />
+                <TrendingDown className="size-4 text-blue-400" />
                 Диастолическое (нижнее)
               </Label>
-              <span className="text-xl font-bold">{diastolic} мм рт.ст.</span>
+              <span className="text-xl font-bold tabular-nums">{diastolic} мм рт.ст.</span>
             </div>
             <Slider
               value={[diastolic]}
@@ -157,7 +157,7 @@ export function BloodPressureCalculator() {
       {/* Критическое предупреждение */}
       {showCriticalWarning && (
         <Alert variant="destructive">
-          <AlertTriangle className="h-5 w-5" />
+          <AlertTriangle className="size-5" />
           <AlertDescription>
             <strong>Внимание!</strong> Ваши показатели давления критические.
             Немедленно обратитесь к врачу или вызовите скорую помощь.
@@ -168,7 +168,7 @@ export function BloodPressureCalculator() {
       {/* Норма для возраста */}
       <div className="grid grid-cols-2 gap-3">
         <div className="rounded-lg border bg-muted/50 p-3 text-center">
-          <TrendingUp className="h-5 w-5 mx-auto mb-1 text-red-400" />
+          <TrendingUp className="size-5 mx-auto mb-1 text-red-400" />
           <p className="text-xs text-muted-foreground mb-1">Норма систолического</p>
           <p className="text-lg font-bold">
             {result.norm.systolic.min}–{result.norm.systolic.max}
@@ -176,7 +176,7 @@ export function BloodPressureCalculator() {
           <p className="text-xs text-muted-foreground">мм рт.ст.</p>
         </div>
         <div className="rounded-lg border bg-muted/50 p-3 text-center">
-          <TrendingDown className="h-5 w-5 mx-auto mb-1 text-blue-400" />
+          <TrendingDown className="size-5 mx-auto mb-1 text-blue-400" />
           <p className="text-xs text-muted-foreground mb-1">Норма диастолического</p>
           <p className="text-lg font-bold">
             {result.norm.diastolic.min}–{result.norm.diastolic.max}
@@ -189,7 +189,7 @@ export function BloodPressureCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Heart className="h-5 w-5" />
+            <Heart className="size-5" />
             Классификация давления
           </CardTitle>
         </CardHeader>
@@ -219,27 +219,27 @@ export function BloodPressureCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Info className="h-5 w-5" />
+            <Info className="size-5" />
             Важно знать
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3 text-sm text-muted-foreground">
           <div className="flex gap-2">
-            <Heart className="h-4 w-4 mt-0.5 text-red-400 shrink-0" />
+            <Heart className="size-4 mt-0.5 text-red-400 shrink-0" />
             <p>
               <strong className="text-foreground">Систолическое давление</strong> (верхнее) —
               давление крови в момент сокращения сердца.
             </p>
           </div>
           <div className="flex gap-2">
-            <Heart className="h-4 w-4 mt-0.5 text-blue-400 shrink-0" />
+            <Heart className="size-4 mt-0.5 text-blue-400 shrink-0" />
             <p>
               <strong className="text-foreground">Диастолическое давление</strong> (нижнее) —
               давление крови в момент расслабления сердца.
             </p>
           </div>
           <div className="flex gap-2">
-            <Activity className="h-4 w-4 mt-0.5 text-amber-400 shrink-0" />
+            <Activity className="size-4 mt-0.5 text-amber-400 shrink-0" />
             <p>
               Измеряйте давление в спокойном состоянии, сидя, после 5 минут отдыха.
               Для точности сделайте 2-3 измерения с интервалом в 1-2 минуты.

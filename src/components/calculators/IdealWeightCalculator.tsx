@@ -32,7 +32,7 @@ export function IdealWeightCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <SlidersHorizontal className="h-5 w-5" />
+              <SlidersHorizontal className="size-5" />
               Ваши параметры
             </CardTitle>
           </CardHeader>
@@ -56,7 +56,7 @@ export function IdealWeightCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Ваши параметры
           </CardTitle>
         </CardHeader>
@@ -70,7 +70,7 @@ export function IdealWeightCalculator() {
             min={140}
             max={220}
             unit="см"
-            icon={<Ruler className="h-5 w-5" />}
+            icon={<Ruler className="size-5" />}
           />
 
           <ValueSlider
@@ -80,7 +80,7 @@ export function IdealWeightCalculator() {
             min={30}
             max={200}
             unit="кг"
-            icon={<Weight className="h-5 w-5" />}
+            icon={<Weight className="size-5" />}
           />
         </CardContent>
       </Card>
@@ -91,7 +91,7 @@ export function IdealWeightCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Target className="h-5 w-5" />
+              <Target className="size-5" />
               Ваш идеальный вес
             </CardTitle>
           </CardHeader>
@@ -140,13 +140,13 @@ export function IdealWeightCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <Info className="h-5 w-5 text-sky-400" />
+              <Info className="size-5 text-sky-400" />
               <AlertTitle>Формулы — ориентир</AlertTitle>
               <AlertDescription>
                 Формулы идеального веса разработаны десятилетия назад и не учитывают
@@ -155,7 +155,7 @@ export function IdealWeightCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <AlertTriangle className="h-5 w-5 text-amber-400" />
+              <AlertTriangle className="size-5 text-amber-400" />
               <AlertTitle>Не только вес</AlertTitle>
               <AlertDescription>
                 Здоровье определяется не только весом. Обхват талии, процент жира

@@ -213,10 +213,10 @@ export default function WaterCalculatorPage() {
         <Breadcrumbs items={breadcrumbs} />
 
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
             Сколько воды пить в день — онлайн расчёт
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Рассчитайте индивидуальную суточную норму воды с учётом вашего веса,
             активности, климата и особенностей организма. Результат обновляется
             мгновенно.
@@ -226,24 +226,24 @@ export default function WaterCalculatorPage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>Выберите пол, укажите вес и уровень физической активности.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>Отметьте жаркий климат, если температура выше 30°C. Для женщин доступны опции беременности и кормления грудью.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>Калькулятор покажет норму в мл и стаканах, разбивку по факторам и расписание приёма воды на весь день.</p>
@@ -260,7 +260,7 @@ export default function WaterCalculatorPage() {
         {/* Вам также будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
@@ -268,7 +268,7 @@ export default function WaterCalculatorPage() {
               href="/zdorovye/pitanie/kalkulyator-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Flame className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор калорий
               </span>
@@ -277,7 +277,7 @@ export default function WaterCalculatorPage() {
               href="/zdorovye/pitanie/kalkulyator-bzhu"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Scale className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор БЖУ
               </span>
@@ -286,7 +286,7 @@ export default function WaterCalculatorPage() {
               href="/zdorovye/telo/kalkulyator-imt"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Activity className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Activity className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор ИМТ
               </span>
@@ -295,7 +295,7 @@ export default function WaterCalculatorPage() {
               href="/zdorovye/telo/bazovyj-metabolizm"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Dumbbell className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Dumbbell className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Базовый метаболизм
               </span>
@@ -308,7 +308,7 @@ export default function WaterCalculatorPage() {
           {/* Блок 1 — Зачем пить воду */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Droplets className="h-5 w-5" />
+              <Droplets className="size-5" />
               Зачем пить воду и почему это важно
             </h2>
             <p>
@@ -344,7 +344,7 @@ export default function WaterCalculatorPage() {
           {/* Блок 2 — Как рассчитывается */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
+              <Calculator className="size-5" />
               Как рассчитывается норма воды
             </h2>
             <p>
@@ -390,27 +390,27 @@ export default function WaterCalculatorPage() {
           {/* Блок 3 — Роль воды в организме */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Heart className="h-5 w-5" />
+              <Heart className="size-5" />
               Роль воды в организме
             </h2>
             <div className="grid gap-3 md:grid-cols-3">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Brain className="h-5 w-5 text-purple-400" />
+                  <Brain className="size-5 text-purple-400" />
                   Мозг и нервы
                 </h3>
                 <p>Мозг на 75% состоит из воды. Обезвоживание снижает концентрацию, память и скорость реакции.</p>
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Heart className="h-5 w-5 text-rose-400" />
+                  <Heart className="size-5 text-rose-400" />
                   Сердце и сосуды
                 </h3>
                 <p>Вода поддерживает объём крови и нормальное артериальное давление. При дефиците кровь сгущается.</p>
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Activity className="h-5 w-5 text-green-400" />
+                  <Activity className="size-5 text-green-400" />
                   Обмен веществ
                 </h3>
                 <p>Вода участвует в расщеплении жиров и углеводов. Недостаток замедляет{' '}
@@ -427,7 +427,7 @@ export default function WaterCalculatorPage() {
           {/* Блок 4 — Признаки обезвоживания */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5" />
+              <AlertTriangle className="size-5" />
               Признаки обезвоживания
             </h2>
             <p>
@@ -462,7 +462,7 @@ export default function WaterCalculatorPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <AlertTriangle className="size-5 shrink-0 text-amber-400" />
               <p>При серьёзных признаках обезвоживания обратитесь к врачу. Не пытайтесь восполнить потерю жидкости резко — пейте маленькими порциями.</p>
             </div>
           </div>
@@ -472,12 +472,12 @@ export default function WaterCalculatorPage() {
           {/* Блок 5 — Когда нужно пить больше */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ThermometerSun className="h-5 w-5" />
+              <ThermometerSun className="size-5" />
               Когда нужно пить больше воды
             </h2>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -487,7 +487,7 @@ export default function WaterCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -497,7 +497,7 @@ export default function WaterCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -507,7 +507,7 @@ export default function WaterCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -517,7 +517,7 @@ export default function WaterCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   5
                 </span>
                 <div>
@@ -534,7 +534,7 @@ export default function WaterCalculatorPage() {
           {/* Блок 6 — Мифы о воде */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ShieldCheck className="h-5 w-5" />
+              <ShieldCheck className="size-5" />
               Мифы о воде
             </h2>
             <div className="grid gap-3 md:grid-cols-1">
@@ -578,7 +578,7 @@ export default function WaterCalculatorPage() {
           {/* Блок 7 — Таблица норм */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               Таблица примерных норм воды
             </h2>
             <p>
@@ -643,12 +643,12 @@ export default function WaterCalculatorPage() {
           {/* Блок 8 — Советы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Как приучить себя пить достаточно воды
             </h2>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -658,7 +658,7 @@ export default function WaterCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -668,7 +668,7 @@ export default function WaterCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -682,7 +682,7 @@ export default function WaterCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -692,7 +692,7 @@ export default function WaterCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   5
                 </span>
                 <div>
@@ -702,7 +702,7 @@ export default function WaterCalculatorPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <Lightbulb className="h-5 w-5 shrink-0 text-blue-400" />
+              <Lightbulb className="size-5 shrink-0 text-blue-400" />
               <p>Водный баланс влияет на{' '}
                 <Link href="/zdorovye/pitanie/kalkulyator-bzhu" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
                   усвоение белков, жиров и углеводов
@@ -716,7 +716,7 @@ export default function WaterCalculatorPage() {
           {/* FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -793,7 +793,7 @@ export default function WaterCalculatorPage() {
           {/* Связанные калькуляторы */}
           <nav className="space-y-3" aria-label="Связанные калькуляторы">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -801,35 +801,35 @@ export default function WaterCalculatorPage() {
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-4 w-4 text-muted-foreground" />
+                <Flame className="size-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/pitanie/kalkulyator-bzhu"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Калькулятор БЖУ
               </Link>
               <Link
                 href="/zdorovye/pitanie/defitsit-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <GlassWater className="h-4 w-4 text-muted-foreground" />
+                <GlassWater className="size-4 text-muted-foreground" />
                 Дефицит калорий
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Activity className="h-4 w-4 text-muted-foreground" />
+                <Activity className="size-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/telo/bazovyj-metabolizm"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Dumbbell className="h-4 w-4 text-muted-foreground" />
+                <Dumbbell className="size-4 text-muted-foreground" />
                 Базовый метаболизм
               </Link>
             </div>

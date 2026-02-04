@@ -59,10 +59,10 @@ export function MacroBreakdown({ protein, fat, carbs, proteinPerKg, fatPerKg, ca
           >
             <div className="flex justify-between items-center text-sm">
               <span className="flex items-center gap-1.5 text-muted-foreground">
-                <Icon className={`h-5 w-5 ${macro.iconColor}`} />
+                <Icon className={`size-5 ${macro.iconColor}`} />
                 {macro.name}
               </span>
-              <span>
+              <span className="tabular-nums">
                 <span className="font-semibold">{macro.value}</span><span className="font-normal text-muted-foreground ml-0.5">г</span>
                 <span className="text-muted-foreground ml-1">
                   ({macro.percent.toFixed(0)}%)

@@ -23,7 +23,7 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-xl">
-          <Calculator className="h-6 w-6 text-primary" />
+          <Calculator className="size-6 text-primary" />
           <span>CalcBox</span>
         </Link>
 
@@ -33,7 +33,7 @@ export function Header() {
             {NAV_SECTIONS.map((section) => (
               <NavigationMenuItem key={section.href}>
                 <NavigationMenuTrigger className="bg-transparent">
-                  <section.icon className="h-4 w-4 mr-1.5" />
+                  <section.icon className="size-4 mr-1.5" />
                   {section.title}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -46,7 +46,7 @@ export function Header() {
                             className="whitespace-nowrap flex items-center gap-2"
                           >
                             <span>{item.label}</span>
-                            {item.hot && <Flame className="h-3 w-3 shrink-0 text-foreground" />}
+                            {item.hot && <Flame className="size-3 shrink-0 text-foreground" />}
                           </Link>
                         </NavigationMenuLink>
                       </li>
@@ -66,7 +66,7 @@ export function Header() {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Меню"
         >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
         </Button>
       </div>
 
@@ -81,7 +81,7 @@ export function Header() {
           {NAV_SECTIONS.map((section) => (
             <div key={section.href}>
               <p className="flex items-center gap-1.5 text-sm font-semibold text-foreground mb-1">
-                <section.icon className="h-4 w-4 text-primary" />
+                <section.icon className="size-4 text-primary" />
                 {section.title}
               </p>
               <ul className="ml-5.5 space-y-0.5">
@@ -93,7 +93,7 @@ export function Header() {
                       className="flex items-center gap-2 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
                     >
                       <span>{item.label}</span>
-                      {item.hot && <Flame className="h-3 w-3 shrink-0 text-foreground" />}
+                      {item.hot && <Flame className="size-3 shrink-0 text-foreground" />}
                     </Link>
                   </li>
                 ))}

@@ -101,7 +101,7 @@ export function DeficitCalculator() {
         <Card>
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
-              <SlidersHorizontal className="h-5 w-5" />
+              <SlidersHorizontal className="size-5" />
               Ваши параметры
             </CardTitle>
           </CardHeader>
@@ -125,7 +125,7 @@ export function DeficitCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Ваши параметры
           </CardTitle>
         </CardHeader>
@@ -139,7 +139,7 @@ export function DeficitCalculator() {
             min={15}
             max={80}
             unit="лет"
-            icon={<Calendar className="h-5 w-5" />}
+            icon={<Calendar className="size-5" />}
           />
 
           <ValueSlider
@@ -149,7 +149,7 @@ export function DeficitCalculator() {
             min={140}
             max={220}
             unit="см"
-            icon={<Ruler className="h-5 w-5" />}
+            icon={<Ruler className="size-5" />}
           />
 
           <ValueSlider
@@ -162,7 +162,7 @@ export function DeficitCalculator() {
             min={30}
             max={200}
             unit="кг"
-            icon={<Weight className="h-5 w-5" />}
+            icon={<Weight className="size-5" />}
           />
 
           <ActivitySelector value={activity} onChange={(v) => setParam('activity', v)} />
@@ -171,7 +171,7 @@ export function DeficitCalculator() {
           <div className="space-y-1">
             <div className="flex justify-between items-center">
               <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                <Target className="h-5 w-5" />
+                <Target className="size-5" />
                 Целевой вес
               </span>
               <div className="text-right text-sm">
@@ -196,7 +196,7 @@ export function DeficitCalculator() {
           <div className="space-y-1">
             <div className="flex justify-between items-center">
               <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                <TrendingDown className="h-5 w-5" />
+                <TrendingDown className="size-5" />
                 Дефицит калорий
               </span>
               <div className="text-right text-sm">
@@ -221,7 +221,7 @@ export function DeficitCalculator() {
         {/* Главный результат */}
         <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
           <p className="text-sm text-muted-foreground mb-1">Калорий в день</p>
-          <p className="text-4xl font-bold text-primary">
+          <p className="text-4xl font-bold text-primary tabular-nums">
             {result.dailyCalories.toLocaleString('ru-RU')}
             <span className="text-lg font-normal text-muted-foreground ml-1">ккал</span>
           </p>
@@ -267,7 +267,7 @@ export function DeficitCalculator() {
           <div className="space-y-2">
             {risk.warnings.map((w, i) => (
               <Alert key={i} variant="destructive">
-                <AlertTriangle className="h-4 w-4" />
+                <AlertTriangle className="size-4" />
                 <AlertDescription>{w}</AlertDescription>
               </Alert>
             ))}
@@ -279,7 +279,7 @@ export function DeficitCalculator() {
           <Card className="gap-3 py-4">
             <CardHeader className="pb-0">
               <CardTitle className="text-base flex items-center gap-2">
-                <TrendingDown className="h-5 w-5" />
+                <TrendingDown className="size-5" />
                 Прогноз снижения веса
               </CardTitle>
             </CardHeader>
@@ -293,7 +293,7 @@ export function DeficitCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Clock className="h-5 w-5" />
+              <Clock className="size-5" />
               Сравнение сценариев
             </CardTitle>
           </CardHeader>
@@ -323,7 +323,7 @@ export function DeficitCalculator() {
                     )}
                   >
                     <div className="flex items-center justify-center gap-1.5 mb-1">
-                      <ScenarioIcon className={cn('h-4 w-4 shrink-0', iconColor)} />
+                      <ScenarioIcon className={cn('size-4 shrink-0', iconColor)} />
                       <span className={cn(
                         'text-sm',
                         active ? 'font-medium text-foreground' : 'text-muted-foreground'
@@ -346,7 +346,7 @@ export function DeficitCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <ShieldCheck className="h-5 w-5" />
+              <ShieldCheck className="size-5" />
               Оценка безопасности
             </CardTitle>
           </CardHeader>
@@ -356,11 +356,11 @@ export function DeficitCalculator() {
                 <p className="text-xs text-muted-foreground">Устойчивость</p>
                 <div className="flex items-center gap-2">
                   {risk.sustainability === 'easy' ? (
-                    <CircleCheck className="h-4 w-4 shrink-0 text-emerald-600" />
+                    <CircleCheck className="size-4 shrink-0 text-emerald-600" />
                   ) : risk.sustainability === 'moderate' ? (
-                    <AlertTriangle className="h-4 w-4 shrink-0 text-amber-500" />
+                    <AlertTriangle className="size-4 shrink-0 text-amber-500" />
                   ) : (
-                    <CircleAlert className="h-4 w-4 shrink-0 text-red-500" />
+                    <CircleAlert className="size-4 shrink-0 text-red-500" />
                   )}
                   <span className="text-sm font-medium">
                     {risk.sustainability === 'easy'
@@ -382,11 +382,11 @@ export function DeficitCalculator() {
                 <p className="text-xs text-muted-foreground">Риск потери мышц</p>
                 <div className="flex items-center gap-2">
                   {risk.muscleLossRisk === 'low' ? (
-                    <CircleCheck className="h-4 w-4 shrink-0 text-emerald-600" />
+                    <CircleCheck className="size-4 shrink-0 text-emerald-600" />
                   ) : risk.muscleLossRisk === 'moderate' ? (
-                    <AlertTriangle className="h-4 w-4 shrink-0 text-amber-500" />
+                    <AlertTriangle className="size-4 shrink-0 text-amber-500" />
                   ) : (
-                    <CircleAlert className="h-4 w-4 shrink-0 text-red-500" />
+                    <CircleAlert className="size-4 shrink-0 text-red-500" />
                   )}
                   <span className="text-sm font-medium">
                     {risk.muscleLossRisk === 'low'
@@ -412,7 +412,7 @@ export function DeficitCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Percent className="h-5 w-5" />
+              <Percent className="size-5" />
               БЖУ при дефиците
             </CardTitle>
           </CardHeader>
@@ -433,13 +433,13 @@ export function DeficitCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <Info className="h-5 w-5 text-sky-400" />
+              <Info className="size-5 text-sky-400" />
               <AlertTitle>Плато при похудении</AlertTitle>
               <AlertDescription>
                 Через 2–3 недели дефицита вес может перестать снижаться — это
@@ -448,7 +448,7 @@ export function DeficitCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <AlertTriangle className="h-5 w-5 text-amber-400" />
+              <AlertTriangle className="size-5 text-amber-400" />
               <AlertTitle>Безопасный темп</AlertTitle>
               <AlertDescription>
                 Потеря более 1 кг в неделю повышает риск потери мышечной массы,

@@ -215,10 +215,10 @@ export default function CalorieCalculatorPage() {
         <Breadcrumbs items={breadcrumbs} />
 
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
             Калькулятор калорий онлайн
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Рассчитайте суточную норму калорий по 5 научным формулам.
             Результат обновляется мгновенно при изменении параметров.
           </p>
@@ -227,12 +227,12 @@ export default function CalorieCalculatorPage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>
@@ -241,7 +241,7 @@ export default function CalorieCalculatorPage() {
               </p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>
@@ -249,7 +249,7 @@ export default function CalorieCalculatorPage() {
               </p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>
@@ -269,7 +269,7 @@ export default function CalorieCalculatorPage() {
         {/* Вам будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
@@ -277,28 +277,28 @@ export default function CalorieCalculatorPage() {
               href="/zdorovye/pitanie/kalkulyator-bzhu"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <PieChart className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <PieChart className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор БЖУ</span>
             </Link>
             <Link
               href="/zdorovye/pitanie/defitsit-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <TrendingDown className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <TrendingDown className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Дефицит калорий</span>
             </Link>
             <Link
               href="/zdorovye/telo/kalkulyator-imt"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Scale className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор ИМТ</span>
             </Link>
             <Link
               href="/zdorovye/pitanie/norma-vody"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <GlassWater className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <GlassWater className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Норма воды</span>
             </Link>
           </div>
@@ -309,7 +309,7 @@ export default function CalorieCalculatorPage() {
           {/* Блок 1 */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Что такое калории и зачем их считать
             </h2>
             <p>
@@ -331,7 +331,7 @@ export default function CalorieCalculatorPage() {
           {/* Блок 2 */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
+              <Calculator className="size-5" />
               Какие формулы использует калькулятор
             </h2>
             <p>
@@ -368,7 +368,7 @@ export default function CalorieCalculatorPage() {
           {/* Блок 3 */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Flame className="h-5 w-5" />
+              <Flame className="size-5" />
               Что такое BMR и TDEE
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
@@ -400,7 +400,7 @@ export default function CalorieCalculatorPage() {
           {/* Блок 5 */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Target className="h-5 w-5" />
+              <Target className="size-5" />
               Калории для похудения и набора массы
             </h2>
             <div className="grid gap-4 md:grid-cols-2">
@@ -413,7 +413,7 @@ export default function CalorieCalculatorPage() {
                   терять <strong className="text-foreground">0,5–1</strong> кг в неделю без вреда для здоровья.
                 </p>
                 <div className="flex gap-2 items-start">
-                  <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+                  <AlertTriangle className="size-5 shrink-0 text-amber-400" />
                   <p>
                     Не опускайтесь ниже{' '}
                     <strong className="text-foreground">1200</strong> ккал для женщин и{' '}
@@ -430,7 +430,7 @@ export default function CalorieCalculatorPage() {
                   вы набираете преимущественно мышечную массу, а не жир.
                 </p>
                 <div className="flex gap-2 items-start">
-                  <Lightbulb className="h-5 w-5 shrink-0 text-blue-400" />
+                  <Lightbulb className="size-5 shrink-0 text-blue-400" />
                   <p>
                     Рекомендуется{' '}
                     <strong className="text-foreground">1,6–2</strong> г белка на кг веса в день для
@@ -451,7 +451,7 @@ export default function CalorieCalculatorPage() {
           {/* Блок 6 */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Puzzle className="h-5 w-5" />
+              <Puzzle className="size-5" />
               Роль белков, жиров и углеводов
             </h2>
             <p>
@@ -461,7 +461,7 @@ export default function CalorieCalculatorPage() {
             <div className="grid gap-3 md:grid-cols-3">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Beef className="h-5 w-5 text-rose-300" />
+                  <Beef className="size-5 text-rose-300" />
                   Белки
                 </h3>
                 <p>
@@ -471,7 +471,7 @@ export default function CalorieCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Droplets className="h-5 w-5 text-amber-300" />
+                  <Droplets className="size-5 text-amber-300" />
                   Жиры
                 </h3>
                 <p>
@@ -481,7 +481,7 @@ export default function CalorieCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Wheat className="h-5 w-5 text-orange-300" />
+                  <Wheat className="size-5 text-orange-300" />
                   Углеводы
                 </h3>
                 <p>
@@ -497,7 +497,7 @@ export default function CalorieCalculatorPage() {
           {/* Блок 7: Норма калорий по возрасту и полу */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Users className="h-5 w-5" />
+              <Users className="size-5" />
               Суточная норма калорий по возрасту и полу
             </h2>
             <p>
@@ -557,7 +557,7 @@ export default function CalorieCalculatorPage() {
           {/* Блок 8: Уровень активности */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Activity className="h-5 w-5" />
+              <Activity className="size-5" />
               Как уровень активности влияет на норму калорий
             </h2>
             <p>
@@ -568,7 +568,7 @@ export default function CalorieCalculatorPage() {
             </p>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -577,7 +577,7 @@ export default function CalorieCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -586,7 +586,7 @@ export default function CalorieCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -595,7 +595,7 @@ export default function CalorieCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -604,7 +604,7 @@ export default function CalorieCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   5
                 </span>
                 <div>
@@ -624,7 +624,7 @@ export default function CalorieCalculatorPage() {
           {/* Блок 9: Примеры расчёта */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               Примеры расчёта калорий
             </h2>
             <p>
@@ -676,7 +676,7 @@ export default function CalorieCalculatorPage() {
           {/* Блок 10: Советы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Советы по подсчёту калорий для начинающих
             </h2>
             <p>
@@ -685,35 +685,35 @@ export default function CalorieCalculatorPage() {
             </p>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">1</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">1</span>
                 <div>
                   <p className="text-foreground font-medium">Взвешивайте продукты</p>
                   <p>На начальном этапе используйте кухонные весы. Порции «на глаз» могут отличаться от реальных на <strong className="text-foreground">30–50%</strong>.</p>
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">2</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">2</span>
                 <div>
                   <p className="text-foreground font-medium">Записывайте всё</p>
                   <p>Перекусы, напитки с сахаром, соусы. Часто именно «невидимые» калории мешают прогрессу.</p>
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">3</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">3</span>
                 <div>
                   <p className="text-foreground font-medium">Не стремитесь к идеалу</p>
                   <p>Отклонение на <strong className="text-foreground">100–200</strong> ккал от нормы не критично. Важна средняя калорийность за неделю, а не каждый отдельный день.</p>
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">4</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">4</span>
                 <div>
                   <p className="text-foreground font-medium">Пересчитывайте норму</p>
                   <p>При изменении веса на <strong className="text-foreground">5</strong> кг рекомендуется заново рассчитать суточную норму, так как потребности организма меняются.</p>
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">5</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">5</span>
                 <div>
                   <p className="text-foreground font-medium">Следите за самочувствием</p>
                   <p>Хроническая усталость, выпадение волос или нарушение сна могут говорить о слишком сильном дефиците. В этом случае увеличьте калорийность.</p>
@@ -721,7 +721,7 @@ export default function CalorieCalculatorPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <AlertTriangle className="size-5 shrink-0 text-amber-400" />
               <p>
                 Калькулятор даёт ориентировочные значения. При наличии заболеваний
                 обмена веществ, диабета или расстройств пищевого поведения
@@ -735,7 +735,7 @@ export default function CalorieCalculatorPage() {
           {/* FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -821,7 +821,7 @@ export default function CalorieCalculatorPage() {
           {/* Связанные калькуляторы */}
           <nav className="space-y-3" aria-label="Связанные калькуляторы">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -829,42 +829,42 @@ export default function CalorieCalculatorPage() {
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/pitanie/kalkulyator-bzhu"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <PieChart className="h-4 w-4 text-muted-foreground" />
+                <PieChart className="size-4 text-muted-foreground" />
                 Калькулятор БЖУ
               </Link>
               <Link
                 href="/zdorovye/pitanie/defitsit-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <TrendingDown className="h-4 w-4 text-muted-foreground" />
+                <TrendingDown className="size-4 text-muted-foreground" />
                 Дефицит калорий
               </Link>
               <Link
                 href="/zdorovye/telo/bazovyj-metabolizm"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Activity className="h-4 w-4 text-muted-foreground" />
+                <Activity className="size-4 text-muted-foreground" />
                 Базовый метаболизм
               </Link>
               <Link
                 href="/zdorovye/pitanie/norma-vody"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <GlassWater className="h-4 w-4 text-muted-foreground" />
+                <GlassWater className="size-4 text-muted-foreground" />
                 Норма воды
               </Link>
               <Link
                 href="/zdorovye/telo/idealnyj-ves"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Target className="h-4 w-4 text-muted-foreground" />
+                <Target className="size-4 text-muted-foreground" />
                 Идеальный вес
               </Link>
             </div>

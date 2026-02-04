@@ -63,10 +63,10 @@ export default function HomePage() {
 
       {/* Hero */}
       <section className="text-center mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2 text-balance">
           Онлайн-калькуляторы здоровья
         </h1>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
           Точные расчёты по научным формулам. Мгновенный результат без регистрации.
         </p>
       </section>
@@ -82,7 +82,7 @@ export default function HomePage() {
                   href={section.href}
                   className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 font-semibold text-primary hover:bg-primary/20 transition-colors"
                 >
-                  <section.icon className="h-4 w-4" />
+                  <section.icon className="size-4" />
                   {section.title}
                 </Link>
               </div>
@@ -94,7 +94,7 @@ export default function HomePage() {
                       className="flex items-center justify-center gap-1.5 py-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       <span>{item.label}</span>
-                      {item.hot && <Flame className="h-3 w-3 shrink-0 text-foreground" />}
+                      {item.hot && <Flame className="size-3 shrink-0 text-foreground" />}
                     </Link>
                   </li>
                 ))}
@@ -114,7 +114,7 @@ export default function HomePage() {
                 href={section.href}
                 className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full bg-primary/10 font-semibold text-primary hover:bg-primary/20 transition-colors"
               >
-                <section.icon className="h-4 w-4" />
+                <section.icon className="size-4" />
                 {section.title}
               </Link>
               <ul className="space-y-1.5">
@@ -125,7 +125,7 @@ export default function HomePage() {
                       className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       <span>{item.label}</span>
-                      {item.hot && <Flame className="h-3 w-3 shrink-0 text-foreground" />}
+                      {item.hot && <Flame className="size-3 shrink-0 text-foreground" />}
                     </Link>
                   </li>
                 ))}
@@ -197,7 +197,7 @@ export default function HomePage() {
           </h2>
           <div className="grid gap-3 sm:grid-cols-3">
             <div className="rounded-lg bg-background border p-4 space-y-1">
-              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary">
+              <div className="flex size-8 items-center justify-center rounded-md bg-primary/10 text-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               </div>
               <h3 className="font-semibold text-foreground text-sm">
@@ -208,7 +208,7 @@ export default function HomePage() {
               </p>
             </div>
             <div className="rounded-lg bg-background border p-4 space-y-1">
-              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary">
+              <div className="flex size-8 items-center justify-center rounded-md bg-primary/10 text-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>
               </div>
               <h3 className="font-semibold text-foreground text-sm">
@@ -219,7 +219,7 @@ export default function HomePage() {
               </p>
             </div>
             <div className="rounded-lg bg-background border p-4 space-y-1">
-              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary">
+              <div className="flex size-8 items-center justify-center rounded-md bg-primary/10 text-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg>
               </div>
               <h3 className="font-semibold text-foreground text-sm">

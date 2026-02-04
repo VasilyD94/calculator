@@ -218,10 +218,10 @@ export default function ProteinCalculatorPage() {
 
         {/* Header */}
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
             Норма белка в день — онлайн расчёт
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Рассчитайте суточную норму белка по рекомендациям ISSN и ACSM.
             Мгновенный результат с учётом типа тренировок и вашей цели.
           </p>
@@ -230,18 +230,18 @@ export default function ProteinCalculatorPage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>Укажите свой вес в килограммах с помощью слайдера.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>
@@ -250,7 +250,7 @@ export default function ProteinCalculatorPage() {
               </p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>
@@ -272,7 +272,7 @@ export default function ProteinCalculatorPage() {
         {/* Вам также будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
@@ -280,7 +280,7 @@ export default function ProteinCalculatorPage() {
               href="/zdorovye/pitanie/kalkulyator-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Flame className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор калорий
               </span>
@@ -289,7 +289,7 @@ export default function ProteinCalculatorPage() {
               href="/zdorovye/pitanie/kalkulyator-bzhu"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Beef className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Beef className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор БЖУ
               </span>
@@ -298,7 +298,7 @@ export default function ProteinCalculatorPage() {
               href="/zdorovye/telo/bazovyj-metabolizm"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Activity className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Activity className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Базовый метаболизм
               </span>
@@ -307,7 +307,7 @@ export default function ProteinCalculatorPage() {
               href="/zdorovye/sport/puls-dlya-trenirovok"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Heart className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Heart className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Пульс для тренировок
               </span>
@@ -320,7 +320,7 @@ export default function ProteinCalculatorPage() {
           {/* Блок 1: Зачем спортсмену белок */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Зачем спортсмену белок
             </h2>
             <p>
@@ -359,7 +359,7 @@ export default function ProteinCalculatorPage() {
           {/* Блок 2: Рекомендации международных организаций */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
+              <Calculator className="size-5" />
               Рекомендации международных организаций
             </h2>
             <p>
@@ -393,7 +393,7 @@ export default function ProteinCalculatorPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-primary/5 text-foreground p-3">
-              <Calculator className="h-5 w-5 shrink-0 text-blue-500 mt-0.5" />
+              <Calculator className="size-5 shrink-0 text-blue-500 mt-0.5" />
               <p>
                 Наш калькулятор по умолчанию использует рекомендации ISSN как
                 наиболее актуальные и адаптирует их под ваш тип тренировок и
@@ -407,7 +407,7 @@ export default function ProteinCalculatorPage() {
           {/* Блок 3: Как тип тренировок влияет на потребность в белке */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Puzzle className="h-5 w-5" />
+              <Puzzle className="size-5" />
               Как тип тренировок влияет на потребность в белке
             </h2>
             <p>
@@ -418,7 +418,7 @@ export default function ProteinCalculatorPage() {
             <div className="space-y-3">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Dumbbell className="h-5 w-5 text-red-500" />
+                  <Dumbbell className="size-5 text-red-500" />
                   Силовые тренировки
                 </h3>
                 <p>
@@ -431,7 +431,7 @@ export default function ProteinCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Activity className="h-5 w-5 text-blue-500" />
+                  <Activity className="size-5 text-blue-500" />
                   Кардионагрузки
                 </h3>
                 <p>
@@ -443,7 +443,7 @@ export default function ProteinCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Target className="h-5 w-5 text-orange-500" />
+                  <Target className="size-5 text-orange-500" />
                   Смешанные тренировки
                 </h3>
                 <p>
@@ -462,7 +462,7 @@ export default function ProteinCalculatorPage() {
           {/* Блок 4: Белок и цели тренировок */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Target className="h-5 w-5" />
+              <Target className="size-5" />
               Белок и цели тренировок
             </h2>
             <p>
@@ -473,7 +473,7 @@ export default function ProteinCalculatorPage() {
             <div className="grid gap-3 md:grid-cols-3">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Equal className="h-5 w-5 text-green-500" />
+                  <Equal className="size-5 text-green-500" />
                   Поддержание формы
                 </h3>
                 <p>
@@ -483,7 +483,7 @@ export default function ProteinCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <TrendingUp className="h-5 w-5 text-blue-500" />
+                  <TrendingUp className="size-5 text-blue-500" />
                   Набор мышечной массы
                 </h3>
                 <p>
@@ -494,7 +494,7 @@ export default function ProteinCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <TrendingDown className="h-5 w-5 text-red-500" />
+                  <TrendingDown className="size-5 text-red-500" />
                   Снижение жировой массы
                 </h3>
                 <p>
@@ -517,7 +517,7 @@ export default function ProteinCalculatorPage() {
           {/* Блок 5: Таблица нормы белка */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               Таблица нормы белка по весу и типу тренировок
             </h2>
             <p>
@@ -631,7 +631,7 @@ export default function ProteinCalculatorPage() {
           {/* Блок 6: Лучшие источники белка */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Beef className="h-5 w-5" />
+              <Beef className="size-5" />
               Лучшие источники белка для спортсменов
             </h2>
             <p>
@@ -697,7 +697,7 @@ export default function ProteinCalculatorPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-primary/5 text-foreground p-3">
-              <Beef className="h-5 w-5 shrink-0 text-orange-500 mt-0.5" />
+              <Beef className="size-5 shrink-0 text-orange-500 mt-0.5" />
               <p>
                 Для набора <strong className="text-foreground">150 г белка</strong> в
                 день: 200 г куриной грудки (62 г) + 200 г творога (36 г) + 3 яйца
@@ -711,7 +711,7 @@ export default function ProteinCalculatorPage() {
           {/* Блок 7: Примеры расчёта */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               Примеры расчёта
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
@@ -781,12 +781,12 @@ export default function ProteinCalculatorPage() {
           {/* Блок 8: Практические советы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Практические советы
             </h2>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -800,7 +800,7 @@ export default function ProteinCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -816,7 +816,7 @@ export default function ProteinCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -844,7 +844,7 @@ export default function ProteinCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -860,7 +860,7 @@ export default function ProteinCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   5
                 </span>
                 <div>
@@ -876,7 +876,7 @@ export default function ProteinCalculatorPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <AlertTriangle className="size-5 shrink-0 text-amber-400" />
               <p>
                 При заболеваниях почек, печени или подагре проконсультируйтесь с
                 врачом перед увеличением белка в рационе. Потребление выше{' '}
@@ -899,7 +899,7 @@ export default function ProteinCalculatorPage() {
           {/* Блок 9: FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -1007,7 +1007,7 @@ export default function ProteinCalculatorPage() {
             aria-label="Связанные калькуляторы"
           >
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -1015,42 +1015,42 @@ export default function ProteinCalculatorPage() {
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-4 w-4 text-muted-foreground" />
+                <Flame className="size-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/pitanie/kalkulyator-bzhu"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Beef className="h-4 w-4 text-muted-foreground" />
+                <Beef className="size-4 text-muted-foreground" />
                 Калькулятор БЖУ
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/telo/bazovyj-metabolizm"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Activity className="h-4 w-4 text-muted-foreground" />
+                <Activity className="size-4 text-muted-foreground" />
                 Базовый метаболизм
               </Link>
               <Link
                 href="/zdorovye/sport/puls-dlya-trenirovok"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Heart className="h-4 w-4 text-muted-foreground" />
+                <Heart className="size-4 text-muted-foreground" />
                 Пульс для тренировок
               </Link>
               <Link
                 href="/zdorovye/pitanie/defitsit-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <TrendingDown className="h-4 w-4 text-muted-foreground" />
+                <TrendingDown className="size-4 text-muted-foreground" />
                 Дефицит калорий
               </Link>
             </div>

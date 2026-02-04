@@ -88,7 +88,7 @@ export function MacroCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <SlidersHorizontal className="h-5 w-5" />
+              <SlidersHorizontal className="size-5" />
               Ваши параметры
             </CardTitle>
           </CardHeader>
@@ -112,7 +112,7 @@ export function MacroCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Ваши параметры
           </CardTitle>
         </CardHeader>
@@ -126,7 +126,7 @@ export function MacroCalculator() {
             min={15}
             max={80}
             unit="лет"
-            icon={<Calendar className="h-5 w-5" />}
+            icon={<Calendar className="size-5" />}
           />
 
           <ValueSlider
@@ -136,7 +136,7 @@ export function MacroCalculator() {
             min={140}
             max={220}
             unit="см"
-            icon={<Ruler className="h-5 w-5" />}
+            icon={<Ruler className="size-5" />}
           />
 
           <ValueSlider
@@ -146,7 +146,7 @@ export function MacroCalculator() {
             min={30}
             max={200}
             unit="кг"
-            icon={<Weight className="h-5 w-5" />}
+            icon={<Weight className="size-5" />}
           />
 
           <ActivitySelector value={activity} onChange={(v) => setParam('activity', v)} />
@@ -154,7 +154,7 @@ export function MacroCalculator() {
           {/* Цель */}
           <div className="space-y-1">
             <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-              <Target className="h-5 w-5" />
+              <Target className="size-5" />
               Цель
             </span>
             <div className="flex gap-1 p-1 bg-muted rounded-xl">
@@ -172,7 +172,7 @@ export function MacroCalculator() {
                         : 'text-muted-foreground hover:text-foreground'
                     )}
                   >
-                    <Icon className={cn('h-4 w-4 hidden sm:block', goal === g.id ? g.color : '')} />
+                    <Icon className={cn('size-4 hidden sm:block', goal === g.id ? g.color : '')} />
                     {g.label}
                   </button>
                 )
@@ -183,7 +183,7 @@ export function MacroCalculator() {
           {/* Тип питания */}
           <div className="space-y-1">
             <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-              <Utensils className="h-5 w-5" />
+              <Utensils className="size-5" />
               Тип питания
             </span>
             <div className="grid gap-2 sm:grid-cols-2">
@@ -202,7 +202,7 @@ export function MacroCalculator() {
                         : 'bg-muted/50 border-transparent hover:border-border'
                     )}
                   >
-                    <Icon className={cn('h-5 w-5 shrink-0', meta.color)} />
+                    <Icon className={cn('size-5 shrink-0', meta.color)} />
                     <div>
                       <span className={cn(
                         'text-sm font-medium block',
@@ -225,7 +225,7 @@ export function MacroCalculator() {
         {/* Калорийность */}
         <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
           <p className="text-sm text-muted-foreground mb-1">{goalLabel}</p>
-          <p className="text-4xl font-bold text-primary">
+          <p className="text-4xl font-bold text-primary tabular-nums">
             {result.calories.toLocaleString('ru-RU')}
             <span className="text-lg font-normal text-muted-foreground ml-1">ккал/день</span>
           </p>
@@ -238,7 +238,7 @@ export function MacroCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <ChartPie className="h-5 w-5" />
+              <ChartPie className="size-5" />
               Ваше БЖУ
             </CardTitle>
           </CardHeader>
@@ -262,13 +262,13 @@ export function MacroCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <Info className="h-5 w-5 text-sky-400" />
+              <Info className="size-5 text-sky-400" />
               <AlertTitle>Индивидуальные потребности</AlertTitle>
               <AlertDescription>
                 Оптимальное соотношение БЖУ зависит от типа тренировок, состояния
@@ -277,7 +277,7 @@ export function MacroCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <AlertTriangle className="h-5 w-5 text-amber-400" />
+              <AlertTriangle className="size-5 text-amber-400" />
               <AlertTitle>Ограничения диет</AlertTitle>
               <AlertDescription>
                 Кето-диета и низкоуглеводное питание подходят не всем. При диабете,

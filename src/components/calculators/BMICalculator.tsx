@@ -50,7 +50,7 @@ export function BMICalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <SlidersHorizontal className="h-5 w-5" />
+              <SlidersHorizontal className="size-5" />
               Ваши параметры
             </CardTitle>
           </CardHeader>
@@ -74,7 +74,7 @@ export function BMICalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Ваши параметры
           </CardTitle>
         </CardHeader>
@@ -88,7 +88,7 @@ export function BMICalculator() {
             min={140}
             max={220}
             unit="см"
-            icon={<Ruler className="h-5 w-5" />}
+            icon={<Ruler className="size-5" />}
           />
 
           <ValueSlider
@@ -98,7 +98,7 @@ export function BMICalculator() {
             min={30}
             max={200}
             unit="кг"
-            icon={<Weight className="h-5 w-5" />}
+            icon={<Weight className="size-5" />}
           />
         </CardContent>
       </Card>
@@ -109,7 +109,7 @@ export function BMICalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Target className="h-5 w-5" />
+              <Target className="size-5" />
               Ваш результат
             </CardTitle>
           </CardHeader>
@@ -157,13 +157,13 @@ export function BMICalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <Dumbbell className="h-5 w-5 text-blue-400" />
+              <Dumbbell className="size-5 text-blue-400" />
               <AlertTitle>ИМТ и мышечная масса</AlertTitle>
               <AlertDescription>
                 ИМТ не различает жировую и мышечную массу. У спортсменов и людей
@@ -172,7 +172,7 @@ export function BMICalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Info className="h-5 w-5 text-sky-400" />
+              <Info className="size-5 text-sky-400" />
               <AlertTitle>Обхват талии</AlertTitle>
               <AlertDescription>
                 Дополнительно измерьте обхват талии.{' '}
@@ -183,7 +183,7 @@ export function BMICalculator() {
             </Alert>
             {result.bmi >= 30 && (
               <Alert>
-                <AlertTriangle className="h-5 w-5 text-amber-400" />
+                <AlertTriangle className="size-5 text-amber-400" />
                 <AlertTitle>Рекомендация</AlertTitle>
                 <AlertDescription>
                   При ИМТ выше 30 рекомендуется проконсультироваться с врачом
@@ -238,7 +238,7 @@ function BMIScaleBars({
                 : 'border-transparent bg-transparent'
             )}
           >
-            <Icon className={cn('h-4 w-4', iconMeta.color)} />
+            <Icon className={cn('size-4', iconMeta.color)} />
 
             <span
               className={cn(

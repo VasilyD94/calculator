@@ -11,7 +11,7 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 font-bold text-lg mb-3">
-              <Calculator className="h-5 w-5 text-primary" />
+              <Calculator className="size-5 text-primary" />
               <span>CalcBox</span>
             </Link>
             <p className="text-sm text-muted-foreground">

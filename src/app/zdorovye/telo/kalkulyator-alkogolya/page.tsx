@@ -212,10 +212,10 @@ export default function AlcoholCalculatorPage() {
         <Breadcrumbs items={breadcrumbs} />
 
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
             Калькулятор алкоголя — онлайн расчёт
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Рассчитайте уровень алкоголя в крови и узнайте, через сколько времени
             он полностью выветрится. Калькулятор покажет, когда безопасно садиться
             за руль.
@@ -225,24 +225,24 @@ export default function AlcoholCalculatorPage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>Выберите пол и укажите свой вес с помощью слайдера.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>Выберите тип алкогольного напитка из списка и укажите выпитый объём.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>Калькулятор покажет уровень алкоголя в промилле и время до полного выветривания.</p>
@@ -259,7 +259,7 @@ export default function AlcoholCalculatorPage() {
         {/* Вам также будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
@@ -267,7 +267,7 @@ export default function AlcoholCalculatorPage() {
               href="/zdorovye/telo/kalkulyator-imt"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Scale className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор ИМТ
               </span>
@@ -276,7 +276,7 @@ export default function AlcoholCalculatorPage() {
               href="/zdorovye/telo/idealnyj-ves"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Target className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Target className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Идеальный вес
               </span>
@@ -285,7 +285,7 @@ export default function AlcoholCalculatorPage() {
               href="/zdorovye/pitanie/kalkulyator-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Calculator className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Calculator className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор калорий
               </span>
@@ -294,7 +294,7 @@ export default function AlcoholCalculatorPage() {
               href="/zdorovye/telo/bazovyj-metabolizm"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Flame className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Базовый метаболизм
               </span>
@@ -308,7 +308,7 @@ export default function AlcoholCalculatorPage() {
           {/* Блок 1 — Что такое промилле */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Что такое промилле и зачем его считать
             </h2>
             <p>
@@ -337,7 +337,7 @@ export default function AlcoholCalculatorPage() {
           {/* Блок 2 — Формула расчёта */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
+              <Calculator className="size-5" />
               Как рассчитывается уровень алкоголя
             </h2>
             <p>
@@ -368,7 +368,7 @@ export default function AlcoholCalculatorPage() {
           {/* Блок 3 — Степени опьянения */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Brain className="h-5 w-5" />
+              <Brain className="size-5" />
               Степени алкогольного опьянения
             </h2>
             <p>
@@ -377,7 +377,7 @@ export default function AlcoholCalculatorPage() {
             </p>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-700 text-xs font-medium">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-700 text-xs font-medium">
                   ✓
                 </span>
                 <div>
@@ -389,7 +389,7 @@ export default function AlcoholCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-700 text-xs font-medium">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-700 text-xs font-medium">
                   !
                 </span>
                 <div>
@@ -401,7 +401,7 @@ export default function AlcoholCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-orange-100 text-orange-700 text-xs font-medium">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-orange-100 text-orange-700 text-xs font-medium">
                   ⚠
                 </span>
                 <div>
@@ -413,7 +413,7 @@ export default function AlcoholCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-700 text-xs font-medium">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-700 text-xs font-medium">
                   ✕
                 </span>
                 <div>
@@ -425,7 +425,7 @@ export default function AlcoholCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-200 text-red-800 text-xs font-medium">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-red-200 text-red-800 text-xs font-medium">
                   ☠
                 </span>
                 <div>
@@ -444,7 +444,7 @@ export default function AlcoholCalculatorPage() {
           {/* Блок 4 — Таблица выветривания */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Timer className="h-5 w-5" />
+              <Timer className="size-5" />
               Таблица времени выветривания алкоголя
             </h2>
             <p>
@@ -511,7 +511,7 @@ export default function AlcoholCalculatorPage() {
           {/* Блок 5 — Вождение */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Car className="h-5 w-5" />
+              <Car className="size-5" />
               Алкоголь и вождение в России
             </h2>
             <p>
@@ -522,7 +522,7 @@ export default function AlcoholCalculatorPage() {
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <AlertTriangle className="h-5 w-5 text-amber-500" />
+                  <AlertTriangle className="size-5 text-amber-500" />
                   Допустимый уровень
                 </h3>
                 <p>
@@ -532,7 +532,7 @@ export default function AlcoholCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <AlertTriangle className="h-5 w-5 text-red-500" />
+                  <AlertTriangle className="size-5 text-red-500" />
                   Штраф за превышение
                 </h3>
                 <p>
@@ -542,7 +542,7 @@ export default function AlcoholCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <AlertTriangle className="h-5 w-5 text-red-500" />
+                  <AlertTriangle className="size-5 text-red-500" />
                   Повторное нарушение
                 </h3>
                 <p>
@@ -552,7 +552,7 @@ export default function AlcoholCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <AlertTriangle className="h-5 w-5 text-red-500" />
+                  <AlertTriangle className="size-5 text-red-500" />
                   Отказ от освидетельствования
                 </h3>
                 <p>
@@ -573,7 +573,7 @@ export default function AlcoholCalculatorPage() {
           {/* Блок 6 — Факторы влияния */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Activity className="h-5 w-5" />
+              <Activity className="size-5" />
               Что влияет на скорость выветривания
             </h2>
             <p>
@@ -582,7 +582,7 @@ export default function AlcoholCalculatorPage() {
             </p>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -591,7 +591,7 @@ export default function AlcoholCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -600,7 +600,7 @@ export default function AlcoholCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -609,7 +609,7 @@ export default function AlcoholCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -618,7 +618,7 @@ export default function AlcoholCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   5
                 </span>
                 <div>
@@ -634,7 +634,7 @@ export default function AlcoholCalculatorPage() {
           {/* Блок 7 — Мифы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Мифы о выветривании алкоголя
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
@@ -679,7 +679,7 @@ export default function AlcoholCalculatorPage() {
           {/* Блок 8 — Влияние на здоровье */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Heart className="h-5 w-5" />
+              <Heart className="size-5" />
               Влияние алкоголя на организм
             </h2>
             <p>
@@ -689,7 +689,7 @@ export default function AlcoholCalculatorPage() {
             <div className="grid gap-3 md:grid-cols-3">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Brain className="h-5 w-5 text-purple-400" />
+                  <Brain className="size-5 text-purple-400" />
                   Мозг
                 </h3>
                 <p>
@@ -699,7 +699,7 @@ export default function AlcoholCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Heart className="h-5 w-5 text-red-400" />
+                  <Heart className="size-5 text-red-400" />
                   Сердце
                 </h3>
                 <p>
@@ -709,7 +709,7 @@ export default function AlcoholCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Activity className="h-5 w-5 text-amber-400" />
+                  <Activity className="size-5 text-amber-400" />
                   Печень
                 </h3>
                 <p>
@@ -731,7 +731,7 @@ export default function AlcoholCalculatorPage() {
           {/* FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -812,7 +812,7 @@ export default function AlcoholCalculatorPage() {
           {/* Связанные калькуляторы */}
           <nav className="space-y-3" aria-label="Связанные калькуляторы">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -820,35 +820,35 @@ export default function AlcoholCalculatorPage() {
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/telo/idealnyj-ves"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Target className="h-4 w-4 text-muted-foreground" />
+                <Target className="size-4 text-muted-foreground" />
                 Идеальный вес
               </Link>
               <Link
                 href="/zdorovye/telo/bazovyj-metabolizm"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-4 w-4 text-muted-foreground" />
+                <Flame className="size-4 text-muted-foreground" />
                 Базовый метаболизм
               </Link>
               <Link
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Calculator className="h-4 w-4 text-muted-foreground" />
+                <Calculator className="size-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-vozrasta"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Clock className="h-4 w-4 text-muted-foreground" />
+                <Clock className="size-4 text-muted-foreground" />
                 Калькулятор возраста
               </Link>
             </div>

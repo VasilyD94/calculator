@@ -82,7 +82,7 @@ export function GestationalAgeCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Выберите метод расчёта
           </CardTitle>
         </CardHeader>
@@ -116,7 +116,7 @@ export function GestationalAgeCalculator() {
             }
             value={date}
             onChange={setDate}
-            icon={<Calendar className="h-5 w-5" />}
+            icon={<Calendar className="size-5" />}
             min={toIso(minDate)}
             max={toIso(today)}
           />
@@ -130,7 +130,7 @@ export function GestationalAgeCalculator() {
                 min={4}
                 max={40}
                 unit="нед."
-                icon={<Stethoscope className="h-5 w-5" />}
+                icon={<Stethoscope className="size-5" />}
               />
               <ValueSlider
                 label="Срок на УЗИ — дни"
@@ -139,7 +139,7 @@ export function GestationalAgeCalculator() {
                 min={0}
                 max={6}
                 unit="дн."
-                icon={<Stethoscope className="h-5 w-5" />}
+                icon={<Stethoscope className="size-5" />}
               />
             </div>
           )}
@@ -149,7 +149,7 @@ export function GestationalAgeCalculator() {
       {/* Главный результат */}
       <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
         <p className="text-sm text-muted-foreground mb-1">Текущий срок беременности</p>
-        <p className="text-4xl font-bold text-primary">
+        <p className="text-4xl font-bold text-primary tabular-nums">
           {result.currentTermFormatted}
         </p>
         <p className="text-xs text-muted-foreground mt-1">
@@ -174,7 +174,7 @@ export function GestationalAgeCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Baby className="h-5 w-5" />
+              <Baby className="size-5" />
               Развитие малыша
             </CardTitle>
           </CardHeader>
@@ -204,7 +204,7 @@ export function GestationalAgeCalculator() {
 
             <div className="rounded-lg bg-primary/5 border border-primary/20 p-3 space-y-1.5">
               <h4 className="font-medium text-sm flex items-center gap-1.5">
-                <Lightbulb className="h-4 w-4 text-amber-500" />
+                <Lightbulb className="size-4 text-amber-500" />
                 Совет
               </h4>
               <p className="text-sm text-muted-foreground">
@@ -236,13 +236,13 @@ export function GestationalAgeCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <CalendarClock className="h-5 w-5 text-blue-500" />
+              <CalendarClock className="size-5 text-blue-500" />
               <AlertTitle>Акушерский и эмбриональный срок</AlertTitle>
               <AlertDescription>
                 Акушерский срок считается от первого дня последних месячных
@@ -251,7 +251,7 @@ export function GestationalAgeCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Stethoscope className="h-5 w-5 text-pink-500" />
+              <Stethoscope className="size-5 text-pink-500" />
               <AlertTitle>Точность определения срока</AlertTitle>
               <AlertDescription>
                 Наиболее точно срок определяется на УЗИ в 11–13 недель
@@ -260,7 +260,7 @@ export function GestationalAgeCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Hospital className="h-5 w-5 text-green-500" />
+              <Hospital className="size-5 text-green-500" />
               <AlertTitle>Наблюдение у врача</AlertTitle>
               <AlertDescription>
                 Рекомендуется встать на учёт до 12 недель. Регулярные

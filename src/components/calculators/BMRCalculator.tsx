@@ -33,7 +33,7 @@ export function BMRCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <SlidersHorizontal className="h-5 w-5" />
+              <SlidersHorizontal className="size-5" />
               Ваши параметры
             </CardTitle>
           </CardHeader>
@@ -57,7 +57,7 @@ export function BMRCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Ваши параметры
           </CardTitle>
         </CardHeader>
@@ -71,7 +71,7 @@ export function BMRCalculator() {
             min={15}
             max={80}
             unit="лет"
-            icon={<CalendarDays className="h-5 w-5" />}
+            icon={<CalendarDays className="size-5" />}
           />
 
           <ValueSlider
@@ -81,7 +81,7 @@ export function BMRCalculator() {
             min={140}
             max={220}
             unit="см"
-            icon={<Ruler className="h-5 w-5" />}
+            icon={<Ruler className="size-5" />}
           />
 
           <ValueSlider
@@ -91,7 +91,7 @@ export function BMRCalculator() {
             min={30}
             max={200}
             unit="кг"
-            icon={<Weight className="h-5 w-5" />}
+            icon={<Weight className="size-5" />}
           />
         </CardContent>
       </Card>
@@ -102,7 +102,7 @@ export function BMRCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Flame className="h-5 w-5" />
+              <Flame className="size-5" />
               Ваш базовый метаболизм
             </CardTitle>
           </CardHeader>
@@ -141,7 +141,7 @@ export function BMRCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Что это значит
             </CardTitle>
           </CardHeader>
@@ -179,13 +179,13 @@ export function BMRCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <Flame className="h-5 w-5 text-amber-400" />
+              <Flame className="size-5 text-amber-400" />
               <AlertTitle>BMR и TDEE — в чём разница</AlertTitle>
               <AlertDescription>
                 BMR (базовый метаболизм) — расход в полном покое. TDEE (суточный
@@ -194,7 +194,7 @@ export function BMRCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Dumbbell className="h-5 w-5 text-blue-400" />
+              <Dumbbell className="size-5 text-blue-400" />
               <AlertTitle>Формула Кетча-МакАрдла</AlertTitle>
               <AlertDescription>
                 Эта формула использует сухую массу тела и точнее для спортсменов.
@@ -204,7 +204,7 @@ export function BMRCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <CalendarDays className="h-5 w-5 text-violet-400" />
+              <CalendarDays className="size-5 text-violet-400" />
               <AlertTitle>С возрастом BMR снижается</AlertTitle>
               <AlertDescription>
                 После 30 лет базовый метаболизм замедляется на 3–5% каждое

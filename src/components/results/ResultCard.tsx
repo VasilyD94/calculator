@@ -51,7 +51,7 @@ export function ResultCard({
         animate={{ scale: 1 }}
         transition={{ duration: 0.2 }}
       >
-        <span className={cn('text-lg font-bold block leading-none', compact && 'sm:inline')}>
+        <span className={cn('text-lg font-bold block leading-none tabular-nums', compact && 'sm:inline')}>
           {value.toLocaleString('ru-RU')}
         </span>
         <span className={cn('text-xs font-normal opacity-80 leading-none', compact && 'sm:ml-1')}>{unit}</span>

@@ -60,7 +60,7 @@ export function AgeCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <SlidersHorizontal className="h-5 w-5" />
+              <SlidersHorizontal className="size-5" />
               Дата рождения
             </CardTitle>
           </CardHeader>
@@ -82,7 +82,7 @@ export function AgeCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Calendar className="h-5 w-5" />
+            <Calendar className="size-5" />
             Дата рождения
           </CardTitle>
         </CardHeader>
@@ -91,7 +91,7 @@ export function AgeCalculator() {
             label="Когда вы родились?"
             value={birthDate}
             onChange={setBirthDate}
-            icon={<Cake className="h-5 w-5" />}
+            icon={<Cake className="size-5" />}
           />
         </CardContent>
       </Card>
@@ -99,7 +99,7 @@ export function AgeCalculator() {
       {/* Главный результат */}
       <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
         <p className="text-sm text-muted-foreground mb-1">Ваш возраст</p>
-        <p className="text-4xl font-bold text-primary">
+        <p className="text-4xl font-bold text-primary tabular-nums">
           {result.years}
           <span className="text-lg font-normal text-muted-foreground ml-1">
             {result.years === 1 ? 'год' : result.years >= 2 && result.years <= 4 ? 'года' : 'лет'}
@@ -116,7 +116,7 @@ export function AgeCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Target className="h-5 w-5" />
+            <Target className="size-5" />
             Подробности
           </CardTitle>
         </CardHeader>
@@ -129,8 +129,8 @@ export function AgeCalculator() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.05 }}
             >
-              <Clock className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
-              <p className="text-2xl font-bold">{result.totalDays.toLocaleString('ru-RU')}</p>
+              <Clock className="size-5 mx-auto mb-1 text-muted-foreground" />
+              <p className="text-2xl font-bold tabular-nums">{result.totalDays.toLocaleString('ru-RU')}</p>
               <p className="text-xs text-muted-foreground">
                 дней прожито
               </p>
@@ -142,8 +142,8 @@ export function AgeCalculator() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <Cake className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
-              <p className="text-2xl font-bold">{result.daysUntilBirthday}</p>
+              <Cake className="size-5 mx-auto mb-1 text-muted-foreground" />
+              <p className="text-2xl font-bold tabular-nums">{result.daysUntilBirthday}</p>
               <p className="text-xs text-muted-foreground">
                 дней до ДР
               </p>
@@ -158,7 +158,7 @@ export function AgeCalculator() {
             transition={{ delay: 0.15 }}
           >
             <div className="flex items-center gap-2 mb-1">
-              <PartyPopper className="h-5 w-5 text-amber-500" />
+              <PartyPopper className="size-5 text-amber-500" />
               <span className="font-medium text-amber-700">
                 До {result.nextMilestone}-летия
               </span>
@@ -179,7 +179,7 @@ export function AgeCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Sparkles className="h-5 w-5" />
+            <Sparkles className="size-5" />
             Знаки
           </CardTitle>
         </CardHeader>
@@ -214,13 +214,13 @@ export function AgeCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Info className="h-5 w-5" />
+            <Info className="size-5" />
             Интересные факты
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            <Star className="inline h-4 w-4 mr-1 text-amber-400" />
+            <Star className="inline size-4 mr-1 text-amber-400" />
             За {result.years} {result.years === 1 ? 'год' : result.years >= 2 && result.years <= 4 ? 'года' : 'лет'} ваше сердце сделало примерно{' '}
             <strong className="text-foreground">
               {(result.totalDays * 100000).toLocaleString('ru-RU')}
@@ -228,7 +228,7 @@ export function AgeCalculator() {
             ударов.
           </p>
           <p>
-            <Star className="inline h-4 w-4 mr-1 text-amber-400" />
+            <Star className="inline size-4 mr-1 text-amber-400" />
             Вы сделали около{' '}
             <strong className="text-foreground">
               {(result.totalDays * 20000).toLocaleString('ru-RU')}
@@ -236,7 +236,7 @@ export function AgeCalculator() {
             вдохов.
           </p>
           <p>
-            <Star className="inline h-4 w-4 mr-1 text-amber-400" />
+            <Star className="inline size-4 mr-1 text-amber-400" />
             Земля совершила{' '}
             <strong className="text-foreground">{result.years}</strong>{' '}
             {result.years === 1 ? 'оборот' : result.years >= 2 && result.years <= 4 ? 'оборота' : 'оборотов'} вокруг Солнца с вашего рождения.

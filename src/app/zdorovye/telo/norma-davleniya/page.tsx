@@ -174,7 +174,7 @@ export default function BloodPressurePage() {
           <h1 className="text-3xl md:text-4xl font-bold mb-3">
             Норма давления по возрасту
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Узнайте норму артериального давления для вашего возраста и пола.
             Введите показатели для оценки состояния сердечно-сосудистой системы.
           </p>
@@ -183,24 +183,24 @@ export default function BloodPressurePage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>Укажите ваш пол и возраст в первом блоке.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>Введите показатели вашего давления: систолическое (верхнее) и диастолическое (нижнее).</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>Получите оценку давления и сравнение с нормой для вашего возраста.</p>
@@ -217,7 +217,7 @@ export default function BloodPressurePage() {
         {/* Вам также будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
@@ -225,28 +225,28 @@ export default function BloodPressurePage() {
               href="/zdorovye/telo/kalkulyator-imt"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Scale className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор ИМТ</span>
             </Link>
             <Link
               href="/zdorovye/telo/bazovyj-metabolizm"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Activity className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Activity className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Базовый метаболизм</span>
             </Link>
             <Link
               href="/zdorovye/telo/kalkulyator-vozrasta"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Clock className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Clock className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор возраста</span>
             </Link>
             <Link
               href="/zdorovye/sport/puls-dlya-trenirovok"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Heart className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Heart className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Пульсовые зоны</span>
             </Link>
           </div>
@@ -256,7 +256,7 @@ export default function BloodPressurePage() {
         <section className="space-y-8 text-sm text-muted-foreground">
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Что такое артериальное давление
             </h2>
             <p>
@@ -275,13 +275,13 @@ export default function BloodPressurePage() {
 
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Heart className="h-5 w-5" />
+              <Heart className="size-5" />
               Систолическое и диастолическое давление
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <TrendingUp className="h-4 w-4 text-red-400" />
+                  <TrendingUp className="size-4 text-red-400" />
                   Систолическое (верхнее)
                 </h3>
                 <p>
@@ -292,7 +292,7 @@ export default function BloodPressurePage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <TrendingDown className="h-4 w-4 text-blue-400" />
+                  <TrendingDown className="size-4 text-blue-400" />
                   Диастолическое (нижнее)
                 </h3>
                 <p>
@@ -308,7 +308,7 @@ export default function BloodPressurePage() {
 
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Stethoscope className="h-5 w-5" />
+              <Stethoscope className="size-5" />
               Классификация артериального давления
             </h2>
             <p>
@@ -376,7 +376,7 @@ export default function BloodPressurePage() {
 
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Clock className="h-5 w-5" />
+              <Clock className="size-5" />
               Как давление меняется с возрастом
             </h2>
             <p>
@@ -455,7 +455,7 @@ export default function BloodPressurePage() {
 
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5" />
+              <AlertTriangle className="size-5" />
               Факторы риска гипертонии
             </h2>
             <p>
@@ -494,7 +494,7 @@ export default function BloodPressurePage() {
 
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Activity className="h-5 w-5" />
+              <Activity className="size-5" />
               Как правильно измерять давление
             </h2>
             <p>
@@ -536,13 +536,13 @@ export default function BloodPressurePage() {
 
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Как нормализовать давление
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <Utensils className="h-4 w-4 text-green-400" />
+                  <Utensils className="size-4 text-green-400" />
                   Питание
                 </h3>
                 <p>
@@ -552,7 +552,7 @@ export default function BloodPressurePage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <Dumbbell className="h-4 w-4 text-blue-400" />
+                  <Dumbbell className="size-4 text-blue-400" />
                   Физическая активность
                 </h3>
                 <p>
@@ -562,7 +562,7 @@ export default function BloodPressurePage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <Scale className="h-4 w-4 text-amber-400" />
+                  <Scale className="size-4 text-amber-400" />
                   Контроль веса
                 </h3>
                 <p>
@@ -572,7 +572,7 @@ export default function BloodPressurePage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <Pill className="h-4 w-4 text-violet-400" />
+                  <Pill className="size-4 text-violet-400" />
                   Лечение
                 </h3>
                 <p>
@@ -588,7 +588,7 @@ export default function BloodPressurePage() {
           {/* FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -661,7 +661,7 @@ export default function BloodPressurePage() {
           {/* Связанные калькуляторы */}
           <nav className="space-y-3" aria-label="Связанные калькуляторы">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -669,35 +669,35 @@ export default function BloodPressurePage() {
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/sport/puls-dlya-trenirovok"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Heart className="h-4 w-4 text-muted-foreground" />
+                <Heart className="size-4 text-muted-foreground" />
                 Пульсовые зоны
               </Link>
               <Link
                 href="/zdorovye/telo/bazovyj-metabolizm"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Activity className="h-4 w-4 text-muted-foreground" />
+                <Activity className="size-4 text-muted-foreground" />
                 Базовый метаболизм
               </Link>
               <Link
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-4 w-4 text-muted-foreground" />
+                <Flame className="size-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/telo/idealnyj-ves"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Target className="h-4 w-4 text-muted-foreground" />
+                <Target className="size-4 text-muted-foreground" />
                 Идеальный вес
               </Link>
             </div>

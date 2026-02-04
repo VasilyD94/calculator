@@ -51,7 +51,7 @@ export function ResultScale({
     <div className="space-y-3">
       {/* Current value */}
       <div className="text-center">
-        <span className="text-3xl font-bold">{value.toFixed(1)}</span>
+        <span className="text-3xl font-bold tabular-nums">{value.toFixed(1)}</span>
         <span
           className={cn(
             'ml-2 px-2 py-1 rounded text-sm font-medium',
@@ -76,7 +76,7 @@ export function ResultScale({
 
         {/* Marker */}
         <motion.div
-          className="absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-background border-[3px] border-foreground rounded-full shadow-lg z-10"
+          className="absolute top-1/2 -translate-y-1/2 size-5 bg-background border-[3px] border-foreground rounded-full shadow-lg z-10"
           initial={{ left: '0%' }}
           animate={{ left: `${clampedPosition}%` }}
           transition={{ type: 'spring', stiffness: 100, damping: 15 }}
@@ -105,7 +105,7 @@ export function ResultScale({
       )}
 
       {/* Boundary values */}
-      <div className="flex justify-between text-xs text-muted-foreground">
+      <div className="flex justify-between text-xs text-muted-foreground tabular-nums">
         {ranges.map((range, i) => (
           <span key={i}>{range.min}</span>
         ))}

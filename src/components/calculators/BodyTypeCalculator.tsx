@@ -64,7 +64,7 @@ export function BodyTypeCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Ваши параметры
           </CardTitle>
         </CardHeader>
@@ -76,10 +76,10 @@ export function BodyTypeCalculator() {
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <Label className="flex items-center gap-2">
-                <User className="h-4 w-4" />
+                <User className="size-4" />
                 Обхват запястья
               </Label>
-              <span className="text-xl font-bold">{wristCircumference} см</span>
+              <span className="text-xl font-bold tabular-nums">{wristCircumference} см</span>
             </div>
             <Slider
               value={[wristCircumference]}
@@ -101,7 +101,7 @@ export function BodyTypeCalculator() {
                 id="showHeight"
                 checked={showHeight}
                 onChange={(e) => setShowHeight(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300"
+                className="size-4 rounded border-gray-300"
               />
               <Label htmlFor="showHeight" className="text-sm cursor-pointer">
                 Добавить рост для индекса Соловьёва
@@ -117,10 +117,10 @@ export function BodyTypeCalculator() {
               >
                 <div className="flex justify-between items-center">
                   <Label className="flex items-center gap-2">
-                    <Ruler className="h-4 w-4" />
+                    <Ruler className="size-4" />
                     Рост
                   </Label>
-                  <span className="text-xl font-bold">{height} см</span>
+                  <span className="text-xl font-bold tabular-nums">{height} см</span>
                 </div>
                 <Slider
                   value={[height]}
@@ -195,7 +195,7 @@ export function BodyTypeCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Info className="h-5 w-5" />
+            <Info className="size-5" />
             Характеристики {result.typeLabel.toLowerCase()}а
           </CardTitle>
         </CardHeader>
@@ -209,7 +209,7 @@ export function BodyTypeCalculator() {
                 transition={{ delay: index * 0.05 }}
                 className="flex items-start gap-2 text-sm text-muted-foreground"
               >
-                <CheckCircle2 className="h-4 w-4 mt-0.5 text-primary shrink-0" />
+                <CheckCircle2 className="size-4 mt-0.5 text-primary shrink-0" />
                 <span>{item}</span>
               </motion.li>
             ))}
@@ -221,7 +221,7 @@ export function BodyTypeCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Utensils className="h-5 w-5" />
+            <Utensils className="size-5" />
             Рекомендации по питанию
           </CardTitle>
         </CardHeader>
@@ -247,7 +247,7 @@ export function BodyTypeCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Dumbbell className="h-5 w-5" />
+            <Dumbbell className="size-5" />
             Рекомендации по тренировкам
           </CardTitle>
         </CardHeader>
@@ -273,13 +273,13 @@ export function BodyTypeCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Info className="h-5 w-5" />
+            <Info className="size-5" />
             Важно знать
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3 text-sm text-muted-foreground">
           <div className="flex gap-2">
-            <User className="h-4 w-4 mt-0.5 text-blue-400 shrink-0" />
+            <User className="size-4 mt-0.5 text-blue-400 shrink-0" />
             <p>
               <strong className="text-foreground">Тип телосложения</strong> — это генетическая
               предрасположенность, которая определяет особенности вашего метаболизма и строения
@@ -287,14 +287,14 @@ export function BodyTypeCalculator() {
             </p>
           </div>
           <div className="flex gap-2">
-            <Info className="h-4 w-4 mt-0.5 text-amber-400 shrink-0" />
+            <Info className="size-4 mt-0.5 text-amber-400 shrink-0" />
             <p>
               Большинство людей имеют <strong className="text-foreground">смешанный тип</strong>{' '}
               телосложения с преобладанием одного из типов. Чистые типы встречаются редко.
             </p>
           </div>
           <div className="flex gap-2">
-            <Dumbbell className="h-4 w-4 mt-0.5 text-green-400 shrink-0" />
+            <Dumbbell className="size-4 mt-0.5 text-green-400 shrink-0" />
             <p>
               Независимо от типа телосложения, правильное питание и регулярные тренировки помогут
               достичь хороших результатов.

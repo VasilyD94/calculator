@@ -77,7 +77,7 @@ export function OvulationCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Данные о цикле
           </CardTitle>
         </CardHeader>
@@ -86,7 +86,7 @@ export function OvulationCalculator() {
             label="Первый день последних месячных"
             value={lastPeriod}
             onChange={setLastPeriod}
-            icon={<Calendar className="h-5 w-5" />}
+            icon={<Calendar className="size-5" />}
             min={toIso(minDate)}
             max={toIso(today)}
           />
@@ -98,7 +98,7 @@ export function OvulationCalculator() {
             min={21}
             max={45}
             unit="дн."
-            icon={<Clock className="h-5 w-5" />}
+            icon={<Clock className="size-5" />}
           />
 
           <ValueSlider
@@ -108,7 +108,7 @@ export function OvulationCalculator() {
             min={3}
             max={7}
             unit="дн."
-            icon={<Droplets className="h-5 w-5" />}
+            icon={<Droplets className="size-5" />}
           />
         </CardContent>
       </Card>
@@ -116,7 +116,7 @@ export function OvulationCalculator() {
       {/* Главный результат */}
       <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
         <p className="text-sm text-muted-foreground mb-1">Текущая фаза цикла</p>
-        <p className="text-4xl font-bold text-primary">
+        <p className="text-4xl font-bold text-primary tabular-nums">
           {phaseConfig.label}
         </p>
         <p className="text-xs text-muted-foreground mt-1">
@@ -152,7 +152,7 @@ export function OvulationCalculator() {
           <Card className="gap-3 py-4 flex flex-col">
             <CardHeader className="pb-0">
               <CardTitle className="text-base flex items-center gap-2">
-                <Heart className="h-5 w-5" />
+                <Heart className="size-5" />
                 Фертильное окно
               </CardTitle>
             </CardHeader>
@@ -194,7 +194,7 @@ export function OvulationCalculator() {
           <Card className="gap-3 py-4">
             <CardHeader className="pb-0">
               <CardTitle className="text-base flex items-center gap-2">
-                <Clock className="h-5 w-5" />
+                <Clock className="size-5" />
                 Фазы цикла
               </CardTitle>
             </CardHeader>
@@ -250,11 +250,11 @@ export function OvulationCalculator() {
                         <div key={phase.label} className="flex gap-3">
                           <div className="flex flex-col items-center">
                             {isDone ? (
-                              <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0" />
+                              <CheckCircle2 className="size-5 text-green-500 shrink-0" />
                             ) : (
                               <Circle
                                 className={cn(
-                                  'h-5 w-5 shrink-0',
+                                  'size-5 shrink-0',
                                   isActive
                                     ? 'text-pink-500 fill-pink-100'
                                     : 'text-muted-foreground'
@@ -311,13 +311,13 @@ export function OvulationCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <ShieldAlert className="h-5 w-5 text-red-500" />
+              <ShieldAlert className="size-5 text-red-500" />
               <AlertTitle>Не метод контрацепции</AlertTitle>
               <AlertDescription>
                 Календарный метод не является надёжным средством контрацепции.
@@ -326,7 +326,7 @@ export function OvulationCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <AlertTriangle className="h-5 w-5 text-amber-500" />
+              <AlertTriangle className="size-5 text-amber-500" />
               <AlertTitle>Точность при нерегулярном цикле</AlertTitle>
               <AlertDescription>
                 Калькулятор наиболее точен при регулярном цикле. Если длина
@@ -335,7 +335,7 @@ export function OvulationCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Stethoscope className="h-5 w-5 text-blue-500" />
+              <Stethoscope className="size-5 text-blue-500" />
               <AlertTitle>Признаки овуляции</AlertTitle>
               <AlertDescription>
                 Повышение базальной температуры на 0.2–0.5°C, прозрачные
@@ -344,7 +344,7 @@ export function OvulationCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Heart className="h-5 w-5 text-pink-500" />
+              <Heart className="size-5 text-pink-500" />
               <AlertTitle>Когда обратиться к врачу</AlertTitle>
               <AlertDescription>
                 Если беременность не наступает в течение 12 месяцев

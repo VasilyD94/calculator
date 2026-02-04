@@ -227,10 +227,10 @@ export default function BMRPage() {
         <Breadcrumbs items={breadcrumbs} />
 
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
             Сколько калорий нужно в день — расчёт BMR
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Узнайте, сколько калорий нужно вашему организму в день для
             поддержания жизни. Расчёт базового метаболизма по 5 научным формулам
             с мгновенным сравнением результатов.
@@ -240,24 +240,24 @@ export default function BMRPage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>Укажите параметры: выберите пол, укажите возраст, рост и вес с помощью удобных слайдеров.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>Получите результат: калькулятор мгновенно покажет ваш BMR по рекомендуемой формуле Миффлина-Сан Жеора.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>Сравните формулы: оцените результаты по 5 научным формулам и узнайте диапазон значений.</p>
@@ -274,7 +274,7 @@ export default function BMRPage() {
         {/* Вам также будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
@@ -282,7 +282,7 @@ export default function BMRPage() {
               href="/zdorovye/pitanie/kalkulyator-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Flame className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор калорий
               </span>
@@ -291,7 +291,7 @@ export default function BMRPage() {
               href="/zdorovye/telo/kalkulyator-imt"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Scale className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор ИМТ
               </span>
@@ -300,7 +300,7 @@ export default function BMRPage() {
               href="/zdorovye/telo/protsent-zhira"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Target className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Target className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Процент жира
               </span>
@@ -309,7 +309,7 @@ export default function BMRPage() {
               href="/zdorovye/pitanie/defitsit-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <TrendingDown className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <TrendingDown className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Дефицит калорий
               </span>
@@ -323,7 +323,7 @@ export default function BMRPage() {
           {/* Блок 1 — Что такое BMR */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Что такое базовый метаболизм
             </h2>
             <p>
@@ -351,7 +351,7 @@ export default function BMRPage() {
           {/* Блок 1.5 — Сколько калорий нужно в день */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Target className="h-5 w-5" />
+              <Target className="size-5" />
               Сколько калорий нужно в день
             </h2>
             <p>
@@ -407,14 +407,14 @@ export default function BMRPage() {
           {/* Блок 2 — Формулы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
+              <Calculator className="size-5" />
               Формулы расчёта BMR
             </h2>
 
             <div className="space-y-3">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Award className="h-5 w-5 text-green-500" />
+                  <Award className="size-5 text-green-500" />
                   Миффлина-Сан Жеора (1990)
                 </h3>
                 <p>
@@ -430,7 +430,7 @@ export default function BMRPage() {
 
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <ScrollText className="h-5 w-5 text-amber-500" />
+                  <ScrollText className="size-5 text-amber-500" />
                   Харриса-Бенедикта (1919)
                 </h3>
                 <p>
@@ -447,7 +447,7 @@ export default function BMRPage() {
 
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <RefreshCw className="h-5 w-5 text-blue-500" />
+                  <RefreshCw className="size-5 text-blue-500" />
                   Харриса-Бенедикта (1984)
                 </h3>
                 <p>
@@ -463,7 +463,7 @@ export default function BMRPage() {
 
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Dumbbell className="h-5 w-5 text-violet-500" />
+                  <Dumbbell className="size-5 text-violet-500" />
                   Кетча-МакАрдла
                 </h3>
                 <p>
@@ -481,7 +481,7 @@ export default function BMRPage() {
 
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Globe className="h-5 w-5 text-sky-500" />
+                  <Globe className="size-5 text-sky-500" />
                   Формула ВОЗ
                 </h3>
                 <p>
@@ -504,7 +504,7 @@ export default function BMRPage() {
           {/* Блок 3 — BMR vs TDEE */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Puzzle className="h-5 w-5" />
+              <Puzzle className="size-5" />
               BMR и TDEE — в чём разница
             </h2>
             <p>
@@ -516,7 +516,7 @@ export default function BMRPage() {
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-3">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Flame className="h-5 w-5 text-amber-500" />
+                  <Flame className="size-5 text-amber-500" />
                   BMR
                 </h3>
                 <ul className="space-y-1.5 text-sm">
@@ -540,7 +540,7 @@ export default function BMRPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-3">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Zap className="h-5 w-5 text-blue-500" />
+                  <Zap className="size-5 text-blue-500" />
                   TDEE
                 </h3>
                 <ul className="space-y-1.5 text-sm">
@@ -579,13 +579,13 @@ export default function BMRPage() {
           {/* Блок 4 — Факторы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Puzzle className="h-5 w-5" />
+              <Puzzle className="size-5" />
               Факторы, влияющие на базовый метаболизм
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-2">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <TrendingUp className="h-5 w-5 text-green-500" />
+                  <TrendingUp className="size-5 text-green-500" />
                   Повышают BMR
                 </h3>
                 <ul className="space-y-1 pl-4 list-disc text-sm">
@@ -598,7 +598,7 @@ export default function BMRPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-2">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <TrendingDown className="h-5 w-5 text-amber-500" />
+                  <TrendingDown className="size-5 text-amber-500" />
                   Снижают BMR
                 </h3>
                 <ul className="space-y-1 pl-4 list-disc text-sm">
@@ -617,7 +617,7 @@ export default function BMRPage() {
           {/* Блок 5 — Как ускорить */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Target className="h-5 w-5" />
+              <Target className="size-5" />
               Как ускорить метаболизм
             </h2>
             <p>
@@ -628,7 +628,7 @@ export default function BMRPage() {
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-2">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Dumbbell className="h-5 w-5 text-blue-500" />
+                  <Dumbbell className="size-5 text-blue-500" />
                   Тренировки
                 </h3>
                 <ul className="space-y-1 pl-4 list-disc text-sm">
@@ -645,7 +645,7 @@ export default function BMRPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-2">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Weight className="h-5 w-5 text-green-500" />
+                  <Weight className="size-5 text-green-500" />
                   Питание и образ жизни
                 </h3>
                 <ul className="space-y-1 pl-4 list-disc text-sm">
@@ -674,7 +674,7 @@ export default function BMRPage() {
           {/* Блок 6 — Таблица BMR */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               Средний BMR по возрасту и полу
             </h2>
             <p>
@@ -732,7 +732,7 @@ export default function BMRPage() {
           {/* Блок 7 — Примеры расчёта */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               Примеры расчёта
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
@@ -773,12 +773,12 @@ export default function BMRPage() {
           {/* Блок 8 — Практические советы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Практические советы
             </h2>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -787,7 +787,7 @@ export default function BMRPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -796,7 +796,7 @@ export default function BMRPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -805,7 +805,7 @@ export default function BMRPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -814,7 +814,7 @@ export default function BMRPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   5
                 </span>
                 <div>
@@ -824,7 +824,7 @@ export default function BMRPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <AlertTriangle className="size-5 shrink-0 text-amber-400" />
               <p>
                 Результаты калькулятора носят ориентировочный характер. При наличии
                 заболеваний или для точного определения{' '}
@@ -846,7 +846,7 @@ export default function BMRPage() {
           {/* FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -943,7 +943,7 @@ export default function BMRPage() {
           {/* Связанные калькуляторы */}
           <nav className="space-y-3" aria-label="Связанные калькуляторы">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -951,42 +951,42 @@ export default function BMRPage() {
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-4 w-4 text-muted-foreground" />
+                <Flame className="size-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/telo/idealnyj-ves"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Ruler className="h-4 w-4 text-muted-foreground" />
+                <Ruler className="size-4 text-muted-foreground" />
                 Идеальный вес
               </Link>
               <Link
                 href="/zdorovye/telo/protsent-zhira"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Target className="h-4 w-4 text-muted-foreground" />
+                <Target className="size-4 text-muted-foreground" />
                 Процент жира
               </Link>
               <Link
                 href="/zdorovye/pitanie/defitsit-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <TrendingDown className="h-4 w-4 text-muted-foreground" />
+                <TrendingDown className="size-4 text-muted-foreground" />
                 Дефицит калорий
               </Link>
               <Link
                 href="/zdorovye/pitanie/norma-vody"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Droplets className="h-4 w-4 text-muted-foreground" />
+                <Droplets className="size-4 text-muted-foreground" />
                 Норма воды
               </Link>
             </div>

@@ -212,10 +212,10 @@ export default function BodyFatPage() {
         <Breadcrumbs items={breadcrumbs} />
 
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
             Калькулятор процента жира
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Рассчитайте процент жира в организме по 3 научным формулам.
             Метод ВМС США, формулы Deurenberg и Gallagher. Визуальная шкала
             категорий, состав тела и рекомендации.
@@ -225,18 +225,18 @@ export default function BodyFatPage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>Выберите пол, укажите возраст, рост и вес с помощью удобных слайдеров.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>Измерьте и укажите обхват талии, шеи и бёдер (для женщин) с помощью мягкой сантиметровой ленты.{' '}
@@ -244,7 +244,7 @@ export default function BodyFatPage() {
               </p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>Калькулятор покажет процент жира, категорию ACE, состав тела и сравнение 3 формул.</p>
@@ -261,7 +261,7 @@ export default function BodyFatPage() {
         {/* Вам также будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
@@ -269,7 +269,7 @@ export default function BodyFatPage() {
               href="/zdorovye/telo/kalkulyator-imt"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Scale className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор ИМТ
               </span>
@@ -278,7 +278,7 @@ export default function BodyFatPage() {
               href="/zdorovye/telo/idealnyj-ves"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Ruler className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Ruler className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Идеальный вес
               </span>
@@ -287,7 +287,7 @@ export default function BodyFatPage() {
               href="/zdorovye/telo/bazovyj-metabolizm"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Flame className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Базовый метаболизм
               </span>
@@ -296,7 +296,7 @@ export default function BodyFatPage() {
               href="/zdorovye/pitanie/kalkulyator-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Target className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Target className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор калорий
               </span>
@@ -310,7 +310,7 @@ export default function BodyFatPage() {
           {/* Блок 1: Что такое процент жира */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Что такое процент жира в организме
             </h2>
             <p>
@@ -341,7 +341,7 @@ export default function BodyFatPage() {
           {/* Блок 2: Формулы расчёта */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
+              <Calculator className="size-5" />
               Формулы расчёта процента жира
             </h2>
             <p>
@@ -353,7 +353,7 @@ export default function BodyFatPage() {
             <div className="space-y-3">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Target className="h-5 w-5 text-green-500" />
+                  <Target className="size-5 text-green-500" />
                   Метод ВМС США (US Navy)
                 </h3>
                 <p>
@@ -370,7 +370,7 @@ export default function BodyFatPage() {
 
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Ruler className="h-5 w-5 text-blue-500" />
+                  <Ruler className="size-5 text-blue-500" />
                   Формула Deurenberg (1991)
                 </h3>
                 <p>
@@ -387,7 +387,7 @@ export default function BodyFatPage() {
 
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Scan className="h-5 w-5 text-violet-500" />
+                  <Scan className="size-5 text-violet-500" />
                   Формула Gallagher (2000)
                 </h3>
                 <p>
@@ -409,7 +409,7 @@ export default function BodyFatPage() {
           {/* Блок 3: Категории ACE — таблица */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Scale className="h-5 w-5" />
+              <Scale className="size-5" />
               Категории процента жира (ACE)
             </h2>
             <p>
@@ -466,7 +466,7 @@ export default function BodyFatPage() {
           {/* Блок 4: Как правильно измерять обхваты */}
           <div id="measurements" className="space-y-3 scroll-mt-4">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Ruler className="h-5 w-5" />
+              <Ruler className="size-5" />
               Как правильно измерять обхваты
             </h2>
             <p>
@@ -476,7 +476,7 @@ export default function BodyFatPage() {
             <div className="grid gap-3 md:grid-cols-3">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Ruler className="h-5 w-5 text-amber-500" />
+                  <Ruler className="size-5 text-amber-500" />
                   Обхват талии
                 </h3>
                 <ul className="space-y-1 pl-5 list-disc marker:text-primary">
@@ -488,7 +488,7 @@ export default function BodyFatPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Scan className="h-5 w-5 text-blue-500" />
+                  <Scan className="size-5 text-blue-500" />
                   Обхват шеи
                 </h3>
                 <ul className="space-y-1 pl-5 list-disc marker:text-primary">
@@ -500,7 +500,7 @@ export default function BodyFatPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Dumbbell className="h-5 w-5 text-pink-500" />
+                  <Dumbbell className="size-5 text-pink-500" />
                   Обхват бёдер
                 </h3>
                 <ul className="space-y-1 pl-5 list-disc marker:text-primary">
@@ -521,13 +521,13 @@ export default function BodyFatPage() {
           {/* Блок 5: Как снизить процент жира */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Target className="h-5 w-5" />
+              <Target className="size-5" />
               Как снизить процент жира
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Droplets className="h-5 w-5 text-green-500" />
+                  <Droplets className="size-5 text-green-500" />
                   Питание
                 </h3>
                 <ul className="space-y-1 pl-5 list-disc marker:text-primary">
@@ -550,7 +550,7 @@ export default function BodyFatPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Dumbbell className="h-5 w-5 text-blue-500" />
+                  <Dumbbell className="size-5 text-blue-500" />
                   Тренировки
                 </h3>
                 <ul className="space-y-1 pl-5 list-disc marker:text-primary">
@@ -568,7 +568,7 @@ export default function BodyFatPage() {
           {/* Блок 6: Примеры расчёта */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               Примеры расчёта
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
@@ -605,7 +605,7 @@ export default function BodyFatPage() {
           {/* Блок 7: Сравнение методов измерения */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Сравнение методов измерения процента жира
             </h2>
             <p>
@@ -657,7 +657,7 @@ export default function BodyFatPage() {
               </table>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <AlertTriangle className="size-5 shrink-0 text-amber-400" />
               <p>
                 BIA-весы чувствительны к уровню гидратации — результат может
                 меняться на <strong className="text-foreground">2–3%</strong> в течение дня. Измеряйте
@@ -671,12 +671,12 @@ export default function BodyFatPage() {
           {/* Блок 8: Практические советы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Практические советы
             </h2>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -685,7 +685,7 @@ export default function BodyFatPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -694,7 +694,7 @@ export default function BodyFatPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -703,7 +703,7 @@ export default function BodyFatPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -712,7 +712,7 @@ export default function BodyFatPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   5
                 </span>
                 <div>
@@ -726,7 +726,7 @@ export default function BodyFatPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <AlertTriangle className="size-5 shrink-0 text-amber-400" />
               <p>
                 Результаты калькулятора — ориентир, а не медицинский диагноз.
                 При серьёзных отклонениях от нормы проконсультируйтесь с врачом.
@@ -744,7 +744,7 @@ export default function BodyFatPage() {
           {/* FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -833,7 +833,7 @@ export default function BodyFatPage() {
           {/* Связанные калькуляторы */}
           <nav className="space-y-3" aria-label="Связанные калькуляторы">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -841,42 +841,42 @@ export default function BodyFatPage() {
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/telo/idealnyj-ves"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Target className="h-4 w-4 text-muted-foreground" />
+                <Target className="size-4 text-muted-foreground" />
                 Идеальный вес
               </Link>
               <Link
                 href="/zdorovye/telo/bazovyj-metabolizm"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-4 w-4 text-muted-foreground" />
+                <Flame className="size-4 text-muted-foreground" />
                 Базовый метаболизм
               </Link>
               <Link
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Calculator className="h-4 w-4 text-muted-foreground" />
+                <Calculator className="size-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/pitanie/defitsit-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <TrendingDown className="h-4 w-4 text-muted-foreground" />
+                <TrendingDown className="size-4 text-muted-foreground" />
                 Дефицит калорий
               </Link>
               <Link
                 href="/zdorovye/pitanie/norma-vody"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Droplets className="h-4 w-4 text-muted-foreground" />
+                <Droplets className="size-4 text-muted-foreground" />
                 Норма воды
               </Link>
             </div>

@@ -217,10 +217,10 @@ export default function BMICalculatorPage() {
         <Breadcrumbs items={breadcrumbs} />
 
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
             Калькулятор ИМТ онлайн
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Рассчитайте индекс массы тела и узнайте, в норме ли ваш вес.
             Визуальная шкала категорий ВОЗ, идеальный диапазон веса
             и рекомендации. Результат обновляется мгновенно.
@@ -230,24 +230,24 @@ export default function BMICalculatorPage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>Выберите пол, укажите рост и вес с помощью удобных слайдеров.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>Калькулятор мгновенно рассчитает ИМТ и покажет его на визуальной шкале категорий ВОЗ.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>Узнайте свою категорию, идеальный диапазон веса и получите персональные рекомендации.</p>
@@ -264,7 +264,7 @@ export default function BMICalculatorPage() {
         {/* Вам также будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
@@ -272,7 +272,7 @@ export default function BMICalculatorPage() {
               href="/zdorovye/telo/idealnyj-ves"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Target className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Target className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Идеальный вес
               </span>
@@ -281,7 +281,7 @@ export default function BMICalculatorPage() {
               href="/zdorovye/telo/protsent-zhira"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Percent className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Percent className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Процент жира
               </span>
@@ -290,7 +290,7 @@ export default function BMICalculatorPage() {
               href="/zdorovye/telo/bazovyj-metabolizm"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Flame className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Базовый метаболизм
               </span>
@@ -299,7 +299,7 @@ export default function BMICalculatorPage() {
               href="/zdorovye/pitanie/kalkulyator-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Calculator className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Calculator className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор калорий
               </span>
@@ -313,7 +313,7 @@ export default function BMICalculatorPage() {
           {/* Блок 1 — Что такое ИМТ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Что такое ИМТ и зачем его знать
             </h2>
             <p>
@@ -349,7 +349,7 @@ export default function BMICalculatorPage() {
           {/* Блок 2 — Формула расчёта */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
+              <Calculator className="size-5" />
               Как рассчитывается ИМТ
             </h2>
             <p>
@@ -389,7 +389,7 @@ export default function BMICalculatorPage() {
           {/* Блок 3 — Классификация ВОЗ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Scale className="h-5 w-5" />
+              <Scale className="size-5" />
               Классификация ИМТ по ВОЗ
             </h2>
             <p>
@@ -458,7 +458,7 @@ export default function BMICalculatorPage() {
           {/* Блок 4 — Ограничения */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5" />
+              <AlertTriangle className="size-5" />
               Ограничения ИМТ
             </h2>
             <p>
@@ -468,7 +468,7 @@ export default function BMICalculatorPage() {
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Dumbbell className="h-5 w-5 text-blue-400" />
+                  <Dumbbell className="size-5 text-blue-400" />
                   Спортсмены
                 </h3>
                 <p>
@@ -478,7 +478,7 @@ export default function BMICalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Users className="h-5 w-5 text-amber-400" />
+                  <Users className="size-5 text-amber-400" />
                   Пожилые люди
                 </h3>
                 <p>
@@ -489,7 +489,7 @@ export default function BMICalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Heart className="h-5 w-5 text-pink-400" />
+                  <Heart className="size-5 text-pink-400" />
                   Беременные
                 </h3>
                 <p>
@@ -499,7 +499,7 @@ export default function BMICalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Ruler className="h-5 w-5 text-emerald-400" />
+                  <Ruler className="size-5 text-emerald-400" />
                   Распределение жира
                 </h3>
                 <p>
@@ -510,7 +510,7 @@ export default function BMICalculatorPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <Lightbulb className="h-5 w-5 shrink-0 text-blue-400" />
+              <Lightbulb className="size-5 shrink-0 text-blue-400" />
               <p>
                 Для полной картины рекомендуется использовать ИМТ вместе с другими
                 показателями: обхват талии, соотношение талии к бёдрам и{' '}
@@ -526,7 +526,7 @@ export default function BMICalculatorPage() {
           {/* Блок 5 — Влияющие факторы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Target className="h-5 w-5" />
+              <Target className="size-5" />
               Что влияет на ИМТ
             </h2>
             <p>
@@ -537,7 +537,7 @@ export default function BMICalculatorPage() {
             <div className="grid gap-3 md:grid-cols-3">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Dna className="h-5 w-5 text-violet-400" />
+                  <Dna className="size-5 text-violet-400" />
                   Генетика
                 </h3>
                 <p>
@@ -547,7 +547,7 @@ export default function BMICalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <UtensilsCrossed className="h-5 w-5 text-orange-400" />
+                  <UtensilsCrossed className="size-5 text-orange-400" />
                   Питание
                 </h3>
                 <p>
@@ -560,7 +560,7 @@ export default function BMICalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Dumbbell className="h-5 w-5 text-emerald-400" />
+                  <Dumbbell className="size-5 text-emerald-400" />
                   Активность
                 </h3>
                 <p>
@@ -572,7 +572,7 @@ export default function BMICalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Clock className="h-5 w-5 text-amber-400" />
+                  <Clock className="size-5 text-amber-400" />
                   Возраст
                 </h3>
                 <p>
@@ -582,7 +582,7 @@ export default function BMICalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Droplets className="h-5 w-5 text-pink-400" />
+                  <Droplets className="size-5 text-pink-400" />
                   Гормоны
                 </h3>
                 <p>
@@ -592,7 +592,7 @@ export default function BMICalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Moon className="h-5 w-5 text-indigo-400" />
+                  <Moon className="size-5 text-indigo-400" />
                   Сон и стресс
                 </h3>
                 <p>
@@ -608,7 +608,7 @@ export default function BMICalculatorPage() {
           {/* Блок 6 — Обхват талии */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Ruler className="h-5 w-5" />
+              <Ruler className="size-5" />
               Обхват талии — дополнение к ИМТ
             </h2>
             <p>
@@ -659,7 +659,7 @@ export default function BMICalculatorPage() {
           {/* Блок 7 — Что делать при отклонениях */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Что делать при отклонениях от нормы
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
@@ -688,7 +688,7 @@ export default function BMICalculatorPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <AlertTriangle className="size-5 shrink-0 text-amber-400" />
               <p>
                 Безопасный темп изменения веса — не более <strong className="text-foreground">0,5–1 кг</strong> в неделю.
                 Резкие диеты и голодание приводят к потере мышечной массы, замедлению
@@ -702,7 +702,7 @@ export default function BMICalculatorPage() {
           {/* Блок 8 — Примеры расчёта */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               Примеры расчёта
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
@@ -741,12 +741,12 @@ export default function BMICalculatorPage() {
           {/* Блок 9 — Практические советы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Практические советы
             </h2>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -755,7 +755,7 @@ export default function BMICalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -764,7 +764,7 @@ export default function BMICalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -779,7 +779,7 @@ export default function BMICalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -788,7 +788,7 @@ export default function BMICalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   5
                 </span>
                 <div>
@@ -809,7 +809,7 @@ export default function BMICalculatorPage() {
           {/* FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -893,7 +893,7 @@ export default function BMICalculatorPage() {
           {/* Связанные калькуляторы */}
           <nav className="space-y-3" aria-label="Связанные калькуляторы">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -901,42 +901,42 @@ export default function BMICalculatorPage() {
                 href="/zdorovye/telo/idealnyj-ves"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Target className="h-4 w-4 text-muted-foreground" />
+                <Target className="size-4 text-muted-foreground" />
                 Идеальный вес
               </Link>
               <Link
                 href="/zdorovye/telo/protsent-zhira"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Percent className="h-4 w-4 text-muted-foreground" />
+                <Percent className="size-4 text-muted-foreground" />
                 Процент жира
               </Link>
               <Link
                 href="/zdorovye/telo/bazovyj-metabolizm"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-4 w-4 text-muted-foreground" />
+                <Flame className="size-4 text-muted-foreground" />
                 Базовый метаболизм
               </Link>
               <Link
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Calculator className="h-4 w-4 text-muted-foreground" />
+                <Calculator className="size-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/pitanie/defitsit-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Дефицит калорий
               </Link>
               <Link
                 href="/zdorovye/pitanie/norma-vody"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Droplets className="h-4 w-4 text-muted-foreground" />
+                <Droplets className="size-4 text-muted-foreground" />
                 Норма воды
               </Link>
             </div>

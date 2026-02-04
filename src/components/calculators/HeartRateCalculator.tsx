@@ -51,7 +51,7 @@ export function HeartRateCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Ваши параметры
           </CardTitle>
         </CardHeader>
@@ -63,7 +63,7 @@ export function HeartRateCalculator() {
             min={15}
             max={80}
             unit="лет"
-            icon={<Calendar className="h-5 w-5" />}
+            icon={<Calendar className="size-5" />}
           />
           <ValueSlider
             label="Пульс покоя"
@@ -72,7 +72,7 @@ export function HeartRateCalculator() {
             min={40}
             max={100}
             unit="уд/мин"
-            icon={<Heart className="h-5 w-5" />}
+            icon={<Heart className="size-5" />}
           />
         </CardContent>
       </Card>
@@ -80,7 +80,7 @@ export function HeartRateCalculator() {
       {/* Главный результат */}
       <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
         <p className="text-sm text-muted-foreground mb-1">Максимальный пульс</p>
-        <p className="text-4xl font-bold text-primary">
+        <p className="text-4xl font-bold text-primary tabular-nums">
           {result.maxHR}
           <span className="text-lg font-normal text-muted-foreground ml-1">уд/мин</span>
         </p>
@@ -112,7 +112,7 @@ export function HeartRateCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Activity className="h-5 w-5" />
+            <Activity className="size-5" />
             Зоны пульса
           </CardTitle>
         </CardHeader>
@@ -130,7 +130,7 @@ export function HeartRateCalculator() {
               >
                 <span
                   className={cn(
-                    'flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white',
+                    'flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white',
                     colors.bg
                   )}
                 >
@@ -156,13 +156,13 @@ export function HeartRateCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Lightbulb className="h-5 w-5" />
+            <Lightbulb className="size-5" />
             Важно знать
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           <Alert>
-            <AlertTriangle className="h-5 w-5 text-amber-500" />
+            <AlertTriangle className="size-5 text-amber-500" />
             <AlertTitle>Отклонения ±10–15 уд.</AlertTitle>
             <AlertDescription>
               Формулы дают приблизительную оценку. Реальный максимальный пульс
@@ -171,7 +171,7 @@ export function HeartRateCalculator() {
             </AlertDescription>
           </Alert>
           <Alert>
-            <Timer className="h-5 w-5 text-blue-500" />
+            <Timer className="size-5 text-blue-500" />
             <AlertTitle>Измерение пульса покоя</AlertTitle>
             <AlertDescription>
               Измеряйте утром, не вставая с кровати, 3 дня подряд.
@@ -180,7 +180,7 @@ export function HeartRateCalculator() {
             </AlertDescription>
           </Alert>
           <Alert>
-            <Stethoscope className="h-5 w-5 text-red-500" />
+            <Stethoscope className="size-5 text-red-500" />
             <AlertTitle>Когда к врачу</AlertTitle>
             <AlertDescription>
               Если пульс покоя выше 100 уд/мин, вы ощущаете перебои

@@ -48,7 +48,7 @@ export function BodyFatCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <SlidersHorizontal className="h-5 w-5" />
+              <SlidersHorizontal className="size-5" />
               Ваши параметры
             </CardTitle>
           </CardHeader>
@@ -72,7 +72,7 @@ export function BodyFatCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Ваши параметры
           </CardTitle>
         </CardHeader>
@@ -86,7 +86,7 @@ export function BodyFatCalculator() {
             min={15}
             max={80}
             unit="лет"
-            icon={<CalendarDays className="h-5 w-5" />}
+            icon={<CalendarDays className="size-5" />}
           />
 
           <ValueSlider
@@ -96,7 +96,7 @@ export function BodyFatCalculator() {
             min={140}
             max={220}
             unit="см"
-            icon={<Ruler className="h-5 w-5" />}
+            icon={<Ruler className="size-5" />}
           />
 
           <ValueSlider
@@ -106,7 +106,7 @@ export function BodyFatCalculator() {
             min={30}
             max={200}
             unit="кг"
-            icon={<Weight className="h-5 w-5" />}
+            icon={<Weight className="size-5" />}
           />
 
           <ValueSlider
@@ -116,7 +116,7 @@ export function BodyFatCalculator() {
             min={50}
             max={150}
             unit="см"
-            icon={<Scan className="h-5 w-5" />}
+            icon={<Scan className="size-5" />}
           />
 
           <ValueSlider
@@ -126,7 +126,7 @@ export function BodyFatCalculator() {
             min={25}
             max={55}
             unit="см"
-            icon={<Ruler className="h-5 w-5" />}
+            icon={<Ruler className="size-5" />}
           />
 
           {gender === 'female' && (
@@ -137,7 +137,7 @@ export function BodyFatCalculator() {
               min={60}
               max={150}
               unit="см"
-              icon={<Scan className="h-5 w-5" />}
+              icon={<Scan className="size-5" />}
             />
           )}
         </CardContent>
@@ -149,7 +149,7 @@ export function BodyFatCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Target className="h-5 w-5" />
+              <Target className="size-5" />
               Процент жира в организме
             </CardTitle>
           </CardHeader>
@@ -189,13 +189,13 @@ export function BodyFatCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <Ruler className="h-5 w-5 text-amber-400" />
+              <Ruler className="size-5 text-amber-400" />
               <AlertTitle>Как измерять обхваты</AlertTitle>
               <AlertDescription>
                 Используйте мягкую сантиметровую ленту. Измеряйте утром натощак.
@@ -204,7 +204,7 @@ export function BodyFatCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Target className="h-5 w-5 text-blue-400" />
+              <Target className="size-5 text-blue-400" />
               <AlertTitle>Точность метода</AlertTitle>
               <AlertDescription>
                 Метод ВМС США имеет погрешность 3–4%. Для более точного
@@ -213,7 +213,7 @@ export function BodyFatCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Info className="h-5 w-5 text-violet-400" />
+              <Info className="size-5 text-violet-400" />
               <AlertTitle>Формулы на основе ИМТ</AlertTitle>
               <AlertDescription>
                 Формулы Deurenberg и Gallagher оценивают процент жира по ИМТ,
@@ -275,7 +275,7 @@ function BodyFatScaleBars({
                 : 'border-transparent bg-transparent'
             )}
           >
-            <Icon className={cn('h-4 w-4', iconMeta.color)} />
+            <Icon className={cn('size-4', iconMeta.color)} />
 
             <span
               className={cn(

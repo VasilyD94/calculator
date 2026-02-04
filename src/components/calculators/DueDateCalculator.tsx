@@ -80,7 +80,7 @@ export function DueDateCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Выберите метод расчёта
           </CardTitle>
         </CardHeader>
@@ -116,7 +116,7 @@ export function DueDateCalculator() {
             }
             value={date}
             onChange={setDate}
-            icon={<Calendar className="h-5 w-5" />}
+            icon={<Calendar className="size-5" />}
             min={toIso(minDate)}
             max={toIso(today)}
           />
@@ -131,7 +131,7 @@ export function DueDateCalculator() {
                 min={4}
                 max={40}
                 unit="нед."
-                icon={<Stethoscope className="h-5 w-5" />}
+                icon={<Stethoscope className="size-5" />}
               />
               <ValueSlider
                 label="Срок на УЗИ — дни"
@@ -140,7 +140,7 @@ export function DueDateCalculator() {
                 min={0}
                 max={6}
                 unit="дн."
-                icon={<Stethoscope className="h-5 w-5" />}
+                icon={<Stethoscope className="size-5" />}
               />
             </div>
           )}
@@ -150,7 +150,7 @@ export function DueDateCalculator() {
       {/* Главный результат */}
       <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
         <p className="text-sm text-muted-foreground mb-1">Предполагаемая дата родов</p>
-        <p className="text-4xl font-bold text-primary">
+        <p className="text-4xl font-bold text-primary tabular-nums">
           {result.dueDateFormatted}
         </p>
         <p className="text-xs text-muted-foreground mt-1">
@@ -163,7 +163,7 @@ export function DueDateCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Baby className="h-5 w-5" />
+              <Baby className="size-5" />
               Прогресс беременности
             </CardTitle>
           </CardHeader>
@@ -203,7 +203,7 @@ export function DueDateCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Calendar className="h-5 w-5" />
+              <Calendar className="size-5" />
               Ключевые даты
             </CardTitle>
           </CardHeader>
@@ -233,11 +233,11 @@ export function DueDateCalculator() {
                       {/* Вертикальная линия + точка */}
                       <div className="flex flex-col items-center">
                         {m.passed ? (
-                          <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0" />
+                          <CheckCircle2 className="size-5 text-green-500 shrink-0" />
                         ) : (
                           <Circle
                             className={cn(
-                              'h-5 w-5 shrink-0',
+                              'size-5 shrink-0',
                               isNext
                                 ? 'text-pink-500 fill-pink-100'
                                 : 'text-muted-foreground'
@@ -304,13 +304,13 @@ export function DueDateCalculator() {
         <Card className="gap-3 py-4">
           <CardHeader className="pb-0">
             <CardTitle className="text-base flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Важно знать
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Alert>
-              <CalendarHeart className="h-5 w-5 text-pink-500" />
+              <CalendarHeart className="size-5 text-pink-500" />
               <AlertTitle>ПДР — приблизительная дата</AlertTitle>
               <AlertDescription>
                 Только 4–5% детей рождаются точно в ПДР. Нормальные роды
@@ -319,7 +319,7 @@ export function DueDateCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Calculator className="h-5 w-5 text-blue-500" />
+              <Calculator className="size-5 text-blue-500" />
               <AlertTitle>Метод расчёта</AlertTitle>
               <AlertDescription>
                 Расчёт по дате месячных (правило Негеле) предполагает цикл
@@ -328,7 +328,7 @@ export function DueDateCalculator() {
               </AlertDescription>
             </Alert>
             <Alert>
-              <Hospital className="h-5 w-5 text-green-500" />
+              <Hospital className="size-5 text-green-500" />
               <AlertTitle>Уточнение у врача</AlertTitle>
               <AlertDescription>
                 Наиболее точно срок беременности определяется на УЗИ в 11–13

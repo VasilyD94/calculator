@@ -110,7 +110,7 @@ export function ProteinCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Ваши параметры
           </CardTitle>
         </CardHeader>
@@ -122,13 +122,13 @@ export function ProteinCalculator() {
             min={30}
             max={200}
             unit="кг"
-            icon={<Weight className="h-5 w-5" />}
+            icon={<Weight className="size-5" />}
           />
 
           {/* Тип тренировок */}
           <div className="space-y-3">
             <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-              <Dumbbell className="h-5 w-5" />
+              <Dumbbell className="size-5" />
               Тип тренировок
             </span>
             <div className="grid grid-cols-4 gap-1.5">
@@ -148,7 +148,7 @@ export function ProteinCalculator() {
                   >
                     <Icon
                       className={cn(
-                        'h-5 w-5 mb-0.5',
+                        'size-5 mb-0.5',
                         trainingType === type.id
                           ? 'text-primary'
                           : 'text-muted-foreground'
@@ -174,7 +174,7 @@ export function ProteinCalculator() {
           {/* Цель */}
           <div className="space-y-3">
             <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-              <Target className="h-5 w-5" />
+              <Target className="size-5" />
               Цель
             </span>
             <div className="grid grid-cols-3 gap-1.5">
@@ -194,7 +194,7 @@ export function ProteinCalculator() {
                   >
                     <Icon
                       className={cn(
-                        'h-5 w-5 mb-0.5',
+                        'size-5 mb-0.5',
                         goal === g.id
                           ? 'text-primary'
                           : 'text-muted-foreground'
@@ -220,7 +220,7 @@ export function ProteinCalculator() {
       {/* Главный результат */}
       <div className="rounded-xl border-2 border-primary/20 bg-primary/5 p-4 text-center">
         <p className="text-sm text-muted-foreground mb-1">Рекомендуемый белок</p>
-        <p className="text-4xl font-bold text-primary">
+        <p className="text-4xl font-bold text-primary tabular-nums">
           {result.dailyMin}–{result.dailyMax}
           <span className="text-lg font-normal text-muted-foreground ml-1">г/день</span>
         </p>
@@ -258,7 +258,7 @@ export function ProteinCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Utensils className="h-5 w-5" />
+            <Utensils className="size-5" />
             Распределение белка
           </CardTitle>
         </CardHeader>
@@ -283,7 +283,7 @@ export function ProteinCalculator() {
               >
                 <span
                   className={cn(
-                    'flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-white',
+                    'flex size-6 shrink-0 items-center justify-center rounded-full text-white',
                     meal.color
                   )}
                 >
@@ -312,13 +312,13 @@ export function ProteinCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Lightbulb className="h-5 w-5" />
+            <Lightbulb className="size-5" />
             Важно знать
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           <Alert>
-            <AlertTriangle className="h-5 w-5 text-amber-500" />
+            <AlertTriangle className="size-5 text-amber-500" />
             <AlertTitle>Индивидуальные потребности</AlertTitle>
             <AlertDescription>
               Рекомендации основаны на средних показателях. При заболеваниях почек,
@@ -327,7 +327,7 @@ export function ProteinCalculator() {
             </AlertDescription>
           </Alert>
           <Alert>
-            <Utensils className="h-5 w-5 text-blue-500" />
+            <Utensils className="size-5 text-blue-500" />
             <AlertTitle>Распределяйте белок равномерно</AlertTitle>
             <AlertDescription>
               Организм усваивает 25–40 г белка за один приём пищи. Распределите
@@ -335,7 +335,7 @@ export function ProteinCalculator() {
             </AlertDescription>
           </Alert>
           <Alert>
-            <Lightbulb className="h-5 w-5 text-green-500" />
+            <Lightbulb className="size-5 text-green-500" />
             <AlertTitle>Качество белка</AlertTitle>
             <AlertDescription>
               Отдавайте предпочтение полноценным источникам белка: мясо, рыба, яйца,

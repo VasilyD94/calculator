@@ -70,10 +70,10 @@ export default function TeloPage() {
         <Breadcrumbs items={breadcrumbs} />
 
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-balance">
             Калькуляторы тела
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Узнайте свой индекс массы тела, идеальный вес по 5 формулам,
             процент жира, базовый метаболизм, оптимальные часы сна и норму давления.
             Все расчёты мгновенные и основаны на научных формулах.
@@ -99,7 +99,7 @@ export default function TeloPage() {
         <section className="space-y-8 text-sm leading-6 text-muted-foreground">
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Зачем знать параметры тела
             </h2>
             <p>
@@ -114,7 +114,7 @@ export default function TeloPage() {
 
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
+              <Calculator className="size-5" />
               Наши калькуляторы
             </h2>
             <ul className="space-y-2 pl-5 list-disc marker:text-primary">
@@ -215,7 +215,7 @@ export default function TeloPage() {
 
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <BookOpen className="h-5 w-5" />
+              <BookOpen className="size-5" />
               Как пользоваться
             </h2>
             <p>

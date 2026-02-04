@@ -214,10 +214,10 @@ export default function SleepCalculatorPage() {
 
         {/* Заголовок */}
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
             Калькулятор сна — онлайн расчёт
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Рассчитайте оптимальное время отхода ко сну или пробуждения по циклам сна.
             Просыпайтесь легко и чувствуйте себя бодрым весь день.
           </p>
@@ -226,24 +226,24 @@ export default function SleepCalculatorPage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>Выберите режим: рассчитать время отхода ко сну или время пробуждения.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>Укажите желаемое время и время, которое вам нужно на засыпание.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>Получите 4 варианта с разным количеством циклов сна.</p>
@@ -260,7 +260,7 @@ export default function SleepCalculatorPage() {
         {/* Вам также будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
@@ -268,7 +268,7 @@ export default function SleepCalculatorPage() {
               href="/zdorovye/pitanie/kalkulyator-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Flame className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор калорий
               </span>
@@ -277,7 +277,7 @@ export default function SleepCalculatorPage() {
               href="/zdorovye/telo/kalkulyator-imt"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Scale className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор ИМТ
               </span>
@@ -286,7 +286,7 @@ export default function SleepCalculatorPage() {
               href="/zdorovye/telo/bazovyj-metabolizm"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Activity className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Activity className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Базовый метаболизм
               </span>
@@ -295,7 +295,7 @@ export default function SleepCalculatorPage() {
               href="/zdorovye/telo/kalkulyator-vozrasta"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Clock className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Clock className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор возраста
               </span>
@@ -307,7 +307,7 @@ export default function SleepCalculatorPage() {
         <section className="space-y-8 text-sm text-muted-foreground">
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Что такое циклы сна
             </h2>
             <p>
@@ -327,7 +327,7 @@ export default function SleepCalculatorPage() {
 
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Moon className="h-5 w-5" />
+              <Moon className="size-5" />
               Фазы сна и их значение
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
@@ -366,7 +366,7 @@ export default function SleepCalculatorPage() {
 
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Sun className="h-5 w-5" />
+              <Sun className="size-5" />
               Почему важно просыпаться в конце цикла
             </h2>
             <p>
@@ -389,7 +389,7 @@ export default function SleepCalculatorPage() {
 
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <BedDouble className="h-5 w-5" />
+              <BedDouble className="size-5" />
               Сколько нужно спать по возрасту
             </h2>
             <p>
@@ -425,7 +425,7 @@ export default function SleepCalculatorPage() {
 
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Clock className="h-5 w-5" />
+              <Clock className="size-5" />
               Таблица времени сна
             </h2>
             <p>
@@ -483,7 +483,7 @@ export default function SleepCalculatorPage() {
 
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Brain className="h-5 w-5" />
+              <Brain className="size-5" />
               Последствия недосыпа
             </h2>
             <p>
@@ -492,7 +492,7 @@ export default function SleepCalculatorPage() {
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <Brain className="h-4 w-4 text-violet-400" />
+                  <Brain className="size-4 text-violet-400" />
                   Когнитивные функции
                 </h3>
                 <p>
@@ -502,7 +502,7 @@ export default function SleepCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <Shield className="h-4 w-4 text-green-400" />
+                  <Shield className="size-4 text-green-400" />
                   Иммунная система
                 </h3>
                 <p>
@@ -512,7 +512,7 @@ export default function SleepCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <Utensils className="h-4 w-4 text-amber-400" />
+                  <Utensils className="size-4 text-amber-400" />
                   Обмен веществ
                 </h3>
                 <p>
@@ -522,7 +522,7 @@ export default function SleepCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <Heart className="h-4 w-4 text-red-400" />
+                  <Heart className="size-4 text-red-400" />
                   Сердечно-сосудистая система
                 </h3>
                 <p>
@@ -537,7 +537,7 @@ export default function SleepCalculatorPage() {
 
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Советы для улучшения качества сна
             </h2>
             <ul className="space-y-2 pl-5 list-disc marker:text-primary">
@@ -580,7 +580,7 @@ export default function SleepCalculatorPage() {
           {/* FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -659,7 +659,7 @@ export default function SleepCalculatorPage() {
           {/* Связанные калькуляторы */}
           <nav className="space-y-3" aria-label="Связанные калькуляторы">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -667,35 +667,35 @@ export default function SleepCalculatorPage() {
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-4 w-4 text-muted-foreground" />
+                <Flame className="size-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/telo/idealnyj-ves"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Target className="h-4 w-4 text-muted-foreground" />
+                <Target className="size-4 text-muted-foreground" />
                 Идеальный вес
               </Link>
               <Link
                 href="/zdorovye/telo/bazovyj-metabolizm"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Activity className="h-4 w-4 text-muted-foreground" />
+                <Activity className="size-4 text-muted-foreground" />
                 Базовый метаболизм
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-alkogolya"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Clock className="h-4 w-4 text-muted-foreground" />
+                <Clock className="size-4 text-muted-foreground" />
                 Калькулятор алкоголя
               </Link>
             </div>

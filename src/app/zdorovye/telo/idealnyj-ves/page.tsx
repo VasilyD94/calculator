@@ -216,10 +216,10 @@ export default function IdealWeightPage() {
         <Breadcrumbs items={breadcrumbs} />
 
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
             Идеальный вес — онлайн расчёт
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Рассчитайте идеальный вес по 5 научным формулам и сравните
             результаты. Калькулятор учитывает пол и рост, показывает диапазон
             и сравнение с текущим весом.
@@ -229,24 +229,24 @@ export default function IdealWeightPage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>Выберите пол, укажите рост и текущий вес с помощью удобных слайдеров.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>Калькулятор мгновенно рассчитает идеальный вес по 5 научным формулам и покажет визуальное сравнение.</p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>Узнайте диапазон идеального веса, среднее значение и разницу с вашим текущим весом.</p>
@@ -263,7 +263,7 @@ export default function IdealWeightPage() {
         {/* Вам также будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
@@ -271,7 +271,7 @@ export default function IdealWeightPage() {
               href="/zdorovye/telo/kalkulyator-imt"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Scale className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор ИМТ
               </span>
@@ -280,7 +280,7 @@ export default function IdealWeightPage() {
               href="/zdorovye/telo/protsent-zhira"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Percent className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Percent className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Процент жира
               </span>
@@ -289,7 +289,7 @@ export default function IdealWeightPage() {
               href="/zdorovye/telo/bazovyj-metabolizm"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Flame className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Базовый метаболизм
               </span>
@@ -298,7 +298,7 @@ export default function IdealWeightPage() {
               href="/zdorovye/pitanie/kalkulyator-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Target className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Target className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
                 Калькулятор калорий
               </span>
@@ -312,7 +312,7 @@ export default function IdealWeightPage() {
           {/* Блок 1: Что такое идеальный вес */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Что такое идеальный вес
             </h2>
             <p>
@@ -338,7 +338,7 @@ export default function IdealWeightPage() {
           {/* Блок 2: Формулы расчёта */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
+              <Calculator className="size-5" />
               Формулы расчёта идеального веса
             </h2>
             <p>
@@ -349,7 +349,7 @@ export default function IdealWeightPage() {
             <div className="space-y-3">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Scale className="h-5 w-5 text-green-500" />
+                  <Scale className="size-5 text-green-500" />
                   Формула Devine (1974)
                 </h3>
                 <p>
@@ -365,7 +365,7 @@ export default function IdealWeightPage() {
 
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Ruler className="h-5 w-5 text-blue-500" />
+                  <Ruler className="size-5 text-blue-500" />
                   Формула Robinson (1983)
                 </h3>
                 <p>
@@ -380,7 +380,7 @@ export default function IdealWeightPage() {
 
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Users className="h-5 w-5 text-violet-500" />
+                  <Users className="size-5 text-violet-500" />
                   Формула Miller (1983)
                 </h3>
                 <p>
@@ -396,7 +396,7 @@ export default function IdealWeightPage() {
 
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Dumbbell className="h-5 w-5 text-amber-500" />
+                  <Dumbbell className="size-5 text-amber-500" />
                   Формула Hamwi (1964)
                 </h3>
                 <p>
@@ -412,7 +412,7 @@ export default function IdealWeightPage() {
 
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <ClipboardList className="h-5 w-5 text-pink-500" />
+                  <ClipboardList className="size-5 text-pink-500" />
                   Формула Брока (модифицированная)
                 </h3>
                 <p>
@@ -433,7 +433,7 @@ export default function IdealWeightPage() {
           {/* Блок 3: Почему формулы дают разные результаты */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Users className="h-5 w-5" />
+              <Users className="size-5" />
               Почему формулы дают разные результаты
             </h2>
             <p>
@@ -444,7 +444,7 @@ export default function IdealWeightPage() {
             <div className="grid gap-3 md:grid-cols-3">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Users className="h-5 w-5 text-blue-500" />
+                  <Users className="size-5 text-blue-500" />
                   Разные выборки
                 </h3>
                 <p>
@@ -454,7 +454,7 @@ export default function IdealWeightPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Clock className="h-5 w-5 text-amber-500" />
+                  <Clock className="size-5 text-amber-500" />
                   Разные годы
                 </h3>
                 <p>
@@ -464,7 +464,7 @@ export default function IdealWeightPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Ruler className="h-5 w-5 text-violet-500" />
+                  <Ruler className="size-5 text-violet-500" />
                   Разные единицы
                 </h3>
                 <p>
@@ -485,7 +485,7 @@ export default function IdealWeightPage() {
           {/* Блок 4: Ограничения формул */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5" />
+              <AlertTriangle className="size-5" />
               Ограничения формул идеального веса
             </h2>
             <p>
@@ -495,7 +495,7 @@ export default function IdealWeightPage() {
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Clock className="h-5 w-5 text-amber-500" />
+                  <Clock className="size-5 text-amber-500" />
                   Не учитывают возраст
                 </h3>
                 <p>
@@ -505,7 +505,7 @@ export default function IdealWeightPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Bone className="h-5 w-5 text-orange-500" />
+                  <Bone className="size-5 text-orange-500" />
                   Не учитывают телосложение
                 </h3>
                 <p>
@@ -515,7 +515,7 @@ export default function IdealWeightPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Dumbbell className="h-5 w-5 text-red-500" />
+                  <Dumbbell className="size-5 text-red-500" />
                   Не различают мышцы и жир
                 </h3>
                 <p>
@@ -528,7 +528,7 @@ export default function IdealWeightPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Ruler className="h-5 w-5 text-blue-500" />
+                  <Ruler className="size-5 text-blue-500" />
                   Ограничение по росту
                 </h3>
                 <p>
@@ -554,7 +554,7 @@ export default function IdealWeightPage() {
           {/* Блок 5: Примеры расчёта */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               Примеры расчёта
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
@@ -595,13 +595,13 @@ export default function IdealWeightPage() {
           {/* Блок 6: Как достичь идеального веса */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Target className="h-5 w-5" />
+              <Target className="size-5" />
               Как достичь идеального веса
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <TrendingDown className="h-5 w-5 text-amber-500" />
+                  <TrendingDown className="size-5 text-amber-500" />
                   Если вес выше идеального
                 </h3>
                 <ul className="space-y-1 pl-5 list-disc marker:text-primary">
@@ -618,7 +618,7 @@ export default function IdealWeightPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <TrendingUp className="h-5 w-5 text-blue-500" />
+                  <TrendingUp className="size-5 text-blue-500" />
                   Если вес ниже идеального
                 </h3>
                 <ul className="space-y-1 pl-5 list-disc marker:text-primary">
@@ -636,12 +636,12 @@ export default function IdealWeightPage() {
           {/* Блок 7: Практические советы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Практические советы
             </h2>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -650,7 +650,7 @@ export default function IdealWeightPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -659,7 +659,7 @@ export default function IdealWeightPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -668,7 +668,7 @@ export default function IdealWeightPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -686,7 +686,7 @@ export default function IdealWeightPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   5
                 </span>
                 <div>
@@ -696,7 +696,7 @@ export default function IdealWeightPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <AlertTriangle className="size-5 shrink-0 text-amber-400" />
               <p>
                 Формулы идеального веса — ориентир, а не диагноз. При серьёзных
                 отклонениях от нормы проконсультируйтесь с врачом.
@@ -714,7 +714,7 @@ export default function IdealWeightPage() {
           {/* Блок 8: Таблица нормального веса по росту */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Scale className="h-5 w-5" />
+              <Scale className="size-5" />
               Нормальный вес по росту (ИМТ 18,5–24,9)
             </h2>
             <p>
@@ -790,7 +790,7 @@ export default function IdealWeightPage() {
           {/* FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -880,7 +880,7 @@ export default function IdealWeightPage() {
           {/* Связанные калькуляторы */}
           <nav className="space-y-3" aria-label="Связанные калькуляторы">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -888,42 +888,42 @@ export default function IdealWeightPage() {
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/telo/protsent-zhira"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Percent className="h-4 w-4 text-muted-foreground" />
+                <Percent className="size-4 text-muted-foreground" />
                 Процент жира
               </Link>
               <Link
                 href="/zdorovye/telo/bazovyj-metabolizm"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-4 w-4 text-muted-foreground" />
+                <Flame className="size-4 text-muted-foreground" />
                 Базовый метаболизм
               </Link>
               <Link
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Target className="h-4 w-4 text-muted-foreground" />
+                <Target className="size-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/pitanie/defitsit-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <TrendingDown className="h-4 w-4 text-muted-foreground" />
+                <TrendingDown className="size-4 text-muted-foreground" />
                 Дефицит калорий
               </Link>
               <Link
                 href="/zdorovye/pitanie/norma-vody"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Droplets className="h-4 w-4 text-muted-foreground" />
+                <Droplets className="size-4 text-muted-foreground" />
                 Норма воды
               </Link>
             </div>

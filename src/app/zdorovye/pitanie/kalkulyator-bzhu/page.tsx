@@ -216,10 +216,10 @@ export default function MacroCalculatorPage() {
         <Breadcrumbs items={breadcrumbs} />
 
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
             Калькулятор БЖУ онлайн
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Рассчитайте оптимальное соотношение белков, жиров и углеводов
             для вашей цели. 5 типов диет, результат в граммах и на кг веса.
           </p>
@@ -228,12 +228,12 @@ export default function MacroCalculatorPage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>
@@ -242,7 +242,7 @@ export default function MacroCalculatorPage() {
               </p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>
@@ -251,7 +251,7 @@ export default function MacroCalculatorPage() {
               </p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>
@@ -270,7 +270,7 @@ export default function MacroCalculatorPage() {
         {/* Вам также будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
@@ -278,28 +278,28 @@ export default function MacroCalculatorPage() {
               href="/zdorovye/pitanie/kalkulyator-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Flame className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор калорий</span>
             </Link>
             <Link
               href="/zdorovye/pitanie/defitsit-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <TrendingDown className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <TrendingDown className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Дефицит калорий</span>
             </Link>
             <Link
               href="/zdorovye/telo/kalkulyator-imt"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Scale className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор ИМТ</span>
             </Link>
             <Link
               href="/zdorovye/telo/bazovyj-metabolizm"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Activity className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Activity className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Базовый метаболизм</span>
             </Link>
           </div>
@@ -310,7 +310,7 @@ export default function MacroCalculatorPage() {
           {/* Блок 1: Что такое БЖУ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Что такое БЖУ и зачем их считать
             </h2>
             <p>
@@ -340,7 +340,7 @@ export default function MacroCalculatorPage() {
           {/* Блок 2: Как работает калькулятор */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
+              <Calculator className="size-5" />
               Как работает калькулятор БЖУ
             </h2>
             <p>
@@ -365,13 +365,13 @@ export default function MacroCalculatorPage() {
           {/* Блок 3: Роль каждого макронутриента */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Puzzle className="h-5 w-5" />
+              <Puzzle className="size-5" />
               Роль каждого макронутриента
             </h2>
             <div className="grid gap-3 md:grid-cols-3">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Beef className="h-5 w-5 text-rose-300" />
+                  <Beef className="size-5 text-rose-300" />
                   Белки
                 </h3>
                 <p>
@@ -383,7 +383,7 @@ export default function MacroCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Droplets className="h-5 w-5 text-amber-300" />
+                  <Droplets className="size-5 text-amber-300" />
                   Жиры
                 </h3>
                 <p>
@@ -395,7 +395,7 @@ export default function MacroCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Wheat className="h-5 w-5 text-orange-300" />
+                  <Wheat className="size-5 text-orange-300" />
                   Углеводы
                 </h3>
                 <p>
@@ -413,7 +413,7 @@ export default function MacroCalculatorPage() {
           {/* Блок 4: 5 типов питания */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Utensils className="h-5 w-5" />
+              <Utensils className="size-5" />
               5 типов питания в калькуляторе
             </h2>
             <p>
@@ -423,7 +423,7 @@ export default function MacroCalculatorPage() {
             </p>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -438,7 +438,7 @@ export default function MacroCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -453,7 +453,7 @@ export default function MacroCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -468,7 +468,7 @@ export default function MacroCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -484,7 +484,7 @@ export default function MacroCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   5
                 </span>
                 <div>
@@ -506,7 +506,7 @@ export default function MacroCalculatorPage() {
           {/* Блок 5: БЖУ для похудения и набора */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Target className="h-5 w-5" />
+              <Target className="size-5" />
               БЖУ для похудения и набора массы
             </h2>
             <div className="grid gap-4 md:grid-cols-2">
@@ -524,7 +524,7 @@ export default function MacroCalculatorPage() {
                   помогает сохранить мышцы.
                 </p>
                 <div className="flex gap-2 items-start">
-                  <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+                  <AlertTriangle className="size-5 shrink-0 text-amber-400" />
                   <p>
                     Не рекомендуется сочетать жёсткий дефицит калорий с
                     низкобелковой диетой — это приведёт к потере мышц
@@ -542,7 +542,7 @@ export default function MacroCalculatorPage() {
                   и <strong className="text-foreground">1,6–2</strong> г белка на кг веса.
                 </p>
                 <div className="flex gap-2 items-start">
-                  <Lightbulb className="h-5 w-5 shrink-0 text-blue-400" />
+                  <Lightbulb className="size-5 shrink-0 text-blue-400" />
                   <p>
                     При наборе массы <strong className="text-foreground">углеводы не менее важны</strong>,
                     чем белок — они необходимы для восполнения гликогена
@@ -563,7 +563,7 @@ export default function MacroCalculatorPage() {
           {/* Блок 6: Норма белка — таблица */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Beef className="h-5 w-5" />
+              <Beef className="size-5" />
               Норма белка в зависимости от цели
             </h2>
             <p>
@@ -618,7 +618,7 @@ export default function MacroCalculatorPage() {
           {/* Блок 7: Как подобрать тип питания */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Search className="h-5 w-5" />
+              <Search className="size-5" />
               Как подобрать тип питания
             </h2>
             <p>
@@ -659,7 +659,7 @@ export default function MacroCalculatorPage() {
           {/* Блок 8: Примеры расчёта */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               Примеры расчёта БЖУ
             </h2>
             <p>
@@ -720,7 +720,7 @@ export default function MacroCalculatorPage() {
           {/* Блок 9: Советы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Практические советы по контролю БЖУ
             </h2>
             <p>
@@ -729,7 +729,7 @@ export default function MacroCalculatorPage() {
             </p>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">1</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">1</span>
                 <div>
                   <p className="text-foreground font-medium">Начните с белка</p>
                   <p>
@@ -740,7 +740,7 @@ export default function MacroCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">2</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">2</span>
                 <div>
                   <p className="text-foreground font-medium">Не бойтесь жиров</p>
                   <p>
@@ -751,7 +751,7 @@ export default function MacroCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">3</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">3</span>
                 <div>
                   <p className="text-foreground font-medium">Выбирайте сложные углеводы</p>
                   <p>
@@ -762,7 +762,7 @@ export default function MacroCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">4</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">4</span>
                 <div>
                   <p className="text-foreground font-medium">Используйте приложения</p>
                   <p>
@@ -773,7 +773,7 @@ export default function MacroCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">5</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">5</span>
                 <div>
                   <p className="text-foreground font-medium">Пейте достаточно воды</p>
                   <p>
@@ -788,7 +788,7 @@ export default function MacroCalculatorPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <AlertTriangle className="size-5 shrink-0 text-amber-400" />
               <p>
                 Калькулятор даёт ориентировочные значения. При заболеваниях
                 почек, печени, диабете или расстройствах пищевого поведения
@@ -802,7 +802,7 @@ export default function MacroCalculatorPage() {
           {/* FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -899,7 +899,7 @@ export default function MacroCalculatorPage() {
           {/* Связанные калькуляторы */}
           <nav className="space-y-3" aria-label="Связанные калькуляторы">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -907,42 +907,42 @@ export default function MacroCalculatorPage() {
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-4 w-4 text-muted-foreground" />
+                <Flame className="size-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/pitanie/defitsit-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <TrendingDown className="h-4 w-4 text-muted-foreground" />
+                <TrendingDown className="size-4 text-muted-foreground" />
                 Дефицит калорий
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/telo/bazovyj-metabolizm"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Activity className="h-4 w-4 text-muted-foreground" />
+                <Activity className="size-4 text-muted-foreground" />
                 Базовый метаболизм
               </Link>
               <Link
                 href="/zdorovye/pitanie/norma-vody"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <GlassWater className="h-4 w-4 text-muted-foreground" />
+                <GlassWater className="size-4 text-muted-foreground" />
                 Норма воды
               </Link>
               <Link
                 href="/zdorovye/telo/idealnyj-ves"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Target className="h-4 w-4 text-muted-foreground" />
+                <Target className="size-4 text-muted-foreground" />
                 Идеальный вес
               </Link>
             </div>

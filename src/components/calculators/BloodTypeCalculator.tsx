@@ -79,7 +79,7 @@ export function BloodTypeCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="size-5" />
             Группы крови родителей
           </CardTitle>
         </CardHeader>
@@ -88,7 +88,7 @@ export function BloodTypeCalculator() {
             {/* Мать */}
             <div className="space-y-2">
               <div className="flex items-center justify-center gap-1.5 py-1.5 px-2 bg-pink-50 text-pink-600 rounded-md text-sm font-medium">
-                <Venus className="h-4 w-4" />
+                <Venus className="size-4" />
                 Мать
               </div>
               <Select value={motherGroup} onValueChange={(v) => setMotherGroup(v as BloodGroup)}>
@@ -120,7 +120,7 @@ export function BloodTypeCalculator() {
             {/* Отец */}
             <div className="space-y-2">
               <div className="flex items-center justify-center gap-1.5 py-1.5 px-2 bg-blue-50 text-blue-600 rounded-md text-sm font-medium">
-                <Mars className="h-4 w-4" />
+                <Mars className="size-4" />
                 Отец
               </div>
               <Select value={fatherGroup} onValueChange={(v) => setFatherGroup(v as BloodGroup)}>
@@ -155,7 +155,7 @@ export function BloodTypeCalculator() {
       {/* Предупреждение о резус-конфликте */}
       {rhConflictWarning && (
         <Alert variant="destructive" className="border-amber-200 bg-amber-50 text-amber-900">
-          <AlertTriangle className="h-4 w-4 !text-amber-600" />
+          <AlertTriangle className="size-4 !text-amber-600" />
           <AlertTitle className="text-amber-800">Внимание: возможен резус-конфликт</AlertTitle>
           <AlertDescription className="text-amber-700">
             {rhConflictWarning}
@@ -212,27 +212,27 @@ export function BloodTypeCalculator() {
       <Card className="gap-3 py-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-base flex items-center gap-2">
-            <Info className="h-5 w-5" />
+            <Info className="size-5" />
             Важно знать
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3 text-sm text-muted-foreground">
           <div className="flex gap-2">
-            <Heart className="h-4 w-4 mt-0.5 text-red-400 shrink-0" />
+            <Heart className="size-4 mt-0.5 text-red-400 shrink-0" />
             <p>
               Группа крови наследуется по законам Менделя. Ребёнок получает по одному гену
               от каждого родителя.
             </p>
           </div>
           <div className="flex gap-2">
-            <Heart className="h-4 w-4 mt-0.5 text-red-400 shrink-0" />
+            <Heart className="size-4 mt-0.5 text-red-400 shrink-0" />
             <p>
               Резус-фактор определяется доминантным геном D. Если хотя бы один родитель Rh+,
               ребёнок с высокой вероятностью тоже будет Rh+.
             </p>
           </div>
           <div className="flex gap-2">
-            <Heart className="h-4 w-4 mt-0.5 text-red-400 shrink-0" />
+            <Heart className="size-4 mt-0.5 text-red-400 shrink-0" />
             <p>
               Калькулятор показывает вероятности. Точно определить группу крови можно
               только анализом после рождения.

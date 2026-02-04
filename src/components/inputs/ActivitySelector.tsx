@@ -64,7 +64,7 @@ export function ActivitySelector({ value, onChange }: ActivitySelectorProps) {
   return (
     <div className="space-y-3">
       <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-        <Activity className="h-5 w-5" />
+        <Activity className="size-5" />
         Активность
       </span>
       <div className="grid grid-cols-5 gap-1.5">
@@ -83,7 +83,7 @@ export function ActivitySelector({ value, onChange }: ActivitySelectorProps) {
               )}
             >
               <Icon className={cn(
-                'h-5 w-5 mb-0.5',
+                'size-5 mb-0.5',
                 value === level.id ? 'text-primary' : 'text-muted-foreground'
               )} />
               <span

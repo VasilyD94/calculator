@@ -54,7 +54,7 @@ export function DateInput({ label, value, onChange, icon, min, max }: DateInputP
               !value && 'text-muted-foreground'
             )}
           >
-            <CalendarIcon className="mr-2 h-4 w-4" />
+            <CalendarIcon className="mr-2 size-4" />
             {value ? (
               format(value, 'd MMMM yyyy', { locale: ru })
             ) : (

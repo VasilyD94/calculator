@@ -21,7 +21,7 @@ export function GenderToggle({ value, onChange }: GenderToggleProps) {
             : 'text-muted-foreground hover:text-foreground'
         )}
       >
-        <Mars className="h-5 w-5" />
+        <Mars className="size-5" />
         Мужчина
       </button>
       <button
@@ -34,7 +34,7 @@ export function GenderToggle({ value, onChange }: GenderToggleProps) {
             : 'text-muted-foreground hover:text-foreground'
         )}
       >
-        <Venus className="h-5 w-5" />
+        <Venus className="size-5" />
         Женщина
       </button>
     </div>

@@ -218,10 +218,10 @@ export default function DeficitCalculatorPage() {
         <Breadcrumbs items={breadcrumbs} />
 
         <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
             Калькулятор похудения — за сколько похудею
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground text-pretty">
             Узнайте за сколько похудеете до целевого веса. График снижения веса,
             безопасный дефицит калорий и сравнение сценариев похудения.
           </p>
@@ -230,12 +230,12 @@ export default function DeficitCalculatorPage() {
         {/* Как пользоваться */}
         <section className="mb-8 space-y-3 text-sm text-muted-foreground">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="size-5" />
             Как пользоваться калькулятором
           </h2>
           <div className="space-y-2">
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 1
               </span>
               <p>
@@ -244,7 +244,7 @@ export default function DeficitCalculatorPage() {
               </p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 2
               </span>
               <p>
@@ -253,7 +253,7 @@ export default function DeficitCalculatorPage() {
               </p>
             </div>
             <div className="flex gap-3 items-start">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                 3
               </span>
               <p>
@@ -272,7 +272,7 @@ export default function DeficitCalculatorPage() {
         {/* Вам также будет полезно */}
         <div className="mb-10 space-y-3">
           <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-            <Compass className="h-5 w-5" />
+            <Compass className="size-5" />
             Вам также будет полезно
           </h2>
           <div className="grid gap-2 grid-cols-2 sm:grid-cols-4">
@@ -280,28 +280,28 @@ export default function DeficitCalculatorPage() {
               href="/zdorovye/pitanie/kalkulyator-kalorij"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Flame className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Flame className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор калорий</span>
             </Link>
             <Link
               href="/zdorovye/pitanie/kalkulyator-bzhu"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Beef className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Beef className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор БЖУ</span>
             </Link>
             <Link
               href="/zdorovye/telo/kalkulyator-imt"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Scale className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Scale className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Калькулятор ИМТ</span>
             </Link>
             <Link
               href="/zdorovye/telo/idealnyj-ves"
               className="rounded-lg border p-3 text-center transition-colors hover:bg-accent group"
             >
-              <Target className="h-5 w-5 mx-auto mb-1 text-muted-foreground" />
+              <Target className="size-5 mx-auto mb-1 text-muted-foreground" />
               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">Идеальный вес</span>
             </Link>
           </div>
@@ -312,7 +312,7 @@ export default function DeficitCalculatorPage() {
           {/* Блок 1: Что такое дефицит калорий */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Info className="h-5 w-5" />
+              <Info className="size-5" />
               Что такое дефицит калорий и зачем он нужен
             </h2>
             <p>
@@ -348,7 +348,7 @@ export default function DeficitCalculatorPage() {
           {/* Блок 2: Какой дефицит безопасен */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ShieldCheck className="h-5 w-5" />
+              <ShieldCheck className="size-5" />
               Какой дефицит считается безопасным
             </h2>
             <p>
@@ -360,7 +360,7 @@ export default function DeficitCalculatorPage() {
             <div className="grid gap-3 md:grid-cols-3">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <ShieldCheck className="h-5 w-5 text-emerald-400" />
+                  <ShieldCheck className="size-5 text-emerald-400" />
                   200–400 ккал
                 </h3>
                 <p>
@@ -373,7 +373,7 @@ export default function DeficitCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <AlertTriangle className="h-5 w-5 text-amber-400" />
+                  <AlertTriangle className="size-5 text-amber-400" />
                   400–700 ккал
                 </h3>
                 <p>
@@ -386,7 +386,7 @@ export default function DeficitCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <AlertTriangle className="h-5 w-5 text-red-400" />
+                  <AlertTriangle className="size-5 text-red-400" />
                   700+ ккал
                 </h3>
                 <p>
@@ -409,7 +409,7 @@ export default function DeficitCalculatorPage() {
           {/* Блок 3: Как работает калькулятор */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
+              <Calculator className="size-5" />
               Как работает калькулятор дефицита
             </h2>
             <p>
@@ -420,7 +420,7 @@ export default function DeficitCalculatorPage() {
             </p>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -432,7 +432,7 @@ export default function DeficitCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -445,7 +445,7 @@ export default function DeficitCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -465,7 +465,7 @@ export default function DeficitCalculatorPage() {
           {/* Блок 4: Ошибки и правила */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <BarChart3 className="h-5 w-5" />
+              <BarChart3 className="size-5" />
               Ошибки и правила при дефиците калорий
             </h2>
             <div className="grid gap-3 md:grid-cols-2">
@@ -481,7 +481,7 @@ export default function DeficitCalculatorPage() {
                   <li>Игнорирование силовых тренировок</li>
                 </ul>
                 <div className="flex gap-2 items-start">
-                  <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+                  <AlertTriangle className="size-5 shrink-0 text-amber-400" />
                   <p>
                     Калорийность ниже <strong className="text-foreground">1200</strong> ккал
                     для женщин и <strong className="text-foreground">1500</strong> ккал
@@ -501,7 +501,7 @@ export default function DeficitCalculatorPage() {
                   <li>Силовые тренировки 2–3 раза в неделю</li>
                 </ul>
                 <div className="flex gap-2 items-start">
-                  <Lightbulb className="h-5 w-5 shrink-0 text-blue-400" />
+                  <Lightbulb className="size-5 shrink-0 text-blue-400" />
                   <p>
                     Используйте{' '}
                     <Link href="/zdorovye/pitanie/kalkulyator-bzhu" className="text-primary underline underline-offset-2 decoration-primary/40 hover:decoration-primary">
@@ -519,7 +519,7 @@ export default function DeficitCalculatorPage() {
           {/* Блок 5: Таблица — TDEE и дефицит */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <TrendingDown className="h-5 w-5" />
+              <TrendingDown className="size-5" />
               Примеры дефицита для разных людей
             </h2>
             <p>
@@ -581,7 +581,7 @@ export default function DeficitCalculatorPage() {
           {/* Блок 6: Что делать если вес остановился */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <RefreshCw className="h-5 w-5" />
+              <RefreshCw className="size-5" />
               Что делать, если вес остановился
             </h2>
             <p>
@@ -591,7 +591,7 @@ export default function DeficitCalculatorPage() {
             </p>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   1
                 </span>
                 <div>
@@ -604,7 +604,7 @@ export default function DeficitCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   2
                 </span>
                 <div>
@@ -616,7 +616,7 @@ export default function DeficitCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   3
                 </span>
                 <div>
@@ -630,7 +630,7 @@ export default function DeficitCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">
                   4
                 </span>
                 <div>
@@ -650,7 +650,7 @@ export default function DeficitCalculatorPage() {
           {/* Блок 7: Примеры расчёта */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ClipboardList className="h-5 w-5" />
+              <ClipboardList className="size-5" />
               Примеры расчёта дефицита
             </h2>
             <p>
@@ -704,7 +704,7 @@ export default function DeficitCalculatorPage() {
           {/* Блок 8: Влияющие факторы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Activity className="h-5 w-5" />
+              <Activity className="size-5" />
               Что влияет на скорость похудения
             </h2>
             <p>
@@ -715,7 +715,7 @@ export default function DeficitCalculatorPage() {
             <div className="grid gap-3 md:grid-cols-2">
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Weight className="h-5 w-5 text-violet-400" />
+                  <Weight className="size-5 text-violet-400" />
                   Начальный вес
                 </h3>
                 <p>
@@ -729,7 +729,7 @@ export default function DeficitCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Dumbbell className="h-5 w-5 text-orange-400" />
+                  <Dumbbell className="size-5 text-orange-400" />
                   Мышечная масса
                 </h3>
                 <p>
@@ -742,7 +742,7 @@ export default function DeficitCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Moon className="h-5 w-5 text-indigo-400" />
+                  <Moon className="size-5 text-indigo-400" />
                   Сон и стресс
                 </h3>
                 <p>
@@ -753,7 +753,7 @@ export default function DeficitCalculatorPage() {
               </div>
               <div className="rounded-lg border p-3 space-y-1.5">
                 <h3 className="font-semibold text-foreground flex items-center gap-1.5">
-                  <Droplets className="h-5 w-5 text-sky-400" />
+                  <Droplets className="size-5 text-sky-400" />
                   Водный баланс
                 </h3>
                 <p>
@@ -773,7 +773,7 @@ export default function DeficitCalculatorPage() {
           {/* Блок 9: Советы */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <Lightbulb className="h-5 w-5" />
+              <Lightbulb className="size-5" />
               Практические советы для похудения
             </h2>
             <p>
@@ -782,7 +782,7 @@ export default function DeficitCalculatorPage() {
             </p>
             <div className="space-y-2">
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">1</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">1</span>
                 <div>
                   <p className="text-foreground font-medium">Не спешите</p>
                   <p>
@@ -793,7 +793,7 @@ export default function DeficitCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">2</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">2</span>
                 <div>
                   <p className="text-foreground font-medium">Увеличьте белок</p>
                   <p>
@@ -804,7 +804,7 @@ export default function DeficitCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">3</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">3</span>
                 <div>
                   <p className="text-foreground font-medium">Взвешивайтесь правильно</p>
                   <p>
@@ -815,7 +815,7 @@ export default function DeficitCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">4</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">4</span>
                 <div>
                   <p className="text-foreground font-medium">Планируйте перерывы</p>
                   <p>
@@ -826,7 +826,7 @@ export default function DeficitCalculatorPage() {
                 </div>
               </div>
               <div className="flex gap-3 items-start">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">5</span>
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border text-xs text-muted-foreground">5</span>
                 <div>
                   <p className="text-foreground font-medium">Добавьте движение</p>
                   <p>
@@ -838,7 +838,7 @@ export default function DeficitCalculatorPage() {
               </div>
             </div>
             <div className="flex gap-2 items-start text-sm rounded-md bg-muted p-3">
-              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <AlertTriangle className="size-5 shrink-0 text-amber-400" />
               <p>
                 Калькулятор даёт ориентировочные значения. При заболеваниях,
                 расстройствах пищевого поведения или беременности
@@ -852,7 +852,7 @@ export default function DeficitCalculatorPage() {
           {/* FAQ */}
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <CircleHelp className="h-5 w-5" />
+              <CircleHelp className="size-5" />
               Часто задаваемые вопросы
             </h2>
             <Accordion type="multiple" className="w-full">
@@ -945,7 +945,7 @@ export default function DeficitCalculatorPage() {
           {/* Связанные калькуляторы */}
           <nav className="space-y-3" aria-label="Связанные калькуляторы">
             <h2 className="text-base font-semibold text-foreground flex items-center gap-2">
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="size-5" />
               Связанные калькуляторы
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -953,42 +953,42 @@ export default function DeficitCalculatorPage() {
                 href="/zdorovye/pitanie/kalkulyator-kalorij"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Flame className="h-4 w-4 text-muted-foreground" />
+                <Flame className="size-4 text-muted-foreground" />
                 Калькулятор калорий
               </Link>
               <Link
                 href="/zdorovye/pitanie/kalkulyator-bzhu"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Beef className="h-4 w-4 text-muted-foreground" />
+                <Beef className="size-4 text-muted-foreground" />
                 Калькулятор БЖУ
               </Link>
               <Link
                 href="/zdorovye/telo/kalkulyator-imt"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Scale className="h-4 w-4 text-muted-foreground" />
+                <Scale className="size-4 text-muted-foreground" />
                 Калькулятор ИМТ
               </Link>
               <Link
                 href="/zdorovye/telo/bazovyj-metabolizm"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Activity className="h-4 w-4 text-muted-foreground" />
+                <Activity className="size-4 text-muted-foreground" />
                 Базовый метаболизм
               </Link>
               <Link
                 href="/zdorovye/telo/idealnyj-ves"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <Target className="h-4 w-4 text-muted-foreground" />
+                <Target className="size-4 text-muted-foreground" />
                 Идеальный вес
               </Link>
               <Link
                 href="/zdorovye/pitanie/norma-vody"
                 className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-accent hover:text-primary"
               >
-                <GlassWater className="h-4 w-4 text-muted-foreground" />
+                <GlassWater className="size-4 text-muted-foreground" />
                 Норма воды
               </Link>
             </div>
