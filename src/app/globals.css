@@ -123,4 +123,26 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Accessibility: явные стили фокуса для клавиатурной навигации */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+
+  /* Скрываем outline при клике мышью, показываем при Tab */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Accessibility: уважаем prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
