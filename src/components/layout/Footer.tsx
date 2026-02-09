@@ -39,8 +39,14 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-10 border-t pt-6 text-center text-sm text-muted-foreground">
+        <div className="mt-10 border-t pt-6 flex flex-col items-center gap-2 text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} CalcBox. Все расчёты носят информационный характер.</p>
+          <Link
+            href="/privacy"
+            className="transition-colors hover:text-foreground"
+          >
+            Политика конфиденциальности
+          </Link>
         </div>
       </div>
     </footer>

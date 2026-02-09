@@ -3,6 +3,7 @@ import Script from 'next/script'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { CookieBanner } from '@/components/layout/CookieBanner'
 import './globals.css'
 
 const geistSans = Geist({
@@ -111,6 +112,7 @@ export default function RootLayout({
           <Header />
           <main id="main-content" className="flex-1" tabIndex={-1}>{children}</main>
           <Footer />
+          <CookieBanner />
         </div>
       </body>
     </html>

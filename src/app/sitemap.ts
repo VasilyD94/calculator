@@ -40,6 +40,9 @@ const pages = [
   { path: '/zdorovye/sport', changeFrequency: 'monthly' as const, priority: 0.8 },
   { path: '/zdorovye/sport/puls-dlya-trenirovok', changeFrequency: 'monthly' as const, priority: 0.9 },
   { path: '/zdorovye/sport/belok-dlya-sportsmenov', changeFrequency: 'monthly' as const, priority: 0.9 },
+
+  // Юридические страницы
+  { path: '/privacy', changeFrequency: 'yearly' as const, priority: 0.3 },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
