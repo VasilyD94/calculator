@@ -9,20 +9,11 @@
 ## Общий воркфлоу
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  Для КАЖДОГО калькулятора:                                  │
-│                                                             │
-│  1. git checkout -b feature/calc-name                       │
-│  2. Реализация (логика + компонент + страница)              │
-│  3. npm run build — проверка                                │
-│  4. Ревью пользователем                                     │
-│  5. Правки (если нужны)                                     │
-│  6. git checkout main && git merge feature/calc-name        │
-│  7. Удаление ветки: git branch -d feature/calc-name         │
-│                                                             │
-│  После ВСЕХ калькуляторов:                                  │
-│  8. git push && деплой на прод                              │
-└─────────────────────────────────────────────────────────────┘
+Для КАЖДОГО калькулятора:
+1. Реализация (логика + компонент + страница)
+2. npm run build — проверка
+3. Коммит + push в main
+4. Деплой на прод
 ```
 
 ---
@@ -41,8 +32,6 @@
 ---
 
 ## 1. Калькулятор возраста
-
-**Ветка:** `feature/age-calculator`
 
 **Wordstat:**
 - «сколько мне лет» — 140 550
@@ -75,8 +64,6 @@ src/app/zdorovye/telo/kalkulyator-vozrasta/page.tsx  — страница
 
 ## 2. Группа крови ребёнка
 
-**Ветка:** `feature/blood-type-calculator`
-
 **Wordstat:**
 - «группа крови ребенка» — 122 642
 - «калькулятор группы крови» — 1 358
@@ -108,8 +95,6 @@ src/app/zdorovye/beremennost/gruppa-krovi-rebenka/page.tsx
 ---
 
 ## 3. Калькулятор алкоголя
-
-**Ветка:** `feature/alcohol-calculator`
 
 **Wordstat:**
 - «калькулятор алкоголя» — 75 051
@@ -151,8 +136,6 @@ src/app/zdorovye/telo/kalkulyator-alkogolya/page.tsx
 
 ## 4. Калькулятор сна
 
-**Ветка:** `feature/sleep-calculator`
-
 **Wordstat:**
 - «во сколько лечь спать» — 55 840
 - «калькулятор сна» — 43 062
@@ -185,8 +168,6 @@ src/app/zdorovye/telo/kalkulyator-sna/page.tsx
 ---
 
 ## 5. Норма давления
-
-**Ветка:** `feature/blood-pressure-calculator`
 
 **Wordstat:**
 - «норма давления по возрасту» — 36 438
@@ -223,8 +204,6 @@ src/app/zdorovye/telo/norma-davleniya/page.tsx
 
 ## 6. Тип телосложения
 
-**Ветка:** `feature/body-type-calculator`
-
 **Wordstat:**
 - «тип телосложения» — 24 334
 - «эктоморф мезоморф эндоморф» — 5 266
@@ -256,9 +235,6 @@ src/app/zdorovye/telo/tip-teloslozheniya/page.tsx
 ---
 
 ## Чеклист для каждого калькулятора
-
-### Перед началом
-- [ ] Создать ветку `git checkout -b feature/calc-name`
 
 ### Реализация
 - [ ] Создать файл расчётов `src/lib/calculations/xxx.ts`
@@ -296,9 +272,8 @@ src/app/zdorovye/telo/tip-teloslozheniya/page.tsx
 
 ### Git
 - [ ] Коммит с понятным сообщением
-- [ ] Ревью пользователем
-- [ ] Правки (если нужны)
-- [ ] Merge в main
+- [ ] Push в main
+- [ ] Деплой на прод
 
 ---
 
@@ -307,18 +282,14 @@ src/app/zdorovye/telo/tip-teloslozheniya/page.tsx
 После реализации всех 6 калькуляторов:
 
 ```bash
-# 1. Убедиться что всё в main
-git checkout main
-git log --oneline -10  # проверить все merge
-
-# 2. Финальная сборка
+# 1. Финальная сборка
 npm run build
 
-# 3. Push в GitHub
+# 2. Push в GitHub
 git push
 
-# 4. Деплой на сервер
-ssh root@72.56.97.130 "cd /var/www/calculator && git pull && npm run build && pm2 restart calculator"
+# 3. Деплой на сервер
+sshpass -p 'j*J19-5uZ@-9Cu' ssh -o StrictHostKeyChecking=no root@2.59.40.88 "cd /var/www/calculator && git pull && npm run build && pm2 restart calculator 2>&1"
 
 # 5. Запросить переобход в Яндекс.Вебмастере для новых страниц
 ```

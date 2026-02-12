@@ -3,7 +3,7 @@ import type { MetadataRoute } from 'next'
 const BASE_URL = 'https://calc-box.ru'
 
 // Обновлять при реальном изменении контента на сайте
-const LAST_CONTENT_UPDATE = '2025-02-05'
+const LAST_CONTENT_UPDATE = '2026-02-12'
 
 // Список всех страниц сайта
 const pages = [
